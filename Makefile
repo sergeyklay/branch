@@ -38,6 +38,9 @@ define rm-venv-link
 	fi
 endef
 
+requirements/%.txt: requirements/%.in
+	 $(VENV_BIN)/pip-compile --output-file=$@ $<
+
 ## Public targets
 
 $(VENV_PYTHON): $(VENV_ROOT)
@@ -61,7 +64,10 @@ $(VENV_ROOT):
 init: $(VENV_PYTHON)
 	@echo $(CS)Installing dev requirements$(CE)
 	$(VENV_PYTHON) -m pip install --upgrade pip pip-tools setuptools wheel
-	$(VENV_PIP) install --upgrade -r $(REQUIREMENTS)
+
+.PHONY: init
+install: init $(REQUIREMENTS)
+	$(foreach file, $(REQUIREMENTS), $(VENV_PIP) install --upgrade -r $(file);)
 
 .PHONY: clean
 clean:
@@ -74,6 +80,11 @@ clean:
 	$(RM) -r ./.cache ./.pytest_cache
 	$(RM) -r ./htmlcov
 	$(RM) ./.coverage ./coverage.xml
+
+.PHONY: maintainer-clean
+maintainer-clean: clean
+	@echo $(CS)Remove requirements files$(CE)
+	$(RM) -r .$(REQUIREMENTS)
 
 .PHONY: lint
 lint: $(VENV_PYTHON)

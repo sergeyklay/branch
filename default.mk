@@ -32,7 +32,7 @@ endif
 COV          =
 HEADER_EXTRA =
 
-REQUIREMENTS = requirements/requirements-dev.txt
+REQUIREMENTS = requirements/requirements-dev.txt requirements/requirements.txt
 
 PYTEST_FLAGS ?= --color=yes -v
 FLAKE8_FLAGS ?= --show-source --statistics
