@@ -26,8 +26,9 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 """
 
 import os
-import environ
 from pathlib import Path
+
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -50,7 +51,6 @@ DEBUG = False
 
 # SECURITY WARNING: define the correct hosts in production
 ALLOWED_HOSTS = env('ALLOWED_HOSTS', cast=list, default=[])
-
 
 # Application definition
 
@@ -101,7 +101,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'branch.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
@@ -112,25 +111,29 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
 
+
+def password_validator(validator):
+    """Get fully qualified password validator module name."""
+    return f'django.contrib.auth.password_validation.{validator}'
+
+
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': password_validator('UserAttributeSimilarityValidator'),
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': password_validator('MinimumLengthValidator'),
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': password_validator('CommonPasswordValidator'),
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': password_validator('NumericPasswordValidator'),
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/
@@ -144,7 +147,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/

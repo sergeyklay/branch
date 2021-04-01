@@ -15,6 +15,7 @@
 
 from django.contrib.messages import constants as message_constants
 
+# pylint: disable-msg=w0614,w0401
 from .base import *  # noqa
 
 # SECURITY WARNING: don't run with the debug turned on in production!
@@ -27,7 +28,7 @@ MESSAGE_LEVEL = message_constants.DEBUG
 INTERNAL_IPS = ('127.0.0.1', )
 
 try:
-    # noinspection PyUnresolvedReferences
+    # pylint: disable-msg=w0614,w0401
     from .local import *  # noqa
 except ImportError:
     pass
