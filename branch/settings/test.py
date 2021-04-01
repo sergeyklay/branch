@@ -13,8 +13,16 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-__pycache__
+from .base import *
 
-/.venv
+# SECURITY WARNING: don't run with the debug turned on in production!
+DEBUG = True
 
-*.sqlite3
+# SECURITY WARNING: define the correct hosts in production
+ALLOWED_HOSTS = ['*']
+
+try:
+    # noinspection PyUnresolvedReferences
+    from .local import *
+except ImportError:
+    pass
