@@ -17,3 +17,6 @@
 
 # pylint: disable-msg=w0614,w0401
 from .base import *  # noqa
+
+# SECURITY WARNING: define the correct hosts in production
+ALLOWED_HOSTS = env('ALLOWED_HOSTS', cast=list, default=[])

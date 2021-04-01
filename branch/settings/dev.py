@@ -23,8 +23,6 @@ from .base import *  # noqa
 # SECURITY WARNING: don't run with the debug turned on in production!
 DEBUG = True
 
-# SECURITY WARNING: define the correct hosts in production
-ALLOWED_HOSTS = ('*', )
 MESSAGE_LEVEL = message_constants.DEBUG
 
 INTERNAL_IPS = ('127.0.0.1', )

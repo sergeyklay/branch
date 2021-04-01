@@ -52,19 +52,18 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with the debug turned on in production!
 DEBUG = False
 
-# SECURITY WARNING: define the correct hosts in production
-ALLOWED_HOSTS = env('ALLOWED_HOSTS', cast=list, default=[])
-
 # Application definition
 
 DJANGO_APPS = (
     # Default Django apps
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Admin
+    'django.contrib.admin',
 )
 
 THIRD_PARTY_APPS = ()
