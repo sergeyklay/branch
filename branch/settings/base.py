@@ -26,12 +26,12 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 """
 
 import os
-from pathlib import Path
+import sys
 
 import environ
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+# Build paths inside the project like this: BASE_DIR('subdir').
+BASE_DIR = environ.Path(__file__) - 3
 
 env = environ.Env()
 
@@ -40,6 +40,9 @@ env = environ.Env()
 ENVIRON_SETTINGS_FILE_PATH = '/etc/branch/settings.env'
 if os.path.exists(ENVIRON_SETTINGS_FILE_PATH):
     env.read_env(ENVIRON_SETTINGS_FILE_PATH)
+
+APPS_DIR = BASE_DIR('apps')
+sys.path.append(APPS_DIR)
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # Raises django's ImproperlyConfigured exception if SECRET_KEY
@@ -104,11 +107,35 @@ WSGI_APPLICATION = 'branch.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/dev/ref/settings/#databases
 
+
+def get_db_config(environ_var):
+    """Get Database configuration"""
+    values = env.db(var=environ_var, default='sqlite:///db.sqlite3')
+
+    def is_sqlite(options):
+        return options['ENGINE'] == 'django.db.backends.sqlite3'
+
+    def is_relative(name):
+        return not os.path.isabs(name)
+
+    values.update(
+        {
+            # Pool our database connections up for 60 seconds.
+            # This is almost irrelevant for SQLite, so check this first.
+            'CONN_MAX_AGE': 0 if is_sqlite(values) else 60,
+        }
+    )
+
+    # This will allow use a relative DB path for SQLite
+    # like 'sqlite:///db.sqlite3'
+    if is_sqlite(values) and is_relative(values['NAME']):
+        values.update({'NAME': BASE_DIR(values['NAME'])})
+
+    return values
+
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': get_db_config('DATABASE_URL'),
 }
 
 # Password validation
