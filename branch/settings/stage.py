@@ -13,11 +13,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
+"""Staging Django settings for branch project."""
+
 # pylint: disable-msg=w0614,w0401
 from .base import *  # noqa
-
-try:
-    # pylint: disable-msg=w0614,w0401
-    from .local import *  # noqa
-except ImportError:
-    pass
