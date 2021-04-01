@@ -13,16 +13,16 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-from .base import *
+from .base import *  # noqa
 
 # SECURITY WARNING: don't run with the debug turned on in production!
 DEBUG = True
 
 # SECURITY WARNING: define the correct hosts in production
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ('*', )
 
 try:
     # noinspection PyUnresolvedReferences
-    from .local import *
+    from .local import *  # noqa
 except ImportError:
     pass

@@ -25,34 +25,51 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/dev/ref/settings/
 """
 
+import os
+import environ
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+env = environ.Env()
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/dev/howto/deployment/checklist/
+# Reading environment file.
+# OS environment variables take precedence over variables from environment file
+ENVIRON_SETTINGS_FILE_PATH = '/etc/branch/settings.env'
+if os.path.exists(ENVIRON_SETTINGS_FILE_PATH):
+    env.read_env(ENVIRON_SETTINGS_FILE_PATH)
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-0ql_!*yor0r04w)1sq&2p&ojcio9mm=it95!+9#esu99e$fewj'
+# Raises django's ImproperlyConfigured exception if SECRET_KEY
+# is not in os.environ
+SECRET_KEY = env('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# SECURITY WARNING: don't run with the debug turned on in production!
+DEBUG = False
 
-ALLOWED_HOSTS = []
+# SECURITY WARNING: define the correct hosts in production
+ALLOWED_HOSTS = env('ALLOWED_HOSTS', cast=list, default=[])
 
 
 # Application definition
 
-INSTALLED_APPS = [
+DJANGO_APPS = (
+    # Default Django apps
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-]
+)
+
+THIRD_PARTY_APPS = ()
+
+# Apps specific for this project go here.
+LOCAL_APPS = ()
+
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
