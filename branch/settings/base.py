@@ -150,18 +150,10 @@ def password_validator(validator):
 
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': password_validator('UserAttributeSimilarityValidator'),
-    },
-    {
-        'NAME': password_validator('MinimumLengthValidator'),
-    },
-    {
-        'NAME': password_validator('CommonPasswordValidator'),
-    },
-    {
-        'NAME': password_validator('NumericPasswordValidator'),
-    },
+    {'NAME': password_validator('UserAttributeSimilarityValidator')},
+    {'NAME': password_validator('MinimumLengthValidator')},
+    {'NAME': password_validator('CommonPasswordValidator')},
+    {'NAME': password_validator('NumericPasswordValidator')},
 ]
 
 # Internationalization
