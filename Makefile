@@ -89,5 +89,5 @@ maintainer-clean: clean
 .PHONY: lint
 lint: $(VENV_PYTHON)
 	@echo $(CS)Running linters$(CE)
-	$(VENV_BIN)/flake8 $(FLAKE8_FLAGS) ./
+	-$(VENV_BIN)/flake8 $(FLAKE8_FLAGS) ./
 	$(VENV_BIN)/pylint ./$(PKG_NAME)
