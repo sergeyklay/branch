@@ -29,6 +29,7 @@ import os
 import sys
 
 import environ
+from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR('subdir').
 BASE_DIR = environ.Path(__file__) - 3
@@ -165,14 +166,21 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/dev/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
+LANGUAGE_COOKIE_NAME = 'branch_language'
+LANGUAGES = (
+    ('en-us', _('English')),
+    ('uk', _('Ukrainian')),
+    ('ru', _('Russian')),
+)
 
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
+
+LOCALE_PATHS = [
+    BASE_DIR('locales'),
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
