@@ -1,5 +1,5 @@
-Branch
-======
+Credits
+=======
 
 Branch is written and maintained by `Serghei Iakovlev <https://github.com/sergeyklay/>`_.
 
