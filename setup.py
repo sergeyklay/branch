@@ -14,9 +14,10 @@
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
 import codecs
-from os import path
-from setuptools import setup, find_packages
 import re
+from os import path
+
+from setuptools import setup, find_packages
 
 
 def locate_package_directory():
@@ -61,20 +62,21 @@ def load_long_description():
         head = '=' * len(title) + '\n'
 
         contents = (
-                head
-                + format(title.strip(' .'))
-                + head
-                + read_file(read_me).split('.. teaser-begin')[1]
-                + "\n\n"
-                + "Release Information\n"
-                + "===================\n\n"
-                + changes()
-                + "\n\n`Full changelog "
-                + f"<{find_meta('url')}/blob/master/CHANGELOG.rst>`_.\n\n"
-                + read_file(authors)
+            head,
+            format(title.strip(' .')),
+            head,
+            read_file(read_me).split('.. teaser-begin')[1],
+            '',
+            'Release Information',
+            '===================',
+            changes(),
+            '',
+            f"`Full changelog <{find_meta('url')}/blob/master/CHANGELOG.rst>`_.",  # noqa: E501
+            '',
+            read_file(authors),
         )
 
-        return contents
+        return '\n'.join(contents)
     except Exception as read_error:
         message = 'Long description could not be read from README.rst'
         raise RuntimeError(message) from read_error
