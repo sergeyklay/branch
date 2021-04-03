@@ -26,7 +26,7 @@ class Post(models.Model):
     )
 
     title = models.CharField(max_length=250)
-    slug = models.SlugField(max_length=250, unique_for_date='publish')
+    slug = models.SlugField(max_length=250, unique_for_date='published')
     author = models.ForeignKey(User, on_delete=models.CASCADE,
                                related_name='posts')
     body = models.TextField()
