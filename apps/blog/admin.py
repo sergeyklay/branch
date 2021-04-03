@@ -24,14 +24,14 @@ class PostAdmin(admin.ModelAdmin):
         'title',
         'slug',
         'author',
-        'published',
+        'published_at',
         'status',
     )
 
     list_filter = (
         'status',
-        'created',
-        'published',
+        'created_at',
+        'published_at',
         'author',
     )
 
@@ -48,9 +48,9 @@ class PostAdmin(admin.ModelAdmin):
         'author',
     )
 
-    date_hierarchy = 'published'
+    date_hierarchy = 'published_at'
 
     ordering = (
         'status',
-        'published',
+        'published_at',
     )

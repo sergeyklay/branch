@@ -45,15 +45,15 @@ class Migration(migrations.Migration):
                         max_length=250,
                         verbose_name='Title',
                     )
-                 ),
+                ),
                 (
                     'slug',
                     models.SlugField(
                         max_length=250,
-                        unique_for_date='published',
+                        unique_for_date='published_at',
                         verbose_name='Slug',
                     )
-                 ),
+                ),
                 (
                     'body',
                     models.TextField(
@@ -61,19 +61,19 @@ class Migration(migrations.Migration):
                     )
                 ),
                 (
-                    'published',
+                    'published_at',
                     models.DateTimeField(
                         default=django.utils.timezone.now,
                         verbose_name='Published at',
                     )
                 ),
                 (
-                    'created',
+                    'created_at',
                     models.DateTimeField(
                         auto_now_add=True,
                         verbose_name='Created at',
                     )
-                 ),
+                ),
                 (
                     'status',
                     models.CharField(
@@ -83,7 +83,7 @@ class Migration(migrations.Migration):
                         ],
                         default='draft',
                         max_length=10,
-                        verbose_name='Status'
+                        verbose_name='Status',
                     )
                 ),
                 (
@@ -99,7 +99,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'Post',
                 'verbose_name_plural': 'Posts',
-                'ordering': ('-published',),
+                'ordering': ('-published_at',),
             },
         ),
     ]

@@ -32,7 +32,7 @@ class Post(models.Model):
 
     slug = models.SlugField(
         max_length=250,
-        unique_for_date='published',
+        unique_for_date='published_at',
         verbose_name=_('Slug'),
     )
 
@@ -47,12 +47,12 @@ class Post(models.Model):
         verbose_name=_('Content'),
     )
 
-    published = models.DateTimeField(
+    published_at = models.DateTimeField(
         default=timezone.now,
         verbose_name=_('Published at'),
     )
 
-    created = models.DateTimeField(
+    created_at = models.DateTimeField(
         auto_now_add=True,
         verbose_name=_('Created at'),
     )
@@ -65,7 +65,7 @@ class Post(models.Model):
     )
 
     class Meta:
-        ordering = ('-published',)
+        ordering = ('-published_at',)
         verbose_name = _('Post')
         verbose_name_plural = _('Posts')
 
