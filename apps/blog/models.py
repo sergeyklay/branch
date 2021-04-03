@@ -25,18 +25,49 @@ class Post(models.Model):
         ('published', _('Published')),
     )
 
-    title = models.CharField(max_length=250)
-    slug = models.SlugField(max_length=250, unique_for_date='published')
-    author = models.ForeignKey(User, on_delete=models.CASCADE,
-                               related_name='posts')
-    body = models.TextField()
-    published = models.DateTimeField(default=timezone.now)
-    created = models.DateTimeField(auto_now_add=True)
-    status = models.CharField(max_length=10, choices=STATUS_CHOICES,
-                              default='draft')
+    title = models.CharField(
+        max_length=250,
+        verbose_name=_('Title'),
+    )
+
+    slug = models.SlugField(
+        max_length=250,
+        unique_for_date='published',
+        verbose_name=_('Slug'),
+    )
+
+    author = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='posts',
+        verbose_name=_('Author'),
+    )
+
+    body = models.TextField(
+        verbose_name=_('Content'),
+    )
+
+    published = models.DateTimeField(
+        default=timezone.now,
+        verbose_name=_('Published at'),
+    )
+
+    created = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name=_('Created at'),
+    )
+
+    status = models.CharField(
+        max_length=10,
+        choices=STATUS_CHOICES,
+        default='draft',
+        verbose_name=_('Status'),
+    )
 
     class Meta:
         ordering = ('-published',)
+        verbose_name = _('Post')
+        verbose_name_plural = _('Posts')
 
     def __str__(self):
         return self.title

@@ -30,37 +30,75 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Post',
             fields=[
-                ('id', models.BigAutoField(
-                    auto_created=True,
-                    primary_key=True,
-                    serialize=False,
-                    verbose_name='ID')
+                (
+                    'id',
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
+                    )
+                ),
+                (
+                    'title',
+                    models.CharField(
+                        max_length=250,
+                        verbose_name='Title',
+                    )
                  ),
-                ('title', models.CharField(max_length=250)),
-                ('slug', models.SlugField(
-                    max_length=250,
-                    unique_for_date='published')
+                (
+                    'slug',
+                    models.SlugField(
+                        max_length=250,
+                        unique_for_date='published',
+                        verbose_name='Slug',
+                    )
                  ),
-                ('body', models.TextField()),
-                ('published', models.DateTimeField(
-                    default=django.utils.timezone.now)
+                (
+                    'body',
+                    models.TextField(
+                        verbose_name='Content',
+                    )
+                ),
+                (
+                    'published',
+                    models.DateTimeField(
+                        default=django.utils.timezone.now,
+                        verbose_name='Published at',
+                    )
+                ),
+                (
+                    'created',
+                    models.DateTimeField(
+                        auto_now_add=True,
+                        verbose_name='Created at',
+                    )
                  ),
-                ('created', models.DateTimeField(auto_now_add=True)),
-                ('status', models.CharField(
-                    choices=[
-                        ('draft', 'Draft'),
-                        ('published', 'Published')
-                    ],
-                    default='draft',
-                    max_length=10)
-                 ),
-                ('author', models.ForeignKey(
-                    on_delete=django.db.models.deletion.CASCADE,
-                    related_name='posts',
-                    to=settings.AUTH_USER_MODEL)
-                 ),
+                (
+                    'status',
+                    models.CharField(
+                        choices=[
+                            ('draft', 'Draft'),
+                            ('published', 'Published'),
+                        ],
+                        default='draft',
+                        max_length=10,
+                        verbose_name='Status'
+                    )
+                ),
+                (
+                    'author',
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name='posts',
+                        to=settings.AUTH_USER_MODEL,
+                        verbose_name='Author',
+                    )
+                ),
             ],
             options={
+                'verbose_name': 'Post',
+                'verbose_name_plural': 'Posts',
                 'ordering': ('-published',),
             },
         ),
