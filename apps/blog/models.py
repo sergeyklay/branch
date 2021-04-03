@@ -13,6 +13,30 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
+from django.contrib.auth.models import User
 from django.db import models
+from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
 
-# Create your models here.
+
+class Post(models.Model):
+    STATUS_CHOICES = (
+        ('draft', _('Draft')),
+        ('published', _('Published')),
+    )
+
+    title = models.CharField(max_length=250)
+    slug = models.SlugField(max_length=250, unique_for_date='publish')
+    author = models.ForeignKey(User, on_delete=models.CASCADE,
+                               related_name='posts')
+    body = models.TextField()
+    published = models.DateTimeField(default=timezone.now)
+    created = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES,
+                              default='draft')
+
+    class Meta:
+        ordering = ('-published',)
+
+    def __str__(self):
+        return self.title
