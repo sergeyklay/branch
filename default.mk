@@ -53,6 +53,8 @@ VENV_PYTHON = $(VENV_BIN)/python
 
 export PATH := $(VENV_BIN):$(PATH)
 
+LOCAL_PORT = 8001
+
 # Program availability
 ifndef PYTHON
 $(error "Python is not available please install Python")

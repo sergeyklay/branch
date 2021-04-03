@@ -91,3 +91,8 @@ lint: $(VENV_PYTHON)
 	@echo $(CS)Running linters$(CE)
 	-$(VENV_BIN)/flake8 $(FLAKE8_FLAGS) ./
 	$(VENV_BIN)/pylint ./$(PKG_NAME)
+
+.PHONY: start
+start:
+	@echo $(CS)Starting web server on $(LOCAL_PORT) port$(CE)
+	$(VENV_PYTHON) manage.py runserver $(LOCAL_PORT)
