@@ -19,6 +19,11 @@ from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
 
+class PublishedManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(status='published')
+
+
 class Post(models.Model):
     STATUS_CHOICES = (
         ('draft', _('Draft')),
@@ -63,6 +68,9 @@ class Post(models.Model):
         default='draft',
         verbose_name=_('Status'),
     )
+
+    objects = models.Manager()  # The default manager.
+    published = PublishedManager()  # The status-specific manager.
 
     class Meta:
         ordering = ('-published_at',)
