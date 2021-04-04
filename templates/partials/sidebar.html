@@ -1,0 +1,25 @@
+{% load i18n static %}
+
+<input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+
+<aside class="sidebar sidebar-image sidebar-image-on"
+       id="sidebar"
+       style="background-image: url({% static 'img/dark-forest.jpg' %});">
+    <div class="sidebar-item">
+        {# TODO: site_description #}
+        <p>Site description</p>
+    </div>
+
+    <nav class="sidebar-nav">
+        {# TODO: resolve active class #}
+        <a class="sidebar-nav-item" href="/">
+            {% trans 'Blog' %}
+        </a>
+    </nav>
+
+    <div class="sidebar-item">
+        <p>
+            &copy;
+        </p>
+    </div>
+</aside>

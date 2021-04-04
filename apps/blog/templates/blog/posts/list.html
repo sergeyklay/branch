@@ -5,6 +5,10 @@
 {# TODO: Get title from settings #}
 {% block title %}My Blog{% endblock %}
 
+{% block sidebar %}
+    {% include 'partials/sidebar.html' %}
+{% endblock %}
+
 {% block content %}
     <div class="articles">
         <h1 class="page-title">{% trans 'Blog' %}</h1>
