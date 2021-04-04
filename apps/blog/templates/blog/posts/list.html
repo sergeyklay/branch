@@ -19,6 +19,7 @@
             {% endfor %}
 
             {% if posts.paginator.num_pages > 1 %}
+                <div class="divider"></div>
                 {% include 'blog/partials/pagination.html' with page=posts %}
             {% endif %}
         </div>

@@ -18,14 +18,11 @@
     {% endcompress %}
 
     <!-- Head scripts -->
-    {% compress js %}
-        {% if debug %}
-            <script src="{% static 'vendor/jquery/jquery-3.6.0.js' %}"></script>
-        {% else %}
-            <script src="{% static 'vendor/jquery/jquery-3.6.0.min.js' %}"></script>
-        {% endif %}
-
-    {% endcompress %}
+    {% if debug %}
+        <script src="{% static 'vendor/jquery/jquery-3.6.0.js' %}"></script>
+    {% else %}
+        <script src="{% static 'vendor/jquery/jquery-3.6.0.min.js' %}"></script>
+    {% endif %}
 </head>
 
 {# TODO: pass color_scheme to settings #}
@@ -57,8 +54,6 @@
 
     <label for="sidebar-checkbox" class="sidebar-toggle"></label>
 
-    {% compress js %}
-        <script src="{% static 'js/ed.js' %}"></script>
-    {% endcompress %}
+    <script src="{% static 'js/ed.js' %}"></script>
 </body>
 </html>
