@@ -143,17 +143,12 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
 
-
-def password_validator(validator):
-    """Get fully qualified password validator module name."""
-    return f'django.contrib.auth.password_validation.{validator}'
-
-
+VALIDATORS_PATH = 'django.contrib.auth.password_validation'
 AUTH_PASSWORD_VALIDATORS = [
-    {'NAME': password_validator('UserAttributeSimilarityValidator')},
-    {'NAME': password_validator('MinimumLengthValidator')},
-    {'NAME': password_validator('CommonPasswordValidator')},
-    {'NAME': password_validator('NumericPasswordValidator')},
+    {'NAME': f'{VALIDATORS_PATH}.UserAttributeSimilarityValidator'},
+    {'NAME': f'{VALIDATORS_PATH}.MinimumLengthValidator'},
+    {'NAME': f'{VALIDATORS_PATH}.CommonPasswordValidator'},
+    {'NAME': f'{VALIDATORS_PATH}.NumericPasswordValidator'},
 ]
 
 # Internationalization
