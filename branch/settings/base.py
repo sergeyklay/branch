@@ -53,6 +53,9 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with the debug turned on in production!
 DEBUG = False
 
+# SECURITY WARNING: define the correct hosts in production
+ALLOWED_HOSTS = []
+
 # Application definition
 
 DJANGO_APPS = (
@@ -67,7 +70,10 @@ DJANGO_APPS = (
     'django.contrib.admin',
 )
 
-THIRD_PARTY_APPS = ()
+THIRD_PARTY_APPS = (
+    # Compress JS and CSS into single cached file.
+    'compressor',
+)
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
@@ -175,10 +181,31 @@ LOCALE_PATHS = [
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
+COMMON_ASSETS = BASE_DIR('assets')
+
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR('static')
 STATICFILES_DIRS = (
-    BASE_DIR('apps', 'blog', 'assets'),
+    COMMON_ASSETS,
+)
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
+
+SASS_PATH = 'make css'
+
+COMPRESS_OUTPUT_DIR = 'compiled'
+COMPRESS_PRECOMPILERS = (
+    (
+        'text/x-scss',
+        '{} include={} infile={{infile}} outfile={{outfile}}'.format(
+            SASS_PATH,
+            COMMON_ASSETS,
+        )
+    ),
 )
 
 MEDIA_URL = '/media/'

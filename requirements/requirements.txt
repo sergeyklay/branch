@@ -6,11 +6,23 @@
 #
 asgiref==3.3.1
     # via django
+django-appconf==1.0.4
+    # via django-compressor
+django-compressor==2.4
+    # via -r requirements/requirements.in
 django-environ==0.4.5
     # via -r requirements/requirements.in
 django==3.2rc1
-    # via -r requirements/requirements.in
+    # via
+    #   -r requirements/requirements.in
+    #   django-appconf
 pytz==2021.1
     # via django
+rcssmin==1.0.6
+    # via django-compressor
+rjsmin==1.1.0
+    # via django-compressor
+six==1.15.0
+    # via django-compressor
 sqlparse==0.4.1
     # via django

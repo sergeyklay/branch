@@ -102,3 +102,6 @@ static:
 	@echo $(CS)Collect static files$(CE)
 	$(VENV_PYTHON) manage.py collectstatic --noinput --clear
 
+.PHONY: css
+css:
+	sass -I $(include) --no-source-map $(infile) $(outfile)

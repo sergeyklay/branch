@@ -18,5 +18,15 @@
 # pylint: disable-msg=w0614,w0401
 from .base import *  # noqa
 
-# SECURITY WARNING: don't run with the debug turned on in production!
-DEBUG = True
+# SECURITY WARNING: define the correct hosts in production
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[
+    '127.0.0.1',
+    '.blog.local',
+    'localhost',
+    '127.0.0.1',
+    '0.0.0.0',
+    '[::1]',
+    '.ngrok.io',
+])
+
+INTERNAL_IPS = env.list('INTERNAL_IPS', default=['127.0.0.1'])

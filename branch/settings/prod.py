@@ -19,4 +19,8 @@
 from .base import *  # noqa
 
 # SECURITY WARNING: define the correct hosts in production
-ALLOWED_HOSTS = env('ALLOWED_HOSTS', cast=list, default=[])
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
+
+INTERNAL_IPS = env.list('INTERNAL_IPS')
+
+COMPRESS_OFFLINE = True
