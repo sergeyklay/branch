@@ -19,3 +19,4 @@ __pycache__
 /static
 
 *.sqlite3
+settings.env

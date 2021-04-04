@@ -38,7 +38,7 @@ env = environ.Env()
 
 # Reading environment file.
 # OS environment variables take precedence over variables from environment file
-ENVIRON_SETTINGS_FILE_PATH = '/etc/branch/settings.env'
+ENVIRON_SETTINGS_FILE_PATH = BASE_DIR('settings.env')
 if os.path.exists(ENVIRON_SETTINGS_FILE_PATH):
     env.read_env(ENVIRON_SETTINGS_FILE_PATH)
 
