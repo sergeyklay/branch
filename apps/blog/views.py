@@ -13,13 +13,28 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.shortcuts import render, get_object_or_404
+
 from .models import Post
 
 
 def post_list(request):
-    posts = Post.published.all()
-    return render(request, 'blog/posts/list.html', {'posts': posts})
+    published_posts = Post.published.all()
+    paginator = Paginator(published_posts, 5)  # TODO: Move to settings
+    page = request.GET.get('page')
+
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
+
+    return render(request, 'blog/posts/list.html', {
+        'posts': posts,
+        'page': page,
+    })
 
 
 def post_view(request, year, month, day, slug):
