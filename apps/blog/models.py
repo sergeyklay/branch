@@ -63,6 +63,11 @@ class Post(models.Model):
         verbose_name=_('Created at'),
     )
 
+    updated_at = models.DateTimeField(
+        auto_now=True,
+        verbose_name=_('Updated at'),
+    )
+
     status = models.CharField(
         max_length=10,
         choices=STATUS_CHOICES,
