@@ -27,9 +27,9 @@ def post_view(request, year, month, day, slug):
         Post,
         slug=slug,
         status='published',
-        publish__year=year,
-        publish__month=month,
-        publish__day=day,
+        published_at__year=year,
+        published_at__month=month,
+        published_at__day=day,
     )
     
     return render(request, 'blog/posts/view.html', {'post': post})
