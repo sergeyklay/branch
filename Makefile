@@ -96,3 +96,9 @@ lint: $(VENV_PYTHON)
 start:
 	@echo $(CS)Starting web server on $(LOCAL_PORT) port$(CE)
 	$(VENV_PYTHON) manage.py runserver $(LOCAL_PORT)
+
+.PHONY: static
+static:
+	@echo $(CS)Collect static files$(CE)
+	$(VENV_PYTHON) manage.py collectstatic --noinput --clear
+

@@ -16,5 +16,6 @@
 __pycache__
 
 /.venv
+/static
 
 *.sqlite3
