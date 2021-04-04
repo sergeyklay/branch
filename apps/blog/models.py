@@ -38,8 +38,18 @@ class Post(models.Model):
 
     slug = models.SlugField(
         max_length=250,
+        db_index=True,
         unique_for_date='published_at',
         verbose_name=_('Slug'),
+        help_text=_('Let it empty so it will be autopopulated.'),
+    )
+
+    excerpt = models.TextField(
+        max_length=256,
+        null=True,
+        blank=True,
+        verbose_name=_('excerpt'),
+        help_text=_('A short, concise introduction'),
     )
 
     author = models.ForeignKey(
@@ -50,22 +60,22 @@ class Post(models.Model):
     )
 
     body = models.TextField(
-        verbose_name=_('Content'),
+        verbose_name=_('Full text of the post'),
     )
 
     published_at = models.DateTimeField(
         default=timezone.now,
-        verbose_name=_('Published at'),
+        verbose_name=_('First publication date'),
     )
 
     created_at = models.DateTimeField(
         auto_now_add=True,
-        verbose_name=_('Created at'),
+        verbose_name=_('Date created'),
     )
 
     updated_at = models.DateTimeField(
         auto_now=True,
-        verbose_name=_('Updated at'),
+        verbose_name=_('Date updated'),
     )
 
     status = models.CharField(
@@ -73,6 +83,25 @@ class Post(models.Model):
         choices=STATUS_CHOICES,
         default='draft',
         verbose_name=_('Status'),
+    )
+
+    meta_title = models.CharField(
+        max_length=60,
+        blank=True,
+        default='',
+        verbose_name=_('Meta title'),
+        help_text=_('This will be displayed in meta tags. '
+                    'Keep it under 60 characters. '
+                    "Leave empty and the post's title will be used."),
+    )
+
+    meta_description = models.TextField(
+        max_length=256,
+        blank=True,
+        default='',
+        verbose_name=_('Meta description'),
+        help_text=_('This will be displayed in meta tags. '
+                    'Keep it under 120 characters.')
     )
 
     objects = models.Manager()  # The default manager.

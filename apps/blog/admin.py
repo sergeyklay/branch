@@ -14,7 +14,7 @@
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
 from django.contrib import admin
-
+from django.utils.translation import gettext_lazy as _
 from .models import Post
 
 
@@ -37,6 +37,7 @@ class PostAdmin(admin.ModelAdmin):
 
     search_fields = (
         'title',
+        'excerpt',
         'body',
     )
 
@@ -53,4 +54,23 @@ class PostAdmin(admin.ModelAdmin):
     ordering = (
         'status',
         'published_at',
+    )
+
+    fieldsets = (
+        (_('General content'), {
+            'fields': (
+                'title',
+                'slug',
+                'excerpt',
+                'body',
+                'status',
+                'published_at',
+            ),
+        }),
+        (_('SEO'), {
+            'fields': (
+                'meta_title',
+                'meta_description',
+            )
+        }),
     )
