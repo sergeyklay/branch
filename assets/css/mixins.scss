@@ -1,0 +1,98 @@
+// - - - - - - - - - - - - - - - - - -
+// Mixins
+// - - - - - - - - - - - - - - - - - -
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Responsive
+// Usage: @include mq(tabletp) {}
+
+$break-phonel: 480px;
+$break-tabletp: 768px;
+$break-tabletl: 1024px;
+$break-laptop: 1220px;
+$break-desktop: 1600px;
+
+@mixin mq($media) {
+  @if $media == phonel {
+    @media only screen and (min-width: $break-phonel) { @content; }
+  }
+  @else if $media == tabletp {
+    @media only screen and (min-width: $break-tabletp) { @content; }
+  }
+  @else if $media == tabletl {
+    @media only screen and (min-width: $break-tabletl) { @content; }
+  }
+  @else if $media == laptop {
+    @media only screen and (min-width: $break-laptop) { @content; }
+  }
+  @else if $media == desktop {
+    @media only screen and (min-width: $break-desktop) { @content; }
+  }
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  Transitions
+// Usage: @include transition(color .3s ease);
+
+@mixin transition($args...) {
+  -webkit-transition: $args;
+     -moz-transition: $args;
+      -ms-transition: $args;
+       -o-transition: $args;
+          transition: $args;
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Appearance
+// Used to display an element using platform-native styling based
+// on the operating system's theme.
+//
+// Usage: @include appearance(button);
+
+@mixin appearance($value) {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  Placeholder
+// Style the placeholder text of a form element.
+//
+// Usage: @include input-placeholder(#ABB7B7, 15%);
+
+@mixin input-placeholder($color, $alpha) {
+  ::-webkit-input-placeholder {
+    color: lighten($color, $alpha);
+  }
+
+  ::-moz-placeholder {
+    color: lighten($color, $alpha);
+  }
+
+  :-ms-input-placeholder {
+    color: lighten($color, $alpha);
+  }
+
+  :-moz-placeholder {
+    color: lighten($color, $alpha);
+  }
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Box Sizing
+// Sets how the total width and height of an element is calculated.
+//
+// Usage: @include box-sizing (border-box);
+
+@mixin box-sizing ($value) {
+  -webkit-box-sizing: $value;
+     -moz-box-sizing: $value;
+          box-sizing: $value;
+}
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Box Shadow
+//
+// Usage: @include box-shadow (0 0 2px 1px #e21a23!important);
+
+@mixin box-shadow ($args...) {
+  -webkit-box-shadow: $args;
+     -moz-box-shadow: $args;
+          box-shadow: $args;
+}

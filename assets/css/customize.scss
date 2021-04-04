@@ -1,0 +1,118 @@
+/* Customize */
+
+@import "mixins";
+
+ul, ol {
+  padding-left: 2rem;
+}
+
+.inline-logo {
+  height: 1.3em;
+  vertical-align: middle;
+  display: inline-block;
+  max-width: none;
+  margin: unset;
+  border-radius: unset;
+}
+
+.masthead-title small {
+  font-size: .78rem;
+}
+
+.introduction {
+  min-height: 40px;
+  margin-bottom: 40px;
+
+  @include mq(tabletp) {
+    min-height: 60px;
+    margin-bottom: 60px;
+  }
+
+  @include mq(tabletl) {
+    min-height: 80px;
+    margin-bottom: 80px;
+  }
+
+  @include mq(laptop) {
+    min-height: 100px;
+    margin-bottom: 100px;
+  }
+}
+
+.introduction .container {
+  margin: 10px auto;
+  max-width: 600px;
+  text-align: center;
+}
+
+.introduction h1.accent {
+  margin: 30px 0;
+  font-size: 4em;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.text-title h4 .post-meta time {
+  padding-right: 1rem;
+}
+
+.blog-post {
+  margin-top: 40px;
+
+  @include mq(tabletp) {
+    margin-top: 60px;
+  }
+
+  @include mq(tabletl) {
+    margin-top: 80px;
+  }
+
+  @include mq(laptop) {
+    margin-top: 100px;
+  }
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+#main article {
+  min-height: 100px;
+}
+
+.post-meta {
+  margin-top: 5px;
+  color: $text-light-color;
+  font-size: .85rem;
+}
+
+.post .byline {
+  font-style: italic;
+  font-weight: normal;
+  letter-spacing: 0;
+  margin-top: -.5rem;
+}
+
+.sidebar-image {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+
+  @include transition(opacity 0.4s ease-in-out);
+}
+
+.sidebar-image-on {
+  opacity: 1;
+}
+
+ul.pager {
+  text-align: center;
+  list-style: none;
+}
+
+ul.pager li {
+  display: inline;
+  padding: 10px;
+  margin: 5px;
+}
