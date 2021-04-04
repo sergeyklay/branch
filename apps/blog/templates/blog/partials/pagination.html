@@ -1,7 +1,7 @@
 {% load i18n %}
 
 <ul class="pager">
-    {% if posts.has_previous %}
+    {% if page.has_previous %}
         <li class="previous">
             {# TODO: Use fullsite url #}
             <a href="/?page={{ page.previous_page_number }}">&larr; {% trans 'Previous' %}</a>
@@ -16,7 +16,7 @@
         </li>
     {% endif %}
 
-    {% if posts.has_next %}
+    {% if page.has_next %}
         <li class="next">
             {# TODO: Use fullsite url #}
             <a href="/?page={{ page.next_page_number }}">{% trans 'Next' %} &rarr;</a>

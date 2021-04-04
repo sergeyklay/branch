@@ -18,9 +18,9 @@
                 {% include 'blog/partials/post-teaser.html' with post=post %}
             {% endfor %}
 
-            {% if posts.paginator.num_pages > 1 %}
+            {% if page_obj.paginator.num_pages > 1 %}
                 <div class="divider"></div>
-                {% include 'blog/partials/pagination.html' with page=posts %}
+                {% include 'blog/partials/pagination.html' with page=page_obj %}
             {% endif %}
         </div>
     </div>
