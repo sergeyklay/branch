@@ -100,9 +100,13 @@ start:
 .PHONY: static
 static:
 	@echo $(CS)Collect static files$(CE)
-	$(VENV_PYTHON) manage.py collectstatic --noinput --clear
+	$(VENV_PYTHON) manage.py collectstatic --noinput --clear --ignore *.scss
 
 # See: https://sass-lang.com/install
 .PHONY: css
 css:
 	sass -I $(include) --no-source-map $(infile) $(outfile)
+
+.PHONY: migrations
+migrations:
+	$(VENV_PYTHON) manage.py makemigrations
