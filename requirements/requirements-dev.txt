@@ -12,12 +12,15 @@ django-appconf==1.0.4
     # via django-compressor
 django-compressor==2.4
     # via -r requirements/requirements.in
+django-debug-toolbar==3.2
+    # via -r requirements/requirements-dev.in
 django-environ==0.4.5
     # via -r requirements/requirements.in
 django==3.2rc1
     # via
     #   -r requirements/requirements.in
     #   django-appconf
+    #   django-debug-toolbar
 flake8==3.9.0
     # via -r requirements/requirements-dev.in
 isort==5.8.0
@@ -43,7 +46,9 @@ rjsmin==1.1.0
 six==1.15.0
     # via django-compressor
 sqlparse==0.4.1
-    # via django
+    # via
+    #   django
+    #   django-debug-toolbar
 toml==0.10.2
     # via pylint
 wrapt==1.12.1

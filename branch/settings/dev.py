@@ -25,6 +25,10 @@ DEBUG = True
 
 MESSAGE_LEVEL = message_constants.DEBUG
 
+# Debug Toolbar
+INSTALLED_APPS = INSTALLED_APPS + ('debug_toolbar',)
+MIDDLEWARE = ('debug_toolbar.middleware.DebugToolbarMiddleware',) + MIDDLEWARE
+
 # SECURITY WARNING: define the correct hosts in production
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[
     '127.0.0.1',
