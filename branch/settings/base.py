@@ -197,7 +197,7 @@ STATICFILES_FINDERS = (
 
 SASS_PATH = 'make css'
 
-COMPRESS_OUTPUT_DIR = 'compiled'
+COMPRESS_OUTPUT_DIR = ''  # Compress to '/static/{css,js}/'
 COMPRESS_PRECOMPILERS = (
     (
         'text/x-scss',
