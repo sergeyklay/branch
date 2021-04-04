@@ -1,0 +1,64 @@
+{% load i18n static compress %}
+<!doctype html>
+<html lang="{{ LANGUAGE_CODE }}">
+
+<head prefix="og: http://ogp.me/ns#; dc: http://purl.org/dc/terms/#">
+    <!-- Required Meta Tags Always Come First -->
+    <!-- Basic meta elements -->
+    <meta charset="utf-8">
+
+    <!-- Enable responsiveness on mobile devices -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,shrink-to-fit=no">
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- CSS link -->
+    {% compress css %}
+        <link rel="stylesheet" type="text/x-scss" href="{% static 'css/style.scss' %}">
+    {% endcompress %}
+
+    <!-- Head scripts -->
+    {% compress js %}
+        {% if debug %}
+            <script src="{% static 'vendor/jquery/jquery-3.6.0.js' %}"></script>
+        {% else %}
+            <script src="{% static 'vendor/jquery/jquery-3.6.0.min.js' %}"></script>
+        {% endif %}
+
+    {% endcompress %}
+</head>
+
+{# TODO: pass color_scheme to settings #}
+<body class="theme-base-{{ color_scheme }}">
+    {% block sidebar %}{% endblock %}
+
+    <!--
+    `wrap` is the content to shift when toggling the sidebar.
+    We wrap the content to avoid any CSS collisions with our real content.
+    -->
+    <div class="wrap">
+        <header class="masthead">
+            <div class="container">
+                <h3 class="masthead-title">
+                    <a href="/" title="{% trans 'Main page' %}">
+                        {# TODO: Get site title from config #}
+                        Main page
+                    </a>
+                    {# TODO: Get site tagline from config #}
+                    <!-- br><small>{# site.tagline #}</small -->
+                </h3>
+            </div>
+        </header>
+
+        <main class="container content" id="main">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+
+    {% compress js %}
+        <script src="{% static 'js/ed.js' %}"></script>
+    {% endcompress %}
+</body>
+</html>

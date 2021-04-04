@@ -13,23 +13,15 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-from django.shortcuts import render, get_object_or_404
-from .models import Post
+from django.urls import path
 
+from . import views
 
-def post_list(request):
-    posts = Post.published.all()
-    return render(request, 'blog/posts/list.html', {'posts': posts})
+app_name = 'blog'
 
-
-def post_view(request, year, month, day, slug):
-    post = get_object_or_404(
-        Post,
-        slug=slug,
-        status='published',
-        publish__year=year,
-        publish__month=month,
-        publish__day=day,
-    )
-    
-    return render(request, 'blog/posts/view.html', {'post': post})
+urlpatterns = (
+    # post views
+    path('', views.post_list, name='post_list'),
+    path('<int:year>/<int:month>/<int:day>/<slug:slug>',
+         views.post_view, name='post_view')
+)

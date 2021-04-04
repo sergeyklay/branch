@@ -15,6 +15,7 @@
 
 from django.contrib.auth.models import User
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
@@ -79,3 +80,11 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('blog:post_view', args=[
+            self.published_at.year,
+            self.published_at.month,
+            self.published_at.day,
+            self.slug,
+        ])
