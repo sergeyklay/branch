@@ -9,7 +9,6 @@
         </h2>
 
         <div class="post-meta">
-            {# TODO: Validate datetime format #}
             <time datetime="{{ post.published_at | date:"Y-m-d\TH:i:sO" }}">
                 {{ post.published_at | date:"Y.m.d" }}
             </time>
