@@ -1,1 +1,5 @@
-<meta name="description" content="{{ site_description }}">
+{% if page_description and page_description.strip %}
+    <meta name="description" content="{{ page_description|linebreaks|striptags|truncatechars:150 }}">
+{% else %}
+    <meta name="description" content="{{ site_description|linebreaks|striptags|truncatechars:150 }}">
+{% endif %}

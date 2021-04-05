@@ -16,18 +16,6 @@
     {% endif %}
 {% endblock %}
 
-{% block page_description %}
-    {% if post.excerpt and post.excerpt.strip or post.meta_description and post.meta_description.strip  %}
-        {% include 'blog/partials/page-description.html' with page=post %}
-    {% else %}
-        {% include 'partials/page-description.html' %}
-    {% endif %}
-{% endblock %}
-
-{% block page_license %}
-    <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.{{ LANGUAGE_CODE|slice:'0:2'|join:'' }}">
-{% endblock %}
-
 {% block canonical_url %}
     {% include 'partials/canonical-url.html' with resource_url=post.get_absolute_url %}
 {% endblock %}

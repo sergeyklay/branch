@@ -19,13 +19,17 @@ from apps.website.models import Setting
 from .models import Post
 
 
-class PageTitleMixin:
+class PageDetailsMixin:
     """Pass a defined title to context"""
 
+    description = None
     title = None
 
     def get_title(self):
         return self.title
+
+    def get_description(self):
+        return self.description
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -33,10 +37,14 @@ class PageTitleMixin:
         if title:
             context['page_title'] = self.get_title()
 
+        description = self.get_description()
+        if description:
+            context['page_description'] = self.get_description()
+
         return context
 
 
-class PostDetailView(PageTitleMixin, DateDetailView):
+class PostDetailView(PageDetailsMixin, DateDetailView):
     model = Post
     context_object_name = 'post'
     date_field = 'published_at'
@@ -45,11 +53,20 @@ class PostDetailView(PageTitleMixin, DateDetailView):
     queryset = Post.published.all()
 
     def get_title(self):
-        if self.object.meta_title:
+        if getattr(self.object, 'meta_title', None):
             return self.object.meta_title
 
-        if self.object.title:
+        if getattr(self.object, 'title', None):
             return self.object.title
+
+        return None
+
+    def get_description(self):
+        if getattr(self.object, 'meta_description', None):
+            return self.object.meta_description
+
+        if getattr(self.object, 'excerpt', None):
+            return self.object.excerpt
 
         return None
 
