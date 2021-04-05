@@ -20,8 +20,9 @@
         {% include 'partials/page-description.html' %}
     {% endblock %}
 
-    {# TODO: Get description and keyword from settings #}
-    <meta name="keyword" content="">
+    {% block page_keywords %}
+        {% include 'partials/page-keywords.html' %}
+    {% endblock %}
 
     {% block page_meta %}{% endblock %}
 
@@ -31,9 +32,8 @@
 
     {% block page_license %}{% endblock %}
 
-    <!-- Canonical link to help search engines -->
-    {% block page_url %}
-        <link rel="canonical" href="{{ resource_url }}">
+    {% block canonical_url %}
+        {% include 'partials/canonical-url.html' %}
     {% endblock %}
 
     <!-- CSS link -->

@@ -3,7 +3,13 @@
 {% load i18n %}
 
 {# TODO: Get title from settings #}
-{% block title %}{{ post.title }} - My Blog{% endblock %}
+{% block title %}
+    {% if post.meta_title and post.meta_title.strip %}
+        {{ post.meta_title }} - My Blog
+    {% else %}
+        {{ post.title }} - My Blog
+    {% endif %}
+{% endblock %}
 
 {% block post_schema %}
     <script type="application/ld+json">
@@ -33,9 +39,8 @@
     <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.{{ LANGUAGE_CODE|slice:'0:2'|join:'' }}">
 {% endblock %}
 
-<!-- Canonical link to help search engines -->
-{% block page_url %}
-    <link rel="canonical" href="{{ BASE_URL }}{{ post.get_absolute_url }}">
+{% block canonical_url %}
+    {% include 'partials/canonical-url.html' with resource_url=post.get_absolute_url %}
 {% endblock %}
 
 {% block content %}
