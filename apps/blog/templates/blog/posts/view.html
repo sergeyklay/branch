@@ -32,6 +32,11 @@
     {% include 'partials/canonical-url.html' with resource_url=post.get_absolute_url %}
 {% endblock %}
 
+{% block sidebar %}
+    {# TODO: Use sidebar-toc #}
+    {% include 'partials/sidebar.html' %}
+{% endblock %}
+
 {% block content %}
     <article class="post" role="document">
         <header>

@@ -11,14 +11,41 @@
 
     <nav class="sidebar-nav">
         {# TODO: resolve active class #}
-        <a class="sidebar-nav-item" href="{{ BASE_URL }}">
+        <a class="sidebar-nav-item" href="/">
             {% trans 'Blog' %}
+        </a>
+        <a class="sidebar-nav-item" href="/about.html">
+            {# TODO: Implement me #}
+            {% trans 'About me' %}
+        </a>
+        <a class="sidebar-nav-item" href="/contact.html">
+            {# TODO: Implement me #}
+            {% trans 'Contact Form' %}
+        </a>
+        <a class="sidebar-nav-item" href="/search.html">
+            {# TODO: Implement me #}
+            {% trans 'Search' %}
+        </a>
+
+        <a class="sidebar-nav-item"
+           href="/atom.xml"
+           title="{% trans 'Subscribe to news feed' %}">
+            {# TODO: Implement me #}
+            RSS
+        </a>
+
+        <a class="sidebar-nav-item" href="https://github.com/{{ site_github_username }}" target="_blank">
+            {% trans 'GitHub Profile' %}
         </a>
     </nav>
 
     <div class="sidebar-item">
         <p>
-            &copy;
+            &copy; {% trans 'Serghei Iakovlev' %} 2018-{% now "Y" %}.
+            {% trans 'Unless otherwise stated, all content on the site is available under ' %}
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.{{ LANGUAGE_CODE|slice:'0:2'|join:'' }}" target="_blank">
+                CC BY-NC-SA 4.0
+            </a>&nbsp;.
         </p>
     </div>
 </aside>
