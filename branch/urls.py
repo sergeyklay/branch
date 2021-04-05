@@ -40,7 +40,17 @@ urlpatterns = [
 
 if settings.DEBUG:
     import debug_toolbar
+    from django.urls import re_path
+    from django.views.static import serve
 
     urlpatterns = [
+        # Static & media files for development environment
+        re_path(r'^static/(?P<path>.*)$', serve, {
+          'document_root': settings.STATIC_ROOT,
+        }),
+        re_path(r'^media/(?P<path>.*)$', serve, {
+          'document_root': settings.MEDIA_ROOT,
+        }),
+
         path('__debug__/', include(debug_toolbar.urls))
     ] + urlpatterns

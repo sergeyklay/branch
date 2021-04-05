@@ -44,6 +44,19 @@ class Post(models.Model):
         help_text=_('Let it empty so it will be autopopulated.'),
     )
 
+    no_index = models.BooleanField(
+        default=False,
+        verbose_name=_('Block search indexing'),
+        help_text=_('Prevent this post from appearing in search index'),
+    )
+
+    featured_image = models.ImageField(
+        null=True,
+        blank=True,
+        upload_to='img/',
+        verbose_name=_('Featured image'),
+    )
+
     excerpt = models.TextField(
         max_length=256,
         null=True,

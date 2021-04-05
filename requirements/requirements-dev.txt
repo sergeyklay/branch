@@ -31,6 +31,8 @@ mccabe==0.6.1
     # via
     #   flake8
     #   pylint
+pillow==8.2.0
+    # via -r requirements/requirements.in
 pycodestyle==2.7.0
     # via flake8
 pyflakes==2.3.1

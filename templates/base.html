@@ -14,6 +14,28 @@
 
     {% block post_schema %}{% endblock %}
 
+    <meta name="generator" content="Branch">
+
+    {% block page_description %}
+        {% include 'partials/page-description.html' %}
+    {% endblock %}
+
+    {# TODO: Get description and keyword from settings #}
+    <meta name="keyword" content="">
+
+    {% block page_meta %}{% endblock %}
+
+    {% block page_rating %}
+        <meta name="rating" content="General">
+    {% endblock %}
+
+    {% block page_license %}{% endblock %}
+
+    <!-- Canonical link to help search engines -->
+    {% block page_url %}
+        <link rel="canonical" href="{{ resource_url }}">
+    {% endblock %}
+
     <!-- CSS link -->
     {% compress css %}
         <link rel="stylesheet" type="text/x-scss" href="{% static 'css/style.scss' %}">

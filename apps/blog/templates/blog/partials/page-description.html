@@ -1,0 +1,5 @@
+{% if post.excerpt and post.excerpt.strip %}
+    <meta name="description" content="{{ post.excerpt|linebreaks|striptags|truncatechars:150 }}">
+{% else %}
+    <meta name="description" content="{{ post.meta_description|linebreaks|striptags|truncatechars:150 }}">
+{% endif %}

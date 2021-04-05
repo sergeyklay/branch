@@ -16,6 +16,8 @@ django==3.2rc1
     # via
     #   -r requirements/requirements.in
     #   django-appconf
+pillow==8.2.0
+    # via -r requirements/requirements.in
 pytz==2021.1
     # via django
 rcssmin==1.0.6

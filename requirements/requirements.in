@@ -1,3 +1,4 @@
 Django>=3.2rc1
 django-environ
 django_compressor
+Pillow

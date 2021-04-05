@@ -7,8 +7,35 @@
 
 {% block post_schema %}
     <script type="application/ld+json">
-    {% include 'blog/partials/page-schema.json' with page=post %}
+    {% if post.featured_image %}
+        {% include 'blog/partials/page-schema.json' with page=post featured_image=post.featured_image.url %}
+    {% else %}
+        {% include 'blog/partials/page-schema.json' with page=post featured_image='/static/img/blog-logo.jpg' %}
+    {% endif %}
     </script>
+{% endblock %}
+
+{% block page_meta %}
+    {% if post.no_index %}
+        <meta name="robots" content="noindex, nofollow">
+    {% endif %}
+{% endblock %}
+
+{% block page_description %}
+    {% if post.excerpt and post.excerpt.strip or post.meta_description and post.meta_description.strip  %}
+        {% include 'blog/partials/page-description.html' with page=post %}
+    {% else %}
+        {% include 'partials/page-description.html' %}
+    {% endif %}
+{% endblock %}
+
+{% block page_license %}
+    <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.{{ LANGUAGE_CODE|slice:'0:2'|join:'' }}">
+{% endblock %}
+
+<!-- Canonical link to help search engines -->
+{% block page_url %}
+    <link rel="canonical" href="{% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}{{ post.get_absolute_url }}">
 {% endblock %}
 
 {% block content %}

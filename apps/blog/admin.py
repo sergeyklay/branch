@@ -61,6 +61,7 @@ class PostAdmin(admin.ModelAdmin):
             'fields': (
                 'title',
                 'slug',
+                'featured_image',
                 'excerpt',
                 'body',
                 'author',
@@ -72,6 +73,7 @@ class PostAdmin(admin.ModelAdmin):
             'fields': (
                 'meta_title',
                 'meta_description',
+                'no_index',
             )
         }),
     )
