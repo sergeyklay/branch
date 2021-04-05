@@ -92,8 +92,8 @@ lint: $(VENV_PYTHON)
 	-$(VENV_BIN)/flake8 $(FLAKE8_FLAGS) ./
 	$(VENV_BIN)/pylint ./$(PKG_NAME)
 
-.PHONY: start
-start:
+.PHONY: up
+up:
 	@echo $(CS)Starting web server on $(LOCAL_PORT) port$(CE)
 	$(VENV_PYTHON) manage.py runserver $(LOCAL_PORT)
 
@@ -110,3 +110,7 @@ css:
 .PHONY: migrations
 migrations:
 	$(VENV_PYTHON) manage.py makemigrations
+
+.PHONY: migrate
+migrations:
+	$(VENV_PYTHON) manage.py migrate

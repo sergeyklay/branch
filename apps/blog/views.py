@@ -15,17 +15,43 @@
 
 from django.views.generic import ListView, DateDetailView
 
-from .models import Post
 from apps.website.models import Setting
+from .models import Post
 
 
-class PostDetailView(DateDetailView):
+class PageTitleMixin:
+    """Pass a defined title to context"""
+
+    title = None
+
+    def get_title(self):
+        return self.title
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        title = self.get_title()
+        if title:
+            context['page_title'] = self.get_title()
+
+        return context
+
+
+class PostDetailView(PageTitleMixin, DateDetailView):
     model = Post
     context_object_name = 'post'
     date_field = 'published_at'
     month_format = '%m'
     template_name = 'blog/posts/view.html'
     queryset = Post.published.all()
+
+    def get_title(self):
+        if self.object.meta_title:
+            return self.object.meta_title
+
+        if self.object.title:
+            return self.object.title
+
+        return None
 
 
 class PostListView(ListView):
