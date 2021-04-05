@@ -3,8 +3,9 @@
 <ul class="pager">
     {% if page.has_previous %}
         <li class="previous">
-            {# TODO: Use fullsite url #}
-            <a href="/?page={{ page.previous_page_number }}">&larr; {% trans 'Previous' %}</a>
+            <a href="{% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}/?page={{ page.previous_page_number }}">
+                &larr;&nbsp;{% trans 'Previous' %}
+            </a>
         </li>
     {% endif %}
 
@@ -18,8 +19,9 @@
 
     {% if page.has_next %}
         <li class="next">
-            {# TODO: Use fullsite url #}
-            <a href="/?page={{ page.next_page_number }}">{% trans 'Next' %} &rarr;</a>
+            <a href="{% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}/?page={{ page.next_page_number }}">
+                {% trans 'Next' %}&nbsp;&rarr;
+            </a>
         </li>
     {% endif %}
 </ul>
