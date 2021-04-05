@@ -12,6 +12,8 @@
 
     <title>{% block title %}{% endblock %}</title>
 
+    {% block post_schema %}{% endblock %}
+
     <!-- CSS link -->
     {% compress css %}
         <link rel="stylesheet" type="text/x-scss" href="{% static 'css/style.scss' %}">

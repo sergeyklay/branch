@@ -1,0 +1,28 @@
+{
+    "@context": "http://schema.org/",
+    "@type": "Article",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}{{ page.get_absolute_url }}"
+    },
+    "headline": "{{ page.title }}",
+    "image": [
+        "{# TODO: Add image #}"
+    ],
+    "datePublished": "{{ page.published_at | date:'Y-m-d\\TH:i:sO' }}",
+    "dateModified": "{{ page.updated_at | date:'Y-m-d\\TH:i:sO' }}",
+    "author": {
+        "@type": "Person",
+        "name": "{# TODO: Use full name #}{{ page.author }}",
+        "url": "{# TODO: Create about.html #}{% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}/about.html"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "{# TODO: Use full name #}{{ page.author }}",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "{% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}/static/img/blog-logo.jpg"
+        }
+    }
+}
+

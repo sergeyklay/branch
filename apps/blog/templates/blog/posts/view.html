@@ -5,6 +5,12 @@
 {# TODO: Get title from settings #}
 {% block title %}{{ post.title }} - My Blog{% endblock %}
 
+{% block post_schema %}
+    <script type="application/ld+json">
+    {% include 'blog/partials/page-schema.json' with page=post %}
+    </script>
+{% endblock %}
+
 {% block content %}
     <article class="post" role="document">
         <header>
