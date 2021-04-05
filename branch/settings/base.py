@@ -80,6 +80,7 @@ THIRD_PARTY_APPS = (
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
+    'apps.website',
     'apps.blog',
 )
 
@@ -109,6 +110,7 @@ TEMPLATES = [
                 'django.template.context_processors.i18n',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'apps.website.context_processors.app_settings',
                 'branch.context_processors.base_url',
             ],
         },

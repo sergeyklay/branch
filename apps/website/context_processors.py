@@ -13,20 +13,16 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-# Comma-separated list
-ALLOWED_HOSTS=serghei.blog,
+"""Website context processors."""
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY="secret"
+from .models import Setting
 
-# See ``help(environ.Env.db_url_config)``
-DATABASE_URL=sqlite:///db.sqlite3
 
-# If compression should be done outside of the request/response loop.
-COMPRESS_OFFLINE=False
+def app_settings(request):
+    """Global values to pass to templates."""
+    context_extras = {}
 
-# Comma-separated list
-INTERNAL_IPS=127.0.0.1,
+    for obj in Setting.objects.all():
+        context_extras[f'site_{obj.name}'] = obj.value
 
-# Website base url
-BASE_URL=https://serghei.blog
+    return context_extras

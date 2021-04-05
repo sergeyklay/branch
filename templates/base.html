@@ -4,13 +4,9 @@
 
 <head prefix="og: http://ogp.me/ns#; dc: http://purl.org/dc/terms/#">
     <!-- Required Meta Tags Always Come First -->
-    <!-- Basic meta elements -->
     <meta charset="utf-8">
-
-    <!-- Enable responsiveness on mobile devices -->
     <meta name="viewport" content="width=device-width,initial-scale=1.0,shrink-to-fit=no">
-
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}{% trans 'Blog' %} - {{ site_title|default:'My Blog' }}{% endblock %}</title>
 
     {% block post_schema %}{% endblock %}
 
@@ -49,8 +45,8 @@
     {% endif %}
 </head>
 
-{# TODO: pass color_scheme to settings #}
-<body class="theme-base-{{ color_scheme }}">
+{# red, orange, magenta, cyan, blue, brown #}
+<body class="theme-base-{{ site_color_scheme }}">
     {% block sidebar %}{% endblock %}
 
     <!--
@@ -61,12 +57,10 @@
         <header class="masthead">
             <div class="container">
                 <h3 class="masthead-title">
-                    <a href="/" title="{% trans 'Main page' %}">
-                        {# TODO: Get site title from config #}
-                        Main page
+                    <a href="{{ BASE_URL }}" title="{% trans 'Main page' %}">
+                        {{ site_title|default:'My Blog' }}
                     </a>
-                    {# TODO: Get site tagline from config #}
-                    <!-- br><small>{# site.tagline #}</small -->
+                    <br><small>{{ site_tagline }}</small>
                 </h3>
             </div>
         </header>

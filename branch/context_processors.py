@@ -13,6 +13,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
+"""Common context processors."""
+
 from django.conf import settings
 
 
@@ -23,4 +25,3 @@ def base_url(request):
 
     scheme = 'https://' if request.is_secure() else 'http://'
     return {'BASE_URL': scheme + request.get_host()}
-

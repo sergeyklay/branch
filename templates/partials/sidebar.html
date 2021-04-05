@@ -6,13 +6,12 @@
        id="sidebar"
        style="background-image: url({% static 'img/dark-forest.jpg' %});">
     <div class="sidebar-item">
-        {# TODO: site_description #}
-        <p>Site description</p>
+        <p>{{ site_description|default:'Site description' }}</p>
     </div>
 
     <nav class="sidebar-nav">
         {# TODO: resolve active class #}
-        <a class="sidebar-nav-item" href="/">
+        <a class="sidebar-nav-item" href="{{ BASE_URL }}">
             {% trans 'Blog' %}
         </a>
     </nav>

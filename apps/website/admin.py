@@ -13,20 +13,18 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-# Comma-separated list
-ALLOWED_HOSTS=serghei.blog,
+from django.contrib import admin
+from .models import Setting
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY="secret"
 
-# See ``help(environ.Env.db_url_config)``
-DATABASE_URL=sqlite:///db.sqlite3
+@admin.register(Setting)
+class SettingAdmin(admin.ModelAdmin):
+    list_display = (
+        'name',
+        'value',
+    )
 
-# If compression should be done outside of the request/response loop.
-COMPRESS_OFFLINE=False
-
-# Comma-separated list
-INTERNAL_IPS=127.0.0.1,
-
-# Website base url
-BASE_URL=https://serghei.blog
+    search_fields = (
+        'name',
+        'value',
+    )

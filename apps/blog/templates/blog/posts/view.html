@@ -2,14 +2,7 @@
 
 {% load i18n %}
 
-{# TODO: Get title from settings #}
-{% block title %}
-    {% if post.meta_title and post.meta_title.strip %}
-        {{ post.meta_title }} - My Blog
-    {% else %}
-        {{ post.title }} - My Blog
-    {% endif %}
-{% endblock %}
+{% block title %}{% if post.meta_title and post.meta_title.strip %}{{ post.meta_title }} - {{ site_title|default:'My Blog' }}{% else %}{{ post.title }} - {{ site_title|default:'My Blog' }}{% endif %}{% endblock %}
 
 {% block post_schema %}
     <script type="application/ld+json">

@@ -16,6 +16,7 @@
 from django.views.generic import ListView, DateDetailView
 
 from .models import Post
+from apps.website.models import Setting
 
 
 class PostDetailView(DateDetailView):
@@ -30,5 +31,5 @@ class PostDetailView(DateDetailView):
 class PostListView(ListView):
     queryset = Post.published.all()
     context_object_name = 'posts'
-    paginate_by = 3  # TODO: Move to settings
+    paginate_by = Setting.website.get('pagination_per_page', 5)
     template_name = 'blog/posts/list.html'
