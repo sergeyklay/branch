@@ -3,25 +3,25 @@
     "@type": "Article",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "{% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}{{ page.get_absolute_url }}"
+        "@id": "{{ BASE_URL }}{{ page.get_absolute_url }}"
     },
     "headline": "{{ page.title }}",
     "image": [
-        "{% if featured_image %}{% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}{{ featured_image }}{% endif %}"
+        "{% if featured_image %}{{ BASE_URL }}{{ featured_image }}{% endif %}"
     ],
     "datePublished": "{{ page.published_at | date:'Y-m-d\\TH:i:sO' }}",
     "dateModified": "{{ page.updated_at | date:'Y-m-d\\TH:i:sO' }}",
     "author": {
         "@type": "Person",
         "name": "{# TODO: Use full name #}{{ page.author }}",
-        "url": "{# TODO: Create about.html #}{% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}/about.html"
+        "url": "{# TODO: Create about.html #}{{ BASE_URL }}/about.html"
     },
     "publisher": {
         "@type": "Organization",
         "name": "{# TODO: Use full name #}{{ page.author }}",
         "logo": {
             "@type": "ImageObject",
-            "url": "{% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}/static/img/blog-logo.jpg"
+            "url": "{{ BASE_URL }}/static/img/blog-logo.jpg"
         }
     }
 }

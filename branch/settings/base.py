@@ -56,6 +56,9 @@ DEBUG = False
 # SECURITY WARNING: define the correct hosts in production
 ALLOWED_HOSTS = []
 
+# Website base url
+BASE_URL = env.str('BASE_URL', default='http://127.0.0.1')
+
 # Application definition
 
 DJANGO_APPS = (
@@ -106,6 +109,7 @@ TEMPLATES = [
                 'django.template.context_processors.i18n',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'branch.context_processors.base_url',
             ],
         },
     },

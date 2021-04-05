@@ -13,20 +13,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-# Comma-separated list
-ALLOWED_HOSTS=127.0.0.1,.blog.local,localhost,127.0.0.1,0.0.0.0,[::1],.ngrok.io,
+from django.conf import settings
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY="secret"
 
-# See ``help(environ.Env.db_url_config)``
-DATABASE_URL=sqlite:///db.sqlite3
+def base_url(request):
+    """Return a BASE_URL template context for the current request."""
+    if getattr(settings, 'BASE_URL', None):
+        return {'BASE_URL': settings.BASE_URL}
 
-# If compression should be done outside of the request/response loop.
-COMPRESS_OFFLINE=False
+    scheme = 'https://' if request.is_secure() else 'http://'
+    return {'BASE_URL': scheme + request.get_host()}
 
-# Comma-separated list
-INTERNAL_IPS=127.0.0.1,
-
-# Website base url
-BASE_URL=http://127.0.0.1:8000

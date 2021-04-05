@@ -35,7 +35,7 @@
 
 <!-- Canonical link to help search engines -->
 {% block page_url %}
-    <link rel="canonical" href="{% if request.is_secure %}https://{% else %}http://{% endif %}{{ request.get_host }}{{ post.get_absolute_url }}">
+    <link rel="canonical" href="{{ BASE_URL }}{{ post.get_absolute_url }}">
 {% endblock %}
 
 {% block content %}
