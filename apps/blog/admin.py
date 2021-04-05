@@ -63,6 +63,7 @@ class PostAdmin(admin.ModelAdmin):
                 'slug',
                 'excerpt',
                 'body',
+                'author',
                 'status',
                 'published_at',
             ),
