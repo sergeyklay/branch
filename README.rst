@@ -12,7 +12,8 @@
 
 .. teaser-begin
 
-You're looking at the source code of my brand-spanking new blog.
+You're looking at the source code of my brand-spanking new blog. One day I decided that instead of using a ready-made
+blogging solution, I could create my own that meets my personal needs. I named it **Branch**.
 
 .. teaser-end
 
@@ -30,7 +31,7 @@ Project documentation currently lives at `project docs folder <https://github.co
 and the code on `GitHub <https://github.com/sergeyklay/branch>`_.
 It’s rigorously tested on Python 3.7+.
 
-If you'd like to contribute to Gstore you're most welcome!
+If you'd like to contribute to Branch you're most welcome!
 
 .. -support-
 
