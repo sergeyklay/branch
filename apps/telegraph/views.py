@@ -20,15 +20,19 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.utils.translation import gettext_lazy as _
 
+from apps.website.models import Setting
 from .forms import ContactMessageForm
 
 
 def contact_form(request):
     """Contact form handler."""
     sent = False
+
     if request.method == 'POST':
         form = ContactMessageForm(request.POST)
-        if form.is_valid():
+        contact_email = Setting.website.get('contact_email')
+
+        if form.is_valid() and contact_email:
             cd = form.cleaned_data
             subject = cd.get(cd['subject'], _('Contact form submission'))
 
@@ -37,7 +41,7 @@ def contact_form(request):
                     subject=subject,
                     message=cd['message'],
                     from_email=f"{cd['name']} <{cd['email']}>",
-                    recipient_list=['egrep@protonmail.ch'],
+                    recipient_list=[contact_email],
                 )
                 sent = sent_messages > 0
             except BadHeaderError:
