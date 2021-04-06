@@ -114,3 +114,51 @@ migrations:
 .PHONY: migrate
 migrate:
 	$(VENV_PYTHON) manage.py migrate
+
+
+.PHONY: test
+test:
+	@echo $(CS)Running tests$(HEADER_EXTRA)$(CE)
+	$(VENV_PYTHON) manage.py test --settings $(PKG_NAME).settings.test
+
+.PHONY: help
+help:
+	@echo $(PKG_NAME)
+	@echo
+	@echo 'Run "make init" first to install and update all dev dependencies.'
+	@echo 'See "default.mk" for variables you might want to set.'
+	@echo
+	@echo 'Available targets:'
+	@echo
+	@echo '  help:         Show this help and exit'
+	@echo '  init:         Installing dev requirements (has to be launched first)'
+	@echo '  install:      Install all project dependencies'
+	@echo '  up:           Run development server'
+	@echo '  static:       Collect static files'
+	@echo '  css:          Build CSS files from SCSS source'
+	@echo '  migrations:   Create database migrations'
+	@echo '  migrate:      Run all database migrations'
+	@echo '  test:         Run unit tests'
+	@echo '  lint:         Lint the code'
+	@echo '  clean:        Remove build and tests artefacts and directories'
+	@echo '  maintainer-clean:'
+	@echo '                Delete almost everything that can be reconstructed'
+	@echo '                with this Makefile'
+	@echo
+	@echo 'Virtualenv:'
+	@echo
+	@echo '  Python:       $(VENV_PYTHON)'
+	@echo '  pip:          $(VENV_PIP)'
+	@echo
+	@echo 'Flags:'
+	@echo
+	@echo '  FLAKE8_FLAGS: $(FLAKE8_FLAGS)'
+	@echo '  PYTEST_FLAGS: $(PYTEST_FLAGS)'
+	@echo
+	@echo 'Environment variables:'
+	@echo
+	@echo '  PYTHON:       $(PYTHON)'
+	@echo '  WORKON_HOME:  ${WORKON_HOME}'
+	@echo '  SHELL:        $(shell echo $$SHELL)'
+	@echo '  TERM:         $(shell echo $$TERM)'
+	@echo
