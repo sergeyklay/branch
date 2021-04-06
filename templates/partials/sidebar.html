@@ -11,7 +11,7 @@
 
     <nav class="sidebar-nav">
         {# TODO: resolve active class #}
-        <a class="sidebar-nav-item" href="/">
+        <a class="sidebar-nav-item" href="{% url 'blog:post_list' %}">
             {% trans 'Blog' %}
         </a>
         <a class="sidebar-nav-item" href="/about.html">
