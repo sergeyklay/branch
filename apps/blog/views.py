@@ -85,5 +85,10 @@ class PostListView(ListView):
 
     queryset = Post.published.all()
     context_object_name = 'posts'
-    paginate_by = Setting.website.get('pagination_per_page', 5)
     template_name = 'blog/posts/list.html'
+
+    def get_paginate_by(self, queryset):
+        """
+        Get the number of items to paginate by, or ``None`` for no pagination.
+        """
+        return Setting.website.get('pagination_per_page', 5)
