@@ -13,6 +13,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
+"""Blog views definitions."""
+
 from django.views.generic import DateDetailView, ListView
 
 from apps.website.models import Setting
@@ -26,12 +28,15 @@ class PageDetailsMixin:
     title = None
 
     def get_title(self):
+        """Get object title."""
         return self.title
 
     def get_description(self):
+        """Get description title."""
         return self.description
 
     def get_context_data(self, **kwargs):
+        """Get object's context data to use in templates."""
         context = super().get_context_data(**kwargs)
         title = self.get_title()
         if title:
@@ -44,7 +49,10 @@ class PageDetailsMixin:
         return context
 
 
+# pylint: disable=too-many-ancestors
 class PostDetailView(PageDetailsMixin, DateDetailView):
+    """Class to handle post details requests."""
+
     model = Post
     context_object_name = 'post'
     date_field = 'published_at'
@@ -71,7 +79,10 @@ class PostDetailView(PageDetailsMixin, DateDetailView):
         return None
 
 
+# pylint: disable=too-many-ancestors
 class PostListView(ListView):
+    """Class to handle post list requests."""
+
     queryset = Post.published.all()
     context_object_name = 'posts'
     paginate_by = Setting.website.get('pagination_per_page', 5)

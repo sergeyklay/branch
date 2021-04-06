@@ -13,9 +13,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
+"""Website application module."""
+
 from django.apps import AppConfig
 
 
 class WebsiteConfig(AppConfig):
+    """Class representing website application and its configuration."""
+
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'apps.website'

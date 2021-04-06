@@ -15,6 +15,9 @@
 
 [MASTER]
 
+# Ignore files and directories for linting.
+ignore=migrations
+
 # Use multiple processes to speed up Pylint. Specifying 0 will auto-detect the
 # number of processors available to use.
 jobs=0

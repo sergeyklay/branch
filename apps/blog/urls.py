@@ -13,11 +13,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
+"""Blog URL Configuration."""
+
 from django.urls import path
 
 from . import views
 
-app_name = 'blog'
+app_name = 'blog'  # pylint: disable=invalid-name
 
 urlpatterns = (
     # post views

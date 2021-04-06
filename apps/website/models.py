@@ -13,12 +13,18 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
+"""Website models."""
+
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
+# pylint: disable=too-few-public-methods
 class SettingsManager(models.Manager):
+    """Custom models manager to safe get website settings."""
+
     def get(self, name, default=None):
+        """Safe getter for website settings."""
         queryset = super().get_queryset().filter(name=name)
         try:
             return queryset.get(name=name).value
@@ -48,9 +54,11 @@ class Setting(models.Model):
     website = SettingsManager()  # The safe manager.
 
     class Meta:
+        """Setting model metadata class."""
+
         ordering = ('name',)
         verbose_name = _('Setting')
         verbose_name_plural = _('Settings')
 
     def __str__(self):
-        return self.name
+        return f'{self.name}'
