@@ -13,7 +13,8 @@
 .. teaser-begin
 
 You're looking at the source code of my brand-spanking new blog. One day I decided that instead of using a ready-made
-blogging solution, I could create my own that meets my personal needs. I named it **Branch**.
+blogging solution, I could create my own that meets my personal needs. I named it **Branch**. Its main goal is to help me
+take notes and keep thoughts in one place.
 
 .. teaser-end
 

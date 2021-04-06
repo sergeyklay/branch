@@ -3,6 +3,17 @@ Install
 =======
 
 
+Prerequisites
+=============
+
+To play with this blog at your local environment you need the following requirements:
+
+* macOs, Linux or Windows (WSL)
+* Python >= 3.7
+* SQLite3
+* sass
+
+
 Getting started
 ===============
 
