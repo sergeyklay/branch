@@ -164,6 +164,10 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': f'{VALIDATORS_PATH}.NumericPasswordValidator'},
 ]
 
+FIXTURE_DIRS = (
+    BASE_DIR('provision', 'fixtures')
+)
+
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/
 
