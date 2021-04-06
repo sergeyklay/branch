@@ -6,7 +6,8 @@
         "@type": "WebPage",
         "@id": "{{ BASE_URL }}{{ page.get_absolute_url }}"
     },
-    "headline": "{{ page.title }}",
+    "headline": "{{ page_title }}",
+    "description": "{{ page_description }}",
     "image": "{% if featured_image %}{{ featured_image.url }}{% else%}{% static 'img/blog-logo.jpg' %}{% endif %}",
     "datePublished": "{{ page.published_at | date:'Y-m-d\\TH:i:sO' }}",
     "dateModified": "{{ page.updated_at | date:'Y-m-d\\TH:i:sO' }}",
@@ -17,7 +18,7 @@
     },
     "publisher": {
         "@type": "Organization",
-        "name": "{# TODO: Use full name #}{{ page.author }}",
+        "name": "{{ page.author.get_full_name }}",
         "logo": {
             "@type": "ImageObject",
             "url": "{% static 'img/blog-logo.jpg' %}"
