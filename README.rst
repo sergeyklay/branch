@@ -1,7 +1,7 @@
 .. raw:: html
 
     <h1 align="center">
-        <img src="./logo.svg" width="15%" alt="Branch" /><br />
+        <img src="./logo.svg" width="15%" alt="" /><br />
         Branch
     </h1>
     <p align="center">
@@ -21,8 +21,12 @@ You're looking at the source code of my brand-spanking new blog.
 Project Information
 ===================
 
-Branch is released under the `GNU General Public Licence version 3 <https://choosealicense.com/licenses/gpl-3.0/>`_,
-its documentation lives at `project docs folder <https://github.com/sergeyklay/branch/tree/master/docs>`_,
+The code of Branch is released under the `GNU General Public Licence version 3 <https://choosealicense.com/licenses/gpl-3.0/>`_,
+the content of my blog (this project) is licensed under the `CC-BY-4.0 <https://creativecommons.org/licenses/by/4.0>`_,
+a modified version of `Ed <https://github.com/minicomp/ed>`_ theme that I ported from Jekyll to Django is distributed under
+the `MIT License <https://github.com/minicomp/ed/blob/bedbc4c6870174451368fc51ecccd8bad5a36bdf/LICENSE.md>`_.
+
+Project documentation currently lives at `project docs folder <https://github.com/sergeyklay/branch/tree/master/docs>`_,
 and the code on `GitHub <https://github.com/sergeyklay/branch>`_.
 It’s rigorously tested on Python 3.7+.
 
