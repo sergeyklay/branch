@@ -1,5 +1,13 @@
-Branch
-======
+.. raw:: html
+
+    <h1 align="center">
+        <img src="./logo.svg" width="35%" alt="Branch" />
+    </h1>
+    <p align="center">
+        <a href="https://github.com/sergeyklay/branch/actions?workflow=CI">
+            <img src="https://github.com/sergeyklay/branch/workflows/CI/badge.svg?branch=master" alt="CI Status" />
+        </a>
+    </p>
 
 .. teaser-begin
 
