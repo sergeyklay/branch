@@ -22,7 +22,6 @@ from . import views
 app_name = 'blog'  # pylint: disable=invalid-name
 
 urlpatterns = (
-    # post views
     path('', views.PostListView.as_view(), name='post_list'),
     path(
         '<int:year>/<int:month>/<int:day>/<slug:slug>.html',

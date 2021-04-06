@@ -18,6 +18,11 @@
 # Ignore files and directories for linting.
 ignore=migrations
 
+[MESSAGES CONTROL]
+
+# Disable the message, report, category or checker with the given id(s).
+disable=too-few-public-methods
+
 # Use multiple processes to speed up Pylint. Specifying 0 will auto-detect the
 # number of processors available to use.
 jobs=0
@@ -32,4 +37,4 @@ logging-format-style=old
 [BASIC]
 
 # Good variable names which should always be accepted, separated by a comma.
-good-names=i,j,k,n,ex,Run,_
+good-names=i,j,k,n,ex,cd,Run,_
