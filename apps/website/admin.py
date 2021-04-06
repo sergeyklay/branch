@@ -14,6 +14,7 @@
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
 from django.contrib import admin
+
 from .models import Setting
 
 

@@ -13,7 +13,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-from django.views.generic import ListView, DateDetailView
+from django.views.generic import DateDetailView, ListView
 
 from apps.website.models import Setting
 from .models import Post
