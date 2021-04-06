@@ -50,6 +50,7 @@ jobs:
   test:
     runs-on: ${{ matrix.os }}
     name: Python ${{ matrix.python }} on ${{ matrix.os }}
+    continue-on-error: ${{ matrix.experimental }}
 
     # The maximum number of minutes to let a workflow run
     # before GitHub automatically cancels it. Default: 360
@@ -65,11 +66,18 @@ jobs:
           - '3.7'
           - '3.8'
           - '3.9'
-          - '3.10.0-alpha.4'
         os:
           - ubuntu-20.04
           - macos-latest
-          -  windows-2019
+          - windows-2019
+        experimental: [false]
+        include:
+          - python: '3.10.0-alpha.4'
+            os: ubuntu-20.04
+            experimental: true
+          - python: '3.10.0-alpha.4'
+            os: macos-latest
+            experimental: true
 
     steps:
       - name: Checkout code
