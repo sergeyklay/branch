@@ -1,7 +1,8 @@
 .. raw:: html
 
     <h1 align="center">
-        <img src="./logo.svg" width="35%" alt="Branch" />
+        <img src="./logo.svg" width="15%" alt="Branch" /><br />
+        Branch
     </h1>
     <p align="center">
         <a href="https://github.com/sergeyklay/branch/actions?workflow=CI">
