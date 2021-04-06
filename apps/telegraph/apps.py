@@ -13,17 +13,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-[metadata]
-license_file = LICENSE
-description_file = README.rst
-long_description_content_type = text/x-rst
+"""Telegraph application module."""
 
-[tool:pytest]
-addopts = --verbose
+from django.apps import AppConfig
 
-[flake8]
-exclude = .git,__pycache__,.pytest_cache,.venv,build,dist,.eggs
-application-import-names = branch,apps.blog,apps.website,apps.telegraph,tests
-import-order-style = smarkets
-max-complexity = 10
-ignore = F405
+
+class TelegraphConfig(AppConfig):
+    """Class representing telegraph application and its configuration."""
+
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'apps.telegraph'

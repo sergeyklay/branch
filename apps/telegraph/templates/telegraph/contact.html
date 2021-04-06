@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block page_title %}{{ page_title }} - {{ block.super }}{% endblock %}
+
+{% block sidebar %}
+    {% include 'partials/sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+    <h1 class="page-title">
+        {% if sent %}{% trans 'E-mail successfully sent' %}{% else %}{{ page_title }}{% endif %}
+    </h1>
+
+    <div class="introduction" role="dialog">
+        <p>
+            {% if sent %}
+                {% trans "Your e-mail was successfully sent. I'll read your e-mail as soon as possible." %}
+            {% else %}
+                {% blocktranslate %}
+                    Use the form below to send me a private message.
+                    Usually e-mails arrive within a couple of seconds.
+                    But this doesn't mean that I'll read your e-mail in the
+                    same swift manner.
+                {% endblocktranslate %}
+            {% endif %}
+        </p>
+
+        {% if not sent %}
+        <div class="contact-form">
+                <form method="post" id="contact-form">
+                    {% csrf_token %}
+                    {% for hidden_field in form.hidden_fields %}
+                        {{ hidden_field }}
+                        {{ hidden_field.errors }}
+                    {% endfor %}
+
+                    <div class="contact-form-item">
+                        <label class="{{ form.label_class }}" for="{{ form.name.id_for_label }}">
+                            {% trans 'Name' %}&nbsp;<strong>*</strong>
+                        </label>
+                        {{ form.name }}
+                        {{ form.name.errors|safe }}
+                    </div>
+
+                    <div class="contact-form-item">
+                        <label class="{{ form.label_class }}" for="{{ form.email.id_for_label }}">
+                            {% trans 'Email Address' %}&nbsp;<strong>*</strong>
+                        </label>
+                        {{ form.email }}
+                        {{ form.email.errors|safe }}
+                    </div>
+
+                    <div class="contact-form-item">
+                        <label class="{{ form.label_class }}" for="{{ form.subject.id_for_label }}">
+                            {% trans 'Subject' %}
+                        </label>
+                        {{ form.subject }}
+                        {{ form.subject.errors|safe }}
+                    </div>
+
+                    <div class="contact-form-item">
+                        <label class="{{ form.label_class }}" for="{{ form.message.id_for_label }}">
+                            {% trans 'Message' %}
+                        </label>
+                        {{ form.message }}
+                        {{ form.message.errors|safe }}
+                    </div>
+
+                    <div class="contact-form-item">
+                        <input type="submit" value="{% trans 'Send e-mail' %}" class="button button-large">
+                    </div>
+                </form>
+        </div>
+        {% endif %}
+    </div>
+{% endblock %}
