@@ -168,6 +168,8 @@ FIXTURE_DIRS = (
     BASE_DIR('provision', 'fixtures')
 )
 
+ADMIN_SITE_URL = env.str('ADMIN_SITE_URL', default='admin/')
+
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/
 

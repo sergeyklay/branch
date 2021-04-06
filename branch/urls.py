@@ -33,9 +33,11 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
 
+from .utils import admin_path
+
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', include('apps.blog.urls', namespace='blog'))
+    path('', include('apps.blog.urls', namespace='blog')),
+    path(f'{admin_path()}/', admin.site.urls),
 ]
 
 if settings.DEBUG:
