@@ -14,8 +14,8 @@
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
 import django.contrib.auth.models
-from django.db import migrations, models
 import django.db.models.deletion
+from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
