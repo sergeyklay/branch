@@ -62,5 +62,13 @@
       "name": "github_username",
       "value": "torvalds"
     }
+  },
+  {
+    "model": "website.setting",
+    "pk": 9,
+    "fields": {
+      "name": "contact_email",
+      "value": "nowhere@example.org"
+    }
   }
 ]
