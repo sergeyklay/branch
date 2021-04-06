@@ -4,7 +4,7 @@
 #
 #    pip-compile --output-file=requirements/requirements-dev.txt requirements/requirements-dev.in
 #
-asgiref==3.3.1
+asgiref==3.3.2
     # via django
 astroid==2.5.2
     # via pylint
@@ -21,6 +21,8 @@ django==3.2rc1
     #   -r requirements/requirements.in
     #   django-appconf
     #   django-debug-toolbar
+flake8-import-order==0.18.1
+    # via -r requirements/requirements-dev.in
 flake8==3.9.0
     # via -r requirements/requirements-dev.in
 isort==5.8.0
@@ -34,7 +36,9 @@ mccabe==0.6.1
 pillow==8.2.0
     # via -r requirements/requirements.in
 pycodestyle==2.7.0
-    # via flake8
+    # via
+    #   flake8
+    #   flake8-import-order
 pyflakes==2.3.1
     # via flake8
 pylint==2.7.4
@@ -55,3 +59,6 @@ toml==0.10.2
     # via pylint
 wrapt==1.12.1
     # via astroid
+
+# The following packages are considered to be unsafe in a requirements file:
+# setuptools

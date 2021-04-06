@@ -4,7 +4,7 @@
 #
 #    pip-compile --output-file=requirements/requirements.txt requirements/requirements.in
 #
-asgiref==3.3.1
+asgiref==3.3.2
     # via django
 django-appconf==1.0.4
     # via django-compressor
