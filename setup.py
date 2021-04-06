@@ -17,7 +17,7 @@ import codecs
 import re
 from os import path
 
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
 
 
 def locate_package_directory():
@@ -162,6 +162,7 @@ EXTRAS_REQUIRE = {
     'testing': [
         'pylint>=2.6.0,!=2.6.1',  # Python code static checker
         'flake8>=3.8.4',  # The modular source code checker
+        'flake8-import-order>=0.18.0',  # Check the ordering of imports
     ],
     # Dependencies that are required to develop package
     'develop': [

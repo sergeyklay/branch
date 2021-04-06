@@ -13,6 +13,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
+"""Blog models."""
+
 from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
@@ -20,17 +22,26 @@ from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
 
+# pylint: disable=too-few-public-methods
 class Author(User):
+    """A proxy class to extend default User model."""
+
     class Meta:
+        """Author model metadata class."""
         proxy = True
 
 
 class PublishedManager(models.Manager):
+    """Custom models manager get only published posts."""
+
     def get_queryset(self):
+        """Return a QuerySet object with predefined filters."""
         return super().get_queryset().filter(status='published')
 
 
 class Post(models.Model):
+    """Blog posts model class."""
+
     STATUS_CHOICES = (
         ('draft', _('Draft')),
         ('published', _('Published')),
@@ -126,17 +137,20 @@ class Post(models.Model):
     published = PublishedManager()  # The status-specific manager.
 
     class Meta:
+        """Post model metadata class."""
+
         ordering = ('-published_at',)
         verbose_name = _('Post')
         verbose_name_plural = _('Posts')
 
     def __str__(self):
-        return self.title
+        return f'{self.title}'
 
     def get_absolute_url(self):
+        """Tell Django how to calculate the canonical URL for a blog post."""
         return reverse('blog:post_view', args=[
-            self.published_at.year,
-            self.published_at.month,
-            self.published_at.day,
+            self.published_at.year,  # pylint: disable=no-member
+            self.published_at.month,  # pylint: disable=no-member
+            self.published_at.day,  # pylint: disable=no-member
             self.slug,
         ])

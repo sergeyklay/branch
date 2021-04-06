@@ -13,12 +13,17 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
+"""Representation of website models in the admin interface."""
+
 from django.contrib import admin
+
 from .models import Setting
 
 
 @admin.register(Setting)
 class SettingAdmin(admin.ModelAdmin):
+    """Class to manage website settings."""
+
     list_display = (
         'name',
         'value',

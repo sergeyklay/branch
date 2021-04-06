@@ -13,13 +13,18 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
+"""Representation of blog models in the admin interface."""
+
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
+
 from .models import Post
 
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
+    """Class to manage blog posts."""
+
     list_display = (
         'title',
         'slug',

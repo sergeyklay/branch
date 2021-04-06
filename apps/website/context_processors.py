@@ -18,7 +18,7 @@
 from .models import Setting
 
 
-def app_settings(request):
+def app_settings(request):  # pylint: disable=unused-argument
     """Global values to pass to templates."""
     context_extras = {}
 
