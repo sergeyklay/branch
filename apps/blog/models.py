@@ -20,6 +20,11 @@ from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
 
+class Author(User):
+    class Meta:
+        proxy = True
+
+
 class PublishedManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(status='published')
@@ -66,7 +71,7 @@ class Post(models.Model):
     )
 
     author = models.ForeignKey(
-        User,
+        Author,
         on_delete=models.CASCADE,
         related_name='posts',
         verbose_name=_('Author'),
