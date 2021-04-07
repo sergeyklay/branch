@@ -62,7 +62,7 @@
 
                     <div class="contact-form-item">
                         <label class="{{ form.label_class }}" for="{{ form.message.id_for_label }}">
-                            {% trans 'Message' %}
+                            {% trans 'Message' %}&nbsp;<strong>*</strong>
                         </label>
                         {{ form.message }}
                         {{ form.message.errors|safe }}

@@ -4,10 +4,12 @@
 #
 #    pip-compile --output-file=requirements/requirements-dev.txt requirements/requirements-dev.in
 #
-asgiref==3.3.2
+asgiref==3.3.4
     # via django
 astroid==2.5.2
     # via pylint
+beautifulsoup4==4.9.3
+    # via -r requirements/requirements.in
 django-appconf==1.0.4
     # via django-compressor
 django-compressor==2.4
@@ -16,7 +18,7 @@ django-debug-toolbar==3.2
     # via -r requirements/requirements-dev.in
 django-environ==0.4.5
     # via -r requirements/requirements.in
-django==3.2rc1
+django==3.2
     # via
     #   -r requirements/requirements.in
     #   django-appconf
@@ -51,6 +53,8 @@ rjsmin==1.1.0
     # via django-compressor
 six==1.15.0
     # via django-compressor
+soupsieve==2.2.1
+    # via beautifulsoup4
 sqlparse==0.4.1
     # via
     #   django

@@ -15,15 +15,32 @@
 
 """Representation of blog models in the admin interface."""
 
+from django import forms
+from django.conf import settings
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 
+from .forms import RichTextField
 from .models import Post
+
+
+class PostForm(forms.ModelForm):
+    """Blog post form."""
+
+    body = RichTextField(label=_('Content'))
+
+    class Meta:
+        """Post form metadata class."""
+
+        model = Post
+        fields = '__all__'
 
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     """Class to manage blog posts."""
+
+    form = PostForm
 
     list_display = (
         'title',
@@ -58,7 +75,7 @@ class PostAdmin(admin.ModelAdmin):
 
     ordering = (
         'status',
-        'published_at',
+        '-published_at',
     )
 
     fieldsets = (
@@ -82,3 +99,36 @@ class PostAdmin(admin.ModelAdmin):
             )
         }),
     )
+
+    class Media:
+        """
+        PostAdmin metadata class.
+
+        Setup static assets to use in WYSIWYG editor.
+        """
+
+        css = {
+            'all': (
+                'vendor/trumbowyg/ui/trumbowyg{}.css'.format(
+                    '' if settings.DEBUG else '.min',
+                ),
+            ),
+        }
+
+        js = (
+            'admin/js/jquery.init.js',
+            'js/shared.js',
+            'vendor/trumbowyg/trumbowyg{}.js'.format(
+                '' if settings.DEBUG else '.min',
+            ),
+            'vendor/trumbowyg/langs/ru{}.js'.format(
+                '' if settings.DEBUG else '.min',
+            ),
+            'vendor/trumbowyg/langs/ua{}.js'.format(
+                '' if settings.DEBUG else '.min',
+            ),
+            'vendor/trumbowyg/plugins/upload/trumbowyg.upload{}.js'.format(
+                '' if settings.DEBUG else '.min',
+            ),
+            'admin/js/richtext.editor.js'
+        )
