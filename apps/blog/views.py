@@ -22,9 +22,8 @@ from branch.mixins import PageDetailsMixin
 from .models import Post
 
 
-# pylint: disable=too-many-ancestors
 class PostDetailView(PageDetailsMixin, DateDetailView):
-    """Class to handle post details requests."""
+    """Display a blog post detail."""
 
     model = Post
     context_object_name = 'post'
@@ -52,9 +51,8 @@ class PostDetailView(PageDetailsMixin, DateDetailView):
         return None
 
 
-# pylint: disable=too-many-ancestors
 class PostListView(ListView):
-    """Class to handle post list requests."""
+    """Display the list of published blog posts."""
 
     queryset = Post.published.all()
     context_object_name = 'posts'
