@@ -24,6 +24,7 @@ Set up virtualenv
 .. code-block:: shell
 
    $ make init
+   $ source .venv/bin/activate
 
 
 Install dependencies
@@ -63,7 +64,7 @@ necessary changes:
 .. code-block:: shell
 
    # Create configuration directory
-   $ sudo cp ./settings.env.dist ./settings.env
+   $ cp ./settings.env.dist ./settings.env
 
 
 Load fixtures
@@ -71,7 +72,6 @@ Load fixtures
 
 .. code-block:: shell
 
-   $ source .venv/bin/activate
    $ python manage.py loaddata ./provision/fixtures/01-settings.json
 
 
