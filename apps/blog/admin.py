@@ -109,7 +109,7 @@ class PostAdmin(admin.ModelAdmin):
 
         css = {
             'all': (
-                'vendor/trumbowyg/ui/trumbowyg{}.css'.format(
+                'trumbowyg/dist/ui/trumbowyg{}.css'.format(
                     '' if settings.DEBUG else '.min',
                 ),
             ),
@@ -118,16 +118,10 @@ class PostAdmin(admin.ModelAdmin):
         js = (
             'admin/js/jquery.init.js',
             'js/shared.js',
-            'vendor/trumbowyg/trumbowyg{}.js'.format(
+            'trumbowyg/dist/trumbowyg{}.js'.format(
                 '' if settings.DEBUG else '.min',
             ),
-            'vendor/trumbowyg/langs/ru{}.js'.format(
-                '' if settings.DEBUG else '.min',
-            ),
-            'vendor/trumbowyg/langs/ua{}.js'.format(
-                '' if settings.DEBUG else '.min',
-            ),
-            'vendor/trumbowyg/plugins/upload/trumbowyg.upload{}.js'.format(
+            'trumbowyg/dist/plugins/upload/trumbowyg.upload{}.js'.format(
                 '' if settings.DEBUG else '.min',
             ),
             'admin/js/richtext.editor.js'

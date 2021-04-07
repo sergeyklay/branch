@@ -44,7 +44,7 @@ var trumbowygConfig = {
     // omitting 'title' and 'target'
     minimalLinks: true,
     removeformatPasted: true,
-    svgPath: '/static/vendor/trumbowyg/ui/icons.svg',
+    svgPath: '/static/trumbowyg/dist/ui/icons.svg',
     plugins: {
         /* TODO: implement me */
         upload: {

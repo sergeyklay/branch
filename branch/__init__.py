@@ -16,7 +16,7 @@
 """The top-level module for branch package.
 
 This module tracks the version of the package as well as the base
-package info used by various functions within housingcoop.
+package info used by various functions within Branch.
 
 Misc variables:
 
