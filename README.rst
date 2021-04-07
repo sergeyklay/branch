@@ -4,6 +4,7 @@
         <img src="./logo.svg" width="15%" alt="" /><br />
         Branch
     </h1>
+    <p align="center">A Django blog application with features of a standard blogging platform.</p>
     <p align="center">
         <a href="https://github.com/sergeyklay/branch/actions?workflow=CI">
             <img src="https://github.com/sergeyklay/branch/workflows/CI/badge.svg?branch=master" alt="CI Status" />

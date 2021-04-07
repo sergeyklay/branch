@@ -8,10 +8,13 @@ Prerequisites
 
 To play with this blog at your local environment you need the following requirements:
 
-* macOs, Linux or Windows (WSL)
 * Python >= 3.7
 * SQLite3
-* sass
+* npm
+
+The project should work the same on the all major systems macOs, Linux or Windows and
+in general you don't need Docker, Nginx, RDBMS or VM to play with project at you local
+environment.
 
 
 Getting started
