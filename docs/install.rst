@@ -72,7 +72,7 @@ Load fixtures
 
 .. code-block:: shell
 
-   $ python manage.py loaddata ./provision/fixtures/01-settings.json
+   $ python manage.py loaddata settings.json
 
 
 Copy static files
