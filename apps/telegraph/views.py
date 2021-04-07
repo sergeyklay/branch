@@ -18,42 +18,51 @@
 from django.core.mail import BadHeaderError, send_mail
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
+from django.views.generic import FormView
 
 from apps.website.models import Setting
+from branch.mixins import PageDetailsMixin
 from .forms import ContactMessageForm
 
 
-def contact_form(request):
-    """Contact form handler."""
+class ContactFormView(PageDetailsMixin, FormView):
+    """Display and send email form."""
+
+    template_name = 'telegraph/contact.html'
+    form_class = ContactMessageForm
+    description = _('Contact Form')
+    title = _('Contact Form')
+    success_url = reverse_lazy('telegraph:contact_form')
     sent = False
 
-    if request.method == 'POST':
-        form = ContactMessageForm(request.POST)
+    def form_valid(self, form):
+        """If the form is valid, render 'template_name' with a context."""
+        super().form_valid(form)
+        cd = form.cleaned_data
+
         contact_email = Setting.website.get('contact_email')
+        subject = cd.get(cd['subject'], _('Contact form submission'))
 
-        if form.is_valid() and contact_email:
-            cd = form.cleaned_data
-            subject = cd.get(cd['subject'], _('Contact form submission'))
+        try:
+            sent_messages = send_mail(
+                subject=subject,
+                message=cd['message'],
+                from_email=f"{cd['name']} <{cd['email']}>",
+                recipient_list=[contact_email],
+            )
+            self.sent = sent_messages > 0
 
-            try:
-                sent_messages = send_mail(
-                    subject=subject,
-                    message=cd['message'],
-                    from_email=f"{cd['name']} <{cd['email']}>",
-                    recipient_list=[contact_email],
-                )
-                sent = sent_messages > 0
-            except BadHeaderError:
-                return HttpResponse(_('Invalid header found'))
-    else:
-        form = ContactMessageForm()
+        except BadHeaderError:  # TODO: Handle this better
+            return HttpResponse(_('Invalid header found'))
 
-    context = {
-        'form': form,
-        'sent': sent,
-        'page_description': _('Contact Form'),
-        'page_title': _('Contact Form'),
-    }
+        return render(self.request, self.template_name,
+                      self.get_context_data(form=form))
 
-    return render(request, 'telegraph/contact.html', context)
+    def get_context_data(self, **kwargs):
+        """Get object's context data to use in contact page."""
+        context = super().get_context_data(**kwargs)
+        context['sent'] = self.sent
+
+        return context
