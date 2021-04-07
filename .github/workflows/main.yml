@@ -91,21 +91,15 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
 
-      - name: Set up pip cache (Linux)
-        uses: actions/cache@v2
-        if: startsWith(runner.os, 'Linux')
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements/requirements-dev.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-pip-
+      - name: Get pip cache dir
+        id: pip-cache
+        run: echo "::set-output name=dir::$(pip cache dir)"
 
-      - name: Set up pip cache (macOS)
+      - name: Set up pip cache
         uses: actions/cache@v2
-        if: startsWith(runner.os, 'macOS')
         with:
-          path: ~/Library/Caches/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements/requirements-dev.txt') }}
+          path: ${{ steps.pip-cache.outputs.dir }}
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements/requirements*.txt') }}
           restore-keys: |
             ${{ runner.os }}-pip-
 
@@ -116,8 +110,7 @@ jobs:
 
       - name: Get npm cache directory
         id: npm-cache-dir
-        run: |
-          echo "::set-output name=dir::$(npm config get cache)"
+        run: echo "::set-output name=dir::$(npm config get cache)"
 
       - name: Set up npm cache
         uses: actions/cache@v2
