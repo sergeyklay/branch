@@ -26,9 +26,9 @@ REMOVABLE_TAGS = (
 )
 
 ALLOWED_TAGS = (
-    'p', 'ul', 'ol', 'li', 'strong', 'em',
+    'ul', 'ol', 'li', 'strong', 'em', 'del',
     'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
-    'br',
+    'p', 'br', 'hr',
 )
 
 ALLOWED_ATTRS = (

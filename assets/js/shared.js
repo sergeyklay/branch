@@ -19,22 +19,33 @@ var trumbowygConfig = {
         image: {
             dropdown: ['insertImage', 'upload'],
             ico: 'insertImage'
-        }
+        },
     },
     btns: [
         ['viewHTML'],
-        ['undo', 'redo'],
+        ['undo', 'redo'], // Only supported in Blink browsers
         ['formatting'],
-        ['strong', 'em'],
+        ['strong', 'em', 'del'],
+        ['superscript', 'subscript'],
         ['link'],
+        ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
         ['unorderedList', 'orderedList'],
+        ['horizontalRule'],
         ['removeformat'],
         ['fullscreen']
     ],
+    semantic: {
+        'b': 'strong',
+        'i': 'em',
+        's': 'del',
+        'strike': 'del',
+        'div': 'p'
+    },
     minimalLinks: true,
     removeformatPasted: true,
     svgPath: '/static/vendor/trumbowyg/ui/icons.svg',
     plugins: {
+        /* TODO: implement me */
         upload: {
             serverPath: '/upload/',
             fileFieldName: 'image'

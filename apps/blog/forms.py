@@ -56,11 +56,12 @@ class RichTextField(forms.CharField):
             'a',
             'abbr',
             'blockquote',
-            'br',
             'code',
             'header',
             'footer',
             'img',
+            'superscript',
+            'subscript',
         )
 
         contents = content_sanitize(
