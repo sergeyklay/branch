@@ -51,8 +51,17 @@ class RichTextField(forms.CharField):
         appropriate Python object. Raise ValidationError for any errors.
         """
         cleaned = super().clean(value)
-        extra_tags = ('a', 'blockquote', 'br', 'header', 'footer', 'img')
-        extra_attrs = ('style',)
+        extra_attrs = ('style', 'title', 'class', 'id',)
+        extra_tags = (
+            'a',
+            'abbr',
+            'blockquote',
+            'br',
+            'code',
+            'header',
+            'footer',
+            'img',
+        )
 
         contents = content_sanitize(
             cleaned,
