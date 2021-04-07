@@ -16,7 +16,7 @@
     </header>
 
     <p class="blog-post-content">
-        {{ post.body|striptags|truncatewords:30|linebreaks }}
+        {{ post.body|safe|truncatewords:45|linebreaks }}
     </p>
 
     <footer>
