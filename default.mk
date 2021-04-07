@@ -41,9 +41,11 @@ VENV_ROOT = .venv
 
 # PYTHON will used to create venv
 ifeq ($(OS),Windows_NT)
-	PYTHON  ?= python
+    NPM     ?= npm.exe
+	PYTHON  ?= python.exe
 	VENV_BIN = $(VENV_ROOT)/Scripts
 else
+	NPM     ?= npm
 	PYTHON  ?= python3
 	VENV_BIN = $(VENV_ROOT)/bin
 endif
@@ -61,8 +63,12 @@ $(error "Python is not available please install Python")
 else
 ifneq ($(OS),Windows_NT)
 HAVE_PYTHON := $(shell sh -c "command -v $(PYTHON)")
+HAVE_NPM := $(shell sh -c "command -v $(NPM)")
 ifndef HAVE_PYTHON
-$(error "Python is not available please install Python")
+$(error "Python is not available. Please install Python.")
+endif
+ifndef HAVE_NPM
+$(error "npm is not available. Please install npm.")
 endif
 endif
 endif

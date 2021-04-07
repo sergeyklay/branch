@@ -13,8 +13,8 @@ To play with this blog at your local environment you need the following requirem
 * sass
 * npm
 
-The project should work the same on the all major systems macOs, Linux or Windows and
-in general you don't need Docker, Nginx, RDBMS or VM to play with project at you local
+The project should work the same on the all major systems macOs, Linux or Windows (WSL)
+and in general you don't need Docker, Nginx, RDBMS or VM to play with project at you local
 environment.
 
 
@@ -38,9 +38,10 @@ Install dependencies
 
    # For production server:
    $ pip install -r requirements/requirements.txt
+   $ npm install
 
    # For local development:
-   $ pip install -r requirements/requirements-dev.txt
+   $ make install
 
 To refresh dependencies in the future use the following approach:
 
