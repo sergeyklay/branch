@@ -68,6 +68,7 @@ init: $(VENV_PYTHON)
 .PHONY: init
 install: init $(REQUIREMENTS)
 	$(VENV_PIP) install --upgrade -r $(REQUIREMENTS)
+	$(NPM) install
 
 .PHONY: clean
 clean:
@@ -145,6 +146,10 @@ help:
 	@echo '                Delete almost everything that can be reconstructed'
 	@echo '                with this Makefile'
 	@echo
+	@echo 'Nodejs:'
+	@echo
+	@echo '  npm:          $(HAVE_NPM)'
+	@echo
 	@echo 'Virtualenv:'
 	@echo
 	@echo '  Python:       $(VENV_PYTHON)'
@@ -157,6 +162,7 @@ help:
 	@echo
 	@echo 'Environment variables:'
 	@echo
+	@echo '  NPM:          $(NPM)'
 	@echo '  PYTHON:       $(PYTHON)'
 	@echo '  WORKON_HOME:  ${WORKON_HOME}'
 	@echo '  SHELL:        $(shell echo $$SHELL)'

@@ -38,6 +38,7 @@ on:
       #      |____ minute (0 - 59)
 
 env:
+  NPM: npm
   PYTHON: python
   BRANCH_ENV: test
   PYTHONUNBUFFERED: '1'
@@ -90,23 +91,35 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
 
-      - name: Set up pip cache (Linux)
+      - name: Get pip cache dir
+        id: pip-cache
+        run: echo "::set-output name=dir::$(pip cache dir)"
+
+      - name: Set up pip cache
         uses: actions/cache@v2
-        if: startsWith(runner.os, 'Linux')
         with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements/requirements-dev.txt') }}
+          path: ${{ steps.pip-cache.outputs.dir }}
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements/requirements*.txt') }}
           restore-keys: |
             ${{ runner.os }}-pip-
 
-      - name: Set up pip cache (macOS)
-        uses: actions/cache@v2
-        if: startsWith(runner.os, 'macOS')
+      - name: Set up Nodejs
+        uses: actions/setup-node@v2
         with:
-          path: ~/Library/Caches/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements/requirements-dev.txt') }}
+          node-version: '14'
+
+      - name: Get npm cache directory
+        id: npm-cache-dir
+        run: echo "::set-output name=dir::$(npm config get cache)"
+
+      - name: Set up npm cache
+        uses: actions/cache@v2
+        id: npm-cache
+        with:
+          path: ${{ steps.npm-cache-dir.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-pip-
+            ${{ runner.os }}-node-
 
       - name: Makefile selftest
         run: make help

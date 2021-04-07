@@ -17,6 +17,7 @@ __pycache__
 
 /.venv
 /static
+/node_modules
 
 *.sqlite3
 settings.env

@@ -194,12 +194,14 @@ LOCALE_PATHS = [
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
-COMMON_ASSETS = BASE_DIR('assets')
+COMMON_ASSETS_PATH = BASE_DIR('assets')
+NODE_MODULES_PATH = BASE_DIR('node_modules')
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR('static')
 STATICFILES_DIRS = (
-    COMMON_ASSETS,
+    COMMON_ASSETS_PATH,
+    NODE_MODULES_PATH,
 )
 
 STATICFILES_FINDERS = (
@@ -216,7 +218,7 @@ COMPRESS_PRECOMPILERS = (
         'text/x-scss',
         '{} include={} infile={{infile}} outfile={{outfile}}'.format(
             SASS_PATH,
-            COMMON_ASSETS,
+            NODE_MODULES_PATH,
         )
     ),
 )
