@@ -166,7 +166,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 FIXTURE_DIRS = (
-    BASE_DIR('provision', 'fixtures')
+    BASE_DIR('provision', 'fixtures'),
 )
 
 ADMIN_SITE_URL = env.str('ADMIN_SITE_URL', default='admin/')
