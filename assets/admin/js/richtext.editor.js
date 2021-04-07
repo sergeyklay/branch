@@ -21,6 +21,8 @@
         trumbowygConfig.btns.push([
             'justifyLeft',
             'justifyCenter',
+            'justifyRight',
+            'justifyFull',
         ]);
 
         $('textarea.textarea-wysiwyg').trumbowyg(trumbowygConfig);

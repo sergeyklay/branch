@@ -28,7 +28,6 @@ var trumbowygConfig = {
         ['strong', 'em', 'del'],
         ['superscript', 'subscript'],
         ['link'],
-        ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
         ['unorderedList', 'orderedList'],
         ['horizontalRule'],
         ['removeformat'],
@@ -39,8 +38,10 @@ var trumbowygConfig = {
         'i': 'em',
         's': 'del',
         'strike': 'del',
-        'div': 'p'
+        'div': 'div', // Editor does nothing on div
     },
+    // Reduce the link overlay to use only 'url' and 'text' fields,
+    // omitting 'title' and 'target'
     minimalLinks: true,
     removeformatPasted: true,
     svgPath: '/static/vendor/trumbowyg/ui/icons.svg',
@@ -51,5 +52,7 @@ var trumbowygConfig = {
             fileFieldName: 'image'
         }
     },
+    // Allow to set link target attribute value to what you want,
+    // even if the 'minimalLinks' option is set to true.
     defaultLinkTarget: '_blank',
 }
