@@ -67,7 +67,7 @@ init: $(VENV_PYTHON)
 
 .PHONY: init
 install: init $(REQUIREMENTS)
-	$(foreach file, $(REQUIREMENTS), $(VENV_PIP) install --upgrade -r $(file);)
+	$(VENV_PIP) install --upgrade -r $(REQUIREMENTS)
 
 .PHONY: clean
 clean:

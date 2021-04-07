@@ -1,4 +1,5 @@
-Django>=3.2rc1
+Django
 django-environ
 django_compressor
 Pillow
+beautifulsoup4

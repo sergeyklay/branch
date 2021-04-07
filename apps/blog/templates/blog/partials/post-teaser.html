@@ -4,19 +4,19 @@
     <header>
         <h2 class="blog-post-title">
             <a href="{{ post.get_absolute_url }}">
-                {{ post.title | escape }}
+                {{ post.title|escape }}
             </a>
         </h2>
 
         <div class="post-meta">
-            <time datetime="{{ post.published_at | date:"Y-m-d\TH:i:sO" }}">
-                {{ post.published_at | date:"Y.m.d" }}
+            <time datetime="{{ post.published_at|date:"Y-m-d\TH:i:sO" }}">
+                {{ post.published_at|date:"Y.m.d" }}
             </time>
         </div>
     </header>
 
     <p class="blog-post-content">
-        {{ post.body|truncatewords:30|linebreaks }}
+        {{ post.body|striptags|truncatewords:30|linebreaks }}
     </p>
 
     <footer>
