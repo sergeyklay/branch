@@ -82,6 +82,7 @@ THIRD_PARTY_APPS = (
 LOCAL_APPS = (
     'apps.website',
     'apps.blog',
+    'apps.telegraph',
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -227,3 +228,13 @@ MEDIA_ROOT = BASE_DIR('media')
 # https://docs.djangoproject.com/en/dev/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# Email configuration
+
+EMAIL_HOST = env.str('EMAIL_HOST', default='localhost')
+EMAIL_HOST_USER = env.str('EMAIL_HOST_USER', default='')
+EMAIL_HOST_PASSWORD = env.str('EMAIL_HOST_PASSWORD', default='')
+EMAIL_PORT = env.int('EMAIL_PORT', default=25)
+EMAIL_USE_TLS = env.bool('EMAIL_USE_TLS', default=EMAIL_HOST != 'localhost')
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

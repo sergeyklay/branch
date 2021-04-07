@@ -13,4 +13,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-local.py
+"""Telegraph URL Configuration."""
+
+from django.urls import path
+
+from .views import ContactFormView
+
+app_name = 'telegraph'  # pylint: disable=invalid-name
+
+urlpatterns = (
+    path('contact.html', ContactFormView.as_view(), name='contact_form'),
+)

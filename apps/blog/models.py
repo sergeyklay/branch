@@ -22,12 +22,12 @@ from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
 
-# pylint: disable=too-few-public-methods
 class Author(User):
     """A proxy class to extend default User model."""
 
     class Meta:
         """Author model metadata class."""
+
         proxy = True
 
 

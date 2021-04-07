@@ -13,31 +13,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-# Comma-separated list
-ALLOWED_HOSTS=127.0.0.1,
+"""Telegraph application module."""
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY="secret"
+from django.apps import AppConfig
 
-# See ``help(environ.Env.db_url_config)``
-DATABASE_URL=sqlite:///db.sqlite3
 
-# If compression should be done outside of the request/response loop.
-COMPRESS_OFFLINE=False
+class TelegraphConfig(AppConfig):
+    """Class representing telegraph application and its configuration."""
 
-# Comma-separated list
-INTERNAL_IPS=127.0.0.1,
-
-# Website base url
-BASE_URL=https://127.0.0.1
-
-# Change admin site URL
-ADMIN_SITE_URL=admin/
-
-# SMTP / POP3 configuration
-EMAIL_HOST=smtp.gmail.com
-EMAIL_HOST_USER=your_account@gmail.com
-EMAIL_HOST_PASSWORD=your_password
-EMAIL_PORT=587
-EMAIL_USE_TLS=True
-EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'apps.telegraph'

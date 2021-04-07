@@ -20,3 +20,4 @@ __pycache__
 
 *.sqlite3
 settings.env
+email-messages.txt

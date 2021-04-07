@@ -44,8 +44,8 @@ INTERNAL_IPS = env.list('INTERNAL_IPS', default=['127.0.0.1'])
 
 COMPRESS_OFFLINE = env.bool('COMPRESS_OFFLINE', False)
 
-try:
-    # pylint: disable-msg=w0614,w0401
-    from .local import *  # noqa
-except ImportError:
-    pass
+# Email configuration
+
+EMAIL_BACKEND = env.str(
+    'EMAIL_BACKEND',
+    default='django.core.mail.backends.console.EmailBackend')

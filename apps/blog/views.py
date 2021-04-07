@@ -18,40 +18,12 @@
 from django.views.generic import DateDetailView, ListView
 
 from apps.website.models import Setting
+from branch.mixins import PageDetailsMixin
 from .models import Post
 
 
-class PageDetailsMixin:
-    """Pass a defined title to context"""
-
-    description = None
-    title = None
-
-    def get_title(self):
-        """Get object title."""
-        return self.title
-
-    def get_description(self):
-        """Get description title."""
-        return self.description
-
-    def get_context_data(self, **kwargs):
-        """Get object's context data to use in templates."""
-        context = super().get_context_data(**kwargs)
-        title = self.get_title()
-        if title:
-            context['page_title'] = self.get_title()
-
-        description = self.get_description()
-        if description:
-            context['page_description'] = self.get_description()
-
-        return context
-
-
-# pylint: disable=too-many-ancestors
 class PostDetailView(PageDetailsMixin, DateDetailView):
-    """Class to handle post details requests."""
+    """Display a blog post detail."""
 
     model = Post
     context_object_name = 'post'
@@ -79,9 +51,8 @@ class PostDetailView(PageDetailsMixin, DateDetailView):
         return None
 
 
-# pylint: disable=too-many-ancestors
 class PostListView(ListView):
-    """Class to handle post list requests."""
+    """Display the list of published blog posts."""
 
     queryset = Post.published.all()
     context_object_name = 'posts'

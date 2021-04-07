@@ -19,7 +19,6 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
-# pylint: disable=too-few-public-methods
 class SettingsManager(models.Manager):
     """Custom models manager to safe get website settings."""
 
