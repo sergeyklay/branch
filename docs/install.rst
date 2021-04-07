@@ -67,6 +67,12 @@ necessary changes:
    $ cp ./settings.env.dist ./settings.env
 
 
+Run database migrations
+-----------------------
+
+   $ make migrate
+
+
 Load fixtures
 -------------
 
