@@ -25,6 +25,7 @@
   "homepage": "https://github.com/sergeyklay/branch#readme",
   "dependencies": {
     "jquery": "^3.6.0",
+    "prismjs": "^1.23.0",
     "trumbowyg": "^2.23.0"
   }
 }
