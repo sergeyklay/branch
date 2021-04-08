@@ -1,0 +1,9 @@
+code[class*="language-"],
+pre[class*="language-"] {
+    font-size: .8rem;
+}
+
+.token.operator, .token.entity, .token.url,
+.language-css .token.string, .style .token.string {
+    background-color: inherit;
+}

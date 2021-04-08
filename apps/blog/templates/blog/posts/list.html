@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 
-{% load i18n %}
+{% load i18n static %}
+
+{% block page_css %}
+    <link rel="stylesheet" href="{% static 'prismjs/themes/prism.css' %}">
+    <link rel="stylesheet" href="{% static 'css/prism-custom.css' %}">
+{% endblock %}
 
 {% block sidebar %}
     {% include 'partials/sidebar.html' %}
