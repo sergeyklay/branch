@@ -36,6 +36,30 @@ class PostForm(forms.ModelForm):
         fields = '__all__'
 
 
+TRUMBOWYG_PLUGINS = 'trumbowyg/dist/plugins'
+
+
+def highlight_js():
+    """Perform manipulation of asset paths to enable highlight."""
+    components = (
+        'abnf', 'antlr4', 'apacheconf',
+        'bash', 'bison', 'bnf',
+        'c', 'cpp',
+        'diff',
+        'ebnf',
+        'python',
+    )
+
+    prefix = 'prismjs/components/prism'
+    suffix = f"{'' if settings.DEBUG else '.min'}"
+
+    trumbowyg_base = f'{TRUMBOWYG_PLUGINS}/highlight/trumbowyg.highlight'
+    trumbowyg = f"{trumbowyg_base}{'' if settings.DEBUG else '.min'}.js"
+
+    result = map(lambda c: f'{prefix}-{c}{suffix}.js', components)
+    return ['prismjs/prism.js'] + list(result) + [trumbowyg]
+
+
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     """Class to manage blog posts."""
@@ -109,20 +133,26 @@ class PostAdmin(admin.ModelAdmin):
 
         css = {
             'all': (
+                'prismjs/themes/prism.css',
                 'trumbowyg/dist/ui/trumbowyg{}.css'.format(
+                    '' if settings.DEBUG else '.min',
+                ),
+                '{}/highlight/ui/trumbowyg.highlight{}.css'.format(
+                    TRUMBOWYG_PLUGINS,
                     '' if settings.DEBUG else '.min',
                 ),
             ),
         }
 
-        js = (
+        js = [
             'admin/js/jquery.init.js',
             'js/shared.js',
             'trumbowyg/dist/trumbowyg{}.js'.format(
                 '' if settings.DEBUG else '.min',
             ),
-            'trumbowyg/dist/plugins/upload/trumbowyg.upload{}.js'.format(
+            '{}/upload/trumbowyg.upload{}.js'.format(
+                TRUMBOWYG_PLUGINS,
                 '' if settings.DEBUG else '.min',
             ),
-            'admin/js/richtext.editor.js'
-        )
+            'admin/js/richtext.editor.js',
+        ] + highlight_js()

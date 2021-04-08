@@ -45,6 +45,7 @@ if settings.DEBUG:
     from django.urls import re_path
     from django.views.static import serve
     import debug_toolbar
+    import os
 
     urlpatterns = [
         # Static & media files for development environment
@@ -53,6 +54,23 @@ if settings.DEBUG:
         }),
         re_path(r'^media/(?P<path>.*)$', serve, {
             'document_root': settings.MEDIA_ROOT,
+        }),
+
+        # The following action icons are hardcoded in Django source code
+        #
+        # '../img/icon-viewlink.svg'
+        # '../img/icon-addlink.svg'
+        # '../img/icon-changelink.svg'
+        # '../img/icon-deletelink.svg
+        #
+        # When opening '/admin/<APP>/<MODEL>/' Safari makes
+        # request to the following URLS '/admin/<APP>/<MODEL>/img/icon-.*.svg'
+        #
+        # For more see:
+        # /django/contrib/admin/static/admin/css/base.css
+        # https://discussions.apple.com/thread/1407049
+        re_path(r'^.*/(?P<path>img/icon-.*.svg)$', serve, {
+            'document_root': os.path.join(settings.STATIC_ROOT, 'admin'),
         }),
 
         path('__debug__/', include(debug_toolbar.urls))

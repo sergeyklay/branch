@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% load i18n %}
+{% load i18n static %}
 
 {% block page_title %}{{ page_title }} - {{ block.super }}{% endblock %}
 
@@ -18,6 +18,11 @@
 
 {% block canonical_url %}
     {% include 'partials/canonical-url.html' with resource_url=post.get_absolute_url %}
+{% endblock %}
+
+{% block page_css %}
+    <link rel="stylesheet" href="{% static 'prismjs/themes/prism.css' %}">
+    <link rel="stylesheet" href="{% static 'css/prism-custom.css' %}">
 {% endblock %}
 
 {% block sidebar %}

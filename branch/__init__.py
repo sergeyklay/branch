@@ -39,4 +39,5 @@ __license__ = 'GPLv3+'
 __author__ = 'Serghei Iakovlev'
 __author_email__ = 'egrep@protonmail.ch'
 __url__ = 'https://github.com/sergeyklay/branch'
-__description__ = 'A Django blog application with features of a standard blogging platform.'
+__description__ = ('A Django blog application with features '
+                   'of a standard blogging platform.')

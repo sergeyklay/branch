@@ -25,6 +25,7 @@ var trumbowygConfig = {
         ['viewHTML'],
         ['undo', 'redo'], // Only supported in Blink browsers
         ['formatting'],
+        ['highlight'],
         ['strong', 'em', 'del'],
         ['superscript', 'subscript'],
         ['link'],
