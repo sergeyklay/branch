@@ -50,6 +50,9 @@ class PostDetailView(PageDetailsMixin, DateDetailView):
 
         return None
 
+    def get_author(self):
+        return self.object.author.get_full_name()
+
 
 class PostListView(ListView):
     """Display the list of published blog posts."""
