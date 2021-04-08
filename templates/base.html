@@ -34,16 +34,17 @@
         {% include 'partials/canonical-url.html' %}
     {% endblock %}
 
-    <!-- CSS link -->
+    <!-- CSS links -->
     {% compress css %}
         <link rel="stylesheet" type="text/x-scss" href="{% static 'css/style.scss' %}">
     {% endcompress %}
+    {% block page_css %}{% endblock %}
 
     <!-- Head scripts -->
     {% if debug %}
-        <script src="{% static 'vendor/jquery/jquery-3.6.0.js' %}"></script>
+        <script src="{% static 'jquery/dist/jquery.js' %}"></script>
     {% else %}
-        <script src="{% static 'vendor/jquery/jquery-3.6.0.min.js' %}"></script>
+        <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
     {% endif %}
 </head>
 
