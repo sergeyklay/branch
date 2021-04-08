@@ -13,12 +13,12 @@
     "dateModified": "{{ page.updated_at|date:'Y-m-d\\TH:i:sO' }}",
     "author": {
         "@type": "Person",
-        "name": "{# TODO: Use full name #}{{ page.author }}",
+        "name": "{{ page_author }}",
         "url": "{# TODO: Create about.html #}{{ BASE_URL }}/about.html"
     },
     "publisher": {
         "@type": "Organization",
-        "name": "{{ page.author.get_full_name }}",
+        "name": "{{ page_author }}",
         "logo": {
             "@type": "ImageObject",
             "url": "{% static 'img/blog-logo.jpg' %}"

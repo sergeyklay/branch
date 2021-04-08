@@ -1,0 +1,18 @@
+{% if page_title %}
+<meta property="dc:title" content="{{ page_title }}">
+{% else %}
+<meta property="dc:title" content="{{ site_title|default:'Branch' }}">
+{% endif %}
+
+{% if page_author %}
+<meta property="dc:creator" content="{{ page_author }}">
+<meta property="dc:contributor" content="{{ page_author }}">
+{% else %}
+<meta property="dc:creator" content="{{ site_title|default:'Branch' }}">
+{% endif %}
+
+{% if page_rights %}
+<meta property="dc:rights" content="{{ page_rights }}">
+{% endif %}
+
+<meta property="dc:identifier" content="{{ BASE_URL }}{{ resource_url|default:request.path }}">

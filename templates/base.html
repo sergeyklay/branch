@@ -13,38 +13,43 @@
     <meta name="generator" content="Branch">
 
     {% block page_description %}
-        {% include 'partials/page-description.html' %}
+    {% include 'partials/page-description.html' %}
     {% endblock %}
 
     {% block page_keywords %}
-        {% include 'partials/page-keywords.html' %}
+    {% include 'partials/page-keywords.html' %}
     {% endblock %}
 
     {% block page_meta %}{% endblock %}
 
     {% block page_rating %}
-        <meta name="rating" content="General">
+    <meta name="rating" content="General">
     {% endblock %}
 
     {% block page_license %}
-        <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.{{ LANGUAGE_CODE|slice:'0:2'|join:'' }}">
+    <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.{{ LANGUAGE_CODE|slice:'0:2'|join:'' }}">
     {% endblock %}
 
     {% block canonical_url %}
-        {% include 'partials/canonical-url.html' %}
+    {% include 'partials/canonical-url.html' %}
+    {% endblock %}
+
+    <!-- Dublin Core metadata for Zotero -->
+    {% block dc_metadata %}
+    {% include 'partials/dc-metadata.html' %}
     {% endblock %}
 
     <!-- CSS links -->
     {% compress css %}
-        <link rel="stylesheet" type="text/x-scss" href="{% static 'css/style.scss' %}">
+    <link rel="stylesheet" type="text/x-scss" href="{% static 'css/style.scss' %}">
     {% endcompress %}
     {% block page_css %}{% endblock %}
 
     <!-- Head scripts -->
     {% if debug %}
-        <script src="{% static 'jquery/dist/jquery.js' %}"></script>
+    <script src="{% static 'jquery/dist/jquery.js' %}"></script>
     {% else %}
-        <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
     {% endif %}
 </head>
 
@@ -74,7 +79,7 @@
     </div>
 
     <label for="sidebar-checkbox" class="sidebar-toggle"></label>
-
     <script src="{% static 'js/ed.js' %}"></script>
+    {% block page_js %}{% endblock %}
 </body>
 </html>

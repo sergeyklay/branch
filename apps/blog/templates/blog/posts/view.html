@@ -5,29 +5,34 @@
 {% block page_title %}{{ page_title }} - {{ block.super }}{% endblock %}
 
 {% block post_schema %}
-    <script type="application/ld+json">
+<script type="application/ld+json">
     {% include 'blog/partials/page-schema.json' with page=post featured_image=post.featured_image %}
-    </script>
+</script>
 {% endblock %}
 
 {% block page_meta %}
-    {% if post.no_index %}
-        <meta name="robots" content="noindex, nofollow">
-    {% endif %}
+{% if post.no_index %}
+<meta name="robots" content="noindex, nofollow">
+{% endif %}
 {% endblock %}
 
 {% block canonical_url %}
-    {% include 'partials/canonical-url.html' with resource_url=post.get_absolute_url %}
+{% include 'partials/canonical-url.html' with resource_url=post.get_absolute_url %}
+{% endblock %}
+
+{% block dc_metadata %}
+{% include 'partials/dc-metadata.html' with resource_url=post.get_absolute_url %}
+<meta property="dc:date" content="{{ post.published_at|date:"Y.m.d H:i:s" }}">
 {% endblock %}
 
 {% block page_css %}
-    <link rel="stylesheet" href="{% static 'prismjs/themes/prism.css' %}">
-    <link rel="stylesheet" href="{% static 'css/prism-custom.css' %}">
+<link rel="stylesheet" href="{% static 'prismjs/themes/prism.css' %}">
+<link rel="stylesheet" href="{% static 'css/prism-custom.css' %}">
 {% endblock %}
 
 {% block sidebar %}
-    {# TODO: Use sidebar-toc #}
-    {% include 'partials/sidebar.html' %}
+{# TODO: Use sidebar-toc #}
+{% include 'partials/sidebar.html' %}
 {% endblock %}
 
 {% block content %}
