@@ -210,14 +210,11 @@ STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
 )
 
-SASS_PATH = 'make css'
-
 COMPRESS_OUTPUT_DIR = ''  # Compress to '/static/{css,js}/'
 COMPRESS_PRECOMPILERS = (
     (
         'text/x-scss',
-        '{} include={} infile={{infile}} outfile={{outfile}}'.format(
-            SASS_PATH,
+        'sass -I {} --no-source-map {{infile}} {{outfile}}'.format(
             NODE_MODULES_PATH,
         )
     ),
