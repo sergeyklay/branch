@@ -57,6 +57,8 @@ class RichTextField(forms.CharField):
             'abbr',
             'blockquote',
             'code',
+            'pre',
+            'span',
             'header',
             'footer',
             'img',
