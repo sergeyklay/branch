@@ -8,14 +8,13 @@
     {% endif %}
 {% endblock %}
 
-{% block canonical_url %}
-    {% include 'partials/canonical-url.html' with resource_url=page.get_absolute_url %}
-{% endblock %}
-
-{% block dc_metadata %}
-    {% include 'partials/dc-metadata.html' with resource_url=page.get_absolute_url %}
-    <meta property="dc:date" content="{{ page.published_at|date:"Y.m.d H:i:s" }}">
-{% endblock %}
+{% with resource_url=page.get_absolute_url %}
+    {% block canonical_url %}{{ block.super }}{% endblock %}
+    {% block dc_metadata %}
+        {{ block.super }}
+        <meta property="dc:date" content="{{ page.published_at|date:"Y.m.d H:i:s" }}">
+    {% endblock %}
+{% endwith %}
 
 {% block page_content %}
     {{ page.body|safe }}

@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
 
-{% load static %}
+{% load static i18n %}
+
+{% block page_license %}
+    <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.{{ LANGUAGE_CODE|slice:'0:2'|join:'' }}">
+{% endblock %}
 
 {% block page_css %}
-<link rel="stylesheet" href="{% static 'prismjs/themes/prism.css' %}">
-<link rel="stylesheet" href="{% static 'css/prism-custom.css' %}">
+    <link rel="stylesheet" href="{% static 'prismjs/themes/prism.css' %}">
+    <link rel="stylesheet" href="{% static 'css/prism-custom.css' %}">
 {% endblock %}
