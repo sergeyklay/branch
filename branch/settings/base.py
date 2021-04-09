@@ -114,7 +114,8 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'apps.website.context_processors.app_settings',
                 'branch.context_processors.base_url',
-                'branch.context_processors.pages',
+                'apps.pages.context_processors.pages',
+                'branch.context_processors.locale',
             ],
         },
     },
@@ -180,8 +181,8 @@ LANGUAGE_CODE = 'en-us'
 LANGUAGE_COOKIE_NAME = 'branch_language'
 LANGUAGES = (
     ('en-us', _('English')),
-    ('uk', _('Ukrainian')),
-    ('ru', _('Russian')),
+    ('uk-ua', _('Ukrainian')),
+    ('ru-ru', _('Russian')),
 )
 
 TIME_ZONE = 'UTC'

@@ -3,29 +3,38 @@
 {% load i18n static %}
 
 {% block post_schema %}
-<script type="application/ld+json">
-    {% include 'blog/partials/page-schema.json' with page=post featured_image=post.featured_image %}
-</script>
+    <script type="application/ld+json">
+        {# TODO: Do not hardcode about_url #}
+        {% include 'blog/partials/page-schema.json' with page=post featured_image=post.featured_image about_url='/pages/about.html' %}
+    </script>
 {% endblock %}
 
 {% block page_meta %}
-{% if post.no_index %}
-<meta name="robots" content="noindex, nofollow">
-{% endif %}
+    {% if post.no_index %}
+        <meta name="robots" content="noindex, nofollow">
+    {% endif %}
 {% endblock %}
 
-{% block canonical_url %}
-{% include 'partials/canonical-url.html' with resource_url=post.get_absolute_url %}
-{% endblock %}
+{% with resource_url=post.get_absolute_url %}
+    {% block canonical_url %}{{ block.super }}{% endblock %}
+    {% block dc_metadata %}
+        {{ block.super }}
+        <meta property="dc:date" content="{{ post.published_at|date:"Y.m.d H:i:s" }}">
+    {% endblock %}
+{% endwith %}
 
-{% block dc_metadata %}
-{% include 'partials/dc-metadata.html' with resource_url=post.get_absolute_url %}
-<meta property="dc:date" content="{{ post.published_at|date:"Y.m.d H:i:s" }}">
+{% block og_metadata %}
+    {% with resource_url=post.get_absolute_url %}
+        {{ block.super }}
+        {% if post.featured_image %}
+            <meta property="og:image" content="{{ post.featured_image.url }}">
+        {% endif %}
+    {% endwith %}
 {% endblock %}
 
 {% block sidebar %}
-{# TODO: Use sidebar-toc #}
-{% include 'partials/sidebar.html' %}
+    {# TODO: Use sidebar-toc #}
+    {% include 'partials/sidebar.html' %}
 {% endblock %}
 
 {% block post_content %}

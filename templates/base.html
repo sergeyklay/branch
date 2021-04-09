@@ -1,6 +1,6 @@
 {% load i18n static compress %}
 <!doctype html>
-<html lang="{{ LANGUAGE_CODE }}">
+<html lang="{{ LANGUAGE_CODE|slice:'0:2'|join:'' }}">
 
 <head prefix="og: http://ogp.me/ns#; dc: http://purl.org/dc/terms/#">
     <!-- Required Meta Tags Always Come First -->
@@ -13,44 +13,46 @@
     <meta name="generator" content="Branch">
 
     {% block page_description %}
-    {% include 'partials/page-description.html' %}
+        {% include 'partials/page-description.html' %}
     {% endblock %}
 
     {% block page_keywords %}
-    {% include 'partials/page-keywords.html' %}
+        {% include 'partials/page-keywords.html' %}
     {% endblock %}
 
     {% block page_meta %}{% endblock %}
 
     {% block page_rating %}
-    <meta name="rating" content="General">
+        <meta name="rating" content="General">
     {% endblock %}
 
-    {% block page_license %}
-    <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.{{ LANGUAGE_CODE|slice:'0:2'|join:'' }}">
-    {% endblock %}
+    {% block page_license %}{% endblock %}
 
+    <!-- Canonical link to help search engines -->
     {% block canonical_url %}
-    {% include 'partials/canonical-url.html' %}
+        {% include 'partials/canonical-url.html' %}
     {% endblock %}
 
     <!-- Dublin Core metadata for Zotero -->
     {% block dc_metadata %}
-    {% include 'partials/dc-metadata.html' %}
+        {% include 'partials/dc-metadata.html' %}
+    {% endblock %}
+
+    <!-- Open Graph metadata -->
+    {% block og_metadata %}
+        {% include 'partials/og-metadata.html' %}
     {% endblock %}
 
     <!-- CSS links -->
     {% compress css %}
-    <link rel="stylesheet" type="text/x-scss" href="{% static 'css/style.scss' %}">
+        <link rel="stylesheet" type="text/x-scss" href="{% static 'css/style.scss' %}">
     {% endcompress %}
     {% block page_css %}{% endblock %}
 
     <!-- Head scripts -->
-    {% if debug %}
-    <script src="{% static 'jquery/dist/jquery.js' %}"></script>
-    {% else %}
-    <script src="{% static 'jquery/dist/jquery.min.js' %}"></script>
-    {% endif %}
+    {% with ext=debug|yesno:'.js,.min.js' %}
+        <script src="{% static 'jquery/dist/jquery' %}{{ ext }}"></script>
+    {% endwith %}
 </head>
 
 {# red, orange, magenta, cyan, blue, brown #}
@@ -65,7 +67,7 @@
         <header class="masthead">
             <div class="container">
                 <h3 class="masthead-title">
-                    <a href="{{ BASE_URL }}" title="{% trans 'Main page' %}">
+                    <a href="{{ BASE_URL }}" title="{% trans 'Go to main page' %}">
                         {{ site_title|default:'My Blog' }}
                     </a>
                     <br><small>{{ site_tagline }}</small>

@@ -15,12 +15,12 @@
 
 """Common context processors."""
 
-from apps.pages.models import Page
+from django.conf import settings
+from django.utils.translation import get_language, to_locale
 
 
 def base_url(request):
     """Return a BASE_URL template context for the current request."""
-    from django.conf import settings
 
     if getattr(settings, 'BASE_URL', None):
         return {'BASE_URL': settings.BASE_URL}
@@ -29,6 +29,19 @@ def base_url(request):
     return {'BASE_URL': scheme + request.get_host()}
 
 
-def pages(_):
-    """Return Page queryset to use in all templates."""
-    return {'pages': Page.published.all()}
+def locale(_):
+    """Return current resource locale as well as all alternate locales."""
+    current_lang = get_language()
+    current_locale = to_locale(current_lang)
+
+    context = {'LOCALE': current_locale}
+    locales = []
+
+    for lang in getattr(settings, 'LANGUAGES', []):
+        if len(lang) == 0 or lang[0] == current_lang:
+            continue
+        locales.append(to_locale(lang[0]))
+
+    context['ALT_LOCALES'] = locales
+
+    return context
