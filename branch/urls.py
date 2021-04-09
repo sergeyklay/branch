@@ -38,6 +38,7 @@ from .utils import admin_path
 urlpatterns = [
     path('', include('apps.blog.urls', namespace='blog')),
     path('', include('apps.telegraph.urls', namespace='telegraph')),
+    path('', include('apps.pages.urls', namespace='pages')),
     path(f'{admin_path()}/', admin.site.urls),
 ]
 

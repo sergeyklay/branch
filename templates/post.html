@@ -1,0 +1,9 @@
+{% extends 'post-base.html' %}
+
+{% block page_title %}{{ page_title }} - {{ block.super }}{% endblock %}
+
+{% block content %}
+    <article class="post" role="document">
+        {% block post_content %}{% endblock %}
+    </article>
+{% endblock %}

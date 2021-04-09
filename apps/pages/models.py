@@ -13,22 +13,25 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-"""Common context processors."""
+"""Pages models."""
 
-from apps.pages.models import Page
+from django.urls import reverse
+from django.utils.translation import gettext_lazy as _
 
-
-def base_url(request):
-    """Return a BASE_URL template context for the current request."""
-    from django.conf import settings
-
-    if getattr(settings, 'BASE_URL', None):
-        return {'BASE_URL': settings.BASE_URL}
-
-    scheme = 'https://' if request.is_secure() else 'http://'
-    return {'BASE_URL': scheme + request.get_host()}
+from branch.models import AbstractPage
 
 
-def pages(_):
-    """Return Page queryset to use in all templates."""
-    return {'pages': Page.published.all()}
+class Page(AbstractPage):
+    """Page model class."""
+
+    class Meta:
+        """Page model metadata class."""
+
+        ordering = ('title',)
+        verbose_name = _('Page')
+        verbose_name_plural = _('Pages')
+
+    def get_absolute_url(self):
+        return reverse('pages:page_view', args=[
+            self.slug,
+        ])

@@ -1,29 +1,18 @@
-{% extends 'base.html' %}
+{% extends 'post-list.html' %}
 
-{% load i18n static %}
+{% load i18n %}
 
-{% block page_css %}
-<link rel="stylesheet" href="{% static 'prismjs/themes/prism.css' %}">
-<link rel="stylesheet" href="{% static 'css/prism-custom.css' %}">
-{% endblock %}
+{% block posts_list %}
+    <h1 class="page-title">{% trans 'Blog' %}</h1>
 
-{% block sidebar %}
-{% include 'partials/sidebar.html' %}
-{% endblock %}
+    <div class="blog-list">
+        {% for post in posts %}
+            {% include 'blog/partials/post-teaser.html' with post=post %}
+        {% endfor %}
 
-{% block content %}
-    <div class="articles">
-        <h1 class="page-title">{% trans 'Blog' %}</h1>
-
-        <div class="blog-list">
-            {% for post in posts %}
-                {% include 'blog/partials/post-teaser.html' with post=post %}
-            {% endfor %}
-
-            {% if page_obj.paginator.num_pages > 1 %}
-                <div class="divider"></div>
-                {% include 'blog/partials/pagination.html' with page=page_obj %}
-            {% endif %}
-        </div>
+        {% if page_obj.paginator.num_pages > 1 %}
+            <div class="divider"></div>
+            {% include 'blog/partials/pagination.html' with page=page_obj %}
+        {% endif %}
     </div>
 {% endblock %}
