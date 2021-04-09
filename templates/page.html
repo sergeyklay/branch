@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block page_title %}{{ page_title }} - {{ block.super }}{% endblock %}
+
+{% block sidebar %}
+    {% include 'partials/sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+    <article class="page">
+        {% block page_content %}{% endblock %}
+    </article>
+{% endblock %}

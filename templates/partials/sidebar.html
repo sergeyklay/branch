@@ -14,13 +14,15 @@
         <a class="sidebar-nav-item" href="{% url 'blog:post_list' %}">
             {% trans 'Blog' %}
         </a>
-        <a class="sidebar-nav-item" href="/about.html">
-            {# TODO: Implement me #}
-            {% trans 'About me' %}
-        </a>
         <a class="sidebar-nav-item" href="{% url 'telegraph:contact_form' %}">
             {% trans 'Contact Form' %}
         </a>
+        {% for p in pages %}
+            <a class="sidebar-nav-item" href="{{ p.get_absolute_url }}">
+                {{ p.title }}
+            </a>
+        {% endfor %}
+
         <a class="sidebar-nav-item" href="/search.html">
             {# TODO: Implement me #}
             {% trans 'Search' %}

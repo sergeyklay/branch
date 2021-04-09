@@ -13,22 +13,23 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-"""Common context processors."""
-
-from apps.pages.models import Page
+from django.db import migrations, models
 
 
-def base_url(request):
-    """Return a BASE_URL template context for the current request."""
-    from django.conf import settings
+class Migration(migrations.Migration):
 
-    if getattr(settings, 'BASE_URL', None):
-        return {'BASE_URL': settings.BASE_URL}
+    dependencies = [
+        ('blog', '0005_auto_20210406_0920'),
+    ]
 
-    scheme = 'https://' if request.is_secure() else 'http://'
-    return {'BASE_URL': scheme + request.get_host()}
-
-
-def pages(_):
-    """Return Page queryset to use in all templates."""
-    return {'pages': Page.published.all()}
+    operations = [
+        migrations.AlterField(
+            model_name='post',
+            name='no_index',
+            field=models.BooleanField(
+                default=False,
+                help_text='Prevent this page from appearing in search index',
+                verbose_name='Block search indexing',
+            ),
+        ),
+    ]

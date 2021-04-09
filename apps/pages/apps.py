@@ -13,22 +13,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-"""Common context processors."""
+"""Pages application module."""
 
-from apps.pages.models import Page
-
-
-def base_url(request):
-    """Return a BASE_URL template context for the current request."""
-    from django.conf import settings
-
-    if getattr(settings, 'BASE_URL', None):
-        return {'BASE_URL': settings.BASE_URL}
-
-    scheme = 'https://' if request.is_secure() else 'http://'
-    return {'BASE_URL': scheme + request.get_host()}
+from django.apps import AppConfig
 
 
-def pages(_):
-    """Return Page queryset to use in all templates."""
-    return {'pages': Page.published.all()}
+class PagesConfig(AppConfig):
+    """Class representing pages application and its configuration."""
+
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'apps.pages'

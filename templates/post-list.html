@@ -1,0 +1,11 @@
+{% extends 'post-base.html' %}
+
+{% block sidebar %}
+{% include 'partials/sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+    <article class="articles">
+        {% block posts_list %}{% endblock %}
+    </article>
+{% endblock %}

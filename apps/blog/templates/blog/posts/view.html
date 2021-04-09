@@ -1,8 +1,6 @@
-{% extends 'base.html' %}
+{% extends 'post.html' %}
 
 {% load i18n static %}
-
-{% block page_title %}{{ page_title }} - {{ block.super }}{% endblock %}
 
 {% block post_schema %}
 <script type="application/ld+json">
@@ -25,30 +23,23 @@
 <meta property="dc:date" content="{{ post.published_at|date:"Y.m.d H:i:s" }}">
 {% endblock %}
 
-{% block page_css %}
-<link rel="stylesheet" href="{% static 'prismjs/themes/prism.css' %}">
-<link rel="stylesheet" href="{% static 'css/prism-custom.css' %}">
-{% endblock %}
-
 {% block sidebar %}
 {# TODO: Use sidebar-toc #}
 {% include 'partials/sidebar.html' %}
 {% endblock %}
 
-{% block content %}
-    <article class="post" role="document">
-        <header>
-            <h1 class="text-title">{{ post.title }}</h1>
-        </header>
+{% block post_content %}
+    <header>
+        <h1 class="text-title">{{ post.title }}</h1>
+    </header>
 
-        <p class="byline">
-            <time datetime="{{ post.published_at|date:"Y-m-d\TH:i:sO" }}">
-                {{ post.published_at|date:"Y.m.d" }}
-            </time>
-        </p>
+    <p class="byline">
+        <time datetime="{{ post.published_at|date:"Y-m-d\TH:i:sO" }}">
+            {{ post.published_at|date:"Y.m.d" }}
+        </time>
+    </p>
 
-        <div class="post-body">
-            {{ post.body|safe }}
-        </div>
-    </article>
+    <div class="post-body">
+        {{ post.body|safe }}
+    </div>
 {% endblock %}

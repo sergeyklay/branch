@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'page.html' %}
 
 {% load i18n %}
 
@@ -8,7 +8,7 @@
     {% include 'partials/sidebar.html' %}
 {% endblock %}
 
-{% block content %}
+{% block page_content %}
     <h1 class="page-title">
         {% if sent %}{% trans 'E-mail successfully sent' %}{% else %}{{ page_title }}{% endif %}
     </h1>

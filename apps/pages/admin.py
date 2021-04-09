@@ -13,92 +13,64 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-"""Representation of blog models in the admin interface."""
+"""Representation of pages models in the admin interface."""
 
 from django import forms
 from django.contrib import admin
+from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 
 from branch.forms import RichTextField
 from branch.utils import RichTextAdminMedia
-from .models import Post
+from .models import Page
 
 
-class PostForm(forms.ModelForm):
-    """Blog post form."""
+class PagesForm(forms.ModelForm):
+    """Pages post form."""
 
     body = RichTextField(label=_('Content'))
 
     class Meta:
         """Post form metadata class."""
 
-        model = Post
+        model = Page
         fields = '__all__'
 
 
-@admin.register(Post)
-class PostAdmin(admin.ModelAdmin):
-    """Class to manage blog posts."""
+@admin.register(Page)
+class PageAdmin(admin.ModelAdmin):
+    """Class to manage pages."""
 
-    form = PostForm
+    form = PagesForm
 
     list_display = (
         'title',
-        'slug',
-        'author',
-        'published_at',
+        'slug_link',
+        'updated_at',
         'status',
     )
 
     list_filter = (
         'status',
-        'created_at',
-        'published_at',
-        'author',
-    )
-
-    search_fields = (
-        'title',
-        'excerpt',
-        'body',
+        'updated_at',
     )
 
     prepopulated_fields = {
         'slug': ('title',),
     }
 
-    raw_id_fields = (
-        'author',
+    search_fields = (
+        'title',
+        'body',
     )
 
-    date_hierarchy = 'published_at'
-
-    ordering = (
-        'status',
-        '-published_at',
-    )
-
-    fieldsets = (
-        (_('General content'), {
-            'fields': (
-                'title',
-                'slug',
-                'featured_image',
-                'excerpt',
-                'body',
-                'author',
-                'status',
-                'published_at',
-            ),
-        }),
-        (_('SEO'), {
-            'fields': (
-                'meta_title',
-                'meta_description',
-                'no_index',
-            )
-        }),
-    )
+    def slug_link(self, obj):
+        """Resolve link to website page."""
+        url = obj.get_absolute_url()
+        return mark_safe(f'<a href="{url}" target="_blank">{url}</a>')
+    slug_link.allow_tags = True
+    slug_link.short_description = _('URL')
+    slug_link.admin_order_field = 'slug'
 
     class Media(RichTextAdminMedia):
-        """PostAdmin metadata class."""
+        """PageAdmin metadata class."""

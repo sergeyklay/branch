@@ -37,6 +37,28 @@ ALLOWED_ATTRS = (
 )
 
 
+def highlight_js():
+    """Perform manipulation of asset paths to enable highlight."""
+    components = (
+        'abnf', 'antlr4', 'apacheconf',
+        'bash', 'bison', 'bnf',
+        'c', 'cpp',
+        'diff',
+        'ebnf',
+        'python',
+    )
+
+    trumbowyg_plugins = 'trumbowyg/dist/plugins'
+    prefix = 'prismjs/components/prism'
+    suffix = f"{'' if settings.DEBUG else '.min'}"
+
+    trumbowyg_base = f'{trumbowyg_plugins}/highlight/trumbowyg.highlight'
+    trumbowyg = f"{trumbowyg_base}{'' if settings.DEBUG else '.min'}.js"
+
+    result = map(lambda c: f'{prefix}-{c}{suffix}.js', components)
+    return ['prismjs/prism.js'] + list(result) + [trumbowyg]
+
+
 def content_sanitize(raw_text, allowed_tags=None, allowed_attrs=None):
     """
     Sanitize given text.
@@ -90,3 +112,31 @@ def admin_path():
     """Get URL part of the admin site."""
     admin = getattr(settings, 'ADMIN_SITE_URL', 'admin')
     return f"{admin.strip('/')}"
+
+
+class RichTextAdminMedia:
+    """
+    Rich text metadata class to use for posts and pages.
+
+    Setup static assets to use in WYSIWYG editor.
+    """
+
+    _suffix = '' if settings.DEBUG else '.min'
+    _tw_dist = 'trumbowyg/dist'
+    _tw_plugins = f'{_tw_dist}/plugins'
+
+    css = {
+        'all': (
+            'prismjs/themes/prism.css',
+            f'{_tw_dist}/ui/trumbowyg{_suffix}.css',
+            f'{_tw_plugins}/highlight/ui/trumbowyg.highlight{_suffix}.css',
+        ),
+    }
+
+    js = [
+        'admin/js/jquery.init.js',
+        'js/shared.js',
+        f'{_tw_dist}/trumbowyg{_suffix}.js',
+        f'{_tw_plugins}/upload/trumbowyg.upload{_suffix}.js',
+        'admin/js/richtext.editor.js',
+    ] + highlight_js()

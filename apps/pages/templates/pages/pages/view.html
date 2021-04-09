@@ -1,0 +1,22 @@
+{% extends 'page.html' %}
+
+{% load i18n static %}
+
+{% block page_meta %}
+    {% if page.no_index %}
+        <meta name="robots" content="noindex, nofollow">
+    {% endif %}
+{% endblock %}
+
+{% block canonical_url %}
+    {% include 'partials/canonical-url.html' with resource_url=page.get_absolute_url %}
+{% endblock %}
+
+{% block dc_metadata %}
+    {% include 'partials/dc-metadata.html' with resource_url=page.get_absolute_url %}
+    <meta property="dc:date" content="{{ page.published_at|date:"Y.m.d H:i:s" }}">
+{% endblock %}
+
+{% block page_content %}
+    {{ page.body|safe }}
+{% endblock %}

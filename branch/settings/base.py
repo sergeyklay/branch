@@ -83,6 +83,7 @@ LOCAL_APPS = (
     'apps.website',
     'apps.blog',
     'apps.telegraph',
+    'apps.pages',
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -113,6 +114,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'apps.website.context_processors.app_settings',
                 'branch.context_processors.base_url',
+                'branch.context_processors.pages',
             ],
         },
     },
