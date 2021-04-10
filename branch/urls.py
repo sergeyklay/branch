@@ -43,19 +43,32 @@ urlpatterns = [
 ]
 
 if settings.DEBUG:
+    from django.conf.urls.static import static
     from django.urls import re_path
     from django.views.static import serve
     import debug_toolbar
     import os
 
-    urlpatterns = [
-        # Static & media files for development environment
-        re_path(r'^static/(?P<path>.*)$', serve, {
-            'document_root': settings.STATIC_ROOT,
-        }),
-        re_path(r'^media/(?P<path>.*)$', serve, {
-            'document_root': settings.MEDIA_ROOT,
-        }),
+    # Static files for development environment
+    static_route = static(
+        settings.STATIC_URL,
+        document_root=settings.STATIC_ROOT
+    )
+
+    # Media files for development environment
+    media = static(
+        settings.MEDIA_URL,
+        document_root=settings.MEDIA_ROOT
+    )
+
+    icons = [
+        # Some browsers requests for icons from the site root, despite meta
+        # tags definition.
+        re_path(
+            r'^(?P<path>favicon\.ico|apple-touch-icon.*\.png)$', serve, {
+                'document_root': f'{settings.STATIC_ROOT}/icons',
+            },
+        ),
 
         # The following action icons are hardcoded in Django source code
         #
@@ -73,6 +86,10 @@ if settings.DEBUG:
         re_path(r'^.*/(?P<path>img/icon-.*.svg)$', serve, {
             'document_root': os.path.join(settings.STATIC_ROOT, 'admin'),
         }),
+    ]
 
+    debug = [
         path('__debug__/', include(debug_toolbar.urls))
-    ] + urlpatterns
+    ]
+
+    urlpatterns = static_route + media + icons + debug + urlpatterns
