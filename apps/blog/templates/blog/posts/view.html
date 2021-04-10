@@ -15,20 +15,22 @@
     {% endif %}
 {% endblock %}
 
-{% with resource_url=post.get_absolute_url %}
-    {% block canonical_url %}{{ block.super }}{% endblock %}
-    {% block dc_metadata %}
-        {{ block.super }}
-        <meta property="dc:date" content="{{ post.published_at|date:"Y.m.d H:i:s" }}">
-    {% endblock %}
-{% endwith %}
-
-{% block og_metadata %}
+{% block canonical_url %}
     {% with resource_url=post.get_absolute_url %}
         {{ block.super }}
-        {% if post.featured_image %}
-            <meta property="og:image" content="{{ post.featured_image.url }}">
-        {% endif %}
+    {% endwith %}
+{% endblock %}
+
+{% block dc_metadata %}
+    {% with resource_url=post.get_absolute_url %}
+        {{ block.super }}
+    {% endwith %}
+    <meta property="dc:date" content="{{ post.published_at|date:"Y.m.d H:i:s" }}">
+{% endblock %}
+
+{% block og_metadata %}
+    {% with resource_url=post.get_absolute_url featured_image=post.featured_image.url %}
+        {{ block.super }}
     {% endwith %}
 {% endblock %}
 

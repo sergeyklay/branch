@@ -42,6 +42,9 @@
     {% block og_metadata %}
         {% include 'partials/og-metadata.html' %}
     {% endblock %}
+    {% block og_page_type %}
+        <meta property="og:type" content="website">
+    {% endblock %}
 
     <!-- CSS links -->
     {% compress css %}

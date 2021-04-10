@@ -1,17 +1,18 @@
-{% if page_title %}
+{% if page_title and page_title.strip %}
     <meta property="dc:title" content="{{ page_title }}">
 {% else %}
     <meta property="dc:title" content="{{ site_title|default:'Branch' }}">
 {% endif %}
 
-{% if page_author %}
+{% if page_author and page_author.strip %}
     <meta property="dc:creator" content="{{ page_author }}">
     <meta property="dc:contributor" content="{{ page_author }}">
 {% else %}
     <meta property="dc:creator" content="{{ site_title|default:'Branch' }}">
 {% endif %}
 
-{% if page_rights %}
+{% if page_rights and page_rights.strip %}
+    {# TODO: Add to Page model property #}
     <meta property="dc:rights" content="{{ page_rights }}">
 {% endif %}
 

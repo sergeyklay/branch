@@ -2,8 +2,12 @@
 
 {% block page_title %}{{ page_title }} - {{ block.super }}{% endblock %}
 
+{% block og_page_type %}
+    <meta property="og:type" content="article">
+{% endblock %}
+
 {% block content %}
-    <article class="post" role="document">
+    <article class="{{ page_type|default:'post' }}" role="document">
         {% block post_content %}{% endblock %}
     </article>
 {% endblock %}

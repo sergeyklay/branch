@@ -36,6 +36,12 @@ class AbstractPage(models.Model):
         ('published', _('Published')),
     )
 
+    LOCALES = (
+        ('en_US', _('English')),
+        ('ru_RU', _('Russian')),
+        ('uk_UA', _('Ukrainian')),
+    )
+
     title = models.CharField(
         max_length=250,
         verbose_name=_('Title'),
@@ -79,6 +85,14 @@ class AbstractPage(models.Model):
         choices=STATUS_CHOICES,
         default='draft',
         verbose_name=_('Status'),
+    )
+
+    locale = models.CharField(
+        max_length=5,
+        choices=LOCALES,
+        default='en_US',
+        verbose_name=_('Locale'),
+        help_text=_('The locale of the resource.'),
     )
 
     meta_title = models.CharField(
