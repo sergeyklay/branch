@@ -43,23 +43,24 @@ urlpatterns = [
 ]
 
 if settings.DEBUG:
-    from django.conf.urls.static import static
     from django.urls import re_path
     from django.views.static import serve
     import debug_toolbar
     import os
 
-    # Static files for development environment
-    static_route = static(
-        settings.STATIC_URL,
-        document_root=settings.STATIC_ROOT
-    )
-
-    # Media files for development environment
-    media = static(
-        settings.MEDIA_URL,
-        document_root=settings.MEDIA_ROOT
-    )
+    # Static & media files for development environment
+    static_routes = [
+        re_path(
+            r'^%s(?P<path>.*)$' % settings.STATIC_URL.lstrip('/'), serve, {
+                'document_root': settings.STATIC_ROOT
+            }
+        ),
+        re_path(
+            r'^%s(?P<path>.*)$' % settings.MEDIA_URL.lstrip('/'), serve, {
+                'document_root': settings.MEDIA_ROOT
+            }
+        )
+    ]
 
     icons = [
         # Some browsers requests for icons from the site root, despite meta
@@ -92,4 +93,6 @@ if settings.DEBUG:
         path('__debug__/', include(debug_toolbar.urls))
     ]
 
-    urlpatterns = static_route + media + icons + debug + urlpatterns
+    urlpatterns = static_routes + icons + debug + urlpatterns
+
+handler404 = 'apps.website.views.error_404'

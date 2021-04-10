@@ -1,5 +1,6 @@
 -r requirements.in
 django-debug-toolbar
+django-extensions
 flake8
 flake8-import-order
 pylint
