@@ -74,6 +74,6 @@ class PostListView(ListView):
 
     def get_paginate_by(self, queryset):
         """
-        Get the number of items to paginate by, or ``None`` for no pagination.
+        Get the number of items to paginate by.
         """
         return Setting.website.get('pagination_per_page', 5)
