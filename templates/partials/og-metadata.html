@@ -1,7 +1,22 @@
+{% load static %}
+
 <meta property="og:site_name" content="{{ site_title }}">
-<meta property="og:title" content="{{ page_title }}">
+
 <meta property="og:url" content="{{ BASE_URL }}{{ resource_url|default:request.path }}">
-<meta property="og:locale" content="{{ LOCALE }}">
-{% for alt in ALT_LOCALES %}
-    <meta property="og:locale:alternate" content="{{ alt }}">
-{% endfor %}
+<meta property="og:locale" content="{{ page_locale|default:LOCALE }}">
+
+{% if featured_image and featured_image.strip %}
+    <meta property="og:image" content="{{ BASE_URL }}{{ featured_image }}">
+{% else%}
+    <meta property="og:image" content="{{ BASE_URL }}{% static 'img/blog-logo.jpg' %}">
+    <meta property="og:image:width" content="400">
+    <meta property="og:image:height" content="400">
+{% endif %}
+
+{% if page_title and page_title.strip %}
+    <meta property="og:title" content="{{ page_title }}">
+    <meta property="og:image:alt" content="{{ page_title }}">
+{% else %}
+    <meta property="og:title" content="{{ site_title|default:'Branch' }}">
+    <meta property="og:image:alt" content="{{ site_title|default:'Branch' }}">
+{% endif %}

@@ -64,6 +64,26 @@ class PageAdmin(admin.ModelAdmin):
         'body',
     )
 
+    fieldsets = (
+        (_('General content'), {
+            'fields': (
+                'title',
+                'slug',
+                'body',
+                'status',
+                'locale',
+                'published_at',
+            ),
+        }),
+        (_('SEO'), {
+            'fields': (
+                'meta_title',
+                'meta_description',
+                'no_index',
+            )
+        }),
+    )
+
     def slug_link(self, obj):
         """Resolve link to website page."""
         url = obj.get_absolute_url()

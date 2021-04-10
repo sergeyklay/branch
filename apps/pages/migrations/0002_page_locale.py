@@ -13,21 +13,28 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-"""Common context processors."""
-
-from django.conf import settings
-from django.utils.translation import get_language, to_locale
+from django.db import migrations, models
 
 
-def base_url(request):
-    """Return a BASE_URL template context for the current request."""
-    if getattr(settings, 'BASE_URL', None):
-        return {'BASE_URL': settings.BASE_URL}
+class Migration(migrations.Migration):
 
-    scheme = 'https://' if request.is_secure() else 'http://'
-    return {'BASE_URL': scheme + request.get_host()}
+    dependencies = [
+        ('pages', '0001_initial'),
+    ]
 
-
-def locale(_):
-    """Return current resource locale."""
-    return {'LOCALE': to_locale(get_language())}
+    operations = [
+        migrations.AddField(
+            model_name='page',
+            name='locale',
+            field=models.CharField(
+                choices=[
+                    ('en_US', 'English'),
+                    ('ru_RU', 'Russian'),
+                    ('uk_UA', 'Ukrainian'),
+                ],
+                default='en_US',
+                help_text='The locale of the resource.',
+                max_length=5, verbose_name='Locale',
+            ),
+        ),
+    ]

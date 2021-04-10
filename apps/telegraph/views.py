@@ -32,10 +32,16 @@ class ContactFormView(PageDetailsMixin, FormView):
 
     template_name = 'telegraph/contact.html'
     form_class = ContactMessageForm
-    description = _('Contact Form')
-    title = _('Contact Form')
     success_url = reverse_lazy('telegraph:contact_form')
     sent = False
+
+    @property
+    def title(self):
+        return _('Contact Form')
+
+    @property
+    def description(self):
+        return _('Contact Form')
 
     def form_valid(self, form):
         """If the form is valid, render 'template_name' with a context."""

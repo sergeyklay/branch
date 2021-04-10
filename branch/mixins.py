@@ -19,36 +19,48 @@
 class PageDetailsMixin:
     """Pass a defined title to context"""
 
-    description = None
-    title = None
-    author = None
+    @property
+    def title(self):
+        """Get resource title."""
+        return None
 
-    def get_title(self):
-        """Get object title."""
-        return self.title
+    @property
+    def description(self):
+        """Get resource description."""
+        return None
 
-    def get_description(self):
-        """Get description title."""
-        return self.description
+    @property
+    def author(self):
+        """Get resource author."""
+        return None
 
-    def get_author(self):
-        """Get object author."""
-        return self.author
+    @property
+    def locale(self):
+        """Get resource locale."""
+        return None
+
+    @property
+    def type(self):
+        """Get resource type."""
+        return None
 
     def get_context_data(self, **kwargs):
         """Get object's context data to use in templates."""
         context = super().get_context_data(**kwargs)
 
-        title = self.get_title()
-        if title:
-            context['page_title'] = title
+        if self.title:
+            context['page_title'] = self.title
 
-        description = self.get_description()
-        if description:
-            context['page_description'] = description
+        if self.description:
+            context['page_description'] = self.description
 
-        author = self.get_author()
-        if author:
-            context['page_author'] = author
+        if self.author:
+            context['page_author'] = self.author
+
+        if self.locale:
+            context['page_locale'] = self.locale
+
+        if self.type:
+            context['page_type'] = self.type
 
         return context

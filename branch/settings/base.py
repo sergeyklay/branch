@@ -181,8 +181,8 @@ LANGUAGE_CODE = 'en-us'
 LANGUAGE_COOKIE_NAME = 'branch_language'
 LANGUAGES = (
     ('en-us', _('English')),
-    ('uk-ua', _('Ukrainian')),
-    ('ru-ru', _('Russian')),
+    ('uk', _('Ukrainian')),
+    ('ru', _('Russian')),
 )
 
 TIME_ZONE = 'UTC'

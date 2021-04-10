@@ -1,0 +1,21 @@
+{% load static %}
+
+<meta name="twitter:card" content="summary_large_image">
+
+{% if page_title and page_title.strip %}
+    <meta name="twitter:title" content="{{ page_title }}">
+{% else %}
+    <meta name="twitter:title" content="{{ site_title|default:'Branch' }}">
+{% endif %}
+
+{% if page_description and page_description.strip %}
+    <meta name="twitter:description" content="{{ page_description|linebreaks|striptags|truncatechars:150 }}">
+{% else %}
+    <meta name="twitter:description" content="{{ site_description|linebreaks|striptags|truncatechars:150 }}">
+{% endif %}
+
+{% if featured_image and featured_image.strip %}
+    <meta name="twitter:image:src" content="{{ BASE_URL }}{{ featured_image }}">
+{% else%}
+    <meta name="twitter:image:src" content="{{ BASE_URL }}{% static 'img/blog-logo.jpg' %}">
+{% endif %}

@@ -32,26 +32,37 @@ class PostDetailView(PageDetailsMixin, DateDetailView):
     template_name = 'blog/posts/view.html'
     queryset = Post.published.all()
 
-    def get_title(self):
-        if getattr(self.object, 'meta_title', None):
+    @property
+    def title(self):
+        if self.object.meta_title:
             return self.object.meta_title
 
-        if getattr(self.object, 'title', None):
+        if self.object.title:
             return self.object.title
 
         return None
 
-    def get_description(self):
-        if getattr(self.object, 'meta_description', None):
+    @property
+    def description(self):
+        if self.object.meta_description:
             return self.object.meta_description
 
-        if getattr(self.object, 'excerpt', None):
+        if self.object.excerpt:
             return self.object.excerpt
 
         return None
 
-    def get_author(self):
+    @property
+    def author(self):
         return self.object.author.get_full_name()
+
+    @property
+    def locale(self):
+        return self.object.locale
+
+    @property
+    def type(self):
+        return self.object.type
 
 
 class PostListView(ListView):

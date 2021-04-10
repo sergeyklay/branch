@@ -29,17 +29,23 @@ class PageDetailView(PageDetailsMixin, DetailView):
     template_name = 'pages/pages/view.html'
     queryset = Page.published.all()
 
-    def get_title(self):
-        if getattr(self.object, 'meta_title', None):
+    @property
+    def title(self):
+        if self.object.meta_title:
             return self.object.meta_title
 
-        if getattr(self.object, 'title', None):
+        if self.object.title:
             return self.object.title
 
         return None
 
-    def get_description(self):
-        if getattr(self.object, 'meta_description', None):
+    @property
+    def description(self):
+        if self.object.meta_description:
             return self.object.meta_description
 
         return None
+
+    @property
+    def locale(self):
+        return self.object.locale

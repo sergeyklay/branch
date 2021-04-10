@@ -88,6 +88,8 @@ class PostAdmin(admin.ModelAdmin):
                 'body',
                 'author',
                 'status',
+                'locale',
+                'type',
                 'published_at',
             ),
         }),

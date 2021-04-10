@@ -35,6 +35,20 @@ class Author(User):
 class Post(AbstractPage):
     """Blog posts model class."""
 
+    TYPES = (
+        ('drama', _('Drama')),
+        ('narrative', _('Narrative')),
+        ('poem poetry', _('Poem')),
+        ('post', _('Post')),
+    )
+
+    type = models.CharField(
+        max_length=12,
+        choices=TYPES,
+        default='post',
+        verbose_name=_('Resource type'),
+    )
+
     featured_image = models.ImageField(
         null=True,
         blank=True,
