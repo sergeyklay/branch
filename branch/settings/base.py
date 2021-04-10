@@ -116,6 +116,9 @@ TEMPLATES = [
                 'apps.pages.context_processors.pages',
                 'branch.context_processors.locale',
             ],
+            'libraries': {
+                'urlparams': 'branch.templatetags.urlparams',
+            },
         },
     },
 ]
