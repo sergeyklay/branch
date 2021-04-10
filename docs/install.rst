@@ -93,10 +93,14 @@ Copy static files
 
    $ make static
 
+   # Also compile and compress css for production server:
+   $ python manage.py compress
+
 
 Run development server
 ----------------------
 
 .. code-block:: shell
 
+   # For local development only:
    $ make up
