@@ -82,7 +82,6 @@ Test gunicorn socket
    $ systemctl status branch.socket
    $ file /run/branch.sock
    $ journalctl -u branch.socket
-   $ systemctl status branch
 
    # Change localhost to address from ALLOWED_HOSTS
    $ curl --unix-socket /run/branch.sock localhost
@@ -93,4 +92,5 @@ Test gunicorn service
 
 .. code-block:: shell
 
-   $ journalctl -u branch
+   $ systemctl status branch.service
+   $ journalctl -u branch.service
