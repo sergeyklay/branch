@@ -20,7 +20,7 @@
 {% endblock %}
 
 {% block og_metadata %}
-    {% with resource_url=post.get_absolute_url featured_image=post.featured_image.url %}
+    {% with resource_url=post.get_absolute_url %}
         {{ block.super }}
     {% endwith %}
 {% endblock %}

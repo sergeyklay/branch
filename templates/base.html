@@ -46,6 +46,11 @@
         <meta property="og:type" content="website">
     {% endblock %}
 
+    <!-- Twitter Card -->
+    {% block twitter_metadata %}
+        {% include 'partials/twitter-metadata.html' %}
+    {% endblock %}
+
     <!-- CSS links -->
     {% compress css %}
         <link rel="stylesheet" type="text/x-scss" href="{% static 'css/style.scss' %}">

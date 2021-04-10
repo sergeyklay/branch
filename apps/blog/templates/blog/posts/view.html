@@ -34,6 +34,12 @@
     {% endwith %}
 {% endblock %}
 
+{% block twitter_metadata %}
+    {% with featured_image=post.featured_image.url %}
+        {{ block.super }}
+    {% endwith %}
+{% endblock %}
+
 {% block sidebar %}
     {# TODO: Use sidebar-toc #}
     {% include 'partials/sidebar.html' %}
