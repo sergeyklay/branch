@@ -25,8 +25,11 @@ DEBUG = True
 
 MESSAGE_LEVEL = message_constants.DEBUG
 
-# Debug Toolbar
-INSTALLED_APPS = INSTALLED_APPS + ('debug_toolbar',)
+INSTALLED_APPS = INSTALLED_APPS + (
+    'debug_toolbar',  # Debug Toolbar
+    'django_extensions',  # A collection of custom extensions for the Django
+)
+
 MIDDLEWARE = ('debug_toolbar.middleware.DebugToolbarMiddleware',) + MIDDLEWARE
 
 # SECURITY WARNING: define the correct hosts in production
