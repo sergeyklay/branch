@@ -74,8 +74,8 @@ DJANGO_APPS = (
 )
 
 THIRD_PARTY_APPS = (
-    # Compress JS and CSS into single cached file.
-    'compressor',
+    'django_extensions',  # A collection of custom extensions for the Django
+    'compressor',  # Compress JS and CSS into single cached file.
 )
 
 # Apps specific for this project go here.
