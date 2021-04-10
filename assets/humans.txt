@@ -1,0 +1,25 @@
+      ____  ____  ___    _   __________  __
+     / __ )/ __ \/   |  / | / / ____/ / / /
+    / __  / /_/ / /| | /  |/ / /   / /_/ /
+   / /_/ / _, _/ ___ |/ /|  / /___/ __  /
+  /_____/_/ |_/_/  |_/_/ |_/\____/_/ /_/
+
+
+CONGRATULATIONS, you found my humans.txt file!
+
+───────────────────────────────────────────────────────────────────────────────
+
+    /* TEAM */
+
+    Author: Serghei (egrep) Iakovlev
+    Contact: mail [at] serghei.blog
+    GitHub: @sergeyklay
+    From: Kyiv, Ukraine
+
+    /* SITE */
+
+    Last update: 2021-04-10
+    Language: Russian, Ukrainian, English
+    Doctype: HTML5
+    Standards: HTML5, CSS3, Open Graph protocol, Dublin Core metadata
+    Components: Django, jQuery, Ed Theme

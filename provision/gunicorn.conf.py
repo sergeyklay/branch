@@ -13,20 +13,17 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-"""
-WSGI config for branch project.
+# The socket to bind.
+bind = 'unix:/run/branch.sock'
 
-It exposes the WSGI callable as a module-level variable named ``application``.
+# Workers silent for more than this many seconds are killed and restarted.
+timeout = 60
 
-For more information on this file, see
-https://docs.djangoproject.com/en/dev/howto/deployment/wsgi/
-"""
+# The Access log file to write to.
+accesslog = '/var/log/gunicorn/branch.access.log'
 
-import os
+# The Error log file to write to.
+errorlog = '/var/log/gunicorn/branch.error.log'
 
-from django.core.wsgi import get_wsgi_application
-
-conf = os.getenv('BRANCH_ENV', 'dev').lower()
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', f'branch.settings.{conf}')
-
-application = get_wsgi_application()
+# The number of worker processes for handling requests.
+workers = 3

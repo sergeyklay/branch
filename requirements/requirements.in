@@ -1,5 +1,6 @@
+beautifulsoup4
 Django
 django-environ
 django_compressor
+gunicorn
 Pillow
-beautifulsoup4

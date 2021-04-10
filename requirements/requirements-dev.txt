@@ -6,7 +6,7 @@
 #
 asgiref==3.3.4
     # via django
-astroid==2.5.2
+astroid==2.5.3
     # via pylint
 beautifulsoup4==4.9.3
     # via -r requirements/requirements.in
@@ -30,6 +30,8 @@ flake8-import-order==0.18.1
     # via -r requirements/requirements-dev.in
 flake8==3.9.0
     # via -r requirements/requirements-dev.in
+gunicorn==20.1.0
+    # via -r requirements/requirements.in
 isort==5.8.0
     # via pylint
 lazy-object-proxy==1.6.0
