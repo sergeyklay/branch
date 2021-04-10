@@ -148,8 +148,12 @@ CLASSIFIERS = [
 
 # Dependencies that are downloaded by pip on installation and why.
 INSTALL_REQUIRES = [
-    'django>=3.2rc1',  # Our framework
+    'beautifulsoup4>=4.9.3',  # Sanitize HTML input
+    'django>=3.2',  # Our framework
     'django-environ>=0.4.5',  # Configure Django application
+    'django-compressor>=2.4',  # Compile and minify static assets
+    'gunicorn>=20.1.0',  # A Python WSGI HTTP Server
+    'pillow>=8.2.0',  # Python Imaging Library
 ]
 
 # List additional groups of dependencies here (e.g. testing dependencies).
@@ -166,6 +170,8 @@ EXTRAS_REQUIRE = {
     ],
     # Dependencies that are required to develop package
     'develop': [
+        'django-debug-toolbar>=3.2',  # Django Debug Toolbar
+        'django-extensions>=3.1.2',  # A collection of Django extensions
         'setuptools>=53.0.0',  # Build and install packages
         'wheel>=0.36.2',  # A built-package format for Python
     ]
