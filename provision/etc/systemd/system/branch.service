@@ -1,0 +1,22 @@
+[Unit]
+Description=branch daemon
+Requires=branch.socket
+After=network.target
+
+[Service]
+Type=notify
+User=www-data
+Group=www-data
+RuntimeDirectory=branch
+WorkingDirectory=/var/www/branch
+ExecStart=/var/www/branch/.venv/bin/gunicorn \
+          -c /var/www/branch/configs/gunicorn.conf.py \
+          branch.wsgi:application
+ExecReload=/bin/kill -s HUP $MAINPID
+KillMode=mixed
+TimeoutStopSec=5
+PrivateTmp=true
+Environment="BRANCH_ENV=prod"
+
+[Install]
+WantedBy=multi-user.target
