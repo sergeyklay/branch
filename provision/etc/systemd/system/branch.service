@@ -10,7 +10,7 @@ Group=www-data
 RuntimeDirectory=branch
 WorkingDirectory=/var/www/branch
 ExecStart=/var/www/branch/.venv/bin/gunicorn \
-          -c /var/www/branch/configs/gunicorn.conf.py \
+          -c /var/www/branch/provision/gunicorn.conf.py \
           branch.wsgi:application
 ExecReload=/bin/kill -s HUP $MAINPID
 KillMode=mixed
