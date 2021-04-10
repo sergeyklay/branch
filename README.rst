@@ -25,7 +25,7 @@ Project Information
 ===================
 
 The code of Branch is released under the `GNU General Public Licence version 3 <https://choosealicense.com/licenses/gpl-3.0/>`_,
-the content of my blog (this project) is licensed under the `CC-BY-4.0 <https://creativecommons.org/licenses/by/4.0>`_,
+the content of my blog is licensed under the `CC-BY-4.0 <https://creativecommons.org/licenses/by/4.0>`_,
 a modified version of `Ed <https://github.com/minicomp/ed>`_ theme that I ported from Jekyll to Django is distributed under
 the `MIT License <https://github.com/minicomp/ed/blob/bedbc4c6870174451368fc51ecccd8bad5a36bdf/LICENSE.md>`_.
 
