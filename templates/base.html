@@ -47,6 +47,10 @@
         {% include 'partials/twitter-metadata.html' %}
     {% endblock %}
 
+    {% block humans %}
+        <link type="text/plain" rel="author" href="{{ BASE_URL }}/humans.txt">
+    {% endblock %}
+
     <!-- Icons -->
     <link rel="shortcut icon" href="{% static 'icons/favicon.ico' %}">
     <link rel="icon" type="image/vnd.microsoft.icon" href="{% static 'icons/favicon.ico' %}">
