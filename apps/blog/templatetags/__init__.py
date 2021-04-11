@@ -12,26 +12,3 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
-
-"""Date to XML Schema filter."""
-
-from datetime import datetime, timezone
-
-from django import template
-
-register = template.Library()
-
-
-@register.filter(expects_localtime=True, is_safe=False)
-def date_to_xmlschema(value):
-    """
-    Format a date according to the ISO 8601 format.
-
-    Usage:
-      {% date_to_xmlschema %}
-      {{ post.published_at|date_to_xmlschema }}
-    """
-    if not isinstance(value, datetime):
-        return ''
-
-    return value.replace(tzinfo=timezone.utc, microsecond=0).isoformat()

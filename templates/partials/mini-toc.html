@@ -1,9 +1,17 @@
-{% load i18n %}
+{% load i18n blog_posts %}
 
 <h2>{% trans 'Latest publications' %}</h2>
 
 <div class="toc" role="navigation">
-    <ul class="texts">
-        {# TODO: Implement me #}
-    </ul>
+    {% show_latest_posts 5 %}
+
+    {% total_posts as total_published_posts %}
+    {% if total_published_posts > 5 %}
+        <p>
+            <a href="{% url 'blog:post_list' %}">
+                <span aria-hidden="true">&larr;</span>
+                {% trans 'All posts' %}
+            </a>
+        </p>
+    {% endif %}
 </div>

@@ -95,4 +95,5 @@ if settings.DEBUG:
 
     urlpatterns = static_routes + icons + debug + urlpatterns
 
+# TODO: Handle 5xx
 handler404 = 'apps.website.views.error_404'
