@@ -17,7 +17,6 @@
 
 import os
 
-import debug_toolbar
 from django.conf import settings
 from django.contrib import admin
 from django.contrib.sitemaps.views import sitemap
@@ -49,6 +48,8 @@ urlpatterns = [
 ]
 
 if settings.DEBUG:
+    import debug_toolbar
+
     # Static & media files for development environment
     static_routes = [
         re_path(

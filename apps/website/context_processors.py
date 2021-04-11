@@ -34,14 +34,11 @@ def app_settings(request):  # pylint: disable=unused-argument
 def base_url(request):
     """Add website base URL and its name to the context."""
     current_site = get_current_site(request)
-
     scheme = 'https://' if request.is_secure() else 'http://'
-    domain = current_site.domain or request.get_host()
-    name = current_site.name or 'Branch'
 
     return {
-        'BASE_URL': scheme + domain,
-        'SITE_NAME': gettext_lazy(name),
+        'BASE_URL': scheme + current_site.domain,
+        'SITE_NAME': gettext_lazy(current_site.name),
     }
 
 

@@ -1,6 +1,6 @@
-==========
-Production
-==========
+=========================
+Production (Linux / Unix)
+=========================
 
 
 Configuration
@@ -16,6 +16,19 @@ necessary changes:
 .. code-block:: shell
 
    $ cp ./settings.env.dist ./settings.env
+
+
+You will need also setup ``BRANCH_ENV`` environment variable to perform console
+tasks. You can export this variable as follows:
+
+.. code-block:: shell
+
+   $ export BRANCH_ENV=prod
+
+However, the long term solution is to set this variable in the following files:
+
+* ``/etc/environment``
+* ``~/.profile``
 
 
 Logging
@@ -94,3 +107,28 @@ Test gunicorn service
 
    $ systemctl status branch.service
    $ journalctl -u branch.service
+
+
+Install Nginx config
+---------------------
+
+Use the following configuration example as as reference:
+
+* ``provision/etc/nginx/sites-enabled/branch.conf``
+
+
+Test Nginx config
+-----------------
+
+.. code-block:: shell
+
+   $ sudo nginx -t
+   $ sudo systemctl restart nginx
+
+
+Compress static assets
+----------------------
+
+.. code-block:: shell
+
+   $ python manage.py compress
