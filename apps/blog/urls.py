@@ -24,7 +24,7 @@ app_name = 'blog'  # pylint: disable=invalid-name
 urlpatterns = (
     path('', views.PostListView.as_view(), name='post_list'),
     path(
-        '<int:year>/<int:month>/<int:day>/<slug:slug>.html',
+        'post/<int:year>/<int:month>/<int:day>/<slug:slug>.html',
         views.PostDetailView.as_view(),
         name='post_view'
     ),
