@@ -114,3 +114,5 @@ Go to admin website and make the necessary changes in the following sections:
 
 * ``/admin/sites/site``: Website domain and its name
 * ``/admin/website/setting``: SEO, Google Analytics, Pagination, Color Scheme
+
+Use value of the ``ADMIN_SITE_URL`` variable instead ``admin`` (see ``settings.env[.dist]``).
