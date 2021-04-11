@@ -18,18 +18,21 @@
 from django.contrib.sitemaps import Sitemap
 from django.shortcuts import reverse
 
+from .urls import app_name
+
 
 class TelegraphSitemap(Sitemap):
     """Telegraph sitemap configuration."""
 
-    # The change frequency of blog post pages
-    changefreq = 'monthly'
+    # The change frequency of telegraph pages
+    changefreq = 'yearly'
 
-    # The blog post relevance in website
-    priority = 0.5
+    # The priority tag uses a scale from 0.0 to 1.0.
+    # The higher the value, the higher priority the page is.
+    priority = 0.4
 
     def items(self):
         return ['contact_form']
 
     def location(self, item):
-        return reverse(f'telegraph:{item}')
+        return reverse(f'{app_name}:{item}')
