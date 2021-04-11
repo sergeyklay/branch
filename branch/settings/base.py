@@ -119,10 +119,12 @@ TEMPLATES = [
                 'django.template.context_processors.i18n',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'apps.website.context_processors.locale',
                 'apps.website.context_processors.app_settings',
-                'branch.context_processors.base_url',
+                'apps.website.context_processors.base_url',
+
                 'apps.pages.context_processors.pages',
-                'branch.context_processors.locale',
             ],
             'libraries': {
                 'urlparams': 'branch.templatetags.urlparams',

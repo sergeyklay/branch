@@ -5,7 +5,7 @@
 {% if page_title and page_title.strip %}
     <meta name="twitter:title" content="{{ page_title }}">
 {% else %}
-    <meta name="twitter:title" content="{{ site_title|default:'Branch' }}">
+    <meta name="twitter:title" content="{{ SITE_NAME|default:'Branch' }}">
 {% endif %}
 
 {% if page_description and page_description.strip %}

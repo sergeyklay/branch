@@ -45,7 +45,7 @@ urlpatterns = [
     path('', include('apps.telegraph.urls', namespace='telegraph')),
     path('', include('apps.pages.urls', namespace='pages')),
     path(f'{admin_path()}/', admin.site.urls),
-    path('sitemap.xml', sitemap, sitemaps(), name='site:sitemap'),
+    path('sitemap.xml', sitemap, sitemaps(), name='sitemap'),
 ]
 
 if settings.DEBUG:
