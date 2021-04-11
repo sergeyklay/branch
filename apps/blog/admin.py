@@ -67,10 +67,6 @@ class PostAdmin(admin.ModelAdmin):
         'slug': ('title',),
     }
 
-    raw_id_fields = (
-        'author',
-    )
-
     date_hierarchy = 'published_at'
 
     ordering = (
