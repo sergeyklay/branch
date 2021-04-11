@@ -16,18 +16,21 @@
 """Blog sitemap module."""
 
 from django.contrib.sitemaps import Sitemap
+from django.shortcuts import reverse
 
 from .models import Post
+from .urls import app_name
 
 
 class PostSitemap(Sitemap):
     """Blog sitemap configuration."""
 
     # The change frequency of blog post pages
-    changefreq = 'weekly'
+    changefreq = 'monthly'
 
-    # The blog post relevance in website
-    priority = 0.9
+    # The priority tag uses a scale from 0.0 to 1.0.
+    # The higher the value, the higher priority the page is.
+    priority = 0.8
 
     def items(self):
         return Post.published.all()
@@ -35,3 +38,20 @@ class PostSitemap(Sitemap):
     def lastmod(self, obj):
         """Get the last time the object was modified."""
         return obj.updated_at
+
+
+class PostsListSitemap(Sitemap):
+    """Provide configuration for blog dynamic pages."""
+
+    # The change frequency of telegraph pages
+    changefreq = 'daily'
+
+    # The priority tag uses a scale from 0.0 to 1.0.
+    # The higher the value, the higher priority the page is.
+    priority = 0.9
+
+    def items(self):
+        return ['post_list']
+
+    def location(self, item):
+        return reverse(f'{app_name}:{item}')

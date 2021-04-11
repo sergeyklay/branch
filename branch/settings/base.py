@@ -61,6 +61,8 @@ BASE_URL = env.str('BASE_URL', default='http://127.0.0.1')
 
 # Application definition
 
+# The database ID of the django.contrib.sites.models.Site
+# object associated with that particular settings file.
 SITE_ID = 1
 
 DJANGO_APPS = (

@@ -23,11 +23,12 @@ from .models import Page
 class PageSitemap(Sitemap):
     """Pages sitemap configuration."""
 
-    # The change frequency of blog post pages
+    # The change frequency of website pages
     changefreq = 'monthly'
 
-    # The blog post relevance in website
-    priority = 0.6
+    # The priority tag uses a scale from 0.0 to 1.0.
+    # The higher the value, the higher priority the page is.
+    priority = 0.5
 
     def items(self):
         return Page.published.all()

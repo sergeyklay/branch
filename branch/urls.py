@@ -24,25 +24,28 @@ from django.contrib.sitemaps.views import sitemap
 from django.urls import include, path, re_path
 from django.views.static import serve
 
-from apps.blog.sitemaps import PostSitemap  # noqa: I100
+from apps.blog.sitemaps import PostSitemap, PostsListSitemap  # noqa: I100
 from apps.pages.sitemaps import PageSitemap  # noqa: I100,I201
 from apps.telegraph.sitemaps import TelegraphSitemap  # noqa: I100,I201
 from .utils import admin_path
+
+
+def sitemaps():
+    """Get whole website sitemap."""
+    return {'sitemaps': {
+        'page': PageSitemap,
+        'telegraph': TelegraphSitemap,
+        'post': PostSitemap,
+        'post_list': PostsListSitemap,
+    }}
+
 
 urlpatterns = [
     path('', include('apps.blog.urls', namespace='blog')),
     path('', include('apps.telegraph.urls', namespace='telegraph')),
     path('', include('apps.pages.urls', namespace='pages')),
     path(f'{admin_path()}/', admin.site.urls),
-    path(
-        'sitemap.xml', sitemap,
-        {'sitemaps': {
-            'page': PageSitemap,
-            'telegraph': TelegraphSitemap,
-            'post': PostSitemap
-        }},
-        name='django.contrib.sitemaps.views.sitemap'
-    ),
+    path('sitemap.xml', sitemap, sitemaps(), name='site:sitemap'),
 ]
 
 if settings.DEBUG:
