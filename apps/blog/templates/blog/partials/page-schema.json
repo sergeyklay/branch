@@ -8,7 +8,7 @@
     },
     "headline": "{{ page_title }}",
     "description": "{{ page_description|striptags }}",
-    "image": "{% if featured_image %}{{ featured_image.url }}{% else%}{% static 'img/blog-logo.jpg' %}{% endif %}",
+    "image": "{{ BASE_URL }}{% if featured_image %}{{ featured_image.url }}{% else%}{% static 'img/blog-logo.jpg' %}{% endif %}",
     "datePublished": "{{ page.published_at|date_to_xmlschema }}",
     "dateModified": "{{ page.updated_at|date_to_xmlschema }}",
     "author": {
@@ -21,7 +21,7 @@
         "name": "{{ page_author }}",
         "logo": {
             "@type": "ImageObject",
-            "url": "{% static 'img/blog-logo.jpg' %}"
+            "url": "{{ BASE_URL }}{% static 'img/blog-logo.jpg' %}"
         }
     }
 }
