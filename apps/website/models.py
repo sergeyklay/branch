@@ -35,7 +35,7 @@ class Setting(models.Model):
     """Model for site-wide settings."""
 
     name = models.CharField(
-        max_length=200,
+        max_length=50,
         db_index=True,
         verbose_name=_('Setting name'),
     )
@@ -43,7 +43,7 @@ class Setting(models.Model):
     value = models.TextField(
         null=True,
         blank=True,
-        max_length=250,
+        max_length=150,
         verbose_name=_('Setting value'),
     )
 
