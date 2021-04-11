@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: branch 0.0.1\n"
 "Report-Msgid-Bugs-To: egrep@protonmail.ch\n"
-"POT-Creation-Date: 2021-04-11 19:51+0000\n"
-"PO-Revision-Date: 2021-04-11 19:51+0000\n"
+"POT-Creation-Date: 2021-04-11 20:39+0000\n"
+"PO-Revision-Date: 2021-04-11 20:39+0000\n"
 "Last-Translator: Serghei Iakovlev <egrep@protonmail.ch>\n"
 "Language-Team: Russian <egrep@protonmail.ch>\n"
 "Language: Russian\n"
@@ -19,6 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
+
 #: apps/blog/admin.py:30 apps/pages/admin.py:31
 msgid "Content"
 msgstr "Содержимое"
@@ -119,19 +120,19 @@ msgstr "Сообщение успешно отправлено"
 #: apps/telegraph/templates/telegraph/contact.html:19
 msgid ""
 "Your e-mail was successfully sent. I'll read your e-mail as soon as possible."
-msgstr "Ваше сообщение успешно отправлено. Я постарюсь прочитать его в ближайшее время."
+msgstr ""
+"Ваше сообщение успешно отправлено. Я постарюсь прочитать его в ближайшее "
+"время."
 
 #: apps/telegraph/templates/telegraph/contact.html:21
 msgid ""
-"\n"
-"                    Use the form below to send me a private message.\n"
-"                    Usually e-mails arrive within a couple of seconds.\n"
-"                    But this doesn't mean that I'll read your e-mail in the\n"
-"                    same swift manner.\n"
-"                "
-msgstr
+"Use the form below to send me a private message. Usually e-mails arrive "
+"within a couple of seconds. But this doesn't mean that I'll read your e-mail "
+"in the same swift manner."
+msgstr ""
 "Используйте представленную ниже форму, чтобы отправить мне личное сообщение."
-"Обычно письма доходят в течении пары секунд. Но это не означает, что я доберусь до вашего письма столь же стремительным образом."
+"Обычно письма доходят в течении пары секунд. Но это не означает, что я "
+"доберусь до вашего письма столь же стремительным образом."
 
 #: apps/telegraph/templates/telegraph/contact.html:41
 msgid "Name"
@@ -170,77 +171,69 @@ msgstr "Обнаружен некорректный заголовок"
 msgid "Setting name"
 msgstr "Название настройки"
 
-#: apps/website/models.py:41
-msgid "Name of site-wide variable"
-msgstr "Название переменной используемой на всем сайте"
-
-#: apps/website/models.py:48
+#: apps/website/models.py:47
 msgid "Setting value"
 msgstr "Значение настройки"
 
-#: apps/website/models.py:49
-msgid "Value of site-wide variable that scripts can reference"
-msgstr "Значение настройки "
-
-#: apps/website/models.py:59
+#: apps/website/models.py:57
 msgid "Setting"
-msgstr ""
+msgstr "Настройка"
 
-#: apps/website/models.py:60
+#: apps/website/models.py:58
 msgid "Settings"
-msgstr ""
+msgstr "Настройки"
 
 #: apps/website/templates/website/errors/404.html:9
 msgid "The page you are looking for does not exist."
-msgstr ""
+msgstr "Страница, которую вы ищете, не существует."
 
 #: apps/website/templates/website/errors/404.html:37
 msgid "Page Not Found."
-msgstr ""
+msgstr "Страница не найдена."
 
 #: apps/website/templates/website/errors/404.html:40
 msgid "Something went wrong. The page you are requesting does not exist."
-msgstr ""
+msgstr "Что-то пошло не так. Страница, которую вы запрашиваете, не существует."
 
 #: apps/website/templates/website/errors/404.html:42
 msgid ""
-"\n"
-"                Perhaps you entered the wrong address or I moved the page.\n"
-"                If you think there should be a page here, please contact me\n"
-"            "
+"Perhaps you entered the wrong address or I moved the page. If you think "
+"there should be a page here, please contact me"
 msgstr ""
+"Возможно вы ввели неверный адрес или я перенёс страничку. Если вы считаете, "
+"что здесь должна быть страница, свяжитесь со мной"
 
 #: apps/website/templates/website/errors/404.html:46
 msgid "using contact form"
-msgstr ""
+msgstr "используя контактную форму"
 
 #: branch/models.py:35
 msgid "Draft"
-msgstr ""
+msgstr "Черновик"
 
 #: branch/models.py:36
 msgid "Published"
-msgstr ""
+msgstr "Опубликовано"
 
 #: branch/models.py:40 branch/settings/base.py:196
 msgid "English"
-msgstr ""
+msgstr "Английский"
 
 #: branch/models.py:41 branch/settings/base.py:198
 msgid "Russian"
-msgstr ""
+msgstr "Русский"
 
 #: branch/models.py:42 branch/settings/base.py:197
 msgid "Ukrainian"
-msgstr ""
+msgstr "Украинский"
 
 #: branch/models.py:47
 msgid "Title"
-msgstr ""
+msgstr "Заголовок"
 
 #: branch/models.py:54
 msgid "Slug"
-msgstr ""
+msgstr "Слаг"
 
 #: branch/models.py:55
 msgid "Let it empty so it will be autopopulated."
@@ -248,86 +241,88 @@ msgstr ""
 
 #: branch/models.py:60
 msgid "Block search indexing"
-msgstr ""
+msgstr "Запретить индексирование"
 
 #: branch/models.py:61
 msgid "Prevent this page from appearing in search index"
-msgstr ""
+msgstr "Запретить поисковым паукам индексировать эту страницу"
 
 #: branch/models.py:65
 msgid "Full text of the post"
-msgstr ""
+msgstr "Полный текст публикации"
 
 #: branch/models.py:70
 msgid "First publication date"
-msgstr ""
+msgstr "Дата публикации"
 
 #: branch/models.py:75
 msgid "Date created"
-msgstr ""
+msgstr "Дата создания"
 
 #: branch/models.py:80
 msgid "Date updated"
-msgstr ""
+msgstr "Дата обновления"
 
 #: branch/models.py:87
 msgid "Status"
-msgstr ""
+msgstr "Статус"
 
 #: branch/models.py:94
 msgid "Locale"
-msgstr ""
+msgstr "Локаль"
 
 #: branch/models.py:95
-msgid "The locale of the resource."
-msgstr ""
+msgid "Specify the publishing locale used."
+msgstr "Укажите используемую локаль публикации."
 
 #: branch/models.py:102
 msgid "Meta title"
-msgstr ""
+msgstr "Мета заголовок"
 
 #: branch/models.py:103
 msgid ""
 "This will be displayed in meta tags. Keep it under 60 characters. Leave "
 "empty and the post's title will be used."
 msgstr ""
+"Это будет отображаться в метатегах. Используйте до 60 символов. Оставьте "
+"поле пустым, и будет использоваться заголовок сообщения."
 
 #: branch/models.py:112
 msgid "Meta description"
-msgstr ""
+msgstr "Мета описание"
 
 #: branch/models.py:113
 msgid "This will be displayed in meta tags. Keep it under 120 characters."
-msgstr ""
+msgstr "Это будет отображаться в метатегах. Используйте до 120 символов."
 
 #: templates/base.html:100
 msgid "Go to main page"
-msgstr ""
+msgstr "На главную"
 
 #: templates/partials/mini-toc.html:3
 msgid "Latest publications"
-msgstr ""
+msgstr "Последние публикации"
 
 #: templates/partials/mini-toc.html:13
 msgid "All posts"
-msgstr ""
+msgstr "Все публикации"
 
 #: templates/partials/sidebar.html:28
 msgid "Search"
-msgstr ""
+msgstr "Поиск"
 
 #: templates/partials/sidebar.html:33
 msgid "Subscribe to news feed"
-msgstr ""
+msgstr "Подписаться на ленту новостей"
 
 #: templates/partials/sidebar.html:39
 msgid "GitHub Profile"
-msgstr ""
+msgstr "GitHub профиль"
 
 #: templates/partials/sidebar.html:46
 msgid "Serghei Iakovlev"
-msgstr ""
+msgstr "Сергей Яковлев"
 
 #: templates/partials/sidebar.html:47
-msgid "Unless otherwise stated, all content on the site is available under "
-msgstr ""
+msgid "Unless otherwise stated, all content on the site is available under"
+msgstr "Если не указано иного, всё содержимое сайта доступно под лицензией"
