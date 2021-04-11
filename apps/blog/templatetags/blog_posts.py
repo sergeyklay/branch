@@ -13,25 +13,24 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-"""Date to XML Schema filter."""
-
-from datetime import datetime, timezone
+"""Blog posts template tags."""
 
 from django import template
+
+from apps.blog.models import Post
 
 register = template.Library()
 
 
-@register.filter(expects_localtime=True, is_safe=False)
-def date_to_xmlschema(value):
-    """
-    Format a date according to the ISO 8601 format.
+@register.simple_tag
+def total_posts():
+    """Get number of published posts"""
+    return Post.published.count()
 
-    Usage:
-      {% date_to_xmlschema %}
-      {{ post.published_at|date_to_xmlschema }}
-    """
-    if not isinstance(value, datetime):
-        return ''
 
-    return value.replace(tzinfo=timezone.utc, microsecond=0).isoformat()
+@register.inclusion_tag('blog/partials/latest-posts.html')
+def show_latest_posts(limit=5, offset=0):
+    """Return latest blog posts."""
+    limit = limit + offset
+    latest_posts = Post.published.order_by('-published_at')[offset:limit]
+    return {'latest_posts': latest_posts}

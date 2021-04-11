@@ -1,0 +1,19 @@
+{% load date_to_xmlschema %}
+
+<ul class="texts">
+    {% for post in latest_posts %}
+        <li class="text-title">
+            <h3>
+                <span class="post-meta">
+                    <time datetime="{{ post.published_at|date_to_xmlschema }}">
+                        {{ post.published_at|date:"Y.m.d" }}
+                    </time>
+                </span>
+
+                <a href="{{ post.get_absolute_url }}">
+                    {{ post.title|escape }}
+                </a>
+            </h3>
+        </li>
+    {% endfor %}
+</ul>
