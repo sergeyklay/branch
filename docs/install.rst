@@ -84,6 +84,7 @@ Load fixtures
 .. code-block:: shell
 
    $ python manage.py loaddata settings.json
+   $ python manage.py loaddata sites.json
 
 
 Copy static files
@@ -104,3 +105,12 @@ Run development server
 
    # For local development only:
    $ make up
+
+
+Final setup
+-----------
+
+Go to admin website and make the necessary changes in the following sections:
+
+* ``/admin/sites/site``: Website domain and its name
+* ``/admin/website/setting``: SEO, Google Analytics, Pagination, Color Scheme

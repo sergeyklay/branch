@@ -3,21 +3,13 @@
     "model": "website.setting",
     "pk": 1,
     "fields": {
-      "name": "title",
-      "value": "John Does"
-    }
-  },
-  {
-    "model": "website.setting",
-    "pk": 2,
-    "fields": {
       "name": "tagline",
       "value": "My notebook, workshop, a place where I share my experiences and thoughts"
     }
   },
   {
     "model": "website.setting",
-    "pk": 3,
+    "pk": 2,
     "fields": {
       "name": "pagination_per_page",
       "value": "5"
@@ -25,7 +17,7 @@
   },
   {
     "model": "website.setting",
-    "pk": 4,
+    "pk": 3,
     "fields": {
       "name": "description",
       "value": "My personal blog"
@@ -33,7 +25,7 @@
   },
   {
     "model": "website.setting",
-    "pk": 5,
+    "pk": 4,
     "fields": {
       "name": "keywords",
       "value": "keyword1, keyword2, keyword3, keyword4, keyword5"
@@ -41,7 +33,7 @@
   },
   {
     "model": "website.setting",
-    "pk": 6,
+    "pk": 4,
     "fields": {
       "name": "google_analytics",
       "value": "UA-00000000-0"
@@ -49,7 +41,7 @@
   },
   {
     "model": "website.setting",
-    "pk": 7,
+    "pk": 5,
     "fields": {
       "name": "color_scheme",
       "value": ""
@@ -57,7 +49,7 @@
   },
   {
     "model": "website.setting",
-    "pk": 8,
+    "pk": 6,
     "fields": {
       "name": "github_username",
       "value": "torvalds"
@@ -65,7 +57,7 @@
   },
   {
     "model": "website.setting",
-    "pk": 9,
+    "pk": 7,
     "fields": {
       "name": "contact_email",
       "value": "nowhere@example.org"

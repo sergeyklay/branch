@@ -1,6 +1,6 @@
 {% load static %}
 
-<meta property="og:site_name" content="{{ site_title }}">
+<meta property="og:site_name" content="{{ SITE_NAME|default:'Branch' }}">
 
 <meta property="og:url" content="{{ BASE_URL }}{{ resource_url|default:request.path }}">
 <meta property="og:locale" content="{{ page_locale|default:LOCALE }}">
@@ -17,6 +17,6 @@
     <meta property="og:title" content="{{ page_title }}">
     <meta property="og:image:alt" content="{{ page_title }}">
 {% else %}
-    <meta property="og:title" content="{{ site_title|default:'Branch' }}">
-    <meta property="og:image:alt" content="{{ site_title|default:'Branch' }}">
+    <meta property="og:title" content="{{ SITE_NAME|default:'Branch' }}">
+    <meta property="og:image:alt" content="{{ SITE_NAME|default:'Branch' }}">
 {% endif %}

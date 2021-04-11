@@ -15,14 +15,36 @@
 
 """Website context processors."""
 
+from django.contrib.sites.shortcuts import get_current_site
+from django.utils.translation import get_language, gettext_lazy, to_locale
+
 from .models import Setting
 
 
 def app_settings(request):  # pylint: disable=unused-argument
-    """Global values to pass to templates."""
+    """Add global website settings to the context."""
     context_extras = {}
 
     for obj in Setting.objects.all():
         context_extras[f'site_{obj.name}'] = obj.value
 
     return context_extras
+
+
+def base_url(request):
+    """Add website base URL and its name to the context."""
+    current_site = get_current_site(request)
+
+    scheme = 'https://' if request.is_secure() else 'http://'
+    domain = current_site.domain or request.get_host()
+    name = current_site.name or 'Branch'
+
+    return {
+        'BASE_URL': scheme + domain,
+        'SITE_NAME': gettext_lazy(name),
+    }
+
+
+def locale(_):
+    """Add current locale to the context."""
+    return {'LOCALE': to_locale(get_language())}
