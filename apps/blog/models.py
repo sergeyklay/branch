@@ -46,7 +46,7 @@ class Post(AbstractPage):
         max_length=12,
         choices=TYPES,
         default='post',
-        verbose_name=_('Resource type'),
+        verbose_name=_('Publication type'),
     )
 
     featured_image = models.ImageField(

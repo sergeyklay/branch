@@ -52,7 +52,7 @@ class AbstractPage(models.Model):
         db_index=True,
         unique_for_date='published_at',
         verbose_name=_('Slug'),
-        help_text=_('Let it empty so it will be autopopulated.'),
+        help_text=_('Leave it blank for automatic populating.'),
     )
 
     no_index = models.BooleanField(
@@ -92,7 +92,7 @@ class AbstractPage(models.Model):
         choices=LOCALES,
         default='en_US',
         verbose_name=_('Locale'),
-        help_text=_('The locale of the resource.'),
+        help_text=_('Specify the publishing locale used.'),
     )
 
     meta_title = models.CharField(

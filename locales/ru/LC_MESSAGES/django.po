@@ -1,0 +1,328 @@
+# Russian translation of branch.
+# Copyright © 2021 Serghei Iakovlev
+# This file is distributed under the same license as the branch package.
+# Serghei Iakovlev <egrep@protonmail.ch>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: branch 0.0.1\n"
+"Report-Msgid-Bugs-To: egrep@protonmail.ch\n"
+"POT-Creation-Date: 2021-04-11 21:20+0000\n"
+"PO-Revision-Date: 2021-04-11 21:20+0000\n"
+"Last-Translator: Serghei Iakovlev <egrep@protonmail.ch>\n"
+"Language-Team: Russian <egrep@protonmail.ch>\n"
+"Language: Russian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: apps/blog/admin.py:30 apps/pages/admin.py:31
+msgid "Content"
+msgstr "Содержимое"
+
+#: apps/blog/admin.py:82 apps/pages/admin.py:68
+msgid "General content"
+msgstr "Основное содержимое"
+
+#: apps/blog/admin.py:96 apps/pages/admin.py:78
+msgid "SEO"
+msgstr "SEO"
+
+#: apps/blog/models.py:39
+msgid "Drama"
+msgstr "Драма"
+
+#: apps/blog/models.py:40
+msgid "Narrative"
+msgstr "Повесть"
+
+#: apps/blog/models.py:41
+msgid "Poem"
+msgstr "Стихотворение"
+
+#: apps/blog/models.py:42 apps/blog/models.py:78
+msgid "Post"
+msgstr "Статья"
+
+#: apps/blog/models.py:49
+msgid "Publication type"
+msgstr "Тип публикации"
+
+#: apps/blog/models.py:56
+msgid "Featured image"
+msgstr "Иллюстрация"
+
+#: apps/blog/models.py:63
+msgid "excerpt"
+msgstr "Отрывок"
+
+#: apps/blog/models.py:64
+msgid "A short, concise introduction"
+msgstr "Краткое, выразительное введение"
+
+#: apps/blog/models.py:71
+msgid "Author"
+msgstr "Автор"
+
+#: apps/blog/models.py:79
+msgid "Posts"
+msgstr "Статьи"
+
+#: apps/blog/templates/blog/partials/pagination.html:9
+msgid "Previous"
+msgstr "Предыдущие публикации"
+
+#: apps/blog/templates/blog/partials/pagination.html:17
+msgid "Next"
+msgstr "Следующие публикации"
+
+#: apps/blog/templates/blog/partials/post-teaser.html:24
+msgid "Read more..."
+msgstr "Читать далее..."
+
+#: apps/blog/templates/blog/posts/list.html:6
+#: templates/partials/sidebar.html:15
+msgid "Blog"
+msgstr "Блог"
+
+#: apps/pages/admin.py:92
+msgid "URL"
+msgstr "URL"
+
+#: apps/pages/models.py:31
+msgid "Page"
+msgstr "Страница"
+
+#: apps/pages/models.py:32
+msgid "Pages"
+msgstr "Страницы"
+
+#: apps/telegraph/forms.py:32
+msgid "How can I contact you"
+msgstr "Как я могу к Вам обращаться"
+
+#: apps/telegraph/forms.py:40
+msgid "Your contact address"
+msgstr "Обратный адрес"
+
+#: apps/telegraph/forms.py:49
+msgid "Message subject"
+msgstr "Тема сообщения"
+
+#: apps/telegraph/templates/telegraph/contact.html:13
+msgid "E-mail successfully sent"
+msgstr "Сообщение успешно отправлено"
+
+#: apps/telegraph/templates/telegraph/contact.html:19
+msgid ""
+"Your e-mail was successfully sent. I'll read your e-mail as soon as possible."
+msgstr ""
+"Ваше сообщение успешно отправлено. Я постараюсь прочитать его в ближайшее "
+"время."
+
+#: apps/telegraph/templates/telegraph/contact.html:21
+msgid ""
+"Use the form below to send me a private message. Usually e-mails arrive "
+"within a couple of seconds. But this doesn't mean that I'll read your e-mail "
+"in the same swift manner."
+msgstr ""
+"Используйте представленную ниже форму, чтобы отправить мне личное сообщение."
+"Обычно письма доходят в течении пары секунд. Но это не означает, что я "
+"доберусь до вашего письма столь же стремительным образом."
+
+#: apps/telegraph/templates/telegraph/contact.html:41
+msgid "Name"
+msgstr "Имя"
+
+#: apps/telegraph/templates/telegraph/contact.html:49
+msgid "Email Address"
+msgstr "Обратный адрес"
+
+#: apps/telegraph/templates/telegraph/contact.html:57
+msgid "Subject"
+msgstr "Тема сообщения"
+
+#: apps/telegraph/templates/telegraph/contact.html:65
+msgid "Message"
+msgstr "Сообщение"
+
+#: apps/telegraph/templates/telegraph/contact.html:72
+msgid "Send e-mail"
+msgstr "Отправить"
+
+#: apps/telegraph/views.py:40 apps/telegraph/views.py:44
+#: templates/partials/sidebar.html:18
+msgid "Contact Form"
+msgstr "Контактная форма"
+
+#: apps/telegraph/views.py:52
+msgid "Contact form submission"
+msgstr "Новое сообщение"
+
+#: apps/telegraph/views.py:64
+msgid "Invalid header found"
+msgstr "Обнаружен некорректный заголовок"
+
+#: apps/website/models.py:40
+msgid "Setting name"
+msgstr "Название настройки"
+
+#: apps/website/models.py:47
+msgid "Setting value"
+msgstr "Значение настройки"
+
+#: apps/website/models.py:57
+msgid "Setting"
+msgstr "Настройка"
+
+#: apps/website/models.py:58
+msgid "Settings"
+msgstr "Настройки"
+
+#: apps/website/templates/website/errors/404.html:9
+msgid "The page you are looking for does not exist."
+msgstr "Страница, которую вы ищете, не существует."
+
+#: apps/website/templates/website/errors/404.html:37
+msgid "Page Not Found."
+msgstr "Страница не найдена."
+
+#: apps/website/templates/website/errors/404.html:40
+msgid "Something went wrong. The page you are requesting does not exist."
+msgstr "Что-то пошло не так. Страница, которую вы запрашиваете, не существует."
+
+#: apps/website/templates/website/errors/404.html:42
+msgid ""
+"Perhaps you entered the wrong address or I moved the page. If you think "
+"there should be a page here, please contact me"
+msgstr ""
+"Возможно вы ввели неверный адрес или я перенёс страничку. Если вы считаете, "
+"что здесь должна быть страница, свяжитесь со мной"
+
+#: apps/website/templates/website/errors/404.html:46
+msgid "using contact form"
+msgstr "используя контактную форму"
+
+#: branch/models.py:35
+msgid "Draft"
+msgstr "Черновик"
+
+#: branch/models.py:36
+msgid "Published"
+msgstr "Опубликовано"
+
+#: branch/models.py:40 branch/settings/base.py:196
+msgid "English"
+msgstr "Английский"
+
+#: branch/models.py:41 branch/settings/base.py:198
+msgid "Russian"
+msgstr "Русский"
+
+#: branch/models.py:42 branch/settings/base.py:197
+msgid "Ukrainian"
+msgstr "Украинский"
+
+#: branch/models.py:47
+msgid "Title"
+msgstr "Заголовок"
+
+#: branch/models.py:54
+msgid "Slug"
+msgstr "Слаг"
+
+#: branch/models.py:55
+msgid "Leave it blank for automatic populating."
+msgstr "Оставьте поле пустым, для автоматического заполнения."
+
+#: branch/models.py:60
+msgid "Block search indexing"
+msgstr "Запретить индексирование"
+
+#: branch/models.py:61
+msgid "Prevent this page from appearing in search index"
+msgstr "Запретить поисковым паукам индексировать эту страницу"
+
+#: branch/models.py:65
+msgid "Full text of the post"
+msgstr "Полный текст публикации"
+
+#: branch/models.py:70
+msgid "First publication date"
+msgstr "Дата публикации"
+
+#: branch/models.py:75
+msgid "Date created"
+msgstr "Дата создания"
+
+#: branch/models.py:80
+msgid "Date updated"
+msgstr "Дата обновления"
+
+#: branch/models.py:87
+msgid "Status"
+msgstr "Статус"
+
+#: branch/models.py:94
+msgid "Locale"
+msgstr "Локаль"
+
+#: branch/models.py:95
+msgid "Specify the publishing locale used."
+msgstr "Укажите используемую локаль публикации."
+
+#: branch/models.py:102
+msgid "Meta title"
+msgstr "Мета заголовок"
+
+#: branch/models.py:103
+msgid ""
+"This will be displayed in meta tags. Keep it under 60 characters. Leave "
+"empty and the post's title will be used."
+msgstr ""
+"Это будет отображаться в метатегах. Используйте до 60 символов. Оставьте "
+"поле пустым, и будет использоваться заголовок сообщения."
+
+#: branch/models.py:112
+msgid "Meta description"
+msgstr "Мета описание"
+
+#: branch/models.py:113
+msgid "This will be displayed in meta tags. Keep it under 120 characters."
+msgstr "Это будет отображаться в метатегах. Используйте до 120 символов."
+
+#: templates/base.html:100
+msgid "Go to main page"
+msgstr "На главную"
+
+#: templates/partials/mini-toc.html:3
+msgid "Latest publications"
+msgstr "Последние публикации"
+
+#: templates/partials/mini-toc.html:13
+msgid "All posts"
+msgstr "Все публикации"
+
+#: templates/partials/sidebar.html:28
+msgid "Search"
+msgstr "Поиск"
+
+#: templates/partials/sidebar.html:33
+msgid "Subscribe to news feed"
+msgstr "Подписаться на ленту новостей"
+
+#: templates/partials/sidebar.html:39
+msgid "GitHub Profile"
+msgstr "GitHub профиль"
+
+#: templates/partials/sidebar.html:46
+msgid "Serghei Iakovlev"
+msgstr "Сергей Яковлев"
+
+#: templates/partials/sidebar.html:47
+msgid "Unless otherwise stated, all content on the site is available under"
+msgstr "Если не указано иного, всё содержимое сайта доступно под лицензией"

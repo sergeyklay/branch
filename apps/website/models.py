@@ -38,7 +38,6 @@ class Setting(models.Model):
         max_length=200,
         db_index=True,
         verbose_name=_('Setting name'),
-        help_text=_('Name of site-wide variable'),
     )
 
     value = models.TextField(
@@ -46,7 +45,6 @@ class Setting(models.Model):
         blank=True,
         max_length=250,
         verbose_name=_('Setting value'),
-        help_text=_('Value of site-wide variable that scripts can reference')
     )
 
     objects = models.Manager()  # The default manager.
