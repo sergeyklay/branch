@@ -13,19 +13,23 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-"""Blog URL Configuration."""
+"""Telegraph sitemap module."""
 
-from django.urls import path
+from django.contrib.sitemaps import Sitemap
+from django.shortcuts import reverse
 
-from . import views
 
-app_name = 'blog'  # pylint: disable=invalid-name
+class TelegraphSitemap(Sitemap):
+    """Telegraph sitemap configuration."""
 
-urlpatterns = (
-    path('', views.PostListView.as_view(), name='post_list'),
-    path(
-        'post/<int:year>/<int:month>/<int:day>/<slug:slug>.html',
-        views.PostDetailView.as_view(),
-        name='post_view'
-    ),
-)
+    # The change frequency of blog post pages
+    changefreq = 'monthly'
+
+    # The blog post relevance in website
+    priority = 0.5
+
+    def items(self):
+        return ['contact_form']
+
+    def location(self, item):
+        return reverse(f'telegraph:{item}')

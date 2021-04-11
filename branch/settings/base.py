@@ -61,6 +61,8 @@ BASE_URL = env.str('BASE_URL', default='http://127.0.0.1')
 
 # Application definition
 
+SITE_ID = 1
+
 DJANGO_APPS = (
     # Default Django apps
     'django.contrib.auth',
@@ -68,6 +70,10 @@ DJANGO_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Sitemap requirements
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
 
     # Admin
     'django.contrib.admin',

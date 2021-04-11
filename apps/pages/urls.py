@@ -22,5 +22,5 @@ from .views import PageDetailView
 app_name = 'pages'  # pylint: disable=invalid-name
 
 urlpatterns = (
-    path('pages/<slug:slug>.html', PageDetailView.as_view(), name='page_view'),
+    path('page/<slug:slug>.html', PageDetailView.as_view(), name='page_view'),
 )

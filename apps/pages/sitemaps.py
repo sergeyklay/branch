@@ -13,19 +13,25 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-"""Blog URL Configuration."""
+"""Pages sitemap module."""
 
-from django.urls import path
+from django.contrib.sitemaps import Sitemap
 
-from . import views
+from .models import Page
 
-app_name = 'blog'  # pylint: disable=invalid-name
 
-urlpatterns = (
-    path('', views.PostListView.as_view(), name='post_list'),
-    path(
-        'post/<int:year>/<int:month>/<int:day>/<slug:slug>.html',
-        views.PostDetailView.as_view(),
-        name='post_view'
-    ),
-)
+class PageSitemap(Sitemap):
+    """Pages sitemap configuration."""
+
+    # The change frequency of blog post pages
+    changefreq = 'monthly'
+
+    # The blog post relevance in website
+    priority = 0.6
+
+    def items(self):
+        return Page.published.all()
+
+    def lastmod(self, obj):
+        """Get the last time the object was modified."""
+        return obj.updated_at
