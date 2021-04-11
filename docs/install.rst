@@ -72,10 +72,11 @@ necessary changes:
    $ cp ./settings.env.dist ./settings.env
 
 
-Run database migrations
------------------------
+Run database migrations and create admin
+----------------------------------------
 
    $ make migrate
+   $ python manage.py createsuperuser
 
 
 Load fixtures
