@@ -92,7 +92,7 @@ class AbstractPage(models.Model):
         choices=LOCALES,
         default='en_US',
         verbose_name=_('Locale'),
-        help_text=_('The locale of the resource.'),
+        help_text=_('Specify the publishing locale used.'),
     )
 
     meta_title = models.CharField(
