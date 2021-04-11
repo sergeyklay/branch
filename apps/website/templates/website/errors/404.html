@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+
 {% load i18n %}
 
 {% block page_title %}404 - {{ block.super }}{% endblock %}
@@ -15,6 +16,9 @@
 {% block page_meta %}
     <meta name="robots" content="noindex, nofollow">
 {% endblock %}
+
+{# There is no canonical URL  #}
+{% block canonical_url %}{% endblock %}
 
 {# Disable microdata #}
 {% block dc_metadata %}{% endblock %}
