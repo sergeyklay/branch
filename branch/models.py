@@ -52,7 +52,7 @@ class AbstractPage(models.Model):
         db_index=True,
         unique_for_date='published_at',
         verbose_name=_('Slug'),
-        help_text=_('Let it empty so it will be autopopulated.'),
+        help_text=_('Leave it blank for automatic populating.'),
     )
 
     no_index = models.BooleanField(
