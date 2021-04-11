@@ -1,5 +1,7 @@
 {% extends 'page.html' %}
 
+{% load date_to_xmlschema %}
+
 {% block page_meta %}
     {% if page.no_index %}
         <meta name="robots" content="noindex, nofollow">
@@ -16,7 +18,7 @@
     {% with resource_url=post.get_absolute_url %}
         {{ block.super }}
     {% endwith %}
-    <meta property="dc:date" content="{{ post.published_at|date:"Y.m.d H:i:s" }}">
+    <meta property="dc:date" content="{{ post.published_at|date_to_xmlschema }}">
 {% endblock %}
 
 {% block og_metadata %}

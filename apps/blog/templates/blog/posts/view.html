@@ -1,6 +1,6 @@
 {% extends 'post.html' %}
 
-{% load i18n static %}
+{% load i18n static date_to_xmlschema %}
 
 {% block post_schema %}
     <script type="application/ld+json">
@@ -27,17 +27,17 @@
     {% with resource_url=post.get_absolute_url %}
         {{ block.super }}
     {% endwith %}
-    <meta property="dc:date" content="{{ post.published_at|date:"Y.m.d H:i:s" }}">
+    <meta property="dc:date" content="{{ post.published_at|date_to_xmlschema }}">
 {% endblock %}
 
 {% block og_metadata %}
-    {% with resource_url=post.get_absolute_url featured_image=post.featured_image.url %}
+    {% with resource_url=post.get_absolute_url featured_image=post.featured_image %}
         {{ block.super }}
     {% endwith %}
 {% endblock %}
 
 {% block twitter_metadata %}
-    {% with featured_image=post.featured_image.url %}
+    {% with featured_image=post.featured_image %}
         {{ block.super }}
     {% endwith %}
 {% endblock %}
@@ -53,7 +53,7 @@
     </header>
 
     <p class="byline">
-        <time datetime="{{ post.published_at|date:"Y-m-d\TH:i:sO" }}">
+        <time datetime="{{ post.published_at|date_to_xmlschema }}">
             {{ post.published_at|date:"Y.m.d" }}
         </time>
     </p>

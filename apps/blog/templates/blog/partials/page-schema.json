@@ -1,4 +1,4 @@
-{% load static %}
+{% load static date_to_xmlschema %}
 {
     "@context": "http://schema.org/",
     "@type": "Article",
@@ -9,8 +9,8 @@
     "headline": "{{ page_title }}",
     "description": "{{ page_description|striptags }}",
     "image": "{% if featured_image %}{{ featured_image.url }}{% else%}{% static 'img/blog-logo.jpg' %}{% endif %}",
-    "datePublished": "{{ page.published_at|date:'Y-m-d\\TH:i:sO' }}",
-    "dateModified": "{{ page.updated_at|date:'Y-m-d\\TH:i:sO' }}",
+    "datePublished": "{{ page.published_at|date_to_xmlschema }}",
+    "dateModified": "{{ page.updated_at|date_to_xmlschema }}",
     "author": {
         "@type": "Person",
         "name": "{{ page_author }}",

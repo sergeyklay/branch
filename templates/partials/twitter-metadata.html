@@ -14,8 +14,8 @@
     <meta name="twitter:description" content="{{ site_description|linebreaks|striptags|truncatechars:150 }}">
 {% endif %}
 
-{% if featured_image and featured_image.strip %}
-    <meta name="twitter:image:src" content="{{ BASE_URL }}{{ featured_image }}">
+{% if featured_image %}
+    <meta name="twitter:image:src" content="{{ BASE_URL }}{{ featured_image.url }}">
 {% else%}
     <meta name="twitter:image:src" content="{{ BASE_URL }}{% static 'img/blog-logo.jpg' %}">
 {% endif %}

@@ -118,6 +118,7 @@ TEMPLATES = [
             ],
             'libraries': {
                 'urlparams': 'branch.templatetags.urlparams',
+                'date_to_xmlschema': 'branch.templatetags.date_to_xmlschema',
             },
         },
     },
