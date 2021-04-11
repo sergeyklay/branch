@@ -5,8 +5,8 @@
 <meta property="og:url" content="{{ BASE_URL }}{{ resource_url|default:request.path }}">
 <meta property="og:locale" content="{{ page_locale|default:LOCALE }}">
 
-{% if featured_image and featured_image.strip %}
-    <meta property="og:image" content="{{ BASE_URL }}{{ featured_image }}">
+{% if featured_image %}
+    <meta property="og:image" content="{{ BASE_URL }}{{ featured_image.url }}">
 {% else%}
     <meta property="og:image" content="{{ BASE_URL }}{% static 'img/blog-logo.jpg' %}">
     <meta property="og:image:width" content="400">

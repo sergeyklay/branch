@@ -31,13 +31,13 @@
 {% endblock %}
 
 {% block og_metadata %}
-    {% with resource_url=post.get_absolute_url featured_image=post.featured_image.url %}
+    {% with resource_url=post.get_absolute_url featured_image=post.featured_image %}
         {{ block.super }}
     {% endwith %}
 {% endblock %}
 
 {% block twitter_metadata %}
-    {% with featured_image=post.featured_image.url %}
+    {% with featured_image=post.featured_image %}
         {{ block.super }}
     {% endwith %}
 {% endblock %}
