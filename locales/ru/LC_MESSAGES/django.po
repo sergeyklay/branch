@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: branch 0.0.1\n"
 "Report-Msgid-Bugs-To: egrep@protonmail.ch\n"
-"POT-Creation-Date: 2021-04-11 20:39+0000\n"
-"PO-Revision-Date: 2021-04-11 20:39+0000\n"
+"POT-Creation-Date: 2021-04-11 21:20+0000\n"
+"PO-Revision-Date: 2021-04-11 21:20+0000\n"
 "Last-Translator: Serghei Iakovlev <egrep@protonmail.ch>\n"
 "Language-Team: Russian <egrep@protonmail.ch>\n"
 "Language: Russian\n"
@@ -46,11 +46,11 @@ msgstr "Стихотворение"
 
 #: apps/blog/models.py:42 apps/blog/models.py:78
 msgid "Post"
-msgstr "Публикация"
+msgstr "Статья"
 
 #: apps/blog/models.py:49
-msgid "Resource type"
-msgstr "Тип"
+msgid "Publication type"
+msgstr "Тип публикации"
 
 #: apps/blog/models.py:56
 msgid "Featured image"
@@ -70,15 +70,15 @@ msgstr "Автор"
 
 #: apps/blog/models.py:79
 msgid "Posts"
-msgstr "Публикации"
+msgstr "Статьи"
 
 #: apps/blog/templates/blog/partials/pagination.html:9
 msgid "Previous"
-msgstr "Предыдущие статьи"
+msgstr "Предыдущие публикации"
 
 #: apps/blog/templates/blog/partials/pagination.html:17
 msgid "Next"
-msgstr "Следующие статьи"
+msgstr "Следующие публикации"
 
 #: apps/blog/templates/blog/partials/post-teaser.html:24
 msgid "Read more..."
@@ -121,7 +121,7 @@ msgstr "Сообщение успешно отправлено"
 msgid ""
 "Your e-mail was successfully sent. I'll read your e-mail as soon as possible."
 msgstr ""
-"Ваше сообщение успешно отправлено. Я постарюсь прочитать его в ближайшее "
+"Ваше сообщение успешно отправлено. Я постараюсь прочитать его в ближайшее "
 "время."
 
 #: apps/telegraph/templates/telegraph/contact.html:21
@@ -236,8 +236,8 @@ msgid "Slug"
 msgstr "Слаг"
 
 #: branch/models.py:55
-msgid "Let it empty so it will be autopopulated."
-msgstr ""
+msgid "Leave it blank for automatic populating."
+msgstr "Оставьте поле пустым, для автоматического заполнения."
 
 #: branch/models.py:60
 msgid "Block search indexing"

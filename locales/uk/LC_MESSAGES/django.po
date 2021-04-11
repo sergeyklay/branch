@@ -1,18 +1,18 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Ukrainian translation of branch.
+# Copyright © 2021 Serghei Iakovlev
+# This file is distributed under the same license as the branch package.
+# Serghei Iakovlev <egrep@protonmail.ch>, 2021.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: branch 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-11 19:51+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2021-04-11 21:20+0000\n"
+"PO-Revision-Date: 2021-04-11 21:20+0000\n"
+"Last-Translator: Serghei Iakovlev <egrep@protonmail.ch>\n"
+"Language-Team: Ukrainian <egrep@protonmail.ch>\n"
+"Language: Ukrainian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,313 +20,310 @@ msgstr ""
 "11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
 "100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
 "(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+
 #: apps/blog/admin.py:30 apps/pages/admin.py:31
 msgid "Content"
-msgstr ""
+msgstr "Зміст"
 
 #: apps/blog/admin.py:82 apps/pages/admin.py:68
 msgid "General content"
-msgstr ""
+msgstr "Загальний зміст"
 
 #: apps/blog/admin.py:96 apps/pages/admin.py:78
 msgid "SEO"
-msgstr ""
+msgstr "SEO"
 
 #: apps/blog/models.py:39
 msgid "Drama"
-msgstr ""
+msgstr "Драма"
 
 #: apps/blog/models.py:40
 msgid "Narrative"
-msgstr ""
+msgstr "Повість"
 
 #: apps/blog/models.py:41
 msgid "Poem"
-msgstr ""
+msgstr "Вірш"
 
 #: apps/blog/models.py:42 apps/blog/models.py:78
 msgid "Post"
-msgstr ""
+msgstr "Стаття"
 
 #: apps/blog/models.py:49
-msgid "Resource type"
-msgstr ""
+msgid "Publication type"
+msgstr "Тип публікації"
 
 #: apps/blog/models.py:56
 msgid "Featured image"
-msgstr ""
+msgstr "Ілюстрація"
 
 #: apps/blog/models.py:63
 msgid "excerpt"
-msgstr ""
+msgstr "Уривок"
 
 #: apps/blog/models.py:64
 msgid "A short, concise introduction"
-msgstr ""
+msgstr "Короткий, виразне введення"
 
 #: apps/blog/models.py:71
 msgid "Author"
-msgstr ""
+msgstr "Автор"
 
 #: apps/blog/models.py:79
 msgid "Posts"
-msgstr ""
+msgstr "Статті"
 
 #: apps/blog/templates/blog/partials/pagination.html:9
 msgid "Previous"
-msgstr ""
+msgstr "Попередні публікації"
 
 #: apps/blog/templates/blog/partials/pagination.html:17
 msgid "Next"
-msgstr ""
+msgstr "Наступні публікації"
 
 #: apps/blog/templates/blog/partials/post-teaser.html:24
 msgid "Read more..."
-msgstr ""
+msgstr "Читати далі..."
 
 #: apps/blog/templates/blog/posts/list.html:6
 #: templates/partials/sidebar.html:15
 msgid "Blog"
-msgstr ""
+msgstr "Блог"
 
 #: apps/pages/admin.py:92
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: apps/pages/models.py:31
 msgid "Page"
-msgstr ""
+msgstr "Сторінка"
 
 #: apps/pages/models.py:32
 msgid "Pages"
-msgstr ""
+msgstr "Сторінки"
 
 #: apps/telegraph/forms.py:32
 msgid "How can I contact you"
-msgstr ""
+msgstr "Як я можу до вас звертатися"
 
 #: apps/telegraph/forms.py:40
 msgid "Your contact address"
-msgstr ""
+msgstr "Зворотня адреса"
 
 #: apps/telegraph/forms.py:49
 msgid "Message subject"
-msgstr ""
+msgstr "Тема повідомлення"
 
 #: apps/telegraph/templates/telegraph/contact.html:13
 msgid "E-mail successfully sent"
-msgstr ""
+msgstr "Повідомлення успішно відправлено"
 
 #: apps/telegraph/templates/telegraph/contact.html:19
 msgid ""
 "Your e-mail was successfully sent. I'll read your e-mail as soon as possible."
 msgstr ""
+"Ваше повідомлення успішно відправлено. Я постараюся прочитати його "
+"найближчим часом."
 
 #: apps/telegraph/templates/telegraph/contact.html:21
 msgid ""
-"\n"
-"                    Use the form below to send me a private message.\n"
-"                    Usually e-mails arrive within a couple of seconds.\n"
-"                    But this doesn't mean that I'll read your e-mail in the\n"
-"                    same swift manner.\n"
-"                "
+"Use the form below to send me a private message. Usually e-mails arrive "
+"within a couple of seconds. But this doesn't mean that I'll read your e-mail "
+"in the same swift manner."
 msgstr ""
+"Використовуйте подану нижче форму, щоб відправити мені приватне "
+"повідомлення. Зазвичай листи доходять протягом пари секунд. Але це не "
+"означає, що я доберуся до вашого листа таким же стрімким чином."
 
 #: apps/telegraph/templates/telegraph/contact.html:41
 msgid "Name"
-msgstr ""
+msgstr "Ім'я"
 
 #: apps/telegraph/templates/telegraph/contact.html:49
 msgid "Email Address"
-msgstr ""
+msgstr "Зворотня адреса"
 
 #: apps/telegraph/templates/telegraph/contact.html:57
 msgid "Subject"
-msgstr ""
+msgstr "Тема повідомлення"
 
 #: apps/telegraph/templates/telegraph/contact.html:65
 msgid "Message"
-msgstr ""
+msgstr "Повідомлення"
 
 #: apps/telegraph/templates/telegraph/contact.html:72
 msgid "Send e-mail"
-msgstr ""
+msgstr "Надіслати"
 
 #: apps/telegraph/views.py:40 apps/telegraph/views.py:44
 #: templates/partials/sidebar.html:18
 msgid "Contact Form"
-msgstr ""
+msgstr "Контактна форма"
 
 #: apps/telegraph/views.py:52
 msgid "Contact form submission"
-msgstr ""
+msgstr "Нове повідомлення"
 
 #: apps/telegraph/views.py:64
 msgid "Invalid header found"
-msgstr ""
+msgstr "Виявлено некоректний заголовок"
 
 #: apps/website/models.py:40
 msgid "Setting name"
-msgstr ""
+msgstr "Назва параметра"
 
-#: apps/website/models.py:41
-msgid "Name of site-wide variable"
-msgstr ""
-
-#: apps/website/models.py:48
+#: apps/website/models.py:47
 msgid "Setting value"
-msgstr ""
+msgstr "Значення параметра"
 
-#: apps/website/models.py:49
-msgid "Value of site-wide variable that scripts can reference"
-msgstr ""
-
-#: apps/website/models.py:59
+#: apps/website/models.py:57
 msgid "Setting"
-msgstr ""
+msgstr "Налаштування"
 
-#: apps/website/models.py:60
+#: apps/website/models.py:58
 msgid "Settings"
-msgstr ""
+msgstr "Налаштування"
 
 #: apps/website/templates/website/errors/404.html:9
 msgid "The page you are looking for does not exist."
-msgstr ""
+msgstr "Сторінка, яку ви шукаєте, не існує."
 
 #: apps/website/templates/website/errors/404.html:37
 msgid "Page Not Found."
-msgstr ""
+msgstr "Сторінка не знайдена."
 
 #: apps/website/templates/website/errors/404.html:40
 msgid "Something went wrong. The page you are requesting does not exist."
-msgstr ""
+msgstr "Щось пішло не так. Сторінка, яку ви запитуєте, не існує."
 
 #: apps/website/templates/website/errors/404.html:42
 msgid ""
-"\n"
-"                Perhaps you entered the wrong address or I moved the page.\n"
-"                If you think there should be a page here, please contact me\n"
-"            "
+"Perhaps you entered the wrong address or I moved the page. If you think "
+"there should be a page here, please contact me"
 msgstr ""
+"Можливо ви ввели неправильну адресу або я переніс сторінку. Якщо ви "
+"вважаєте, що тут повинна бути сторінка, зв'яжіться зі мною"
 
 #: apps/website/templates/website/errors/404.html:46
 msgid "using contact form"
-msgstr ""
+msgstr "використовуючи контактну форму"
 
 #: branch/models.py:35
 msgid "Draft"
-msgstr ""
+msgstr "Чернетка"
 
 #: branch/models.py:36
 msgid "Published"
-msgstr ""
+msgstr "Опубліковано"
 
 #: branch/models.py:40 branch/settings/base.py:196
 msgid "English"
-msgstr ""
+msgstr "Англійська"
 
 #: branch/models.py:41 branch/settings/base.py:198
 msgid "Russian"
-msgstr ""
+msgstr "Російська"
 
 #: branch/models.py:42 branch/settings/base.py:197
 msgid "Ukrainian"
-msgstr ""
+msgstr "Українська"
 
 #: branch/models.py:47
 msgid "Title"
-msgstr ""
+msgstr "Заголовок"
 
 #: branch/models.py:54
 msgid "Slug"
-msgstr ""
+msgstr "Слаг"
 
 #: branch/models.py:55
-msgid "Let it empty so it will be autopopulated."
-msgstr ""
+msgid "Leave it blank for automatic populating."
+msgstr "Залиште поле порожнім, для автоматичного заповнення."
 
 #: branch/models.py:60
 msgid "Block search indexing"
-msgstr ""
+msgstr "Заборонити індексування"
 
 #: branch/models.py:61
 msgid "Prevent this page from appearing in search index"
-msgstr ""
+msgstr "Заборонити пошуковим павукам індексувати цю сторінку"
 
 #: branch/models.py:65
 msgid "Full text of the post"
-msgstr ""
+msgstr "Повний текст публікації"
 
 #: branch/models.py:70
 msgid "First publication date"
-msgstr ""
+msgstr "Дата публікації"
 
 #: branch/models.py:75
 msgid "Date created"
-msgstr ""
+msgstr "Дата створення"
 
 #: branch/models.py:80
 msgid "Date updated"
-msgstr ""
+msgstr "Дата оновлення"
 
 #: branch/models.py:87
 msgid "Status"
-msgstr ""
+msgstr "Статус"
 
 #: branch/models.py:94
 msgid "Locale"
-msgstr ""
+msgstr "Локаль"
 
 #: branch/models.py:95
-msgid "The locale of the resource."
-msgstr ""
+msgid "Specify the publishing locale used."
+msgstr "Вкажіть використовувану локаль публікації."
 
 #: branch/models.py:102
 msgid "Meta title"
-msgstr ""
+msgstr "Мета заголовок"
 
 #: branch/models.py:103
 msgid ""
 "This will be displayed in meta tags. Keep it under 60 characters. Leave "
 "empty and the post's title will be used."
 msgstr ""
+"Це буде відображатися в метатегах. Використовуйте до 60 символів. Залиште "
+"поле порожнім, і буде використовуватися заголовок повідомлення."
 
 #: branch/models.py:112
 msgid "Meta description"
-msgstr ""
+msgstr "Мета опис"
 
 #: branch/models.py:113
 msgid "This will be displayed in meta tags. Keep it under 120 characters."
-msgstr ""
+msgstr "Це буде відображатися в метатегах. Використовуйте до 120 символів."
 
 #: templates/base.html:100
 msgid "Go to main page"
-msgstr ""
+msgstr "На головну"
 
 #: templates/partials/mini-toc.html:3
 msgid "Latest publications"
-msgstr ""
+msgstr "Останні публікації"
 
 #: templates/partials/mini-toc.html:13
 msgid "All posts"
-msgstr ""
+msgstr "Всі публікації"
 
 #: templates/partials/sidebar.html:28
 msgid "Search"
-msgstr ""
+msgstr "Пошук"
 
 #: templates/partials/sidebar.html:33
 msgid "Subscribe to news feed"
-msgstr ""
+msgstr "Підписатися на стрічку новин"
 
 #: templates/partials/sidebar.html:39
 msgid "GitHub Profile"
-msgstr ""
+msgstr "GitHub профіль"
 
 #: templates/partials/sidebar.html:46
 msgid "Serghei Iakovlev"
-msgstr ""
+msgstr "Сергій Яковлєв"
 
 #: templates/partials/sidebar.html:47
-msgid "Unless otherwise stated, all content on the site is available under "
-msgstr ""
+msgid "Unless otherwise stated, all content on the site is available under"
+msgstr "Якщо не вказано іншого, весь вміст сайту є під ліцензією"
