@@ -129,12 +129,14 @@ KEYWORDS = [
 # Classifiers: available ones listed at https://pypi.org/classifiers
 CLASSIFIERS = [
     'Development Status :: 3 - Alpha',
-    'Natural Language :: English',
     'Topic :: Internet',
+
+    'Framework :: Django',
+    'Framework :: Django :: 3.2',
 
     'Environment :: Web Environment',
     'Operating System :: OS Independent',
-
+    'Intended Audience :: Developers',
     'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',  # noqa: E501
 
     'Programming Language :: Python',
@@ -200,7 +202,7 @@ if __name__ == '__main__':
         project_urls=PROJECT_URLS,
         classifiers=CLASSIFIERS,
         packages=find_packages(exclude=['examples']),
-        platforms='any',
+        platforms=['any'],
         include_package_data=True,
         zip_safe=False,
         python_requires='>=3.7, <4',
