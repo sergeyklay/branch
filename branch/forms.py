@@ -70,6 +70,8 @@ class RichTextField(forms.CharField):
             cleaned,
             allowed_tags=extra_tags,
             allowed_attrs=extra_attrs,
+            unescape_tags=False,
+            prettify=False,
         )
 
         return contents.strip()
