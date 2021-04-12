@@ -83,9 +83,9 @@ if settings.DEBUG:
         # And when sending requests to '/<ADMIN_URL>/<APP>/<MODEL>/', Safari
         # makes request to the following URLS
         # '/<ADMIN_URL>/<MODEL>/img/icon-.*.svg' due to relative nature of
-        # links.
+        # icons links.
         #
-        # For more see:
+        # Refs:
         #    - django/contrib/admin/static/admin/css/base.css
         #    - https://discussions.apple.com/thread/1407049
         #
