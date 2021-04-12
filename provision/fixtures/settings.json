@@ -62,5 +62,21 @@
       "name": "contact_email",
       "value": "nowhere@example.org"
     }
+  },
+  {
+    "model": "website.setting",
+    "pk": 8,
+    "fields": {
+      "name": "default_from_email",
+      "value": "webmaster@localhost"
+    }
+  },
+  {
+    "model": "website.setting",
+    "pk": 9,
+    "fields": {
+      "name": "email_subject_prefix",
+      "value": "[Branch]"
+    }
   }
 ]
