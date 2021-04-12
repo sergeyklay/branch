@@ -15,7 +15,11 @@
 
 """Telegraph views definitions."""
 
-from django.core.mail import BadHeaderError, send_mail
+from django.core.mail import (
+    BadHeaderError,
+    EmailMultiAlternatives,
+    get_connection,
+)
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
@@ -49,16 +53,24 @@ class ContactFormView(PageDetailsMixin, FormView):
         cd = form.cleaned_data
 
         contact_email = Setting.website.get('contact_email')
-        subject = cd.get(cd['subject'], _('Contact form submission'))
+        from_email = Setting.website.get('default_from_email')
+        subject_prefix = Setting.website.get('email_subject_prefix')
+        subject = cd.get(
+            cd['subject'],
+            _('%s: Contact form submission' % f'{subject_prefix}')
+        )
 
         try:
-            sent_messages = send_mail(
+            mail = EmailMultiAlternatives(
                 subject=subject,
-                message=cd['message'],
-                from_email=f"{cd['name']} <{cd['email']}>",
-                recipient_list=[contact_email],
+                body=cd['message'],
+                from_email=from_email,
+                to=[contact_email],
+                reply_to=[f"{cd['name']} <{cd['email']}>"],
+                connection=get_connection(),
             )
-            self.sent = sent_messages > 0
+
+            self.sent = mail.send() > 0
 
         except BadHeaderError:  # TODO: Handle this better
             return HttpResponse(_('Invalid header found'))
