@@ -60,7 +60,7 @@ class Post(AbstractPage):
         max_length=256,
         null=True,
         blank=True,
-        verbose_name=_('excerpt'),
+        verbose_name=_('Excerpt'),
         help_text=_('A short, concise introduction'),
     )
 
