@@ -59,7 +59,8 @@ def highlight_js():
     return ['prismjs/prism.js'] + list(result) + [trumbowyg]
 
 
-def content_sanitize(raw_text, allowed_tags=None, allowed_attrs=None):
+def content_sanitize(raw_text, allowed_tags=None, allowed_attrs=None,
+                     unescape_tags=True, prettify=True):
     """
     Sanitize given text.
 
@@ -76,7 +77,16 @@ def content_sanitize(raw_text, allowed_tags=None, allowed_attrs=None):
     allowed_tags = ALLOWED_TAGS + allowed_tags or ()
     allowed_attrs = ALLOWED_ATTRS + allowed_attrs or ()
 
-    unescaped = unescape(raw_text or '')
+    if unescape_tags:
+        # This will convert all named and numeric character references
+        # in the raw_text to the corresponding Unicode characters:
+        #    <code>&lt;h1&gt;</code> -> <code><h1></code>
+        unescaped = unescape(raw_text or '')
+    else:
+        # This allows use something like
+        #    <code>&lt;h1&gt;</code>
+        # in the posts
+        unescaped = raw_text or ''
 
     unquoted = unescaped \
         .replace('“', '"') \
@@ -105,7 +115,12 @@ def content_sanitize(raw_text, allowed_tags=None, allowed_attrs=None):
             else:
                 tag.unwrap()
 
-    return soup.prettify()
+    if prettify:
+        # Autoindent html code
+        return soup.prettify()
+
+    # Return just a string, with no fancy formatting
+    return str(soup)
 
 
 def admin_path():
