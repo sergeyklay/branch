@@ -80,12 +80,15 @@ if settings.DEBUG:
         # '../img/icon-changelink.svg'
         # '../img/icon-deletelink.svg
         #
-        # When opening '/admin/<APP>/<MODEL>/' Safari makes
-        # request to the following URLS '/admin/<APP>/<MODEL>/img/icon-.*.svg'
+        # And when sending requests to '/<ADMIN_URL>/<APP>/<MODEL>/', Safari
+        # makes request to the following URLS
+        # '/<ADMIN_URL>/<MODEL>/img/icon-.*.svg' due to relative nature of
+        # links.
         #
         # For more see:
-        # /django/contrib/admin/static/admin/css/base.css
-        # https://discussions.apple.com/thread/1407049
+        #    - django/contrib/admin/static/admin/css/base.css
+        #    - https://discussions.apple.com/thread/1407049
+        #
         re_path(r'^.*/(?P<path>img/icon-.*.svg)$', serve, {
             'document_root': os.path.join(settings.STATIC_ROOT, 'admin'),
         }),
