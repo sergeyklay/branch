@@ -104,6 +104,7 @@ MIDDLEWARE = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
+    'apps.website.middleware.locale.inject_accept_language',
     'django.middleware.locale.LocaleMiddleware',
 )
 
@@ -191,6 +192,9 @@ ADMIN_SITE_URL = env.str('ADMIN_SITE_URL', default='admin/')
 
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/
+
+ADMIN_LANGUAGE_CODE = 'ru'
+DEFAULT_LANGUAGE_CODE = 'ru'
 
 LANGUAGE_CODE = 'en-us'
 LANGUAGE_COOKIE_NAME = 'branch_language'
