@@ -20,6 +20,10 @@
 
   @include appearance(none);
 
+  @include mq(phonem) {
+    font-size: 1em;
+  }
+
   @include mq(tabletp) {
     font-size: 1.15em;
   }

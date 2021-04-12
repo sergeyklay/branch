@@ -5,6 +5,14 @@
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Responsive
 // Usage: @include mq(tabletp) {}
 
+// iPhone min device width cheat sheet:
+//
+// iPhone 4 and 4S: 320px
+// iPhone 5, 5S, 5C and 5SE: 320px
+// iPhone 6, 6S, 7 and 8: 375px
+// iPhone 6+, 7+ and 8+: 414px
+// iPhone X: 375px
+$break-phonem: 320px;
 $break-phonel: 480px;
 $break-tabletp: 768px;
 $break-tabletl: 1024px;
@@ -12,7 +20,10 @@ $break-laptop: 1220px;
 $break-desktop: 1600px;
 
 @mixin mq($media) {
-  @if $media == phonel {
+  @if $media == phonem {
+    @media only screen and (min-width: $break-phonem) { @content; }
+  }
+  @else if $media == phonel {
     @media only screen and (min-width: $break-phonel) { @content; }
   }
   @else if $media == tabletp {
