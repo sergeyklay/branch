@@ -16,7 +16,11 @@
     </header>
 
     <p class="blog-post-content">
-        {{ post.body|safe|truncatewords:45|linebreaks }}
+        {% if post.excerpt and post.excerpt.strip %}
+            {{ post.excerpt|safe|truncatewords:40 }}
+        {% else %}
+            {{ post.body|safe|truncatewords:40 }}
+        {% endif %}
     </p>
 
     <footer>

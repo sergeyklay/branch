@@ -1,7 +1,7 @@
 {% if post.excerpt and post.excerpt.strip %}
-    <meta name="description" content="{{ post.excerpt|linebreaks|striptags|truncatechars:150 }}">
+    <meta name="description" content="{{ post.excerpt|striptags|truncatechars:150 }}">
 {% elif post.meta_description and post.meta_description.strip %}
-    <meta name="description" content="{{ post.meta_description|linebreaks|striptags|truncatechars:150 }}">
+    <meta name="description" content="{{ post.meta_description|striptags|truncatechars:150 }}">
 {% else %}
-    <meta name="description" content="{{ site_description|linebreaks|striptags|truncatechars:150 }}">
+    <meta name="description" content="{{ site_description|striptags|truncatechars:150 }}">
 {% endif %}
