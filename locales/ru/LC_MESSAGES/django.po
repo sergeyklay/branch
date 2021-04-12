@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: branch 0.0.1\n"
 "Report-Msgid-Bugs-To: egrep@protonmail.ch\n"
-"POT-Creation-Date: 2021-04-11 21:20+0000\n"
-"PO-Revision-Date: 2021-04-11 21:20+0000\n"
+"POT-Creation-Date: 2021-04-12 07:23+0000\n"
+"PO-Revision-Date: 2021-04-12 07:23+0000\n"
 "Last-Translator: Serghei Iakovlev <egrep@protonmail.ch>\n"
 "Language-Team: Russian <egrep@protonmail.ch>\n"
 "Language: Russian\n"
@@ -24,13 +24,18 @@ msgstr ""
 msgid "Content"
 msgstr "Содержимое"
 
-#: apps/blog/admin.py:82 apps/pages/admin.py:68
+#: apps/blog/admin.py:78 apps/pages/admin.py:68
 msgid "General content"
 msgstr "Основное содержимое"
 
-#: apps/blog/admin.py:96 apps/pages/admin.py:78
+#: apps/blog/admin.py:92 apps/pages/admin.py:78
 msgid "SEO"
 msgstr "SEO"
+
+#: apps/blog/apps.py:27 apps/blog/templates/blog/posts/list.html:6
+#: templates/partials/sidebar.html:15
+msgid "Blog"
+msgstr "Блог"
 
 #: apps/blog/models.py:39
 msgid "Drama"
@@ -84,34 +89,33 @@ msgstr "Следующие публикации"
 msgid "Read more..."
 msgstr "Читать далее..."
 
-#: apps/blog/templates/blog/posts/list.html:6
-#: templates/partials/sidebar.html:15
-msgid "Blog"
-msgstr "Блог"
-
 #: apps/pages/admin.py:92
 msgid "URL"
 msgstr "URL"
+
+#: apps/pages/apps.py:27 apps/pages/models.py:32
+msgid "Pages"
+msgstr "Страницы"
 
 #: apps/pages/models.py:31
 msgid "Page"
 msgstr "Страница"
 
-#: apps/pages/models.py:32
-msgid "Pages"
-msgstr "Страницы"
+#: apps/telegraph/apps.py:27
+msgid "Telegraph"
+msgstr "Телеграф"
 
 #: apps/telegraph/forms.py:32
 msgid "How can I contact you"
 msgstr "Как я могу к Вам обращаться"
 
 #: apps/telegraph/forms.py:40
-msgid "Your contact address"
-msgstr "Обратный адрес"
+msgid "Where can I send a response"
+msgstr "Куда отправить ответ"
 
 #: apps/telegraph/forms.py:49
-msgid "Message subject"
-msgstr "Тема сообщения"
+msgid "Can be blank"
+msgstr "Можно оставить пустым"
 
 #: apps/telegraph/templates/telegraph/contact.html:13
 msgid "E-mail successfully sent"
@@ -135,8 +139,8 @@ msgstr ""
 "доберусь до вашего письма столь же стремительным образом."
 
 #: apps/telegraph/templates/telegraph/contact.html:41
-msgid "Name"
-msgstr "Имя"
+msgid "Your Name"
+msgstr "Ваше имя"
 
 #: apps/telegraph/templates/telegraph/contact.html:49
 msgid "Email Address"
@@ -166,6 +170,10 @@ msgstr "Новое сообщение"
 #: apps/telegraph/views.py:64
 msgid "Invalid header found"
 msgstr "Обнаружен некорректный заголовок"
+
+#: apps/website/apps.py:27
+msgid "Website"
+msgstr "Вебсайт"
 
 #: apps/website/models.py:40
 msgid "Setting name"
@@ -215,15 +223,15 @@ msgstr "Черновик"
 msgid "Published"
 msgstr "Опубликовано"
 
-#: branch/models.py:40 branch/settings/base.py:196
+#: branch/models.py:40 branch/settings/base.py:202
 msgid "English"
 msgstr "Английский"
 
-#: branch/models.py:41 branch/settings/base.py:198
+#: branch/models.py:41 branch/settings/base.py:204
 msgid "Russian"
 msgstr "Русский"
 
-#: branch/models.py:42 branch/settings/base.py:197
+#: branch/models.py:42 branch/settings/base.py:203
 msgid "Ukrainian"
 msgstr "Украинский"
 

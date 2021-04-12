@@ -37,7 +37,7 @@ class ContactMessageForm(forms.Form):
         max_length=254,
         widget=forms.EmailInput(attrs={
             'class': input_class,
-            'placeholder': _('Your contact address'),
+            'placeholder': _('Where can I send a response'),
         }),
     )
 
@@ -46,7 +46,7 @@ class ContactMessageForm(forms.Form):
         required=False,
         widget=forms.TextInput(attrs={
             'class': input_class,
-            'placeholder': _('Message subject'),
+            'placeholder': _('Can be blank'),
         }),
     )
 
