@@ -9,9 +9,9 @@
 {% endif %}
 
 {% if page_description and page_description.strip %}
-    <meta name="twitter:description" content="{{ page_description|linebreaks|striptags|truncatechars:150 }}">
+    <meta name="twitter:description" content="{{ page_description|striptags|truncatechars:150 }}">
 {% else %}
-    <meta name="twitter:description" content="{{ site_description|linebreaks|striptags|truncatechars:150 }}">
+    <meta name="twitter:description" content="{{ site_description|striptags|truncatechars:150 }}">
 {% endif %}
 
 {% if featured_image %}
