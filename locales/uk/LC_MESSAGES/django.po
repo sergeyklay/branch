@@ -3,16 +3,15 @@
 # This file is distributed under the same license as the branch package.
 # Serghei Iakovlev <egrep@protonmail.ch>, 2021.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: branch 0.0.1\n"
-"Report-Msgid-Bugs-To: egrep@protonmail.ch\n"
-"POT-Creation-Date: 2021-04-12 07:23+0000\n"
-"PO-Revision-Date: 2021-04-12 07:23+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-12 07:47+0000\n"
+"PO-Revision-Date: 2021-04-12 10:52+0300\n"
 "Last-Translator: Serghei Iakovlev <egrep@protonmail.ch>\n"
 "Language-Team: Ukrainian <egrep@protonmail.ch>\n"
-"Language: Ukrainian\n"
+"Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,6 +19,7 @@ msgstr ""
 "11 ? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % "
 "100 > 14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || "
 "(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+"X-Generator: Poedit 2.4.2\n"
 
 #: apps/blog/admin.py:30 apps/pages/admin.py:31
 msgid "Content"
@@ -63,7 +63,7 @@ msgid "Featured image"
 msgstr "Ілюстрація"
 
 #: apps/blog/models.py:63
-msgid "excerpt"
+msgid "Excerpt"
 msgstr "Уривок"
 
 #: apps/blog/models.py:64
