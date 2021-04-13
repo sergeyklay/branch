@@ -28,12 +28,11 @@
             {% trans 'Search' %}
         </a>
 
-        <a class="sidebar-nav-item"
-           href="/atom.xml"
-           title="{% trans 'Subscribe to news feed' %}">
-            {# TODO: Implement me #}
-            RSS
-        </a>
+        <div class="sidebar-nav-item">
+            <a href="{% url 'blog:post_atom' %}" title="{% trans 'Subscribe to posts feed' %}">Atom</a>
+            <span aria-hidden="true">|</span>
+            <a href="{% url 'blog:post_rss' %}" title="{% trans 'Subscribe to posts feed' %}">RSS 2.0</a>
+        </div>
 
         <a class="sidebar-nav-item" href="https://github.com/{{ site_github_username }}" target="_blank">
             {% trans 'GitHub Profile' %}

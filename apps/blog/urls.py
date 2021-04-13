@@ -18,11 +18,14 @@
 from django.urls import path
 
 from . import views
+from .feeds import PostsFeedAtom, PostsFeedRSS
 
 app_name = 'blog'  # pylint: disable=invalid-name
 
 urlpatterns = (
     path('', views.PostListView.as_view(), name='post_list'),
+    path('atom.xml', PostsFeedAtom(), name='post_atom'),
+    path('rss.xml', PostsFeedRSS(), name='post_rss'),
     path(
         'post/<int:year>/<int:month>/<int:day>/<slug:slug>.html',
         views.PostDetailView.as_view(),
