@@ -28,12 +28,11 @@
             {% trans 'Search' %}
         </a>
 
-        <a class="sidebar-nav-item"
-           href="/atom.xml"
-           title="{% trans 'Subscribe to news feed' %}">
-            {# TODO: Implement me #}
-            RSS
-        </a>
+        <div class="sidebar-nav-item">
+            <a href="{% url 'blog:posts_atom' %}" title="{% trans 'Subscribe to posts (Atom)' %}">Atom</a>
+            <span aria-hidden="true">|</span>
+            <a href="{% url 'blog:posts_rss' %}" title="{% trans 'Subscribe to posts (RSS 2.0)' %}">RSS 2.0</a>
+        </div>
 
         <a class="sidebar-nav-item" href="https://github.com/{{ site_github_username }}" target="_blank">
             {% trans 'GitHub Profile' %}
@@ -42,8 +41,7 @@
 
     <div class="sidebar-item">
         <p>
-            {# TODO: Use site_copyright_holder variable #}
-            &copy; {% trans 'Serghei Iakovlev' %} 2018-{% now "Y" %}.
+            &copy; {{ site_copyright_holder }} 2018-{% now "Y" %}.
             {% trans 'Unless otherwise stated, all content on the site is available under' %}
             <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" target="_blank">
                 CC BY-NC-SA 4.0

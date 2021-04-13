@@ -78,5 +78,15 @@
       "name": "email_subject_prefix",
       "value": "[Branch]"
     }
+  },
+  {
+    "model": "website.setting",
+    "pk": 9,
+    "fields": {
+      "name": "copyright_holder",
+      "value": "John Doe"
+    }
   }
 ]
+
+
