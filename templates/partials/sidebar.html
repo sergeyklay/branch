@@ -29,9 +29,9 @@
         </a>
 
         <div class="sidebar-nav-item">
-            <a href="{% url 'blog:post_atom' %}" title="{% trans 'Subscribe to posts feed' %}">Atom</a>
+            <a href="{% url 'blog:posts_atom' %}" title="{% trans 'Subscribe to posts (Atom)' %}">Atom</a>
             <span aria-hidden="true">|</span>
-            <a href="{% url 'blog:post_rss' %}" title="{% trans 'Subscribe to posts feed' %}">RSS 2.0</a>
+            <a href="{% url 'blog:posts_rss' %}" title="{% trans 'Subscribe to posts (RSS 2.0)' %}">RSS 2.0</a>
         </div>
 
         <a class="sidebar-nav-item" href="https://github.com/{{ site_github_username }}" target="_blank">
