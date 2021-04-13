@@ -22,14 +22,39 @@ take notes and keep thoughts in one place.
 Features
 ========
 
-* WYSIWYG Editor
-* Pagination
-* Website theme focused on legibility, durability, ease and flexibility
-* Responsive design for mobile phones, tablets and PCs
-* Templates for posts, pages, narrative, drama and poetry
-* Contact page
-* Sitemap support
-* Atom / RSS 2.0 support
+* **Admin**
+
+  * WYSIWYG Editor
+
+* **Multilingual support**
+
+  * English
+  * Russian
+  * Ukrainian
+
+* **Design**
+
+  * Website theme focused on legibility, durability, ease and flexibility
+  * Responsive design for mobile phones, tablets and PCs
+  * Templates for posts, pages, narrative, drama and poetry
+  * Pagination
+
+* **Pages**
+
+  * Contact page to send E-Mails
+  * Ability to create posts or just pages like "About"
+
+* **Feeds**
+
+  * Atom for Posts
+  * RSS 2.0 for Posts
+
+* **SEO**
+
+  * Custom description for page
+  * Custom title for page
+  * Sitemap support
+
 
 .. -project-information-
 
