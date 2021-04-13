@@ -37,13 +37,9 @@ class PostsFeedRSS(Feed):
     feed_limit = 20
     words_limit = 30
 
-    def __init__(self):
-        self._site = Site.objects.get(pk=settings.SITE_ID)
-        self._copyright_holder = Setting.website.get('copyright_holder')
-
     def title(self):
         """Return the feed's title as a normal Python string."""
-        return self._site.name
+        return Site.objects.get(pk=settings.SITE_ID)
 
     def description(self):
         """Return the feed's description as a normal Python string."""
@@ -52,7 +48,7 @@ class PostsFeedRSS(Feed):
 
     def author_name(self):
         """Return the feed's author's name as a normal Python string."""
-        return self._copyright_holder or 'Branch'
+        return Setting.website.get('copyright_holder', 'Branch')
 
     def author_email(self):
         """Return the feed's author's email as a normal Python string."""
@@ -61,7 +57,7 @@ class PostsFeedRSS(Feed):
     def feed_copyright(self):
         """Return the feed's copyright notice as a normal Python string."""
         now = datetime.datetime.now()
-        copyright_holder = self._copyright_holder or 'Branch'
+        copyright_holder = self.author_name()
         return f'Copyright (c) 2018-{now.year} {copyright_holder}'
 
     def items(self):
