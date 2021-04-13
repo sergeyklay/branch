@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: branch 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 07:47+0000\n"
-"PO-Revision-Date: 2021-04-12 10:52+0300\n"
+"POT-Creation-Date: 2021-04-13 09:15+0000\n"
+"PO-Revision-Date: 2021-04-13 12:17+0300\n"
 "Last-Translator: Serghei Iakovlev <egrep@protonmail.ch>\n"
 "Language-Team: Ukrainian <egrep@protonmail.ch>\n"
 "Language: uk\n"
@@ -86,7 +86,7 @@ msgstr "Попередні публікації"
 msgid "Next"
 msgstr "Наступні публікації"
 
-#: apps/blog/templates/blog/partials/post-teaser.html:24
+#: apps/blog/templates/blog/partials/post-teaser.html:28
 msgid "Read more..."
 msgstr "Читати далі..."
 
@@ -159,16 +159,17 @@ msgstr "Повідомлення"
 msgid "Send e-mail"
 msgstr "Надіслати"
 
-#: apps/telegraph/views.py:40 apps/telegraph/views.py:44
+#: apps/telegraph/views.py:44 apps/telegraph/views.py:48
 #: templates/partials/sidebar.html:18
 msgid "Contact Form"
 msgstr "Контактна форма"
 
-#: apps/telegraph/views.py:52
-msgid "Contact form submission"
-msgstr "Нове повідомлення"
+#: apps/telegraph/views.py:60
+#, python-format
+msgid "%s: Contact form submission"
+msgstr "%s: Нове повідомлення"
 
-#: apps/telegraph/views.py:64
+#: apps/telegraph/views.py:76
 msgid "Invalid header found"
 msgstr "Виявлено некоректний заголовок"
 
@@ -320,18 +321,18 @@ msgstr "Всі публікації"
 msgid "Search"
 msgstr "Пошук"
 
-#: templates/partials/sidebar.html:33
-msgid "Subscribe to news feed"
-msgstr "Підписатися на стрічку новин"
+#: templates/partials/sidebar.html:32
+msgid "Subscribe to posts (Atom)"
+msgstr "Підписатися на стрічку публікацій (Atom)"
 
-#: templates/partials/sidebar.html:39
+#: templates/partials/sidebar.html:34
+msgid "Subscribe to posts (RSS 2.0)"
+msgstr "Підписатися на стрічку публікацій (RSS 2.0)"
+
+#: templates/partials/sidebar.html:38
 msgid "GitHub Profile"
 msgstr "GitHub профіль"
 
-#: templates/partials/sidebar.html:46
-msgid "Serghei Iakovlev"
-msgstr "Сергій Яковлєв"
-
-#: templates/partials/sidebar.html:47
+#: templates/partials/sidebar.html:45
 msgid "Unless otherwise stated, all content on the site is available under"
 msgstr "Якщо не вказано іншого, весь вміст сайту є під ліцензією"

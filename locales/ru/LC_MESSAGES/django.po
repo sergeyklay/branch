@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: branch 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-12 07:47+0000\n"
-"PO-Revision-Date: 2021-04-12 10:51+0300\n"
+"POT-Creation-Date: 2021-04-13 09:15+0000\n"
+"PO-Revision-Date: 2021-04-13 12:17+0300\n"
 "Last-Translator: Serghei Iakovlev <egrep@protonmail.ch>\n"
 "Language-Team: Russian <egrep@protonmail.ch>\n"
 "Language: ru\n"
@@ -85,7 +85,7 @@ msgstr "Предыдущие публикации"
 msgid "Next"
 msgstr "Следующие публикации"
 
-#: apps/blog/templates/blog/partials/post-teaser.html:24
+#: apps/blog/templates/blog/partials/post-teaser.html:28
 msgid "Read more..."
 msgstr "Читать далее..."
 
@@ -158,16 +158,17 @@ msgstr "Сообщение"
 msgid "Send e-mail"
 msgstr "Отправить"
 
-#: apps/telegraph/views.py:40 apps/telegraph/views.py:44
+#: apps/telegraph/views.py:44 apps/telegraph/views.py:48
 #: templates/partials/sidebar.html:18
 msgid "Contact Form"
 msgstr "Контактная форма"
 
-#: apps/telegraph/views.py:52
-msgid "Contact form submission"
-msgstr "Новое сообщение"
+#: apps/telegraph/views.py:60
+#, python-format
+msgid "%s: Contact form submission"
+msgstr "%s: Новое сообщение"
 
-#: apps/telegraph/views.py:64
+#: apps/telegraph/views.py:76
 msgid "Invalid header found"
 msgstr "Обнаружен некорректный заголовок"
 
@@ -319,18 +320,18 @@ msgstr "Все публикации"
 msgid "Search"
 msgstr "Поиск"
 
-#: templates/partials/sidebar.html:33
-msgid "Subscribe to news feed"
-msgstr "Подписаться на ленту новостей"
+#: templates/partials/sidebar.html:32
+msgid "Subscribe to posts (Atom)"
+msgstr "Подписаться на ленту публикаций (Atom)"
 
-#: templates/partials/sidebar.html:39
+#: templates/partials/sidebar.html:34
+msgid "Subscribe to posts (RSS 2.0)"
+msgstr "Подписаться на ленту публикаций (RSS 2.0)"
+
+#: templates/partials/sidebar.html:38
 msgid "GitHub Profile"
 msgstr "GitHub профиль"
 
-#: templates/partials/sidebar.html:46
-msgid "Serghei Iakovlev"
-msgstr "Сергей Яковлев"
-
-#: templates/partials/sidebar.html:47
+#: templates/partials/sidebar.html:45
 msgid "Unless otherwise stated, all content on the site is available under"
 msgstr "Если не указано иного, всё содержимое сайта доступно под лицензией"
