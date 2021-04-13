@@ -27,9 +27,9 @@ Features
 * Website theme focused on legibility, durability, ease and flexibility
 * Responsive design for mobile phones, tablets and PCs
 * Templates for posts, pages, narrative, drama and poetry
-* Sitemap support
 * Contact page
-
+* Sitemap support
+* Atom / RSS 2.0 support
 
 .. -project-information-
 
