@@ -18,33 +18,42 @@
 import datetime
 
 from django.conf import settings
-from django.contrib.sites.models import Site
+from django.contrib.sites.shortcuts import get_current_site
 from django.contrib.syndication.views import Feed
 from django.template.defaultfilters import truncatewords
 from django.urls import reverse_lazy
 from django.utils import feedgenerator
 from django.utils.html import escape, strip_tags
+from django.utils.translation import gettext_lazy as _
 
 from apps.website.models import Setting
 from .models import Post
 
 
-class PostsFeedRSS(Feed):
+class LatestPostsFeedRSS(Feed):
     """This represents RSS feed for blog posts."""
 
-    link = reverse_lazy('blog:post_list')
+    def __init__(self, posts_viewname):
+        self.link = reverse_lazy(posts_viewname)
 
-    feed_limit = 20
-    words_limit = 30
+    def get_object(self, request, *args, **kwargs):
+        """
+        Take the current request and the arguments from the URL, and
+        returns site object represented by this feed. Raises
+        django.core.exceptions.ObjectDoesNotExist on error
+        """
+        return get_current_site(request)
 
-    def title(self):
-        """Return the feed's title as a normal Python string."""
-        return Site.objects.get(pk=settings.SITE_ID)
+    def title(self, site):
+        """
+        Take the site object returned by get_object() and return the
+        feed's title as a normal Python string.
+        """
+        return _('Latest posts - %s' % site.name)
 
     def description(self):
         """Return the feed's description as a normal Python string."""
-        description = Setting.website.get('description')
-        return description
+        return Setting.website.get('description')
 
     def author_name(self):
         """Return the feed's author's name as a normal Python string."""
@@ -62,7 +71,8 @@ class PostsFeedRSS(Feed):
 
     def items(self):
         """Return a list of items to publish in this feed."""
-        return Post.published.all()[:self.feed_limit]
+        feed_limit = getattr(settings, 'FEED_MAX_ITEMS', 20)
+        return Post.published.all()[:feed_limit]
 
     def item_title(self, item):
         """
@@ -78,7 +88,8 @@ class PostsFeedRSS(Feed):
         description as a normal Python string.
         """
         excerpt = item.excerpt or item.body
-        return truncatewords(strip_tags(excerpt), self.words_limit)
+        words_limit = getattr(settings, 'FEED_WORD_LIMIT', 30)
+        return truncatewords(strip_tags(excerpt), words_limit)
 
     def item_author_name(self, item):
         """
@@ -101,15 +112,8 @@ class PostsFeedRSS(Feed):
         """
         return item.published_at
 
-    def item_updateddate(self, item):
-        """
-        Take an item, as returned by items(), and return the item's
-        updateddate.
-        """
-        return item.updated_at
 
-
-class PostsFeedAtom(PostsFeedRSS):
+class LatestPostsFeedAtom(LatestPostsFeedRSS):
     """This represents Atom feed for blog posts."""
 
     feed_type = feedgenerator.Atom1Feed
@@ -123,8 +127,17 @@ class PostsFeedAtom(PostsFeedRSS):
         Take an item, as returned by items(), and return the item's
         description as a normal Python string.
         """
+        # Try excerpt first
         excerpt = item.excerpt
         if not excerpt or len(excerpt) == 0:
-            excerpt = truncatewords(strip_tags(item.body), self.words_limit)
+            excerpt = strip_tags(item.body)
 
-        return excerpt
+        words_limit = getattr(settings, 'FEED_WORD_LIMIT', 30)
+        return truncatewords(excerpt, words_limit)
+
+    def item_updateddate(self, item):
+        """
+        Take an item, as returned by items(), and return the item's
+        updateddate.
+        """
+        return item.updated_at
