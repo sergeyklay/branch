@@ -13,8 +13,9 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-from branch.templatetags.urlparams import urlparams
 import pytest
+
+from branch.templatetags.urlparams import urlparams
 
 
 @pytest.mark.parametrize(
