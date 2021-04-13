@@ -57,7 +57,7 @@ class ContactFormView(PageDetailsMixin, FormView):
         subject_prefix = Setting.website.get('email_subject_prefix')
         subject = cd.get(
             cd['subject'],
-            _('%s: Contact form submission' % f'{subject_prefix}')
+            _('%s: Contact form submission' % subject_prefix)
         )
 
         try:

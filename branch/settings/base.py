@@ -259,3 +259,8 @@ EMAIL_HOST_PASSWORD = env.str('EMAIL_HOST_PASSWORD', default='')
 EMAIL_PORT = env.int('EMAIL_PORT', default=25)
 EMAIL_USE_TLS = env.bool('EMAIL_USE_TLS', default=EMAIL_HOST != 'localhost')
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Syndication
+
+FEED_MAX_ITEMS = 20
+FEED_WORD_LIMIT = 30
