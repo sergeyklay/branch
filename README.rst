@@ -89,4 +89,4 @@ Support
 
 Should you have any question, any remark, or if you find a bug, or if there is
 something you can't do with the Branch, please
-`open an issue <https://github.com/sergeyklay/gstore/issues>`_.
+`open an issue <https://github.com/sergeyklay/branch/issues>`_.
