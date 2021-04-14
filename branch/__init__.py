@@ -34,10 +34,9 @@ for details on the use of this package.
 """
 
 __copyright__ = 'Copyright (C) 2021 Serghei Iakovlev'
-__version__ = '0.0.1'
+__version__ = '1.0.0'
 __license__ = 'GPLv3+'
 __author__ = 'Serghei Iakovlev'
 __author_email__ = 'egrep@protonmail.ch'
 __url__ = 'https://github.com/sergeyklay/branch'
-__description__ = ('A Django blog application with features '
-                   'of a standard blogging platform.')
+__description__ = 'A Django blog application with features of a standard blogging platform.'  # noqa

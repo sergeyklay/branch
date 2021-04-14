@@ -124,17 +124,23 @@ def get_version_string():
 KEYWORDS = [
     'branch',
     'blog',
+    'diary',
+    'django',
 ]
 
 # Classifiers: available ones listed at https://pypi.org/classifiers
 CLASSIFIERS = [
-    'Development Status :: 3 - Alpha',
+    'Development Status :: 5 - Production/Stable',
     'Topic :: Internet',
     'Framework :: Django',
     'Framework :: Django :: 3.2',
     'Environment :: Web Environment',
     'Operating System :: OS Independent',
     'Intended Audience :: Developers',
+    'Natural Language :: English',
+    'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
+    'Topic :: Internet :: WWW/HTTP :: Dynamic Content :: Content Management System',  # noqa: E501
+    'Topic :: Internet :: WWW/HTTP :: Dynamic Content :: News/Diary',
     'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',  # noqa: E501
     'Programming Language :: Python',
     'Programming Language :: Python :: 3',

@@ -15,7 +15,9 @@
 
 """Representation of website models in the admin interface."""
 
+from django import forms
 from django.contrib import admin
+from django.db import models
 
 from .models import Setting
 
@@ -23,6 +25,17 @@ from .models import Setting
 @admin.register(Setting)
 class SettingAdmin(admin.ModelAdmin):
     """Class to manage website settings."""
+
+    formfield_overrides = {
+        models.TextField: {
+            'widget': forms.TextInput(
+                attrs={
+                    'class': 'vTextField',
+                    'style': 'min-width: 80%;',
+                }
+            )
+        }
+    }
 
     list_display = (
         'name',
