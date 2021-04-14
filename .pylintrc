@@ -16,7 +16,7 @@
 [MASTER]
 
 # Ignore files and directories for linting.
-ignore=migrations
+ignore=migrations,tests
 
 [MESSAGES CONTROL]
 

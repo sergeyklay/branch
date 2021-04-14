@@ -117,10 +117,16 @@ migrate:
 	$(VENV_PYTHON) manage.py migrate
 
 
+.PHONY: test-ccov
+test-ccov: COV=--cov=./$(PKG_NAME) --cov=./apps --cov-report=xml --cov-report=html
+test-ccov: HEADER_EXTRA=' (with coverage)'
+test-ccov: test
+
 .PHONY: test
-test:
+test: $(VENV_PYTHON)
 	@echo $(CS)Running tests$(HEADER_EXTRA)$(CE)
-	$(VENV_PYTHON) manage.py test --settings $(PKG_NAME).settings.test
+	$(VENV_BIN)/py.test $(PYTEST_FLAGS) $(COV) ./$(PKG_NAME) ./apps
+	@echo
 
 .PHONY: help
 help:
@@ -140,6 +146,7 @@ help:
 	@echo '  migrations:   Create database migrations'
 	@echo '  migrate:      Run all database migrations'
 	@echo '  test:         Run unit tests'
+	@echo '  test-ccov:    Run unit tests with coverage'
 	@echo '  lint:         Lint the code'
 	@echo '  clean:        Remove build and tests artefacts and directories'
 	@echo '  maintainer-clean:'

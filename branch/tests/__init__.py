@@ -12,26 +12,3 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
-
-"""Query parameters template tag."""
-
-from urllib.parse import quote, urlencode
-
-from django import template
-
-register = template.Library()
-
-
-@register.simple_tag
-def urlparams(*_, **kwargs):
-    """
-    Query parameters template tag.
-
-    Usage:
-      {% load urlparams %}
-      {% url 'blog:post_list' %}{% urlparams page=page.previous_page_number %}
-    """
-    safe_args = {k: v for k, v in kwargs.items() if v is not None}
-    if safe_args:
-        return '?{}'.format(urlencode(safe_args, quote_via=quote))
-    return ''

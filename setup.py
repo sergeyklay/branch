@@ -130,15 +130,12 @@ KEYWORDS = [
 CLASSIFIERS = [
     'Development Status :: 3 - Alpha',
     'Topic :: Internet',
-
     'Framework :: Django',
     'Framework :: Django :: 3.2',
-
     'Environment :: Web Environment',
     'Operating System :: OS Independent',
     'Intended Audience :: Developers',
     'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',  # noqa: E501
-
     'Programming Language :: Python',
     'Programming Language :: Python :: 3',
     'Programming Language :: Python :: 3.7',
@@ -167,6 +164,9 @@ EXTRAS_REQUIRE = {
     # Dependencies that are required to run tests
     'testing': [
         'pylint>=2.6.0,!=2.6.1',  # Python code static checker
+        'pytest>=6.2.0',  # Our test framework
+        'pytest-cov>=2.11.1',  # Pytest plugin for measuring coverage
+        'pytest-django>=4.2.0',  # A Django plugin for pytest
         'flake8>=3.8.4',  # The modular source code checker
         'flake8-import-order>=0.18.0',  # Check the ordering of imports
     ],

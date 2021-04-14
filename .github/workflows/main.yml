@@ -99,7 +99,7 @@ jobs:
         uses: actions/cache@v2.1.5
         with:
           path: ${{ steps.pip-cache.outputs.dir }}
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements/requirements*.txt') }}
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements/requirements.txt') }}-${{ hashFiles('requirements/requirements-dev.txt') }}
           restore-keys: |
             ${{ runner.os }}-pip-
 
@@ -133,8 +133,17 @@ jobs:
       - name: Run migrations
         run: make migrate
 
-      - name: Run tests
-        run: make test
+      - name: Run unit tests with coverage
+        run: make test-ccov
+
+      - name: Upload code coverage report
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          env_vars: OS,PYTHON
+          name: codecov-umbrella
+          flags: unittests
+          fail_ci_if_error: true
 
       - name: Success Reporting
         if: success()

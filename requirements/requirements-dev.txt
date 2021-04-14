@@ -8,8 +8,12 @@ asgiref==3.3.4
     # via django
 astroid==2.5.3
     # via pylint
+attrs==20.3.0
+    # via pytest
 beautifulsoup4==4.9.3
     # via -r requirements/requirements.in
+coverage==5.5
+    # via pytest-cov
 django-appconf==1.0.4
     # via django-compressor
 django-compressor==2.4
@@ -32,6 +36,8 @@ flake8==3.9.0
     # via -r requirements/requirements-dev.in
 gunicorn==20.1.0
     # via -r requirements/requirements.in
+iniconfig==1.1.1
+    # via pytest
 isort==5.8.0
     # via pylint
 lazy-object-proxy==1.6.0
@@ -40,8 +46,14 @@ mccabe==0.6.1
     # via
     #   flake8
     #   pylint
+packaging==20.9
+    # via pytest
 pillow==8.2.0
     # via -r requirements/requirements.in
+pluggy==0.13.1
+    # via pytest
+py==1.10.0
+    # via pytest
 pycodestyle==2.7.0
     # via
     #   flake8
@@ -50,6 +62,17 @@ pyflakes==2.3.1
     # via flake8
 pylint==2.7.4
     # via -r requirements/requirements-dev.in
+pyparsing==2.4.7
+    # via packaging
+pytest-cov==2.11.1
+    # via -r requirements/requirements-dev.in
+pytest-django==4.2.0
+    # via -r requirements/requirements-dev.in
+pytest==6.2.3
+    # via
+    #   -r requirements/requirements-dev.in
+    #   pytest-cov
+    #   pytest-django
 pytz==2021.1
     # via django
 rcssmin==1.0.6
@@ -65,7 +88,9 @@ sqlparse==0.4.1
     #   django
     #   django-debug-toolbar
 toml==0.10.2
-    # via pylint
+    # via
+    #   pylint
+    #   pytest
 wrapt==1.12.1
     # via astroid
 
