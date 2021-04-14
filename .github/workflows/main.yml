@@ -73,10 +73,10 @@ jobs:
           - windows-2019
         experimental: [false]
         include:
-          - python: '3.10.0-alpha.4'
+          - python: '3.10.0-alpha.7'
             os: ubuntu-20.04
             experimental: true
-          - python: '3.10.0-alpha.4'
+          - python: '3.10.0-alpha.7'
             os: macos-latest
             experimental: true
 
