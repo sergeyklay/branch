@@ -58,11 +58,12 @@ Features
   * Custom title for page
   * Sitemap support
 
-* **Testing**
+* **CI**
 
-  * ``pytest`` with ``pytest-django``
+  * Automated CI using GitHub Actions
+  * Unit testing using pytest and pytest-django
   * Code coverage using `codecov.io <https://codecov.io>`_
-  * flake8, pylint
+  * Code linting using flake8 and pylint
 
 
 .. -project-information-
