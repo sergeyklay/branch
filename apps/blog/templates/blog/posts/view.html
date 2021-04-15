@@ -67,7 +67,7 @@
     <section class="comment-thread">
         <div class="d-flex flex-items-center flex-wrap">
             <h4 id="discussion-comment-count">
-                {% blocktrans count total_comments=comments|length %}
+                {% blocktrans trimmed count total_comments=comments|length %}
                     {{ total_comments }} comment
                     {% plural %}
                     {{ total_comments }} comments
@@ -80,7 +80,7 @@
             <article class="comment" id="comment-0">
                 <div class="d-flex flex-items-center" style="float: none">
                     <div class="comment-body">
-                        {% trans 'There are no posts yet.' %}
+                        {% trans 'There are no comments yet.' %}
                     </div>
                 </div>
             </article>
