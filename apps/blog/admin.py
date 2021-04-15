@@ -21,7 +21,7 @@ from django.utils.translation import gettext_lazy as _
 
 from branch.forms import RichTextField
 from branch.utils import RichTextAdminMedia
-from .models import Post, Comment
+from .models import Comment, Post
 
 
 class PostForm(forms.ModelForm):
