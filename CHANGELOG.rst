@@ -14,6 +14,12 @@ Features
 * Added logging support.
 
 
+Trivial/Internal Changes
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Updated ``django-debug-toolbar`` to 3.2.1.
+
+
 ----
 
 
