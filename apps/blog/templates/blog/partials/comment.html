@@ -1,0 +1,20 @@
+{% load date_to_xmlschema %}
+
+<article class="comment" id="comment-{{ comment.pk }}">
+    <div class="comment-heading" style="float: none">
+        <div class="comment-meta">
+            <span class="comment-author">
+                {{ comment.user_name }}
+            </span>
+            <p class="m-0">
+                <time datetime="{{ comment.created_at|date_to_xmlschema }}">
+                    {{ comment.created_at|date:"Y.m.d" }}
+                </time>
+            </p>
+        </div>
+    </div>
+
+    <div class="comment-body">
+        {{ comment.comment|linebreaks }}
+    </div>
+</article>

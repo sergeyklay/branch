@@ -18,8 +18,10 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
+from django.utils.text import format_lazy
 from django.utils.translation import gettext_lazy as _
 
+from branch.mixins import ModelTimestampsMixin
 from branch.models import AbstractPage
 
 
@@ -61,7 +63,7 @@ class Post(AbstractPage):
         null=True,
         blank=True,
         verbose_name=_('Excerpt'),
-        help_text=_('A short, concise introduction'),
+        help_text=_('A short, concise introduction.'),
     )
 
     author = models.ForeignKey(
@@ -85,3 +87,62 @@ class Post(AbstractPage):
             self.published_at.day,  # pylint: disable=no-member
             self.slug,
         ])
+
+
+class Comment(ModelTimestampsMixin, models.Model):
+    """Post comments model class."""
+
+    STATUS_CHOICES = (
+        ('hidden', _('Hidden')),
+        ('published', _('Published')),
+    )
+
+    post = models.ForeignKey(
+        Post,
+        on_delete=models.CASCADE,
+        related_name='comments',
+        verbose_name=_('Post'),
+    )
+
+    user_name = models.CharField(
+        max_length=40,
+        verbose_name=_('User name'),
+        help_text=_('The name of the user who posted the comment.'),
+    )
+
+    user_email = models.EmailField(
+        max_length=254,
+        verbose_name=_('E-Mail'),
+        help_text=_('The email of the user who posted the comment.'),
+    )
+
+    comment = models.TextField(
+        verbose_name=_('Comment'),
+        help_text=_('The actual content of the comment itself.'),
+    )
+
+    status = models.CharField(
+        max_length=10,
+        choices=STATUS_CHOICES,
+        default='hidden',
+        verbose_name=_('Status'),
+        help_text=_('Is the comment will be displayed on the site?')
+    )
+
+    class Meta:
+        """Comment model metadata class."""
+
+        ordering = ('created_at',)
+        verbose_name = _('Comment')
+        verbose_name_plural = _('Comments')
+
+    def __str__(self):
+        str_id = format_lazy(
+            '{msg} {name} {on} "{post}"',
+            msg=_('Comment by'),
+            name=self.user_name,
+            on=_('on'),
+            post=self.post,
+        )
+
+        return str(str_id)

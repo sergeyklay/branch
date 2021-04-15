@@ -21,7 +21,7 @@ from django.utils.translation import gettext_lazy as _
 
 from branch.forms import RichTextField
 from branch.utils import RichTextAdminMedia
-from .models import Post
+from .models import Post, Comment
 
 
 class PostForm(forms.ModelForm):
@@ -100,3 +100,28 @@ class PostAdmin(admin.ModelAdmin):
 
     class Media(RichTextAdminMedia):
         """PostAdmin metadata class."""
+
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    """Class to manage post comments."""
+
+    list_display = (
+        'user_name',
+        'user_email',
+        'post',
+        'created_at',
+        'status',
+    )
+
+    list_filter = (
+        'status',
+        'created_at',
+        'updated_at',
+    )
+
+    search_fields = (
+        'user_name',
+        'user_email',
+        'comment',
+    )

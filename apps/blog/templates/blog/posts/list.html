@@ -8,6 +8,14 @@
     <div class="blog-list">
         {% for post in posts %}
             {% include 'blog/partials/post-teaser.html' with post=post %}
+        {% empty %}
+            <article class="blog-post">
+                <header>
+                    <h2 class="blog-post-title">
+                        {% trans 'There are no posts yet.' %}
+                    </h2>
+                </header>
+            </article>
         {% endfor %}
 
         {% if page_obj.paginator.num_pages > 1 %}

@@ -16,19 +16,22 @@
 """Blog views definitions."""
 
 from django.views.generic import DateDetailView, ListView
+from django.views.generic.edit import FormMixin
 
 from apps.website.models import Setting
 from branch.mixins import PageDetailsMixin
+from .forms import CommentForm
 from .models import Post
 
 
-class PostDetailView(PageDetailsMixin, DateDetailView):
+class PostDetailView(PageDetailsMixin, FormMixin, DateDetailView):
     """Display a blog post detail."""
 
     model = Post
     context_object_name = 'post'
     date_field = 'published_at'
     month_format = '%m'
+    form_class = CommentForm
     template_name = 'blog/posts/view.html'
     queryset = Post.published.all()
 
@@ -63,6 +66,27 @@ class PostDetailView(PageDetailsMixin, DateDetailView):
     @property
     def type(self):
         return self.object.type
+
+    def get_success_url(self):
+        return self.object.get_absolute_url()
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = self.get_form()
+        if form.is_valid():
+            return self.form_valid(form)
+        return self.form_invalid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['comments'] = self.object.comments.filter(status='published')
+        context['form'] = self.get_form()
+        return context
+
+    def form_valid(self, form):
+        form.instance.post = self.object
+        form.save()
+        return super().form_valid(form)
 
 
 class PostListView(ListView):

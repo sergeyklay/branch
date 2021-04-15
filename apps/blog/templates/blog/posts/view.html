@@ -61,4 +61,64 @@
     <div class="post-body">
         {{ post.body|safe }}
     </div>
+
+    <hr>
+
+    <section class="comment-form-wrapper" role="dialog">
+        <h2>{% trans 'Comments' %}</h2>
+        <div class="comment-form">
+            <form method="post" id="comment-form">
+                {% csrf_token %}
+
+                {% for hidden_field in form.hidden_fields %}
+                    {{ hidden_field }}
+                    {{ hidden_field.errors }}
+                {% endfor %}
+
+                <div class="comment-form-item">
+                    <label class="{{ form.label_class }}" for="{{ form.user_name.id_for_label }}">
+                        {% trans 'Your Name' %}&nbsp;<strong>*</strong>
+                    </label>
+                    {{ form.user_name }}
+                    {{ form.user_name.errors|safe }}
+                </div>
+
+                <div class="comment-form-item">
+                    <label class="{{ form.label_class }}" for="{{ form.user_email.id_for_label }}">
+                        {% trans 'Email Address' %}&nbsp;<strong>*</strong>
+                    </label>
+                    {{ form.user_email }}
+                    {{ form.user_email.errors|safe }}
+                </div>
+
+                <div class="comment-form-item">
+                    <label class="{{ form.label_class }}" for="{{ form.comment.id_for_label }}">
+                        {% trans 'Comment' %}&nbsp;<strong>*</strong>
+                    </label>
+                    {{ form.comment }}
+                    {{ form.comment.errors|safe }}
+                </div>
+
+                <div class="comment-form-item">
+                    <input type="submit" value="{% trans 'Submit' %}" class="button button-large">
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <hr>
+
+    <section class="comment-thread">
+        {% for comment in comments %}
+            {% include 'blog/partials/comment.html' with comment=comment %}
+        {% empty %}
+            <article class="comment" id="comment-0">
+                <div class="comment-heading" style="float: none">
+                    <div class="comment-body">
+                        {% trans 'There are no posts yet.' %}
+                    </div>
+                </div>
+            </article>
+        {% endfor %}
+    </section>
 {% endblock %}
