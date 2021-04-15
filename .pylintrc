@@ -28,7 +28,8 @@ disable=
     no-name-in-module,
     no-self-use,
     duplicate-code,
-    import-outside-toplevel
+    import-outside-toplevel,
+    unused-argument
 
 # Use multiple processes to speed up Pylint. Specifying 0 will auto-detect the
 # number of processors available to use.
