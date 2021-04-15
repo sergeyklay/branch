@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: branch 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-15 20:43+0000\n"
+"POT-Creation-Date: 2021-04-15 22:12+0000\n"
 "PO-Revision-Date: 2021-04-15 23:45+0300\n"
 "Last-Translator: Serghei Iakovlev <egrep@protonmail.ch>\n"
 "Language-Team: Russian <egrep@protonmail.ch>\n"
@@ -107,7 +107,7 @@ msgid "The email of the user who posted the comment."
 msgstr "Электронная почта пользователя, оставившего комментарий."
 
 #: apps/blog/models.py:120 apps/blog/models.py:136
-#: apps/blog/templates/blog/posts/view.html:96
+#: apps/blog/templates/blog/partials/comment-form.html:30
 msgid "Comment"
 msgstr "Комментарий"
 
@@ -123,7 +123,7 @@ msgstr "Статус"
 msgid "Is the comment will be displayed on the site?"
 msgstr "Будет ли комментарий отображаться на сайте?"
 
-#: apps/blog/models.py:137 apps/blog/templates/blog/posts/view.html:68
+#: apps/blog/models.py:137
 msgid "Comments"
 msgstr "Комментарии"
 
@@ -134,6 +134,20 @@ msgstr "Комментарий от"
 #: apps/blog/models.py:144
 msgid "on"
 msgstr "к"
+
+#: apps/blog/templates/blog/partials/comment-form.html:14
+#: apps/telegraph/templates/telegraph/contact.html:41
+msgid "Your Name"
+msgstr "Ваше имя"
+
+#: apps/blog/templates/blog/partials/comment-form.html:22
+#: apps/telegraph/templates/telegraph/contact.html:49
+msgid "Email Address"
+msgstr "Обратный адрес"
+
+#: apps/blog/templates/blog/partials/comment-form.html:37
+msgid "Submit"
+msgstr "Отправить"
 
 #: apps/blog/templates/blog/partials/pagination.html:9
 msgid "Previous"
@@ -148,23 +162,21 @@ msgid "Read more..."
 msgstr "Читать далее..."
 
 #: apps/blog/templates/blog/posts/list.html:15
-#: apps/blog/templates/blog/posts/view.html:118
 msgid "There are no posts yet."
 msgstr "Публикаций пока нет."
 
-#: apps/blog/templates/blog/posts/view.html:80
-#: apps/telegraph/templates/telegraph/contact.html:41
-msgid "Your Name"
-msgstr "Ваше имя"
+#: apps/blog/templates/blog/posts/view.html:70
+#, python-format
+msgid "%(total_comments)s comment"
+msgid_plural "%(total_comments)s comments"
+msgstr[0] "%(total_comments)s комментарий"
+msgstr[1] "%(total_comments)s комментария"
+msgstr[2] "%(total_comments)s комментариев"
+msgstr[3] "%(total_comments)s комментариев"
 
-#: apps/blog/templates/blog/posts/view.html:88
-#: apps/telegraph/templates/telegraph/contact.html:49
-msgid "Email Address"
-msgstr "Обратный адрес"
-
-#: apps/blog/templates/blog/posts/view.html:103
-msgid "Submit"
-msgstr "Отправить"
+#: apps/blog/templates/blog/posts/view.html:83
+msgid "There are no comments yet."
+msgstr "Комментариев пока нет."
 
 #: apps/pages/admin.py:92
 msgid "URL"
@@ -297,15 +309,15 @@ msgstr "Дата обновления"
 msgid "Draft"
 msgstr "Черновик"
 
-#: branch/models.py:42 branch/settings/base.py:253
+#: branch/models.py:42 branch/settings/base.py:258
 msgid "English"
 msgstr "Английский"
 
-#: branch/models.py:43 branch/settings/base.py:255
+#: branch/models.py:43 branch/settings/base.py:260
 msgid "Russian"
 msgstr "Русский"
 
-#: branch/models.py:44 branch/settings/base.py:254
+#: branch/models.py:44 branch/settings/base.py:259
 msgid "Ukrainian"
 msgstr "Украинский"
 

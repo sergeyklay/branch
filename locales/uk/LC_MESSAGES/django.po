@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: branch 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-15 20:43+0000\n"
+"POT-Creation-Date: 2021-04-15 22:12+0000\n"
 "PO-Revision-Date: 2021-04-15 23:45+0300\n"
 "Last-Translator: Serghei Iakovlev <egrep@protonmail.ch>\n"
 "Language-Team: Ukrainian <egrep@protonmail.ch>\n"
@@ -108,7 +108,7 @@ msgid "The email of the user who posted the comment."
 msgstr "Електронна пошта користувача, який залишив коментар."
 
 #: apps/blog/models.py:120 apps/blog/models.py:136
-#: apps/blog/templates/blog/posts/view.html:96
+#: apps/blog/templates/blog/partials/comment-form.html:30
 msgid "Comment"
 msgstr "Коментар"
 
@@ -124,7 +124,7 @@ msgstr "Статус"
 msgid "Is the comment will be displayed on the site?"
 msgstr "Чи буде коментар відображатися на сайті?"
 
-#: apps/blog/models.py:137 apps/blog/templates/blog/posts/view.html:68
+#: apps/blog/models.py:137
 msgid "Comments"
 msgstr "Коментарі"
 
@@ -135,6 +135,20 @@ msgstr "Коментар від"
 #: apps/blog/models.py:144
 msgid "on"
 msgstr "до"
+
+#: apps/blog/templates/blog/partials/comment-form.html:14
+#: apps/telegraph/templates/telegraph/contact.html:41
+msgid "Your Name"
+msgstr "Ваше ім'я"
+
+#: apps/blog/templates/blog/partials/comment-form.html:22
+#: apps/telegraph/templates/telegraph/contact.html:49
+msgid "Email Address"
+msgstr "Зворотня адреса"
+
+#: apps/blog/templates/blog/partials/comment-form.html:37
+msgid "Submit"
+msgstr "Відправити"
 
 #: apps/blog/templates/blog/partials/pagination.html:9
 msgid "Previous"
@@ -149,23 +163,21 @@ msgid "Read more..."
 msgstr "Читати далі..."
 
 #: apps/blog/templates/blog/posts/list.html:15
-#: apps/blog/templates/blog/posts/view.html:118
 msgid "There are no posts yet."
 msgstr "Ще немає повідомлень."
 
-#: apps/blog/templates/blog/posts/view.html:80
-#: apps/telegraph/templates/telegraph/contact.html:41
-msgid "Your Name"
-msgstr "Ваше ім'я"
+#: apps/blog/templates/blog/posts/view.html:70
+#, python-format
+msgid "%(total_comments)s comment"
+msgid_plural "%(total_comments)s comments"
+msgstr[0] "%(total_comments)s коментар"
+msgstr[1] "%(total_comments)s коментарі"
+msgstr[2] "%(total_comments)s коментарів"
+msgstr[3] "%(total_comments)s коментарів"
 
-#: apps/blog/templates/blog/posts/view.html:88
-#: apps/telegraph/templates/telegraph/contact.html:49
-msgid "Email Address"
-msgstr "Зворотня адреса"
-
-#: apps/blog/templates/blog/posts/view.html:103
-msgid "Submit"
-msgstr "Відправити"
+#: apps/blog/templates/blog/posts/view.html:83
+msgid "There are no comments yet."
+msgstr "Коментарів поки немає."
 
 #: apps/pages/admin.py:92
 msgid "URL"
@@ -298,15 +310,15 @@ msgstr "Дата оновлення"
 msgid "Draft"
 msgstr "Чернетка"
 
-#: branch/models.py:42 branch/settings/base.py:253
+#: branch/models.py:42 branch/settings/base.py:258
 msgid "English"
 msgstr "Англійська"
 
-#: branch/models.py:43 branch/settings/base.py:255
+#: branch/models.py:43 branch/settings/base.py:260
 msgid "Russian"
 msgstr "Російська"
 
-#: branch/models.py:44 branch/settings/base.py:254
+#: branch/models.py:44 branch/settings/base.py:259
 msgid "Ukrainian"
 msgstr "Українська"
 
