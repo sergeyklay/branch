@@ -193,6 +193,11 @@ LOGGING = {
             'propagate': True,
             'level': 'INFO',
         },
+        'django.template': {
+            'handlers': ['console_dev'],
+            'propagate': True,
+            'level': 'INFO',
+        },
     },
     'handlers': {
         'console_dev': {
