@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: branch 0.0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-13 09:15+0000\n"
-"PO-Revision-Date: 2021-04-13 12:17+0300\n"
+"POT-Creation-Date: 2021-04-15 20:43+0000\n"
+"PO-Revision-Date: 2021-04-15 23:45+0300\n"
 "Last-Translator: Serghei Iakovlev <egrep@protonmail.ch>\n"
 "Language-Team: Ukrainian <egrep@protonmail.ch>\n"
 "Language: uk\n"
@@ -38,45 +38,103 @@ msgstr "SEO"
 msgid "Blog"
 msgstr "Блог"
 
-#: apps/blog/models.py:39
+#: apps/blog/feeds.py:52
+#, python-format
+msgid "Latest posts - %s"
+msgstr "Останні публікації - %s"
+
+#: apps/blog/models.py:41
 msgid "Drama"
 msgstr "Драма"
 
-#: apps/blog/models.py:40
+#: apps/blog/models.py:42
 msgid "Narrative"
 msgstr "Повість"
 
-#: apps/blog/models.py:41
+#: apps/blog/models.py:43
 msgid "Poem"
 msgstr "Вірш"
 
-#: apps/blog/models.py:42 apps/blog/models.py:78
+#: apps/blog/models.py:44 apps/blog/models.py:80 apps/blog/models.py:104
 msgid "Post"
 msgstr "Стаття"
 
-#: apps/blog/models.py:49
+#: apps/blog/models.py:51
 msgid "Publication type"
 msgstr "Тип публікації"
 
-#: apps/blog/models.py:56
+#: apps/blog/models.py:58
 msgid "Featured image"
 msgstr "Ілюстрація"
 
-#: apps/blog/models.py:63
+#: apps/blog/models.py:65
 msgid "Excerpt"
 msgstr "Уривок"
 
-#: apps/blog/models.py:64
-msgid "A short, concise introduction"
-msgstr "Короткий, виразне введення"
+#: apps/blog/models.py:66
+msgid "A short, concise introduction."
+msgstr "Короткий, виразне введення."
 
-#: apps/blog/models.py:71
+#: apps/blog/models.py:73
 msgid "Author"
 msgstr "Автор"
 
-#: apps/blog/models.py:79
+#: apps/blog/models.py:81
 msgid "Posts"
 msgstr "Статті"
+
+#: apps/blog/models.py:96
+msgid "Hidden"
+msgstr "Приховано"
+
+#: apps/blog/models.py:97 branch/models.py:38
+msgid "Published"
+msgstr "Опубліковано"
+
+#: apps/blog/models.py:109
+msgid "User name"
+msgstr "Ім’я користувача"
+
+#: apps/blog/models.py:110
+msgid "The name of the user who posted the comment."
+msgstr "Ім’я користувача, який залишив коментар."
+
+#: apps/blog/models.py:115
+msgid "E-Mail"
+msgstr "E-Mail"
+
+#: apps/blog/models.py:116
+msgid "The email of the user who posted the comment."
+msgstr "Електронна пошта користувача, який залишив коментар."
+
+#: apps/blog/models.py:120 apps/blog/models.py:136
+#: apps/blog/templates/blog/posts/view.html:96
+msgid "Comment"
+msgstr "Коментар"
+
+#: apps/blog/models.py:121
+msgid "The actual content of the comment itself."
+msgstr "Фактичний зміст самого коментаря."
+
+#: apps/blog/models.py:128 branch/models.py:79
+msgid "Status"
+msgstr "Статус"
+
+#: apps/blog/models.py:129
+msgid "Is the comment will be displayed on the site?"
+msgstr "Чи буде коментар відображатися на сайті?"
+
+#: apps/blog/models.py:137 apps/blog/templates/blog/posts/view.html:68
+msgid "Comments"
+msgstr "Коментарі"
+
+#: apps/blog/models.py:142
+msgid "Comment by"
+msgstr "Коментар від"
+
+#: apps/blog/models.py:144
+msgid "on"
+msgstr "до"
 
 #: apps/blog/templates/blog/partials/pagination.html:9
 msgid "Previous"
@@ -89,6 +147,25 @@ msgstr "Наступні публікації"
 #: apps/blog/templates/blog/partials/post-teaser.html:28
 msgid "Read more..."
 msgstr "Читати далі..."
+
+#: apps/blog/templates/blog/posts/list.html:15
+#: apps/blog/templates/blog/posts/view.html:118
+msgid "There are no posts yet."
+msgstr "Ще немає повідомлень."
+
+#: apps/blog/templates/blog/posts/view.html:80
+#: apps/telegraph/templates/telegraph/contact.html:41
+msgid "Your Name"
+msgstr "Ваше ім'я"
+
+#: apps/blog/templates/blog/posts/view.html:88
+#: apps/telegraph/templates/telegraph/contact.html:49
+msgid "Email Address"
+msgstr "Зворотня адреса"
+
+#: apps/blog/templates/blog/posts/view.html:103
+msgid "Submit"
+msgstr "Відправити"
 
 #: apps/pages/admin.py:92
 msgid "URL"
@@ -138,14 +215,6 @@ msgstr ""
 "Використовуйте подану нижче форму, щоб відправити мені приватне "
 "повідомлення. Зазвичай листи доходять протягом пари секунд. Але це не "
 "означає, що я доберуся до вашого листа таким же стрімким чином."
-
-#: apps/telegraph/templates/telegraph/contact.html:41
-msgid "Your Name"
-msgstr "Ваше ім'я"
-
-#: apps/telegraph/templates/telegraph/contact.html:49
-msgid "Email Address"
-msgstr "Зворотня адреса"
 
 #: apps/telegraph/templates/telegraph/contact.html:57
 msgid "Subject"
@@ -217,79 +286,71 @@ msgstr ""
 msgid "using contact form"
 msgstr "використовуючи контактну форму"
 
-#: branch/models.py:35
-msgid "Draft"
-msgstr "Чернетка"
-
-#: branch/models.py:36
-msgid "Published"
-msgstr "Опубліковано"
-
-#: branch/models.py:40 branch/settings/base.py:202
-msgid "English"
-msgstr "Англійська"
-
-#: branch/models.py:41 branch/settings/base.py:204
-msgid "Russian"
-msgstr "Російська"
-
-#: branch/models.py:42 branch/settings/base.py:203
-msgid "Ukrainian"
-msgstr "Українська"
-
-#: branch/models.py:47
-msgid "Title"
-msgstr "Заголовок"
-
-#: branch/models.py:54
-msgid "Slug"
-msgstr "Слаг"
-
-#: branch/models.py:55
-msgid "Leave it blank for automatic populating."
-msgstr "Залиште поле порожнім, для автоматичного заповнення."
-
-#: branch/models.py:60
-msgid "Block search indexing"
-msgstr "Заборонити індексування"
-
-#: branch/models.py:61
-msgid "Prevent this page from appearing in search index"
-msgstr "Заборонити пошуковим павукам індексувати цю сторінку"
-
-#: branch/models.py:65
-msgid "Full text of the post"
-msgstr "Повний текст публікації"
-
-#: branch/models.py:70
-msgid "First publication date"
-msgstr "Дата публікації"
-
-#: branch/models.py:75
+#: branch/mixins.py:30
 msgid "Date created"
 msgstr "Дата створення"
 
-#: branch/models.py:80
+#: branch/mixins.py:35
 msgid "Date updated"
 msgstr "Дата оновлення"
 
-#: branch/models.py:87
-msgid "Status"
-msgstr "Статус"
+#: branch/models.py:37
+msgid "Draft"
+msgstr "Чернетка"
 
-#: branch/models.py:94
+#: branch/models.py:42 branch/settings/base.py:253
+msgid "English"
+msgstr "Англійська"
+
+#: branch/models.py:43 branch/settings/base.py:255
+msgid "Russian"
+msgstr "Російська"
+
+#: branch/models.py:44 branch/settings/base.py:254
+msgid "Ukrainian"
+msgstr "Українська"
+
+#: branch/models.py:49
+msgid "Title"
+msgstr "Заголовок"
+
+#: branch/models.py:56
+msgid "Slug"
+msgstr "Слаг"
+
+#: branch/models.py:57
+msgid "Leave it blank for automatic populating."
+msgstr "Залиште поле порожнім, для автоматичного заповнення."
+
+#: branch/models.py:62
+msgid "Block search indexing"
+msgstr "Заборонити індексування"
+
+#: branch/models.py:63
+msgid "Prevent this page from appearing in search index."
+msgstr "Заборонити пошуковим павукам індексувати цю сторінку."
+
+#: branch/models.py:67
+msgid "Full text of the post"
+msgstr "Повний текст публікації"
+
+#: branch/models.py:72
+msgid "First publication date"
+msgstr "Дата публікації"
+
+#: branch/models.py:86
 msgid "Locale"
 msgstr "Локаль"
 
-#: branch/models.py:95
+#: branch/models.py:87
 msgid "Specify the publishing locale used."
 msgstr "Вкажіть використовувану локаль публікації."
 
-#: branch/models.py:102
+#: branch/models.py:94
 msgid "Meta title"
 msgstr "Мета заголовок"
 
-#: branch/models.py:103
+#: branch/models.py:95
 msgid ""
 "This will be displayed in meta tags. Keep it under 60 characters. Leave "
 "empty and the post's title will be used."
@@ -297,11 +358,11 @@ msgstr ""
 "Це буде відображатися в метатегах. Використовуйте до 60 символів. Залиште "
 "поле порожнім, і буде використовуватися заголовок повідомлення."
 
-#: branch/models.py:112
+#: branch/models.py:104
 msgid "Meta description"
 msgstr "Мета опис"
 
-#: branch/models.py:113
+#: branch/models.py:105
 msgid "This will be displayed in meta tags. Keep it under 120 characters."
 msgstr "Це буде відображатися в метатегах. Використовуйте до 120 символів."
 
@@ -316,10 +377,6 @@ msgstr "Останні публікації"
 #: templates/partials/mini-toc.html:13
 msgid "All posts"
 msgstr "Всі публікації"
-
-#: templates/partials/sidebar.html:28
-msgid "Search"
-msgstr "Пошук"
 
 #: templates/partials/sidebar.html:32
 msgid "Subscribe to posts (Atom)"
