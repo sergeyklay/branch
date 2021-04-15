@@ -26,4 +26,6 @@ accesslog = '/var/log/gunicorn/branch.access.log'
 errorlog = '/var/log/gunicorn/branch.error.log'
 
 # The number of worker processes for handling requests.
-workers = 3
+# Gunicorn should only need 4-12 worker processes to handle hundreds or
+# thousands of requests per second.
+workers = 2
