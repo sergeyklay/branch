@@ -48,5 +48,7 @@ class CommentForm(forms.ModelForm):
     )
 
     class Meta:
+        """Comment form metadata class."""
+
         model = Comment
         fields = ('user_name', 'user_email', 'comment')

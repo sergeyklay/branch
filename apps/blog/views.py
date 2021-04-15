@@ -88,6 +88,7 @@ class PostDetailView(PageDetailsMixin, FormMixin, DateDetailView):
         return context
 
     def form_valid(self, form):
+        # Assign post to comment
         form.instance.post = self.object
         form.save()
         return super().form_valid(form)
