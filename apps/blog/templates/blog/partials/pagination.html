@@ -1,7 +1,7 @@
 {% load i18n urlparams %}
 
-<nav aria-label="pagination" class="pagination">
-    <ul class="pager">
+<nav aria-label="pagination" class="pagination d-flex">
+    <ul class="pager d-flex">
         {% if page.has_previous %}
             <li class="previous">
                 <a href="{% url 'blog:post_list' %}{% urlparams page=page.previous_page_number %}">
