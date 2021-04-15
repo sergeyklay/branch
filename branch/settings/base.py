@@ -207,9 +207,6 @@ LOGGING = {
             'formatter': 'common',
             'filters': ['require_debug_false'],
         },
-        'null': {
-            'class': 'logging.NullHandler',
-        }
     },
     'filters': {
         'require_debug_false': {
