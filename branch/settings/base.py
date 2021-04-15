@@ -173,6 +173,60 @@ DATABASES = {
     'default': get_db_config('DATABASE_URL'),
 }
 
+#  Logging
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'root': {
+        'handlers': ['console_dev', 'console_prod'],
+        'level': 'INFO',
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console_dev', 'console_prod'],
+            'propagate': True,
+            'level': 'INFO',
+        },
+        'django.server': {
+            'handlers': ['console_dev'],
+            'propagate': True,
+            'level': 'INFO',
+        },
+    },
+    'handlers': {
+        'console_dev': {
+            'class': 'logging.StreamHandler',
+            'level': 'INFO',
+            'formatter': 'common',
+            'filters': ['require_debug_true'],
+        },
+        'console_prod': {
+            'class': 'logging.StreamHandler',
+            'level': 'WARNING',
+            'formatter': 'common',
+            'filters': ['require_debug_false'],
+        },
+        'null': {
+            'class': 'logging.NullHandler',
+        }
+    },
+    'filters': {
+        'require_debug_false': {
+            '()': 'django.utils.log.RequireDebugFalse',
+        },
+        'require_debug_true': {
+            '()': 'django.utils.log.RequireDebugTrue',
+        },
+    },
+    'formatters': {
+        'common': {
+            'format': '[%(asctime)s] [%(levelname)s] %(message)s',
+            'datefmt': '%Y-%m-%d %H:%M:%S %z',
+        },
+    },
+}
+
 # Password validation
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
 
