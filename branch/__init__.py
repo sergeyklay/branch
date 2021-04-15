@@ -34,7 +34,7 @@ for details on the use of this package.
 """
 
 __copyright__ = 'Copyright (C) 2021 Serghei Iakovlev'
-__version__ = '1.0.0'
+__version__ = '1.1.0'
 __license__ = 'GPLv3+'
 __author__ = 'Serghei Iakovlev'
 __author_email__ = 'egrep@protonmail.ch'
