@@ -71,6 +71,10 @@ class PostDetailView(PageDetailsMixin, FormMixin, DateDetailView):
         return self.object.get_absolute_url()
 
     def post(self, request, *args, **kwargs):
+        """
+        Handle POST requests: set instance object, instantiate a form instance
+        with the passed POST variables and then check if it's valid.
+        """
         self.object = self.get_object()
         form = self.get_form()
         if form.is_valid():

@@ -20,7 +20,10 @@ from django.utils.translation import gettext_lazy as _
 
 
 class ModelTimestampsMixin(models.Model):
-    """Specify created_at and updated_at fields for a model."""
+    """
+    Timestamps aware model mixin.
+    Specify created_at and updated_at fields for a model.
+    """
 
     created_at = models.DateTimeField(
         auto_now_add=True,
@@ -33,6 +36,8 @@ class ModelTimestampsMixin(models.Model):
     )
 
     class Meta:
+        """Mixin metadata class."""
+
         abstract = True
 
 
