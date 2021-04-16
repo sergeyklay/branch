@@ -11,12 +11,15 @@
             /** @type {HTMLHtmlElement} */
             const target = e.target;
 
-            if (window.gtag && !checkbox.checked && target === toggle) {
-                // We are going to show sidebar
-                gtag('event', 'screen_view', {
-                    screen_name: 'Sidebar'
-                });
-            }
+            // Disabled for now.
+            // Does not work as expected.
+            //
+            // if (window.gtag && !checkbox.checked && target === toggle) {
+            //     // We are going to show sidebar
+            //     gtag('event', 'screen_view', {
+            //         screen_name: 'Sidebar'
+            //     });
+            // }
 
             if (!checkbox.checked || !sidebar.contains(target) ||
                 (target === checkbox || target === toggle)

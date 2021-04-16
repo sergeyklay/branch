@@ -1,0 +1,9 @@
+{% load i18n %}
+
+<script type="application/json" id="branch-data">
+    {
+        "analytics_code": "{{ site_google_analytics }}",
+        "site_name": "{{ SITE_NAME }}",
+        "language": "{{ LANGUAGE_CODE|slice:'0:2'|join:'' }}"
+    }
+</script>
