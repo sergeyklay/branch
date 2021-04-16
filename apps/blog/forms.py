@@ -23,8 +23,8 @@ from .models import Comment
 class CommentForm(forms.ModelForm):
     """Post comment form class."""
 
-    label_class = 'contact-form-label'
-    input_class = 'contact-form-input form-input'
+    label_class = 'comment-form-label'
+    input_class = 'comment-form-input form-input'
 
     user_name = forms.CharField(
         max_length=40,

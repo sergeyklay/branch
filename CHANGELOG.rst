@@ -12,7 +12,8 @@ Features
 ^^^^^^^^
 
 * Added ability to post and moderate comments.
-* Added logging support.
+* Added in-app logging support.
+* Added Google Tag Manager support.
 
 
 Trivial/Internal Changes

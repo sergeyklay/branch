@@ -42,7 +42,6 @@ input#search {
   margin: 2em auto 1em;
 }
 
-.comment-form,
 .contact-form {
   width: 100%;
   padding-bottom: 20px;
@@ -64,7 +63,6 @@ input#search {
   }
 }
 
-.comment-form-item,
 .contact-form-item {
   margin-top: 15px;
 
@@ -90,7 +88,6 @@ form input:-moz-ui-invalid {
   @include box-shadow (0 0 2px 1px #D64541!important);
 }
 
-.comment-form-item-error,
 .contact-form-item-error {
   .contact-form-input,
   .contact-form-textarea {
@@ -98,7 +95,6 @@ form input:-moz-ui-invalid {
   }
 }
 
-.comment-form-label,
 .contact-form-label {
   display: block;
   font-size: 16px;
@@ -114,28 +110,13 @@ form input:-moz-ui-invalid {
   }
 }
 
-.comment-form-label {
-  font-size: 14px;
-
-  @include mq(tabletp) {
-    font-size: 16px;
-  }
-
-  @include mq(laptop) {
-    font-size: 18px;
-  }
-}
-
-.comment-form-input,
 .contact-form-input,
-.comment-form-textarea,
 .contact-form-textarea {
   margin-top: 8px;
 }
 
 @include input-placeholder(#ABB7B7, 15%);
 
-.comment-form-textarea,
 .contact-form-textarea {
   font-size: 1.1em;
   min-height: 200px;
@@ -148,32 +129,6 @@ form input:-moz-ui-invalid {
   @include mq(laptop) {
     font-size: 1em;
   }
-}
-
-.comment {
-  position: relative;
-  margin: 1em auto 2em;
-  min-height: auto!important;
-}
-
-.comment-thread {
-  font-size: $second-font-size;
-  line-height: 1.4;
-}
-
-.comment-meta {
-  color: rgba(0, 0, 0, 0.5);
-}
-
-.comment-author {
-  color: rgba(0, 0, 0, 0.85);
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.comment-body {
-  margin-top: .8em;
-  margin-bottom: 1em;
 }
 
 .button {

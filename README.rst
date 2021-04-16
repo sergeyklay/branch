@@ -45,11 +45,11 @@ Features
 * **Pages**
 
   * Contact page to send E-Mails
-  * Ability to create posts or just pages like "About"
+  * Ability to create regular blog posts or just pages like "About", "CV", and so on
 
 * **Comments**
 
-  * Ability to post comments
+  * Ability to post and moderate comments
 
 * **Feeds**
 
