@@ -50,6 +50,12 @@ class ContactMessageForm(forms.Form):
         }),
     )
 
+    gotcha = forms.CharField(
+        widget=forms.HiddenInput(attrs={
+            'class': 'contact-form-gotcha',
+        })
+    )
+
     message = forms.CharField(
         max_length=2000,
         widget=forms.Textarea(attrs={

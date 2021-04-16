@@ -11,8 +11,14 @@
             /** @type {HTMLHtmlElement} */
             const target = e.target;
 
-            if (!checkbox.checked ||
-                !sidebar.contains(target) ||
+            if (!checkbox.checked &&  target === toggle) {
+                // We are going to show sidebar
+                gtag('event', 'screen_view', {
+                    screen_name: 'Sidebar'
+                });
+            }
+
+            if (!checkbox.checked || !sidebar.contains(target) ||
                 (target === checkbox || target === toggle)
             ) {
                 return;
