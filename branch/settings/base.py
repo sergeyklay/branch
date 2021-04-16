@@ -104,7 +104,9 @@ MIDDLEWARE = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    'apps.website.middleware.locale.inject_accept_language',
+    # Disabled for now
+    # 'apps.website.middleware.locale.inject_accept_language',
+
     'django.middleware.locale.LocaleMiddleware',
 )
 
