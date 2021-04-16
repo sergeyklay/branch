@@ -84,9 +84,14 @@
         <script src="{% static 'jquery/dist/jquery' %}{{ ext }}"></script>
     {% endwith %}
 
+    <!-- Global website data -->
+    {% block branch_data %}
+        {% include 'partials/branch-data.html' %}
+    {% endblock %}
+
     <!-- Global site tag (gtag.js) - Google Tag Manager -->
-    {% block google_analytics %}
-        {% include 'partials/ga.html' %}
+    {% block analytics %}
+        <script async src="{% static 'js/branch-analytics.js' %}"></script>
     {% endblock %}
 </head>
 
