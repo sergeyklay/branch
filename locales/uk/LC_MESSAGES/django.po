@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: branch 0.0.1\n"
+"Project-Id-Version: branch 1.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-15 22:12+0000\n"
-"PO-Revision-Date: 2021-04-15 23:45+0300\n"
+"POT-Creation-Date: 2021-04-16 06:29+0000\n"
+"PO-Revision-Date: 2021-04-16 09:31+0300\n"
 "Last-Translator: Serghei Iakovlev <egrep@protonmail.ch>\n"
 "Language-Team: Ukrainian <egrep@protonmail.ch>\n"
 "Language: uk\n"
@@ -178,6 +178,14 @@ msgstr[3] "%(total_comments)s коментарів"
 #: apps/blog/templates/blog/posts/view.html:83
 msgid "There are no comments yet."
 msgstr "Коментарів поки немає."
+
+#: apps/blog/views.py:40
+msgid ""
+"Your comment has been sent for moderation. This means comment will \"held\" "
+"until I okays it and publish it."
+msgstr ""
+"Ваш коментар відправлений на модерацію. Це означає, що коментар буде "
+"«утримуватися» до тих пір, поки я не схвалю і не публікую його."
 
 #: apps/pages/admin.py:92
 msgid "URL"

@@ -15,6 +15,8 @@
 
 """Blog views definitions."""
 
+from django.contrib import messages
+from django.utils.translation import gettext_lazy as _
 from django.views.generic import DateDetailView, ListView
 from django.views.generic.edit import FormMixin
 
@@ -33,7 +35,6 @@ class PostDetailView(PageDetailsMixin, FormMixin, DateDetailView):
     month_format = '%m'
     form_class = CommentForm
     template_name = 'blog/posts/view.html'
-    queryset = Post.published.all()
 
     @property
     def title(self):
@@ -68,7 +69,13 @@ class PostDetailView(PageDetailsMixin, FormMixin, DateDetailView):
         return self.object.type
 
     def get_success_url(self):
-        return self.object.get_absolute_url()
+        return f'{self.object.get_absolute_url()}#feedback-message'
+
+    def get_queryset(self):
+        """
+        Return the `QuerySet` that will be used to look up the blog post.
+        """
+        return Post.published.all()
 
     def post(self, request, *args, **kwargs):
         """
@@ -88,10 +95,18 @@ class PostDetailView(PageDetailsMixin, FormMixin, DateDetailView):
         return context
 
     def form_valid(self, form):
-        # Assign post to comment
+        # Assign current post to a new comment before save
         form.instance.post = self.object
         form.save()
-        return super().form_valid(form)
+
+        response = super().form_valid(form)
+
+        success_message = _('Your comment has been sent for moderation. '
+                            'This means comment will "held" until I okays it '
+                            'and publish it.')
+        messages.success(self.request, success_message)
+
+        return response
 
 
 class PostListView(ListView):
