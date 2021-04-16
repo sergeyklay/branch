@@ -19,6 +19,8 @@ from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
+from .mixins import ModelTimestampsMixin
+
 
 class PublishedManager(models.Manager):
     """Custom models manager get only published posts and pages."""
@@ -28,7 +30,7 @@ class PublishedManager(models.Manager):
         return super().get_queryset().filter(status='published')
 
 
-class AbstractPage(models.Model):
+class AbstractPage(ModelTimestampsMixin, models.Model):
     """Abstract base model class for all kinds of posts and pages."""
 
     STATUS_CHOICES = (
@@ -58,7 +60,7 @@ class AbstractPage(models.Model):
     no_index = models.BooleanField(
         default=False,
         verbose_name=_('Block search indexing'),
-        help_text=_('Prevent this page from appearing in search index'),
+        help_text=_('Prevent this page from appearing in search index.'),
     )
 
     body = models.TextField(
@@ -68,16 +70,6 @@ class AbstractPage(models.Model):
     published_at = models.DateTimeField(
         default=timezone.now,
         verbose_name=_('First publication date'),
-    )
-
-    created_at = models.DateTimeField(
-        auto_now_add=True,
-        verbose_name=_('Date created'),
-    )
-
-    updated_at = models.DateTimeField(
-        auto_now=True,
-        verbose_name=_('Date updated'),
     )
 
     status = models.CharField(

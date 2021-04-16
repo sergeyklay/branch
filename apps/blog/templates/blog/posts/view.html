@@ -61,4 +61,38 @@
     <div class="post-body">
         {{ post.body|safe }}
     </div>
+
+    <hr>
+
+    {% include 'partials/messages.html' %}
+
+    <section class="comment-thread" id="comment-thread">
+        <div class="d-flex flex-items-center flex-wrap">
+            <h4 id="discussion-comment-count">
+                {% blocktrans trimmed count total_comments=comments|length %}
+                    {{ total_comments }} comment
+                    {% plural %}
+                    {{ total_comments }} comments
+                {% endblocktrans %}
+            </h4>
+        </div>
+        {% for comment in comments %}
+            {% include 'blog/partials/comment.html' with comment=comment %}
+        {% empty %}
+            <article class="comment" id="comment-0">
+                <div class="d-flex flex-items-center">
+                    <div class="comment-body">
+                        {% trans 'There are no comments yet.' %}
+                    </div>
+                </div>
+            </article>
+        {% endfor %}
+    </section>
+
+    <hr>
+
+    <section class="comment-form-wrapper" role="dialog">
+        {% include 'blog/partials/comment-form.html' with form=form %}
+    </section>
+
 {% endblock %}

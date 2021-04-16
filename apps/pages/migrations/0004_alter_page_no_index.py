@@ -13,19 +13,23 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-# The socket to bind.
-bind = 'unix:/run/branch.sock'
+from django.db import migrations, models
 
-# Workers silent for more than this many seconds are killed and restarted.
-timeout = 60
 
-# The Access log file to write to.
-accesslog = '/var/log/gunicorn/branch.access.log'
+class Migration(migrations.Migration):
 
-# The Error log file to write to.
-errorlog = '/var/log/gunicorn/branch.error.log'
+    dependencies = [
+        ('pages', '0003_auto_20210411_2230'),
+    ]
 
-# The number of worker processes for handling requests.
-# Gunicorn should only need 4-12 worker processes to handle hundreds or
-# thousands of requests per second.
-workers = 2
+    operations = [
+        migrations.AlterField(
+            model_name='page',
+            name='no_index',
+            field=models.BooleanField(
+                default=False,
+                help_text='Prevent this page from appearing in search index.',
+                verbose_name='Block search indexing',
+            ),
+        ),
+    ]

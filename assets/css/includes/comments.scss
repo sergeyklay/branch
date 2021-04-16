@@ -1,0 +1,14 @@
+/* Comments related style */
+
+@import "../mixins";
+
+ul.feedback-message {
+  background-color: #f9f9f9;
+  list-style: none;
+  padding: 1rem;
+}
+
+.comment-form-wrapper {
+  font-size: $second-font-size;
+  line-height: 1.4;
+}

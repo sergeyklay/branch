@@ -15,8 +15,8 @@
 
 """Common utils for the whole project."""
 
+import unicodedata
 from html import unescape
-from unicodedata import normalize
 
 from bs4 import BeautifulSoup as bs
 from django.conf import settings
@@ -94,7 +94,7 @@ def content_sanitize(raw_text, allowed_tags=None, allowed_attrs=None,
         .replace('’', "'") \
         .replace('target="_blank"', 'target="_blank" rel="noopener"')
 
-    normalized = normalize('NFKC', unquoted)
+    normalized = unicodedata.normalize('NFKC', unquoted)
 
     soup = bs(normalized, features='html.parser')
     tags = soup.find_all()

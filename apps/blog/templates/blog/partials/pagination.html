@@ -1,10 +1,10 @@
 {% load i18n urlparams %}
 
-<nav aria-label="pagination" class="pagination">
-    <ul class="pager">
+<nav aria-label="pagination" class="pagination d-flex">
+    <ul class="pager d-flex">
         {% if page.has_previous %}
             <li class="previous">
-                <a href="{% url 'blog:post_list' %}{% urlparams page=page.previous_page_number %}">
+                <a href="{% url 'blog:post_list' %}{% urlparams page=page.previous_page_number %}" rel="prev">
                     <span aria-hidden="true">&larr;</span>
                     {% trans 'Previous' %}
                 </a>
@@ -13,7 +13,7 @@
 
         {% if page.has_next %}
             <li class="next">
-                <a href="{% url 'blog:post_list' %}{% urlparams page=page.next_page_number %}">
+                <a href="{% url 'blog:post_list' %}{% urlparams page=page.next_page_number %}" rel="next">
                     {% trans 'Next' %}
                     <span aria-hidden="true">&rarr;</span>
                 </a>

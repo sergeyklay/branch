@@ -15,22 +15,26 @@
 
 """Blog views definitions."""
 
+from django.contrib import messages
+from django.utils.translation import gettext_lazy as _
 from django.views.generic import DateDetailView, ListView
+from django.views.generic.edit import FormMixin
 
 from apps.website.models import Setting
 from branch.mixins import PageDetailsMixin
+from .forms import CommentForm
 from .models import Post
 
 
-class PostDetailView(PageDetailsMixin, DateDetailView):
+class PostDetailView(PageDetailsMixin, FormMixin, DateDetailView):
     """Display a blog post detail."""
 
     model = Post
     context_object_name = 'post'
     date_field = 'published_at'
     month_format = '%m'
+    form_class = CommentForm
     template_name = 'blog/posts/view.html'
-    queryset = Post.published.all()
 
     @property
     def title(self):
@@ -63,6 +67,46 @@ class PostDetailView(PageDetailsMixin, DateDetailView):
     @property
     def type(self):
         return self.object.type
+
+    def get_success_url(self):
+        return f'{self.object.get_absolute_url()}#feedback-message'
+
+    def get_queryset(self):
+        """
+        Return the `QuerySet` that will be used to look up the blog post.
+        """
+        return Post.published.all()
+
+    def post(self, request, *args, **kwargs):
+        """
+        Handle POST requests: set instance object, instantiate a form instance
+        with the passed POST variables and then check if it's valid.
+        """
+        self.object = self.get_object()
+        form = self.get_form()
+        if form.is_valid():
+            return self.form_valid(form)
+        return self.form_invalid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['comments'] = self.object.comments.filter(status='published')
+        context['form'] = self.get_form()
+        return context
+
+    def form_valid(self, form):
+        # Assign current post to a new comment before save
+        form.instance.post = self.object
+        form.save()
+
+        response = super().form_valid(form)
+
+        success_message = _('Your comment has been sent for moderation. '
+                            'This means comment will "held" until I okays it '
+                            'and publish it.')
+        messages.success(self.request, success_message)
+
+        return response
 
 
 class PostListView(ListView):

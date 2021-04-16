@@ -107,3 +107,16 @@ $break-desktop: 1600px;
      -moz-box-shadow: $args;
           box-shadow: $args;
 }
+
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Flex Wrap
+// Sets whether flex items are forced onto one line or can wrap onto
+// multiple lines.
+//
+// Usage: @include flex-wrap (wrap);
+
+@mixin flex-wrap ($value) {
+  -webkit-flex-wrap: $value;
+      -ms-flex-wrap: $value;
+          flex-wrap: $value;
+}

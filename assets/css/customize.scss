@@ -107,7 +107,6 @@ ul, ol {
 }
 
 nav.pagination {
-  display: flex;
   justify-content: center;
 }
 
@@ -115,7 +114,6 @@ ul.pager {
   margin: 0;
   padding: 0;
   list-style: none;
-  display: flex;
 }
 
 ul.pager li {
@@ -133,4 +131,20 @@ ul.pager li {
   content: "";
   display: table;
   clear: both;
+}
+
+.m-0 {
+  margin: 0;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-items-center {
+  align-items: center;
+}
+
+.flex-wrap {
+  @include flex-wrap (wrap);
 }

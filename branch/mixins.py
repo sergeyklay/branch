@@ -15,9 +15,34 @@
 
 """Project wide mixins lives here."""
 
+from django.db import models
+from django.utils.translation import gettext_lazy as _
+
+
+class ModelTimestampsMixin(models.Model):
+    """
+    Timestamps aware model mixin.
+    Specify created_at and updated_at fields for a model.
+    """
+
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        verbose_name=_('Date created'),
+    )
+
+    updated_at = models.DateTimeField(
+        auto_now=True,
+        verbose_name=_('Date updated'),
+    )
+
+    class Meta:
+        """Mixin metadata class."""
+
+        abstract = True
+
 
 class PageDetailsMixin:
-    """Pass a defined title to context"""
+    """Specify page details to the template context."""
 
     @property
     def title(self):
