@@ -11,6 +11,7 @@ releases, in reverse chronological order.
 Features
 ^^^^^^^^
 
+* Added ability to post and moderate comments.
 * Added logging support.
 
 

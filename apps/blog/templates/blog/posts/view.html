@@ -67,15 +67,19 @@
     {% include 'partials/messages.html' %}
 
     <section class="comment-thread" id="comment-thread">
-        <div class="d-flex flex-items-center flex-wrap">
-            <h4 id="discussion-comment-count">
-                {% blocktrans trimmed count total_comments=comments|length %}
-                    {{ total_comments }} comment
-                    {% plural %}
-                    {{ total_comments }} comments
-                {% endblocktrans %}
-            </h4>
-        </div>
+        {% with total_comments=comments.count  %}
+            {%  if total_comments > 0 %}
+                <div class="d-flex flex-items-center flex-wrap">
+                    <h4 id="discussion-comment-count">
+                        {% blocktrans trimmed count total_comments=total_comments %}
+                            {{ total_comments }} comment
+                        {% plural %}
+                            {{ total_comments }} comments
+                        {% endblocktrans %}
+                    </h4>
+                </div>
+            {% endif %}
+        {%  endwith %}
         {% for comment in comments %}
             {% include 'blog/partials/comment.html' with comment=comment %}
         {% empty %}

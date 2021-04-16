@@ -47,6 +47,10 @@ Features
   * Contact page to send E-Mails
   * Ability to create posts or just pages like "About"
 
+* **Comments**
+
+  * Ability to post comments
+
 * **Feeds**
 
   * Atom for Posts
@@ -54,6 +58,7 @@ Features
 
 * **SEO**
 
+  * Semantic HTML (Dublin Core, Open Graph protocol, Schema.org, Semantic HTML5)
   * Custom description for page
   * Custom title for page
   * Sitemap support
