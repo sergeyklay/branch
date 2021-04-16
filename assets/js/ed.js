@@ -11,7 +11,7 @@
             /** @type {HTMLHtmlElement} */
             const target = e.target;
 
-            if (!checkbox.checked &&  target === toggle) {
+            if (window.gtag && !checkbox.checked && target === toggle) {
                 // We are going to show sidebar
                 gtag('event', 'screen_view', {
                     screen_name: 'Sidebar'
