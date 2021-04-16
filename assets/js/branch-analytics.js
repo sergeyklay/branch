@@ -55,12 +55,10 @@ if (isDoNotTrackEnabled()) {
 
         gtag('js', new Date());
 
-        // Setup the Branch global analytics code and send a pageview
+        // Setup the project analytics code and send a pageview
         gtag('config', branchData.analytics_code, {
             'anonymize_ip': true,
-            'cookie_expires': 30 * 24 * 60 * 60,  // 30 days
-            'dimension1': branchData.site_name,
-            'dimension2': branchData.language,
+            'cookie_expires': 30 * 24 * 60 * 60  // 30 days
         })
     }
 }
