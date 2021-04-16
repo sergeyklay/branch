@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: branch 1.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-16 06:29+0000\n"
-"PO-Revision-Date: 2021-04-16 09:31+0300\n"
+"POT-Creation-Date: 2021-04-16 07:32+0000\n"
+"PO-Revision-Date: 2021-04-16 10:33+0300\n"
 "Last-Translator: Serghei Iakovlev <egrep@protonmail.ch>\n"
 "Language-Team: Ukrainian <egrep@protonmail.ch>\n"
 "Language: uk\n"
@@ -108,7 +108,7 @@ msgid "The email of the user who posted the comment."
 msgstr "Електронна пошта користувача, який залишив коментар."
 
 #: apps/blog/models.py:120 apps/blog/models.py:136
-#: apps/blog/templates/blog/partials/comment-form.html:30
+#: apps/blog/templates/blog/partials/comment-form.html:31
 msgid "Comment"
 msgstr "Коментар"
 
@@ -146,7 +146,21 @@ msgstr "Ваше ім'я"
 msgid "Email Address"
 msgstr "Зворотня адреса"
 
-#: apps/blog/templates/blog/partials/comment-form.html:37
+#: apps/blog/templates/blog/partials/comment-form.html:25
+msgid "Your email address will not be published."
+msgstr "Ваша електронна адреса не буде опублікований."
+
+#: apps/blog/templates/blog/partials/comment-form.html:41
+msgid ""
+"Comments are subject to approval and moderation. If you don't see your "
+"comment, please be patient. It may be posted soon. Do not post your comment "
+"a second time. Thank you."
+msgstr ""
+"Комментарии проходят премодерацию. Если вы не видите свой комментарий, "
+"подождите. Возможно, скоро он будет опубликован. Не дублируйте свой "
+"комментарий второй раз. Спасибо."
+
+#: apps/blog/templates/blog/partials/comment-form.html:52
 msgid "Submit"
 msgstr "Відправити"
 
@@ -166,7 +180,7 @@ msgstr "Читати далі..."
 msgid "There are no posts yet."
 msgstr "Ще немає повідомлень."
 
-#: apps/blog/templates/blog/posts/view.html:70
+#: apps/blog/templates/blog/posts/view.html:72
 #, python-format
 msgid "%(total_comments)s comment"
 msgid_plural "%(total_comments)s comments"
@@ -175,11 +189,11 @@ msgstr[1] "%(total_comments)s коментарі"
 msgstr[2] "%(total_comments)s коментарів"
 msgstr[3] "%(total_comments)s коментарів"
 
-#: apps/blog/templates/blog/posts/view.html:83
+#: apps/blog/templates/blog/posts/view.html:85
 msgid "There are no comments yet."
 msgstr "Коментарів поки немає."
 
-#: apps/blog/views.py:40
+#: apps/blog/views.py:104
 msgid ""
 "Your comment has been sent for moderation. This means comment will \"held\" "
 "until I okays it and publish it."

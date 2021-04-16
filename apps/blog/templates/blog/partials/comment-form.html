@@ -22,6 +22,7 @@
                 {% trans 'Email Address' %}&nbsp;<strong>*</strong>
             </label>
             {{ form.user_email }}
+            <small>{% trans 'Your email address will not be published.' %}</small>
             {{ form.user_email.errors|safe }}
         </div>
 
@@ -31,6 +32,18 @@
             </label>
             {{ form.comment }}
             {{ form.comment.errors|safe }}
+        </div>
+
+        <div class="comment-form-item">
+            <small>
+                {% blocktrans trimmed %}
+                    Comments are subject to approval and moderation.
+                    If you don't see your comment, please be patient.
+                    It may be posted soon. Do not post your comment a second time.
+                    Thank you.
+                {% endblocktrans %}
+            </small>
+
         </div>
 
         <div class="comment-form-item">
