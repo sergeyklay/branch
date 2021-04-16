@@ -32,7 +32,7 @@ django==3.2
     #   django-extensions
 flake8-import-order==0.18.1
     # via -r requirements/requirements-dev.in
-flake8==3.9.0
+flake8==3.9.1
     # via -r requirements/requirements-dev.in
 gunicorn==20.1.0
     # via -r requirements/requirements.in

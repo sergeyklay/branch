@@ -18,7 +18,8 @@ Features
 Trivial/Internal Changes
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-* Updated ``django-debug-toolbar`` to 3.2.1.
+* Bumps ``django-debug-toolbar`` from 3.2.0 to 3.2.1.
+* Bumps ``flake8`` from 3.9.0 to 3.9.1.
 
 
 ----
