@@ -83,6 +83,11 @@
     {% with ext=debug|yesno:'.js,.min.js' %}
         <script src="{% static 'jquery/dist/jquery' %}{{ ext }}"></script>
     {% endwith %}
+
+    <!-- Global site tag (gtag.js) - Google Tag Manager -->
+    {% block google_analytics %}
+        {% include 'partials/ga.html' %}
+    {% endblock %}
 </head>
 
 {# red, orange, magenta, cyan, blue, brown #}
