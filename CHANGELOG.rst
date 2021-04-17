@@ -16,6 +16,15 @@ Features
 * Added Google Tag Manager support.
 
 
+Improvements
+^^^^^^^^^^^^
+
+* Change font families used on website to provide better reading experience:
+
+  * Main font: PT Serif
+  * Heading font: PT Sans
+
+
 Trivial/Internal Changes
 ^^^^^^^^^^^^^^^^^^^^^^^^
 

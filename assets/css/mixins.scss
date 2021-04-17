@@ -120,3 +120,15 @@ $break-desktop: 1600px;
       -ms-flex-wrap: $value;
           flex-wrap: $value;
 }
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - Box Decoration Break
+// Specifies how an element's fragments should be rendered when broken across
+// multiple lines, columns, or pages.
+//
+// Usage: @include box-decoration-break (clone);
+
+@mixin box-decoration-break ($value) {
+  -webkit-box-decoration-break: $value;
+      -ms-box-decoration-break: $value;
+          box-decoration-break: $value;
+}
