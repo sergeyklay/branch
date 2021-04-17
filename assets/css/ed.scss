@@ -35,7 +35,7 @@ body {
 html {
   font-family: $main-font;
   font-size: 1em; /* 16px; specify in ems to support text resizing in all browsers */
-  line-height: 1.5;
+  line-height: 1.7;
 }
 
 @media (min-width: 38em) {
@@ -164,7 +164,7 @@ mark {
 
 /* Quotes */
 blockquote {
-  padding: 0rem 1.5rem 0rem 2rem;
+  padding: 0 1.5rem 0 2rem;
   margin: 0 0 20px 0;
   color: $text-color;
   border-left: none;
@@ -282,7 +282,7 @@ tbody tr:nth-child(odd) th {
   width: 14rem;
   visibility: hidden;
   overflow-y: auto;
-  font-family: "PT Sans", Helvetica, Arial, sans-serif;
+  font-family: $heading-font;
   font-size: .875rem;/* 15px*/
   color: rgba(255,255,255,.6);
   background-color: #202020;
