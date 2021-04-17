@@ -2,6 +2,9 @@
 
 {% load i18n static date_to_xmlschema %}
 
+{% block page_title %}{{ page_title }} - {{ block.super }}{% endblock %}
+
+
 {% block post_schema %}
     <script type="application/ld+json">
         {# TODO: Do not hardcode about_url #}
@@ -31,7 +34,7 @@
 {% endblock %}
 
 {% block og_metadata %}
-    {% with resource_url=post.get_absolute_url featured_image=post.featured_image %}
+    {% with resource_url=post.get_absolute_url  resource_type='article' featured_image=post.featured_image %}
         {{ block.super }}
     {% endwith %}
 {% endblock %}
@@ -47,54 +50,58 @@
     {% include 'partials/sidebar.html' %}
 {% endblock %}
 
-{% block post_content %}
-    <header>
-        <h1 class="text-title">{{ post.title }}</h1>
-    </header>
+{% block content %}
+    <article class="{{ page_type|default:'post' }}" role="document">
+        {% block post_content %}
+            <header>
+                <h1 class="text-title">{{ post.title }}</h1>
+            </header>
 
-    <p class="byline">
-        <time datetime="{{ post.published_at|date_to_xmlschema }}">
-            {{ post.published_at|date:"Y.m.d" }}
-        </time>
-    </p>
+            <p class="byline">
+                <time datetime="{{ post.published_at|date_to_xmlschema }}">
+                    {{ post.published_at|date:"Y.m.d" }}
+                </time>
+            </p>
 
-    <div class="post-body">
-        {{ post.body|safe }}
-    </div>
+            <div class="post-body">
+                {{ post.body|safe }}
+            </div>
 
-    <hr>
+            <hr>
 
-    {% include 'partials/messages.html' %}
+            {% include 'partials/messages.html' %}
 
-    <section class="comment-thread" id="comment-thread">
-        {% with total_comments=comments.count  %}
-            {%  if total_comments > 0 %}
-                <div class="d-flex flex-items-center flex-wrap">
-                    <h4 id="discussion-comment-count">
-                        {% blocktrans trimmed count total_comments=total_comments %}
-                            {{ total_comments }} comment
-                        {% plural %}
-                            {{ total_comments }} comments
-                        {% endblocktrans %}
-                    </h4>
-                </div>
-            {% endif %}
-        {%  endwith %}
-        {% for comment in comments %}
-            {% include 'blog/partials/comment.html' with comment=comment %}
-        {% empty %}
-            <article class="comment" id="comment-0">
-                <div class="d-flex flex-items-center">
-                    <div class="comment-body">
-                        {% trans 'There are no comments yet.' %}
-                    </div>
-                </div>
-            </article>
-        {% endfor %}
-    </section>
+            <section class="comment-thread" id="comment-thread">
+                {% with total_comments=comments.count  %}
+                    {%  if total_comments > 0 %}
+                        <div class="d-flex flex-items-center flex-wrap">
+                            <h4 id="discussion-comment-count">
+                                {% blocktrans trimmed count total_comments=total_comments %}
+                                    {{ total_comments }} comment
+                                {% plural %}
+                                    {{ total_comments }} comments
+                                {% endblocktrans %}
+                            </h4>
+                        </div>
+                    {% endif %}
+                {%  endwith %}
+                {% for comment in comments %}
+                    {% include 'blog/partials/comment.html' with comment=comment %}
+                {% empty %}
+                    <article class="comment" id="comment-0">
+                        <div class="d-flex flex-items-center">
+                            <div class="comment-body">
+                                {% trans 'There are no comments yet.' %}
+                            </div>
+                        </div>
+                    </article>
+                {% endfor %}
+            </section>
 
-    <section class="comment-form-wrapper" role="dialog">
-        {% include 'blog/partials/comment-form.html' with form=form %}
-    </section>
+            <section class="comment-form-wrapper" role="dialog">
+                {% include 'blog/partials/comment-form.html' with form=form %}
+            </section>
 
+        {% endblock %}
+    </article>
 {% endblock %}

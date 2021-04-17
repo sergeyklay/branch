@@ -1,0 +1,1 @@
+{% if page_description and page_description.strip %}{{ page_description|striptags|truncatechars:150 }}{% else %}{{ site_description|striptags|truncatechars:150 }}{% endif %}

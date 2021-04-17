@@ -14,12 +14,14 @@ Features
 * Added ability to post and moderate comments.
 * Added in-app logging support.
 * Added Google Tag Manager support.
+* Added RSS 2.0/Atom links to the head.
 
 
 Improvements
 ^^^^^^^^^^^^
 
-* Change font families used on website to provide better reading experience:
+* Restructured and simplified template structure.
+* Changed font families used on website to provide better reading experience:
 
   * Main font: PT Serif
   * Heading font: PT Sans

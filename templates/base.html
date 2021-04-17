@@ -11,11 +11,9 @@
     {% block post_schema %}{% endblock %}
 
     <meta name="generator" content="Branch">
-
     {% block page_description %}
-        {% include 'partials/page-description.html' %}
+        <meta name="description" content="{% include 'partials/description-value.html' %}">
     {% endblock %}
-
     {% block page_keywords %}
         {% include 'partials/page-keywords.html' %}
     {% endblock %}
@@ -24,25 +22,18 @@
 
     {% block page_license %}{% endblock %}
 
-    <!-- Canonical link to help search engines -->
     {% block canonical_url %}
         {% include 'partials/canonical-url.html' %}
     {% endblock %}
 
-    <!-- Dublin Core metadata for Zotero -->
     {% block dc_metadata %}
         {% include 'partials/dc-metadata.html' %}
     {% endblock %}
 
-    <!-- Open Graph metadata -->
     {% block og_metadata %}
         {% include 'partials/og-metadata.html' %}
     {% endblock %}
-    {% block og_page_type %}
-        <meta property="og:type" content="website">
-    {% endblock %}
 
-    <!-- Twitter Card -->
     {% block twitter_metadata %}
         {% include 'partials/twitter-metadata.html' %}
     {% endblock %}
@@ -73,25 +64,27 @@
     {# <meta name="msapplication-TileColor" content="#da532c">#}
     {# <meta name="theme-color" content="#ffffff">#}
 
-    <!-- CSS links -->
     {% compress css %}
+        <!-- CSS links -->
         <link rel="stylesheet" type="text/x-scss" href="{% static 'css/style.scss' %}">
     {% endcompress %}
     {% block page_css %}{% endblock %}
 
-    <!-- Head scripts -->
     {% with ext=debug|yesno:'.js,.min.js' %}
+        <!-- Head scripts -->
         <script src="{% static 'jquery/dist/jquery' %}{{ ext }}"></script>
     {% endwith %}
 
-    <!-- Global website data -->
     {% block branch_data %}
         {% include 'partials/branch-data.html' %}
     {% endblock %}
 
-    <!-- Global site tag (gtag.js) - Google Tag Manager -->
     {% block analytics %}
+        <!-- Global site tag (gtag.js) - Google Tag Manager -->
         <script async src="{% static 'js/branch-analytics.js' %}"></script>
+    {% endblock %}
+
+    {% block feed %}
     {% endblock %}
 </head>
 

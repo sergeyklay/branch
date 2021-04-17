@@ -11,15 +11,13 @@
             /** @type {HTMLHtmlElement} */
             const target = e.target;
 
-            // Disabled for now.
-            // Does not work as expected.
-            //
-            // if (window.gtag && !checkbox.checked && target === toggle) {
-            //     // We are going to show sidebar
-            //     gtag('event', 'screen_view', {
-            //         screen_name: 'Sidebar'
-            //     });
-            // }
+            // This will work only if DNT is not enabled and GA ID is set
+            if (window.gtag && !checkbox.checked && target === toggle) {
+                // We are going to show sidebar
+                gtag('event', 'show_menu', {
+                    'event_label': 'ui_interaction'
+                });
+            }
 
             if (!checkbox.checked || !sidebar.contains(target) ||
                 (target === checkbox || target === toggle)

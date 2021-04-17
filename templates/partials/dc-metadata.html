@@ -1,16 +1,11 @@
-{% if page_title and page_title.strip %}
-    <meta property="dc:title" content="{{ page_title }}">
-{% else %}
-    <meta property="dc:title" content="{{ SITE_NAME|default:'Branch' }}">
-{% endif %}
+<!-- Dublin Core metadata for Zotero -->
 
-{% if page_author and page_author.strip %}
-    <meta property="dc:creator" content="{{ page_author }}">
-    <meta property="dc:contributor" content="{{ page_author }}">
-{% else %}
-    <meta property="dc:creator" content="{{ SITE_NAME|default:'Branch' }}">
-{% endif %}
-
+<meta property="dc:title" content="{{ page_title|default:SITE_NAME }}">
+<meta name="dc:description" content="{% include 'partials/description-value.html' %}">
+<meta property="dc:creator" content="{{ page_author|default:SITE_NAME }}">
+<meta property="dc:contributor" content="{{ page_author|default:SITE_NAME }}">
+<meta property="dc:type" content="Text">
+<meta property="dc:language" content="{{ page_locale|default:LOCALE }}">
 {% if page_rights and page_rights.strip %}
     {# TODO: Add to Page model property #}
     <meta property="dc:rights" content="{{ page_rights }}">

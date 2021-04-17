@@ -1,18 +1,9 @@
 {% load static %}
 
+<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-
-{% if page_title and page_title.strip %}
-    <meta name="twitter:title" content="{{ page_title }}">
-{% else %}
-    <meta name="twitter:title" content="{{ SITE_NAME|default:'Branch' }}">
-{% endif %}
-
-{% if page_description and page_description.strip %}
-    <meta name="twitter:description" content="{{ page_description|striptags|truncatechars:150 }}">
-{% else %}
-    <meta name="twitter:description" content="{{ site_description|striptags|truncatechars:150 }}">
-{% endif %}
+<meta name="twitter:title" content="{{ page_title|default:SITE_NAME }}">
+<meta name="twitter:description" content="{% include 'partials/description-value.html' %}">
 
 {% if featured_image %}
     <meta name="twitter:image:src" content="{{ BASE_URL }}{{ featured_image.url }}">
