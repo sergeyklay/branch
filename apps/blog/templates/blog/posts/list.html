@@ -1,26 +1,40 @@
-{% extends 'post-list.html' %}
+{% extends 'post.html' %}
 
 {% load i18n %}
 
-{% block posts_list %}
-    <h1 class="page-title">{% trans 'Blog' %}</h1>
+{% block sidebar %}
+    {% include 'partials/sidebar.html' %}
+{% endblock %}
 
-    <div class="blog-list">
-        {% for post in posts %}
-            {% include 'blog/partials/post-teaser.html' with post=post %}
-        {% empty %}
-            <article class="blog-post">
-                <header>
-                    <h2 class="blog-post-title">
-                        {% trans 'There are no posts yet.' %}
-                    </h2>
-                </header>
-            </article>
-        {% endfor %}
+{% block page_meta %}
+    <!-- Feed links -->
+    <link rel="alternate" type="application/rss+xml" title="{{ SITE_NAME }} » {% trans 'Feed (RSS 2.0)' %}" href="{{ BASE_URL }}{% url 'blog:posts_rss' %}">
+    <link rel="alternate" type="application/atom+xml" title="{{ SITE_NAME }} » {% trans 'Feed (Atom)' %}" href="{{ BASE_URL }}{% url 'blog:posts_atom' %}">
+{% endblock %}
 
-        {% if page_obj.paginator.num_pages > 1 %}
-            <div class="divider"></div>
-            {% include 'blog/partials/pagination.html' with page=page_obj %}
-        {% endif %}
-    </div>
+{% block content %}
+    <article class="articles">
+        {% block posts_list %}
+            <h1 class="page-title">{% trans 'Blog' %}</h1>
+
+            <div class="blog-list">
+                {% for post in posts %}
+                    {% include 'blog/partials/post-teaser.html' with post=post %}
+                {% empty %}
+                    <article class="blog-post">
+                        <header>
+                            <h2 class="blog-post-title">
+                                {% trans 'There are no posts yet.' %}
+                            </h2>
+                        </header>
+                    </article>
+                {% endfor %}
+
+                {% if page_obj.paginator.num_pages > 1 %}
+                    <div class="divider"></div>
+                    {% include 'blog/partials/pagination.html' with page=page_obj %}
+                {% endif %}
+            </div>
+        {% endblock %}
+    </article>
 {% endblock %}

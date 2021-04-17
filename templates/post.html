@@ -1,13 +1,12 @@
-{% extends 'post-base.html' %}
+{% extends 'base.html' %}
 
-{% block page_title %}{{ page_title }} - {{ block.super }}{% endblock %}
+{% load static %}
 
-{% block og_page_type %}
-    <meta property="og:type" content="article">
+{% block page_license %}
+    <link rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
 {% endblock %}
 
-{% block content %}
-    <article class="{{ page_type|default:'post' }}" role="document">
-        {% block post_content %}{% endblock %}
-    </article>
+{% block page_css %}
+    <link rel="stylesheet" href="{% static 'prismjs/themes/prism.css' %}">
+    <link rel="stylesheet" href="{% static 'css/prism-custom.css' %}">
 {% endblock %}
