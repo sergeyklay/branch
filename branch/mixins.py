@@ -16,22 +16,28 @@
 """Project wide mixins lives here."""
 
 from django.db import models
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
 
 class ModelTimestampsMixin(models.Model):
     """
     Timestamps aware model mixin.
+
     Specify created_at and updated_at fields for a model.
     """
 
+    # Do not use 'auto_now_add=True' here to be
+    # able override created_at field easily in tests.
     created_at = models.DateTimeField(
-        auto_now_add=True,
+        default=timezone.now,
         verbose_name=_('Date created'),
     )
 
+    # Do not use 'auto_now=True' here to be
+    # able override updated_at field easily in tests.
     updated_at = models.DateTimeField(
-        auto_now=True,
+        default=timezone.now,
         verbose_name=_('Date updated'),
     )
 
@@ -39,6 +45,11 @@ class ModelTimestampsMixin(models.Model):
         """Mixin metadata class."""
 
         abstract = True
+
+    def save(self, *args, **kwargs):
+        """On save, update updated_at timestamp"""
+        self.updated_at = timezone.now
+        return super().save(*args, **kwargs)
 
 
 class PageDetailsMixin:
