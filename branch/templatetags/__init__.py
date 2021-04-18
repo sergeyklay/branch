@@ -13,5 +13,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
+"""The top-level module for branch template tags.
+
+Functions:
+
+    date_to_xmlschema
+    urlparams
+
+"""
+
 from .date_to_xmlschema import date_to_xmlschema  # noqa: F401
 from .urlparams import urlparams  # noqa: F401

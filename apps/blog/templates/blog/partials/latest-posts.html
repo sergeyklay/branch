@@ -1,12 +1,12 @@
-{% load date_to_xmlschema %}
+{% load l10n date_to_xmlschema %}
 
 <ul class="texts">
     {% for post in latest_posts %}
         <li class="text-title">
             <h3>
                 <span class="post-meta">
-                    <time datetime="{{ post.published_at|date_to_xmlschema }}">
-                        {{ post.published_at|date:"Y.m.d" }}
+                    <time datetime="{{ post.updated_at|date_to_xmlschema }}">
+                        {{ post.updated_at|date:"b d, Y"|localize|title }}
                     </time>
                 </span>
 
