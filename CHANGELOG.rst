@@ -22,6 +22,7 @@ Features
 Improvements
 ^^^^^^^^^^^^
 
+* Optimize page speed by reorganizing static assets.
 * Restructured and simplified template structure.
 * Changed font families used on website to provide better reading experience:
 

@@ -72,10 +72,7 @@
     {% endcompress %}
     {% block page_css %}{% endblock %}
 
-    {% with ext=debug|yesno:'.js,.min.js' %}
-        <!-- Head scripts -->
-        <script src="{% static 'jquery/dist/jquery' %}{{ ext }}"></script>
-    {% endwith %}
+    {% block header_js %}{% endblock %}
 
     {% block branch_data %}
         {% include 'partials/branch-data.html' %}
@@ -116,7 +113,9 @@
     </div>
 
     <label for="sidebar-checkbox" class="sidebar-toggle"></label>
-    <script src="{% static 'js/ed.js' %}"></script>
-    {% block page_js %}{% endblock %}
+
+    {% block footer_js %}
+        <script src="{% static 'js/sidebar.js' %}"></script>
+    {% endblock %}
 </body>
 </html>
