@@ -42,7 +42,6 @@ ignore:
   - ".coverage"
   - ".coveragerc"
   - "coverage.xml"
-  - "__init__.py"
   # ignore repo folders and all its contents
   - ".git/.*"
   - ".github/.*"
