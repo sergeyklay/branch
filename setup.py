@@ -170,9 +170,12 @@ EXTRAS_REQUIRE = {
     # Dependencies that are required to run tests
     'testing': [
         'pylint>=2.6.0,!=2.6.1',  # Python code static checker
+        'pylint-django>=2.4.3',  # A Django plugin for pylint
         'pytest>=6.2.0',  # Our test framework
         'pytest-cov>=2.11.1',  # Pytest plugin for measuring coverage
         'pytest-django>=4.2.0',  # A Django plugin for pytest
+        'factory-boy>=3.2.0',  # A versatile test fixtures
+        'faker>=8.1.0',  # A generator of fake data for tests
         'flake8>=3.8.4',  # The modular source code checker
         'flake8-import-order>=0.18.0',  # Check the ordering of imports
     ],
