@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: branch 1.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-16 07:32+0000\n"
-"PO-Revision-Date: 2021-04-16 11:27+0300\n"
+"POT-Creation-Date: 2021-04-18 06:48+0000\n"
+"PO-Revision-Date: 2021-04-18 09:51+0300\n"
 "Last-Translator: Serghei Iakovlev <egrep@protonmail.ch>\n"
 "Language-Team: Ukrainian <egrep@protonmail.ch>\n"
 "Language: uk\n"
@@ -33,7 +33,7 @@ msgstr "Загальний зміст"
 msgid "SEO"
 msgstr "SEO"
 
-#: apps/blog/apps.py:27 apps/blog/templates/blog/posts/list.html:6
+#: apps/blog/apps.py:27 apps/blog/templates/blog/posts/list.html:18
 #: templates/partials/sidebar.html:15
 msgid "Blog"
 msgstr "Блог"
@@ -150,7 +150,7 @@ msgstr "Зворотня адреса"
 msgid "Your email address will not be published."
 msgstr "Ваша електронна адреса не буде опублікований."
 
-#: apps/blog/templates/blog/partials/comment-form.html:41
+#: apps/blog/templates/blog/partials/comment-form.html:39
 msgid ""
 "Comments are subject to approval and moderation. If you don't see your "
 "comment, please be patient. It may be posted soon. Do not post your comment "
@@ -160,7 +160,7 @@ msgstr ""
 "зачекайте. Можливо, скоро він буде опублікований. Не залишайте свій коментар "
 "вдруге. Дякую."
 
-#: apps/blog/templates/blog/partials/comment-form.html:52
+#: apps/blog/templates/blog/partials/comment-form.html:49
 msgid "Submit"
 msgstr "Відправити"
 
@@ -176,11 +176,19 @@ msgstr "Наступні публікації"
 msgid "Read more..."
 msgstr "Читати далі..."
 
-#: apps/blog/templates/blog/posts/list.html:15
+#: apps/blog/templates/blog/posts/list.html:11
+msgid "Posts RSS feed"
+msgstr "RSS-канал публікацій"
+
+#: apps/blog/templates/blog/posts/list.html:12
+msgid "Posts Atom feed"
+msgstr "Atom-канал публікацій"
+
+#: apps/blog/templates/blog/posts/list.html:27
 msgid "There are no posts yet."
 msgstr "Ще немає повідомлень."
 
-#: apps/blog/templates/blog/posts/view.html:72
+#: apps/blog/templates/blog/posts/view.html:79
 #, python-format
 msgid "%(total_comments)s comment"
 msgid_plural "%(total_comments)s comments"
@@ -189,7 +197,7 @@ msgstr[1] "%(total_comments)s коментарі"
 msgstr[2] "%(total_comments)s коментарів"
 msgstr[3] "%(total_comments)s коментарів"
 
-#: apps/blog/templates/blog/posts/view.html:85
+#: apps/blog/templates/blog/posts/view.html:94
 msgid "There are no comments yet."
 msgstr "Коментарів поки немає."
 
@@ -332,15 +340,15 @@ msgstr "Дата оновлення"
 msgid "Draft"
 msgstr "Чернетка"
 
-#: branch/models.py:42 branch/settings/base.py:258
+#: branch/models.py:42 branch/settings/base.py:260
 msgid "English"
 msgstr "Англійська"
 
-#: branch/models.py:43 branch/settings/base.py:260
+#: branch/models.py:43 branch/settings/base.py:262
 msgid "Russian"
 msgstr "Російська"
 
-#: branch/models.py:44 branch/settings/base.py:259
+#: branch/models.py:44 branch/settings/base.py:261
 msgid "Ukrainian"
 msgstr "Українська"
 
@@ -400,7 +408,7 @@ msgstr "Мета опис"
 msgid "This will be displayed in meta tags. Keep it under 120 characters."
 msgstr "Це буде відображатися в метатегах. Використовуйте до 120 символів."
 
-#: templates/base.html:100
+#: templates/base.html:105
 msgid "Go to main page"
 msgstr "На головну"
 

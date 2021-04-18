@@ -18,8 +18,8 @@ CONGRATULATIONS, you found my humans.txt file!
 
     /* SITE */
 
-    Last update: 2021-04-10
+    Last update: 2021-04-18
     Language: Russian, Ukrainian, English
     Doctype: HTML5
-    Standards: HTML5, CSS3, Open Graph protocol, Dublin Core metadata
+    Standards: Python 3, HTML5, CSS3, Open Graph protocol, Dublin Core metadata, Schema.org
     Components: Django, jQuery, Ed Theme
