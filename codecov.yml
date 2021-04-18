@@ -40,6 +40,7 @@ ignore:
   - "*.txt"
   - "*.in"
   - ".coveragerc"
+  - "__init__.py"
   # ignore repo folders and all its contents
   - ".git/.*"
   - ".github/.*"
