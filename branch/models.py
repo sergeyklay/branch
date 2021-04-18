@@ -19,8 +19,6 @@ from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
-from .mixins import ModelTimestampsMixin
-
 
 class PublishedManager(models.Manager):
     """Custom models manager get only published posts and pages."""
@@ -30,7 +28,7 @@ class PublishedManager(models.Manager):
         return super().get_queryset().filter(status='published')
 
 
-class AbstractPage(ModelTimestampsMixin, models.Model):
+class AbstractPage(models.Model):
     """Abstract base model class for all kinds of posts and pages."""
 
     STATUS_CHOICES = (
@@ -65,6 +63,20 @@ class AbstractPage(ModelTimestampsMixin, models.Model):
 
     body = models.TextField(
         verbose_name=_('Full text of the post'),
+    )
+
+    # Do not use 'auto_now_add=True' here to be
+    # able override created_at field easily in tests.
+    created_at = models.DateTimeField(
+        default=timezone.now,
+        verbose_name=_('Date created'),
+    )
+
+    # Do not use 'auto_now=True' here to be
+    # able override updated_at field easily in tests.
+    updated_at = models.DateTimeField(
+        default=timezone.now,
+        verbose_name=_('Date updated'),
     )
 
     published_at = models.DateTimeField(
@@ -120,3 +132,8 @@ class AbstractPage(ModelTimestampsMixin, models.Model):
     def get_absolute_url(self):
         """Tell Django how to generate the canonical URL for a post or page."""
         raise NotImplementedError()
+
+    def save(self, *args, **kwargs):
+        """On save, update updated_at timestamp"""
+        self.updated_at = timezone.now()
+        return super().save(*args, **kwargs)

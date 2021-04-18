@@ -18,10 +18,10 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 from django.utils.text import format_lazy
 from django.utils.translation import gettext_lazy as _
 
-from branch.mixins import ModelTimestampsMixin
 from branch.models import AbstractPage
 
 
@@ -89,7 +89,7 @@ class Post(AbstractPage):
         ])
 
 
-class Comment(ModelTimestampsMixin, models.Model):
+class Comment(models.Model):
     """Post comments model class."""
 
     STATUS_CHOICES = (
@@ -129,6 +129,20 @@ class Comment(ModelTimestampsMixin, models.Model):
         help_text=_('Is the comment will be displayed on the site?')
     )
 
+    # Do not use 'auto_now_add=True' here to be
+    # able override created_at field easily in tests.
+    created_at = models.DateTimeField(
+        default=timezone.now,
+        verbose_name=_('Date created'),
+    )
+
+    # Do not use 'auto_now=True' here to be
+    # able override updated_at field easily in tests.
+    updated_at = models.DateTimeField(
+        default=timezone.now,
+        verbose_name=_('Date updated'),
+    )
+
     class Meta:
         """Comment model metadata class."""
 
@@ -146,3 +160,8 @@ class Comment(ModelTimestampsMixin, models.Model):
         )
 
         return str(str_id)
+
+    def save(self, *args, **kwargs):
+        """On save, update updated_at timestamp"""
+        self.updated_at = timezone.now()
+        return super().save(*args, **kwargs)
