@@ -41,6 +41,8 @@ env:
   NPM: npm
   PYTHON: python
   BRANCH_ENV: test
+  DJANGO_SETTINGS_MODULE: branch.settings.test
+  SECRET_KEY: Naive and not very secret key used for tests
   PYTHONUNBUFFERED: '1'
 
 defaults:
