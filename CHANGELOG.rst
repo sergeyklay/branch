@@ -14,7 +14,9 @@ Features
 * Added ability to post and moderate comments.
 * Added in-app logging support.
 * Added Google Tag Manager support.
-* Added RSS 2.0/Atom links to the head.
+* Added RSS 2.0/Atom links to the page head.
+* Provided ``apps.blog.models.Post.is_updated`` to see if
+  the post has been updated since it was published.
 
 
 Improvements
@@ -30,8 +32,15 @@ Improvements
 Trivial/Internal Changes
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-* Bumps ``django-debug-toolbar`` from 3.2.0 to 3.2.1.
+* Bumps ``django-debug-toolbar`` from 3.2 to 3.2.1.
 * Bumps ``flake8`` from 3.9.0 to 3.9.1.
+* Bumps ``django-compressor`` from 2.4 to 2.4.1.
+* Removed incorrectly used and no longer needed ``ModelTimestampsMixin``
+* Added tests dependencies:
+
+  * ``factory-boy==3.2.0``
+  * ``faker==8.1.0``
+  * ``pylint-django==2.4.3``
 
 
 ----
