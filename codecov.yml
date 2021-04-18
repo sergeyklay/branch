@@ -40,7 +40,7 @@ ignore:
   - "*.txt"
   - "*.in"
   - ".coveragerc"
-  # ignore folders and all its contents
+  # ignore repo folders and all its contents
   - ".git/.*"
   - ".github/.*"
   - ".pytest_cache/.*"
@@ -49,3 +49,11 @@ ignore:
   - "dist/.*"
   - "branch.egg-info/.*"
   - "htmlcov/.*"
+  # ignore tests and migrations
+  - "branch/tests/.*"
+  - "apps/blog/migrations/.*"
+  - "apps/blog/tests/.*"
+  - "apps/pages/migrations/.*"
+  - "apps/pages/tests/.*"
+  - "apps/website/migrations/.*"
+  - "apps/website/tests/.*"
