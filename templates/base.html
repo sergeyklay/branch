@@ -10,7 +10,13 @@
 
     {% block post_schema %}{% endblock %}
 
-    <meta name="generator" content="Branch">
+    {% block made_by %}
+        <!-- Made by -->
+        <meta name="generator" content="Branch">
+        <link type="text/plain" rel="author" href="{{ BASE_URL }}/humans.txt">
+    {% endblock %}
+
+    <!-- Page SEO -->
     {% block page_description %}
         <meta name="description" content="{% include 'partials/description-value.html' %}">
     {% endblock %}
@@ -36,10 +42,6 @@
 
     {% block twitter_metadata %}
         {% include 'partials/twitter-metadata.html' %}
-    {% endblock %}
-
-    {% block humans %}
-        <link type="text/plain" rel="author" href="{{ BASE_URL }}/humans.txt">
     {% endblock %}
 
     <!-- Icons -->
