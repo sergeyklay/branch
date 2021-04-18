@@ -15,7 +15,10 @@
 
 """Blog models."""
 
-from django.contrib.auth.models import User
+# TODO: Fix this:
+#   E5142: User model imported from django.contrib.auth.models
+#   (imported-auth-user)
+from django.contrib.auth.models import User  # pylint: disable=E5142
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
@@ -87,6 +90,27 @@ class Post(AbstractPage):
             self.published_at.day,  # pylint: disable=no-member
             self.slug,
         ])
+
+    @property
+    def is_updated(self):
+        """
+        Determine if the post has been updated since it was published.
+
+        This function ignores microseconds when comparing post dates.
+        """
+
+        # Haha :)
+        #
+        #   E1123: Unexpected keyword argument 'microsecond' in method call
+        #   (unexpected-keyword-arg)
+        #
+        #   See: https://github.com/PyCQA/pylint-django/issues/194
+        #
+        # pylint: disable=E1123
+        published_at = self.published_at.replace(microsecond=0)
+        updated_at = self.updated_at.replace(microsecond=0)
+
+        return updated_at > published_at
 
 
 class Comment(models.Model):
