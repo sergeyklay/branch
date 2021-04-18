@@ -15,13 +15,16 @@
 
 """Blog models."""
 
-from django.contrib.auth.models import User
+# TODO: Fix this:
+#   E5142: User model imported from django.contrib.auth.models
+#   (imported-auth-user)
+from django.contrib.auth.models import User  # pylint: disable=E5142
 from django.db import models
 from django.urls import reverse
+from django.utils import timezone
 from django.utils.text import format_lazy
 from django.utils.translation import gettext_lazy as _
 
-from branch.mixins import ModelTimestampsMixin
 from branch.models import AbstractPage
 
 
@@ -88,8 +91,29 @@ class Post(AbstractPage):
             self.slug,
         ])
 
+    @property
+    def is_updated(self):
+        """
+        Determine if the post has been updated since it was published.
 
-class Comment(ModelTimestampsMixin, models.Model):
+        This function ignores microseconds when comparing post dates.
+        """
+
+        # Haha :)
+        #
+        #   E1123: Unexpected keyword argument 'microsecond' in method call
+        #   (unexpected-keyword-arg)
+        #
+        #   See: https://github.com/PyCQA/pylint-django/issues/194
+        #
+        # pylint: disable=E1123
+        published_at = self.published_at.replace(microsecond=0)
+        updated_at = self.updated_at.replace(microsecond=0)
+
+        return updated_at > published_at
+
+
+class Comment(models.Model):
     """Post comments model class."""
 
     STATUS_CHOICES = (
@@ -129,6 +153,20 @@ class Comment(ModelTimestampsMixin, models.Model):
         help_text=_('Is the comment will be displayed on the site?')
     )
 
+    # Do not use 'auto_now_add=True' here to be
+    # able override created_at field easily in tests.
+    created_at = models.DateTimeField(
+        default=timezone.now,
+        verbose_name=_('Date created'),
+    )
+
+    # Do not use 'auto_now=True' here to be
+    # able override updated_at field easily in tests.
+    updated_at = models.DateTimeField(
+        default=timezone.now,
+        verbose_name=_('Date updated'),
+    )
+
     class Meta:
         """Comment model metadata class."""
 
@@ -146,3 +184,8 @@ class Comment(ModelTimestampsMixin, models.Model):
         )
 
         return str(str_id)
+
+    def save(self, *args, **kwargs):
+        """On save, update updated_at timestamp"""
+        self.updated_at = timezone.now()
+        return super().save(*args, **kwargs)

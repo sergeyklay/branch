@@ -91,7 +91,7 @@ maintainer-clean: clean
 lint: $(VENV_PYTHON)
 	@echo $(CS)Running linters$(CE)
 	-$(VENV_BIN)/flake8 $(FLAKE8_FLAGS) ./
-	$(VENV_BIN)/pylint ./$(PKG_NAME) ./apps
+	$(VENV_BIN)/pylint $(PYLINT_FLAGS) ./$(PKG_NAME) ./apps
 
 .PHONY: up
 up:
@@ -166,6 +166,7 @@ help:
 	@echo
 	@echo '  FLAKE8_FLAGS: $(FLAKE8_FLAGS)'
 	@echo '  PYTEST_FLAGS: $(PYTEST_FLAGS)'
+	@echo '  PYLINT_FLAGS: $(PYLINT_FLAGS)'
 	@echo
 	@echo 'Environment variables:'
 	@echo

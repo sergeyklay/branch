@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: branch 1.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-18 06:48+0000\n"
-"PO-Revision-Date: 2021-04-18 09:51+0300\n"
+"POT-Creation-Date: 2021-04-18 19:55+0000\n"
+"PO-Revision-Date: 2021-04-18 22:56+0300\n"
 "Last-Translator: Serghei Iakovlev <egrep@protonmail.ch>\n"
 "Language-Team: Ukrainian <egrep@protonmail.ch>\n"
 "Language: uk\n"
@@ -43,96 +43,104 @@ msgstr "Блог"
 msgid "Latest posts - %s"
 msgstr "Останні публікації - %s"
 
-#: apps/blog/models.py:41
+#: apps/blog/models.py:44
 msgid "Drama"
 msgstr "Драма"
 
-#: apps/blog/models.py:42
+#: apps/blog/models.py:45
 msgid "Narrative"
 msgstr "Повість"
 
-#: apps/blog/models.py:43
+#: apps/blog/models.py:46
 msgid "Poem"
 msgstr "Вірш"
 
-#: apps/blog/models.py:44 apps/blog/models.py:80 apps/blog/models.py:104
+#: apps/blog/models.py:47 apps/blog/models.py:83 apps/blog/models.py:128
 msgid "Post"
 msgstr "Стаття"
 
-#: apps/blog/models.py:51
+#: apps/blog/models.py:54
 msgid "Publication type"
 msgstr "Тип публікації"
 
-#: apps/blog/models.py:58
+#: apps/blog/models.py:61
 msgid "Featured image"
 msgstr "Ілюстрація"
 
-#: apps/blog/models.py:65
+#: apps/blog/models.py:68
 msgid "Excerpt"
 msgstr "Уривок"
 
-#: apps/blog/models.py:66
+#: apps/blog/models.py:69
 msgid "A short, concise introduction."
 msgstr "Короткий, виразне введення."
 
-#: apps/blog/models.py:73
+#: apps/blog/models.py:76
 msgid "Author"
 msgstr "Автор"
 
-#: apps/blog/models.py:81
+#: apps/blog/models.py:84
 msgid "Posts"
 msgstr "Статті"
 
-#: apps/blog/models.py:96
+#: apps/blog/models.py:120
 msgid "Hidden"
 msgstr "Приховано"
 
-#: apps/blog/models.py:97 branch/models.py:38
+#: apps/blog/models.py:121 branch/models.py:36
 msgid "Published"
 msgstr "Опубліковано"
 
-#: apps/blog/models.py:109
+#: apps/blog/models.py:133
 msgid "User name"
 msgstr "Ім’я користувача"
 
-#: apps/blog/models.py:110
+#: apps/blog/models.py:134
 msgid "The name of the user who posted the comment."
 msgstr "Ім’я користувача, який залишив коментар."
 
-#: apps/blog/models.py:115
+#: apps/blog/models.py:139
 msgid "E-Mail"
 msgstr "E-Mail"
 
-#: apps/blog/models.py:116
+#: apps/blog/models.py:140
 msgid "The email of the user who posted the comment."
 msgstr "Електронна пошта користувача, який залишив коментар."
 
-#: apps/blog/models.py:120 apps/blog/models.py:136
+#: apps/blog/models.py:144 apps/blog/models.py:174
 #: apps/blog/templates/blog/partials/comment-form.html:31
 msgid "Comment"
 msgstr "Коментар"
 
-#: apps/blog/models.py:121
+#: apps/blog/models.py:145
 msgid "The actual content of the comment itself."
 msgstr "Фактичний зміст самого коментаря."
 
-#: apps/blog/models.py:128 branch/models.py:79
+#: apps/blog/models.py:152 branch/models.py:91
 msgid "Status"
 msgstr "Статус"
 
-#: apps/blog/models.py:129
+#: apps/blog/models.py:153
 msgid "Is the comment will be displayed on the site?"
 msgstr "Чи буде коментар відображатися на сайті?"
 
-#: apps/blog/models.py:137
+#: apps/blog/models.py:160 branch/models.py:72
+msgid "Date created"
+msgstr "Дата створення"
+
+#: apps/blog/models.py:167 branch/models.py:79
+msgid "Date updated"
+msgstr "Дата оновлення"
+
+#: apps/blog/models.py:175
 msgid "Comments"
 msgstr "Коментарі"
 
-#: apps/blog/models.py:142
+#: apps/blog/models.py:180
 msgid "Comment by"
 msgstr "Коментар від"
 
-#: apps/blog/models.py:144
+#: apps/blog/models.py:182
 msgid "on"
 msgstr "до"
 
@@ -172,7 +180,13 @@ msgstr "Попередні публікації"
 msgid "Next"
 msgstr "Наступні публікації"
 
-#: apps/blog/templates/blog/partials/post-teaser.html:28
+#: apps/blog/templates/blog/partials/post-teaser.html:16
+#: apps/blog/templates/blog/posts/view.html:65
+#, python-format
+msgid "(Updated on %(updated_at)s)"
+msgstr "(Оновлено: %(updated_at)s)"
+
+#: apps/blog/templates/blog/partials/post-teaser.html:33
 msgid "Read more..."
 msgstr "Читати далі..."
 
@@ -188,7 +202,7 @@ msgstr "Atom-канал публікацій"
 msgid "There are no posts yet."
 msgstr "Ще немає повідомлень."
 
-#: apps/blog/templates/blog/posts/view.html:79
+#: apps/blog/templates/blog/posts/view.html:84
 #, python-format
 msgid "%(total_comments)s comment"
 msgid_plural "%(total_comments)s comments"
@@ -197,7 +211,7 @@ msgstr[1] "%(total_comments)s коментарі"
 msgstr[2] "%(total_comments)s коментарів"
 msgstr[3] "%(total_comments)s коментарів"
 
-#: apps/blog/templates/blog/posts/view.html:94
+#: apps/blog/templates/blog/posts/view.html:99
 msgid "There are no comments yet."
 msgstr "Коментарів поки немає."
 
@@ -328,71 +342,63 @@ msgstr ""
 msgid "using contact form"
 msgstr "використовуючи контактну форму"
 
-#: branch/mixins.py:30
-msgid "Date created"
-msgstr "Дата створення"
-
-#: branch/mixins.py:35
-msgid "Date updated"
-msgstr "Дата оновлення"
-
-#: branch/models.py:37
+#: branch/models.py:35
 msgid "Draft"
 msgstr "Чернетка"
 
-#: branch/models.py:42 branch/settings/base.py:260
+#: branch/models.py:40 branch/settings/base.py:260
 msgid "English"
 msgstr "Англійська"
 
-#: branch/models.py:43 branch/settings/base.py:262
+#: branch/models.py:41 branch/settings/base.py:262
 msgid "Russian"
 msgstr "Російська"
 
-#: branch/models.py:44 branch/settings/base.py:261
+#: branch/models.py:42 branch/settings/base.py:261
 msgid "Ukrainian"
 msgstr "Українська"
 
-#: branch/models.py:49
+#: branch/models.py:47
 msgid "Title"
 msgstr "Заголовок"
 
-#: branch/models.py:56
+#: branch/models.py:54
 msgid "Slug"
 msgstr "Слаг"
 
-#: branch/models.py:57
+#: branch/models.py:55
 msgid "Leave it blank for automatic populating."
 msgstr "Залиште поле порожнім, для автоматичного заповнення."
 
-#: branch/models.py:62
+#: branch/models.py:60
 msgid "Block search indexing"
 msgstr "Заборонити індексування"
 
-#: branch/models.py:63
+#: branch/models.py:61
 msgid "Prevent this page from appearing in search index."
 msgstr "Заборонити пошуковим павукам індексувати цю сторінку."
 
-#: branch/models.py:67
+#: branch/models.py:65
 msgid "Full text of the post"
 msgstr "Повний текст публікації"
 
-#: branch/models.py:72
+#: branch/models.py:84
 msgid "First publication date"
 msgstr "Дата публікації"
 
-#: branch/models.py:86
+#: branch/models.py:98
 msgid "Locale"
 msgstr "Локаль"
 
-#: branch/models.py:87
+#: branch/models.py:99
 msgid "Specify the publishing locale used."
 msgstr "Вкажіть використовувану локаль публікації."
 
-#: branch/models.py:94
+#: branch/models.py:106
 msgid "Meta title"
 msgstr "Мета заголовок"
 
-#: branch/models.py:95
+#: branch/models.py:107
 msgid ""
 "This will be displayed in meta tags. Keep it under 60 characters. Leave "
 "empty and the post's title will be used."
@@ -400,11 +406,11 @@ msgstr ""
 "Це буде відображатися в метатегах. Використовуйте до 60 символів. Залиште "
 "поле порожнім, і буде використовуватися заголовок повідомлення."
 
-#: branch/models.py:104
+#: branch/models.py:116
 msgid "Meta description"
 msgstr "Мета опис"
 
-#: branch/models.py:105
+#: branch/models.py:117
 msgid "This will be displayed in meta tags. Keep it under 120 characters."
 msgstr "Це буде відображатися в метатегах. Використовуйте до 120 символів."
 

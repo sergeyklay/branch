@@ -15,7 +15,7 @@
 
 """Date to XML Schema filter."""
 
-from datetime import datetime, timezone
+from datetime import datetime
 
 from django import template
 
@@ -30,8 +30,10 @@ def date_to_xmlschema(value):
     Usage:
       {% date_to_xmlschema %}
       {{ post.published_at|date_to_xmlschema }}
+
+    For more see: https://www.iso.org/standard/70907.html
     """
     if not isinstance(value, datetime):
         return ''
 
-    return value.replace(tzinfo=timezone.utc, microsecond=0).isoformat()
+    return value.replace(microsecond=0).isoformat()

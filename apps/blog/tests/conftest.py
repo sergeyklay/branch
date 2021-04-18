@@ -13,25 +13,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-[metadata]
-license_file = LICENSE
-description_file = README.rst
-long_description_content_type = text/x-rst
+import pytest
 
-[tool:pytest]
-addopts = --verbose --ds=branch.settings.test
+from .factories import AuthorFactory, faker
 
-[flake8]
-exclude = .git,__pycache__,.eggs,.pytest_cache,.venv,assets,build,dist,htmlcov,node_modules,provision,static
-application-import-names = branch,apps.blog,apps.pages,apps.telegraph,apps.website
-import-order-style = smarkets
-max-complexity = 10
-ignore = F405
 
-[coverage:report]
-omit =
-    */tests/*
-    */migrations/*
-    .venv/*
-    */apps.py
-show_missing = True
+@pytest.fixture
+@pytest.mark.django_db
+def author():
+    """Return an Author object."""
+    return AuthorFactory(username=faker.email())

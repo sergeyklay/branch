@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: branch 1.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-18 06:48+0000\n"
-"PO-Revision-Date: 2021-04-18 09:52+0300\n"
+"POT-Creation-Date: 2021-04-18 19:55+0000\n"
+"PO-Revision-Date: 2021-04-18 22:56+0300\n"
 "Last-Translator: Serghei Iakovlev <egrep@protonmail.ch>\n"
 "Language-Team: Russian <egrep@protonmail.ch>\n"
 "Language: ru\n"
@@ -42,96 +42,104 @@ msgstr "Блог"
 msgid "Latest posts - %s"
 msgstr "Последние публикации - %s"
 
-#: apps/blog/models.py:41
+#: apps/blog/models.py:44
 msgid "Drama"
 msgstr "Драма"
 
-#: apps/blog/models.py:42
+#: apps/blog/models.py:45
 msgid "Narrative"
 msgstr "Повесть"
 
-#: apps/blog/models.py:43
+#: apps/blog/models.py:46
 msgid "Poem"
 msgstr "Стихотворение"
 
-#: apps/blog/models.py:44 apps/blog/models.py:80 apps/blog/models.py:104
+#: apps/blog/models.py:47 apps/blog/models.py:83 apps/blog/models.py:128
 msgid "Post"
 msgstr "Статья"
 
-#: apps/blog/models.py:51
+#: apps/blog/models.py:54
 msgid "Publication type"
 msgstr "Тип публикации"
 
-#: apps/blog/models.py:58
+#: apps/blog/models.py:61
 msgid "Featured image"
 msgstr "Иллюстрация"
 
-#: apps/blog/models.py:65
+#: apps/blog/models.py:68
 msgid "Excerpt"
 msgstr "Отрывок"
 
-#: apps/blog/models.py:66
+#: apps/blog/models.py:69
 msgid "A short, concise introduction."
 msgstr "Краткое, выразительное введение."
 
-#: apps/blog/models.py:73
+#: apps/blog/models.py:76
 msgid "Author"
 msgstr "Автор"
 
-#: apps/blog/models.py:81
+#: apps/blog/models.py:84
 msgid "Posts"
 msgstr "Статьи"
 
-#: apps/blog/models.py:96
+#: apps/blog/models.py:120
 msgid "Hidden"
 msgstr "Скрыто"
 
-#: apps/blog/models.py:97 branch/models.py:38
+#: apps/blog/models.py:121 branch/models.py:36
 msgid "Published"
 msgstr "Опубликовано"
 
-#: apps/blog/models.py:109
+#: apps/blog/models.py:133
 msgid "User name"
 msgstr "Имя пользователя"
 
-#: apps/blog/models.py:110
+#: apps/blog/models.py:134
 msgid "The name of the user who posted the comment."
 msgstr "Имя пользователя, оставившего комментарий."
 
-#: apps/blog/models.py:115
+#: apps/blog/models.py:139
 msgid "E-Mail"
 msgstr "E-Mail"
 
-#: apps/blog/models.py:116
+#: apps/blog/models.py:140
 msgid "The email of the user who posted the comment."
 msgstr "Электронная почта пользователя, оставившего комментарий."
 
-#: apps/blog/models.py:120 apps/blog/models.py:136
+#: apps/blog/models.py:144 apps/blog/models.py:174
 #: apps/blog/templates/blog/partials/comment-form.html:31
 msgid "Comment"
 msgstr "Комментарий"
 
-#: apps/blog/models.py:121
+#: apps/blog/models.py:145
 msgid "The actual content of the comment itself."
 msgstr "Фактическое содержание самого комментария."
 
-#: apps/blog/models.py:128 branch/models.py:79
+#: apps/blog/models.py:152 branch/models.py:91
 msgid "Status"
 msgstr "Статус"
 
-#: apps/blog/models.py:129
+#: apps/blog/models.py:153
 msgid "Is the comment will be displayed on the site?"
 msgstr "Будет ли комментарий отображаться на сайте?"
 
-#: apps/blog/models.py:137
+#: apps/blog/models.py:160 branch/models.py:72
+msgid "Date created"
+msgstr "Дата создания"
+
+#: apps/blog/models.py:167 branch/models.py:79
+msgid "Date updated"
+msgstr "Дата обновления"
+
+#: apps/blog/models.py:175
 msgid "Comments"
 msgstr "Комментарии"
 
-#: apps/blog/models.py:142
+#: apps/blog/models.py:180
 msgid "Comment by"
 msgstr "Комментарий от"
 
-#: apps/blog/models.py:144
+#: apps/blog/models.py:182
 msgid "on"
 msgstr "к"
 
@@ -171,7 +179,13 @@ msgstr "Предыдущие публикации"
 msgid "Next"
 msgstr "Следующие публикации"
 
-#: apps/blog/templates/blog/partials/post-teaser.html:28
+#: apps/blog/templates/blog/partials/post-teaser.html:16
+#: apps/blog/templates/blog/posts/view.html:65
+#, python-format
+msgid "(Updated on %(updated_at)s)"
+msgstr "(Обновлено: %(updated_at)s)"
+
+#: apps/blog/templates/blog/partials/post-teaser.html:33
 msgid "Read more..."
 msgstr "Читать далее..."
 
@@ -187,7 +201,7 @@ msgstr "Atom-канал публикаций"
 msgid "There are no posts yet."
 msgstr "Публикаций пока нет."
 
-#: apps/blog/templates/blog/posts/view.html:79
+#: apps/blog/templates/blog/posts/view.html:84
 #, python-format
 msgid "%(total_comments)s comment"
 msgid_plural "%(total_comments)s comments"
@@ -196,7 +210,7 @@ msgstr[1] "%(total_comments)s комментария"
 msgstr[2] "%(total_comments)s комментариев"
 msgstr[3] "%(total_comments)s комментариев"
 
-#: apps/blog/templates/blog/posts/view.html:94
+#: apps/blog/templates/blog/posts/view.html:99
 msgid "There are no comments yet."
 msgstr "Комментариев пока нет."
 
@@ -327,71 +341,63 @@ msgstr ""
 msgid "using contact form"
 msgstr "используя контактную форму"
 
-#: branch/mixins.py:30
-msgid "Date created"
-msgstr "Дата создания"
-
-#: branch/mixins.py:35
-msgid "Date updated"
-msgstr "Дата обновления"
-
-#: branch/models.py:37
+#: branch/models.py:35
 msgid "Draft"
 msgstr "Черновик"
 
-#: branch/models.py:42 branch/settings/base.py:260
+#: branch/models.py:40 branch/settings/base.py:260
 msgid "English"
 msgstr "Английский"
 
-#: branch/models.py:43 branch/settings/base.py:262
+#: branch/models.py:41 branch/settings/base.py:262
 msgid "Russian"
 msgstr "Русский"
 
-#: branch/models.py:44 branch/settings/base.py:261
+#: branch/models.py:42 branch/settings/base.py:261
 msgid "Ukrainian"
 msgstr "Украинский"
 
-#: branch/models.py:49
+#: branch/models.py:47
 msgid "Title"
 msgstr "Заголовок"
 
-#: branch/models.py:56
+#: branch/models.py:54
 msgid "Slug"
 msgstr "Слаг"
 
-#: branch/models.py:57
+#: branch/models.py:55
 msgid "Leave it blank for automatic populating."
 msgstr "Оставьте поле пустым, для автоматического заполнения."
 
-#: branch/models.py:62
+#: branch/models.py:60
 msgid "Block search indexing"
 msgstr "Запретить индексирование"
 
-#: branch/models.py:63
+#: branch/models.py:61
 msgid "Prevent this page from appearing in search index."
 msgstr "Запретить поисковым паукам индексировать эту страницу."
 
-#: branch/models.py:67
+#: branch/models.py:65
 msgid "Full text of the post"
 msgstr "Полный текст публикации"
 
-#: branch/models.py:72
+#: branch/models.py:84
 msgid "First publication date"
 msgstr "Дата публикации"
 
-#: branch/models.py:86
+#: branch/models.py:98
 msgid "Locale"
 msgstr "Язык"
 
-#: branch/models.py:87
+#: branch/models.py:99
 msgid "Specify the publishing locale used."
 msgstr "Укажите используемую локаль публикации."
 
-#: branch/models.py:94
+#: branch/models.py:106
 msgid "Meta title"
 msgstr "Мета заголовок"
 
-#: branch/models.py:95
+#: branch/models.py:107
 msgid ""
 "This will be displayed in meta tags. Keep it under 60 characters. Leave "
 "empty and the post's title will be used."
@@ -399,11 +405,11 @@ msgstr ""
 "Это будет отображаться в метатегах. Используйте до 60 символов. Оставьте "
 "поле пустым, и будет использоваться заголовок сообщения."
 
-#: branch/models.py:104
+#: branch/models.py:116
 msgid "Meta description"
 msgstr "Мета описание"
 
-#: branch/models.py:105
+#: branch/models.py:117
 msgid "This will be displayed in meta tags. Keep it under 120 characters."
 msgstr "Это будет отображаться в метатегах. Используйте до 120 символов."
 

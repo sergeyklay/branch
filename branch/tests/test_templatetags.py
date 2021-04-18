@@ -13,9 +13,11 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
+from datetime import datetime, timedelta, timezone
+
 import pytest
 
-from branch.templatetags.urlparams import urlparams
+from branch.templatetags import date_to_xmlschema, urlparams
 
 
 @pytest.mark.parametrize(
@@ -35,3 +37,22 @@ def test_urlparams(provided, expected):
     kwargs = provided[1]
 
     assert urlparams(*args, **kwargs) == expected
+
+
+@pytest.mark.parametrize(
+    'provided,expected',
+    [
+        ('', ''),
+        (None, ''),
+        ([], ''),
+        ('Hello', ''),
+        (42, ''),
+        (datetime(1983, 1, 1), '1983-01-01T00:00:00'),
+        (datetime(1985, 4, 12, 0, 0, 0, 0, timezone(timedelta(hours=3))),
+         '1985-04-12T00:00:00+03:00'),
+        (datetime(2021, 1, 1, 0, 0, 0, 999, timezone(timedelta(hours=2))),
+         '2021-01-01T00:00:00+02:00'),
+    ]
+)
+def test_date_to_xmlschema(provided, expected):
+    assert date_to_xmlschema(provided) == expected

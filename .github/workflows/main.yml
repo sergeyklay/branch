@@ -180,3 +180,6 @@ jobs:
 
       - name: Code linting
         run: make lint
+        env:
+          DJANGO_SETTINGS_MODULE: branch.settings.test
+          SECRET_KEY: Naive and not very secret key used for tests

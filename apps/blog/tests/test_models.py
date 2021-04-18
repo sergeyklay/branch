@@ -13,25 +13,26 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-[metadata]
-license_file = LICENSE
-description_file = README.rst
-long_description_content_type = text/x-rst
+import datetime
 
-[tool:pytest]
-addopts = --verbose --ds=branch.settings.test
+import pytest
 
-[flake8]
-exclude = .git,__pycache__,.eggs,.pytest_cache,.venv,assets,build,dist,htmlcov,node_modules,provision,static
-application-import-names = branch,apps.blog,apps.pages,apps.telegraph,apps.website
-import-order-style = smarkets
-max-complexity = 10
-ignore = F405
+from .factories import PostFactory
 
-[coverage:report]
-omit =
-    */tests/*
-    */migrations/*
-    .venv/*
-    */apps.py
-show_missing = True
+
+@pytest.mark.django_db
+def test_post_is_updated(author):
+    post = PostFactory(author=author)
+
+    assert post.is_updated is False
+    assert post.published_at.replace(microsecond=0) == \
+           post.updated_at.replace(microsecond=0)
+
+    post = PostFactory(
+        author=author,
+        updated_at=post.updated_at + datetime.timedelta(minutes=31)
+    )
+
+    assert post.is_updated is True
+    assert post.published_at.replace(microsecond=0) != \
+           post.updated_at.replace(microsecond=0)

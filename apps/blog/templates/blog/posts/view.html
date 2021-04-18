@@ -1,6 +1,6 @@
 {% extends 'post.html' %}
 
-{% load i18n static date_to_xmlschema %}
+{% load l10n i18n static date_to_xmlschema %}
 
 {% block page_title %}{{ page_title }} - {{ block.super }}{% endblock %}
 
@@ -59,8 +59,13 @@
 
             <p class="byline">
                 <time datetime="{{ post.published_at|date_to_xmlschema }}">
-                    {{ post.published_at|date:"Y.m.d" }}
+                    {{ post.published_at|date:"b d, Y"|localize|title }}
                 </time>
+                {% if post.is_updated  %}
+                    {% blocktranslate trimmed with updated_at=post.updated_at|date:"b d, Y"|localize|title %}
+                        (Updated on {{ updated_at }})
+                    {% endblocktranslate %}
+                {% endif %}
             </p>
 
             <div class="post-body">
