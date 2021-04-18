@@ -13,12 +13,11 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timedelta, timezone
 
 import pytest
 
-from branch.templatetags.date_to_xmlschema import date_to_xmlschema
-from branch.templatetags.urlparams import urlparams
+from branch.templatetags import date_to_xmlschema, urlparams
 
 
 @pytest.mark.parametrize(
