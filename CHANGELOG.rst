@@ -29,6 +29,12 @@ Improvements
   * Heading font: PT Sans
 
 
+Bug Fixes
+^^^^^^^^^
+
+* Correct ``date_to_xmlschema`` template tag to not replace timezone
+
+
 Trivial/Internal Changes
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
