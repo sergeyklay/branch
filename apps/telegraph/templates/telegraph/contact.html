@@ -1,8 +1,15 @@
 {% extends 'page.html' %}
 
-{% load i18n %}
+{% load i18n static %}
 
 {% block page_title %}{{ page_title }} - {{ block.super }}{% endblock %}
+
+{% block header_js %}
+    <!-- Head scripts -->
+    {% with ext=debug|yesno:'.js,.min.js' %}
+        <script src="{% static 'jquery/dist/jquery' %}{{ ext }}"></script>
+    {% endwith %}
+{% endblock %}
 
 {% block sidebar %}
     {% include 'partials/sidebar.html' %}
@@ -75,4 +82,9 @@
         </div>
         {% endif %}
     </div>
+{% endblock %}
+
+{% block footer_js %}
+    {{ block.super }}
+    <script src="{% static 'js/contact.js' %}"></script>
 {% endblock %}

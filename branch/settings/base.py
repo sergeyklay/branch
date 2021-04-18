@@ -274,14 +274,14 @@ LOCALE_PATHS = [
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
-COMMON_ASSETS_PATH = BASE_DIR('assets')
 NODE_MODULES_PATH = BASE_DIR('node_modules')
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR('static')
 STATICFILES_DIRS = (
-    COMMON_ASSETS_PATH,
+    BASE_DIR('assets'),
     NODE_MODULES_PATH,
+    BASE_DIR('apps', 'telegraph', 'assets'),
 )
 
 STATICFILES_FINDERS = (
