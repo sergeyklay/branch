@@ -2,7 +2,7 @@
 <!doctype html>
 <html lang="{{ LANGUAGE_CODE|slice:'0:2'|join:'' }}">
 
-<head prefix="og: http://ogp.me/ns#; dc: http://purl.org/dc/terms/#">
+<head prefix="og: http://ogp.me/ns# {%  spaceless %}{% block og_namespace %}{% endblock %}{% endspaceless %} dc: http://purl.org/dc/terms/#">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,shrink-to-fit=no">
     <title>{% block page_title %}{{ SITE_NAME|default:'Branch' }}{% endblock %}</title>
