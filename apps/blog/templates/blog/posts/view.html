@@ -1,13 +1,12 @@
 {% extends 'post.html' %}
 
 {% load l10n i18n static date_to_xmlschema %}
-
+{% block og_namespace %}article: https://ogp.me/ns/article#{% endblock %}
 {% block page_title %}{{ page_title }} - {{ block.super }}{% endblock %}
-
 
 {% block post_schema %}
     <script type="application/ld+json">
-        {# TODO: Do not hardcode about_url #}
+        {# TODO: post.author.get_absolute_url #}
         {% include 'blog/partials/page-schema.json' with page=post featured_image=post.featured_image about_url='/pages/about.html' %}
     </script>
 {% endblock %}
@@ -36,6 +35,12 @@
 {% block og_metadata %}
     {% with resource_url=post.get_absolute_url  resource_type='article' featured_image=post.featured_image %}
         {{ block.super }}
+        {% block og_type %}
+            <meta property="article:published_time" content="{{ post.published_at|date_to_xmlschema }}">
+            <meta property="article:modified_time" content="{{ post.updated_at|date_to_xmlschema }}">
+            {# TODO: #}
+            {# <meta property="article:author" content="{{ post.author.get_absolute_url }}"> #}
+        {% endblock %}
     {% endwith %}
 {% endblock %}
 

@@ -40,7 +40,7 @@ class PageDetailsMixin:
         return None
 
     @property
-    def type(self):
+    def resource_type(self):
         """Get resource type."""
         return None
 
@@ -60,7 +60,7 @@ class PageDetailsMixin:
         if self.locale:
             context['page_locale'] = self.locale
 
-        if self.type:
-            context['page_type'] = self.type
+        if self.resource_type:
+            context['page_type'] = self.resource_type
 
         return context

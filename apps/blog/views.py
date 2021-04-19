@@ -65,8 +65,8 @@ class PostDetailView(PageDetailsMixin, FormMixin, DateDetailView):
         return self.object.locale
 
     @property
-    def type(self):
-        return self.object.type
+    def resource_type(self):
+        return self.object.post_type
 
     def get_success_url(self):
         return f'{self.object.get_absolute_url()}#feedback-message'
