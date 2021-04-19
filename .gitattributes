@@ -13,6 +13,4 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-settings.env.dist        linguist-language=Shell
-
-provision/etc/nginx/sites-enabled/* linguist-language=Nginx
+settings.env.dist  linguist-language=Shell
