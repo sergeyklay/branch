@@ -36,6 +36,8 @@ faker==8.1.0
     # via
     #   -r requirements/requirements-dev.in
     #   factory-boy
+flake8-blind-except==0.2.0
+    # via -r requirements/requirements-dev.in
 flake8-import-order==0.18.1
     # via -r requirements/requirements-dev.in
 flake8==3.9.1

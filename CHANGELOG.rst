@@ -47,6 +47,7 @@ Trivial/Internal Changes
 
   * ``factory-boy==3.2.0``
   * ``faker==8.1.0``
+  * ``flake8-blind-except==0.2.0``
   * ``pylint-django==2.4.3``
 
 

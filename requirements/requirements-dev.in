@@ -4,6 +4,7 @@ django-extensions
 factory-boy
 faker
 flake8
+flake8-blind-except
 flake8-import-order
 pylint
 pylint-django
