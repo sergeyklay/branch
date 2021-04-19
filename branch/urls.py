@@ -23,9 +23,9 @@ from django.contrib.sitemaps.views import sitemap
 from django.urls import include, path, re_path
 from django.views.static import serve
 
-from apps.blog.sitemaps import PostSitemap, PostsListSitemap  # noqa: I100
-from apps.pages.sitemaps import PageSitemap  # noqa: I100,I201
-from apps.telegraph.sitemaps import TelegraphSitemap  # noqa: I100,I201
+from apps.blog.sitemaps import PostSitemap, PostsListSitemap
+from apps.pages.sitemaps import PageSitemap
+from apps.telegraph.sitemaps import TelegraphSitemap
 from .utils import admin_path
 
 
