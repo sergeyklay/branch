@@ -2,6 +2,11 @@
 Install
 =======
 
+.. note::
+
+   Please note that this guide is not intended for production environments and
+   is intended solely for local development.
+
 
 Prerequisites
 =============
