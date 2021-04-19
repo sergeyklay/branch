@@ -1,9 +1,8 @@
 {% load static %}
 
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{{ page_title|default:SITE_NAME }}">
-<meta name="twitter:description" content="{% include 'partials/description-value.html' %}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ page_title|default:SITE_NAME }}">
+    <meta name="twitter:description" content="{% spaceless %}{% include 'partials/description-value.html' %}{% endspaceless %}">
 
 {% if featured_image %}
     <meta name="twitter:image:src" content="{{ BASE_URL }}{{ featured_image.url }}">
@@ -11,4 +10,4 @@
     <meta name="twitter:image:src" content="{{ BASE_URL }}{% static 'img/blog-logo.jpg' %}">
 {% endif %}
 
-<meta name="twitter:image:alt" content="{{ page_title|default:SITE_NAME }}">
+    <meta name="twitter:image:alt" content="{{ page_title|default:SITE_NAME }}">

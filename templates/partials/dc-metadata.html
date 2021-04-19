@@ -1,14 +1,12 @@
-<!-- Dublin Core metadata for Zotero -->
-
 <meta property="dc:title" content="{{ page_title|default:SITE_NAME }}">
-<meta name="dc:description" content="{% include 'partials/description-value.html' %}">
-<meta property="dc:creator" content="{{ page_author|default:SITE_NAME }}">
-<meta property="dc:contributor" content="{{ page_author|default:SITE_NAME }}">
-<meta property="dc:type" content="Text">
-<meta property="dc:language" content="{{ page_locale|default:LOCALE }}">
+    <meta name="dc:description" content="{% spaceless %}{% include 'partials/description-value.html' %}{% endspaceless %}">
+    <meta property="dc:creator" content="{{ page_author|default:SITE_NAME }}">
+    <meta property="dc:contributor" content="{{ page_author|default:SITE_NAME }}">
+    <meta property="dc:type" content="Text">
+    <meta property="dc:language" content="{{ page_locale|default:LOCALE }}">
 {% if page_rights and page_rights.strip %}
     {# TODO: Add to Page model property #}
     <meta property="dc:rights" content="{{ page_rights }}">
 {% endif %}
 
-<meta property="dc:identifier" content="{{ BASE_URL }}{{ resource_url|default:request.path }}">
+    <meta property="dc:identifier" content="{{ BASE_URL }}{{ resource_url|default:request.path }}">
