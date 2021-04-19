@@ -20,16 +20,6 @@ from os import path
 from setuptools import find_packages, setup
 
 
-def locate_package_directory():
-    """Identify a directory of the package and its associated files."""
-    try:
-        return path.abspath(path.dirname(__file__))
-    except Exception as path_error:
-        message = ('The directory in which the package and its '
-                   'associated files are stored could not be located.')
-        raise RuntimeError(message) from path_error
-
-
 def read_file(filepath):
     """Read content from a UTF-8 encoded text file."""
     with codecs.open(filepath, 'rb', 'utf-8') as file_handle:
@@ -37,7 +27,7 @@ def read_file(filepath):
 
 
 PKG_NAME = 'branch'
-PKG_DIR = locate_package_directory()
+PKG_DIR = path.abspath(path.dirname(__file__))
 META_PATH = path.join(PKG_DIR, PKG_NAME, '__init__.py')
 META_CONTENTS = read_file(META_PATH)
 
@@ -77,9 +67,9 @@ def load_long_description():
         )
 
         return '\n'.join(contents)
-    except Exception as read_error:
+    except (RuntimeError, FileNotFoundError) as read_error:
         message = 'Long description could not be read from README.rst'
-        raise RuntimeError(message) from read_error
+        raise RuntimeError(f'{message}: {read_error}') from read_error
 
 
 def is_canonical_version(version):
@@ -178,6 +168,7 @@ EXTRAS_REQUIRE = {
         'faker>=8.1.0',  # A generator of fake data for tests
         'flake8>=3.8.4',  # The modular source code checker
         'flake8-import-order>=0.18.0',  # Check the ordering of imports
+        'flake8-blind-except>=0.2.0',  # Check for blind except: statements
     ],
     # Dependencies that are required to develop package
     'develop': [
