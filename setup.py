@@ -169,6 +169,7 @@ EXTRAS_REQUIRE = {
         'flake8>=3.8.4',  # The modular source code checker
         'flake8-import-order>=0.18.0',  # Check the ordering of imports
         'flake8-blind-except>=0.2.0',  # Check for blind except: statements
+        'flake8-builtins>=1.5.3',  # Check for shadowing Python builtins
     ],
     # Dependencies that are required to develop package
     'develop': [

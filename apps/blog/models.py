@@ -47,7 +47,7 @@ class Post(AbstractPage):
         ('post', _('Post')),
     )
 
-    type = models.CharField(
+    post_type = models.CharField(
         max_length=12,
         choices=TYPES,
         default='post',

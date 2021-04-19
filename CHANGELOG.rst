@@ -42,12 +42,14 @@ Trivial/Internal Changes
 * Bumps ``django-debug-toolbar`` from 3.2 to 3.2.1.
 * Bumps ``flake8`` from 3.9.0 to 3.9.1.
 * Bumps ``django-compressor`` from 2.4 to 2.4.1.
-* Removed incorrectly used and no longer needed ``ModelTimestampsMixin``
+* Removed incorrectly used and no longer needed ``ModelTimestampsMixin``.
+* Rename field ``type`` on Post model to ``post_type`` to not shadow builtin.
 * Added tests dependencies:
 
   * ``factory-boy==3.2.0``
   * ``faker==8.1.0``
   * ``flake8-blind-except==0.2.0``
+  * ``flake8-builtins==1.5.3``
   * ``pylint-django==2.4.3``
 
 
