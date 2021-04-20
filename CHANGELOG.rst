@@ -8,6 +8,11 @@ releases, in reverse chronological order.
 1.2.0 (2021-XX-XX)
 ------------------
 
+Features
+^^^^^^^^
+
+* Create Trumbowyg Editor as a separated Django application.
+
 
 Trivial/Internal Changes
 ^^^^^^^^^^^^^^^^^^^^^^^^

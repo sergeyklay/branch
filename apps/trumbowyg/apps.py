@@ -13,12 +13,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-"""Common utils for the whole project."""
+"""Trumbowyg application module."""
 
-from django.conf import settings
+from django.apps import AppConfig
 
 
-def admin_path():
-    """Get URL part of the admin site."""
-    admin = getattr(settings, 'ADMIN_SITE_URL', 'admin')
-    return f"{admin.strip('/')}"
+class TrumbowygConfig(AppConfig):
+    """Class representing trumbowyg application and its configuration."""
+
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'apps.trumbowyg'
