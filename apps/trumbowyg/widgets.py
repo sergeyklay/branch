@@ -21,7 +21,7 @@ from django.contrib.admin import widgets
 
 
 def highlight_js():
-    """Perform manipulation of asset paths to enable highlight."""
+    """Perform manipulation of asset paths to enable code highlight."""
     components = (
         'abnf', 'antlr4', 'apacheconf',
         'bash', 'bison', 'bnf',
@@ -51,25 +51,24 @@ class TrumbowygWidget(forms.Textarea):
 
     template_name = 'trumbowyg/forms/widgets/textarea.html'
 
-    def __init__(self, attrs=None):
-        super().__init__(attrs)
-        self.suffix = '' if getattr(settings, 'DEBUG', False) else '.min'
-
     @property
     def assets(self):
         """Setup static assets to use in WYSIWYG editor."""
-        tw_dist = 'trumbowyg/dist'
-        tw_plugins = f'{tw_dist}/plugins'
-
         css = (
             'prismjs/themes/prism.css',
-            f'{tw_dist}/ui/trumbowyg{self.suffix}.css',
-            f'{tw_plugins}/highlight/ui/trumbowyg.highlight{self.suffix}.css',
+            'trumbowyg/dist/ui/trumbowyg{}.css'.format(
+                '' if settings.DEBUG else '.min',
+            ),
+            'trumbowyg/dist/plugins/highlight/ui/trumbowyg.highlight{}.css'.format(  # noqa
+                '' if settings.DEBUG else '.min',
+            ),
         )
 
         js = (
             'trumbowyg/js/trumbowyg.config.js',
-            f'{tw_dist}/trumbowyg{self.suffix}.js',
+            'trumbowyg/dist/trumbowyg{}.js'.format(
+                '' if settings.DEBUG else '.min',
+            ),
         )
 
         return css, js
@@ -91,16 +90,17 @@ class AdminTrumbowygWidget(TrumbowygWidget, widgets.AdminTextareaWidget):
     @property
     def assets(self):
         """Setup static assets to use in WYSIWYG editor."""
-        tw_dist = 'trumbowyg/dist'
-        tw_plugins = f'{tw_dist}/plugins'
-
         css, _ = super().assets
 
         js = (
             'admin/js/jquery.init.js',
             'trumbowyg/js/trumbowyg.config.js',
-            f'{tw_dist}/trumbowyg{self.suffix}.js',
-            f'{tw_plugins}/upload/trumbowyg.upload{self.suffix}.js',
+            'trumbowyg/dist/trumbowyg{}.js'.format(
+                '' if settings.DEBUG else '.min'
+            ),
+            'trumbowyg/dist/plugins/upload/trumbowyg.upload{}.js'.format(
+                '' if settings.DEBUG else '.min'
+            ),
             'admin/js/trumbowyg.config.js',
         )
 

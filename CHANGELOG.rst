@@ -11,7 +11,7 @@ releases, in reverse chronological order.
 Features
 ^^^^^^^^
 
-* Create Trumbowyg Editor as a separated Django application.
+* Create Trumbowyg Editor as a standalone Django application.
 
 
 Trivial/Internal Changes
