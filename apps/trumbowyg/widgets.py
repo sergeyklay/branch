@@ -84,7 +84,7 @@ class AdminTrumbowygWidget(TrumbowygWidget, widgets.AdminTextareaWidget):
     """
     Trumbowyg widget class suited for usage in models admins.
 
-    Acts like ``TrumbowygWidget`` but enables aditional plugins.
+    Acts like ``TrumbowygWidget`` but enables additional plugins.
     """
 
     @property

@@ -51,8 +51,8 @@ def content_sanitize(raw_text, allowed_tags=None, allowed_attrs=None,
     - Autoindent existing html
     """
 
-    allowed_tags = ALLOWED_TAGS + allowed_tags or ()
-    allowed_attrs = ALLOWED_ATTRS + allowed_attrs or ()
+    allowed_tags = ALLOWED_TAGS + (allowed_tags or ())
+    allowed_attrs = ALLOWED_ATTRS + (allowed_attrs or ())
 
     if unescape_tags:
         # This will convert all named and numeric character references
