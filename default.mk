@@ -34,7 +34,7 @@ HEADER_EXTRA =
 
 REQUIREMENTS = requirements/requirements-dev.txt
 
-PYLINT_FLAGS ?= --load-plugins=pylint_django  --django-settings-module=branch.settings.test
+PYLINT_FLAGS ?= --load-plugins=pylint_django --django-settings-module=$(PKG_NAME).settings.test
 PYTEST_FLAGS ?= --color=yes -v
 FLAKE8_FLAGS ?= --show-source --statistics
 

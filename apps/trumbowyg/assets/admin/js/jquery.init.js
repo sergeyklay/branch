@@ -13,18 +13,20 @@
 // You should have received a copy of the GNU General Public License
 // along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-(function ($) {
-    'use strict';
+// This is an override of django's default `jquery.init.js` file.
+//
+// By default, the django admin loads jquery in a custom `django.jQuery`
+// namespace so the `$` and `jQuery` variables are not populated.
+//
+// This does not suit us since we are using Trumbowyg plugin which
+// rely on the `jQuery` variable being populated.
+//
+// Therefore, we have two choices:
+//  1) loading a duplicate version of jquery to populate the `jQuery`
+//     variable.
+//  2) preventing Django to override it in the first place.
+//
+// For more see: https://api.jquery.com/jQuery.noConflict
 
-    $(document).ready(function () {
-        trumbowygConfig.btns.push(['image']);
-        trumbowygConfig.btns.push([
-            'justifyLeft',
-            'justifyCenter',
-            'justifyRight',
-            'justifyFull',
-        ]);
-
-        $('textarea.textarea-wysiwyg').trumbowyg(trumbowygConfig);
-    });
-}($ || django.jQuery));
+var django = django || {};
+django.jQuery = jQuery.noConflict(false);

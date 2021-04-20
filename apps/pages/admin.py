@@ -20,15 +20,17 @@ from django.contrib import admin
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 
-from branch.forms import RichTextField
-from branch.utils import RichTextAdminMedia
+from apps.trumbowyg.widgets import AdminTrumbowygWidget, RichTextField
 from .models import Page
 
 
 class PagesForm(forms.ModelForm):
     """Pages post form."""
 
-    body = RichTextField(label=_('Content'))
+    body = RichTextField(
+        label=_('Content'),
+        widget=AdminTrumbowygWidget,
+    )
 
     class Meta:
         """Post form metadata class."""
@@ -91,6 +93,3 @@ class PageAdmin(admin.ModelAdmin):
     slug_link.allow_tags = True
     slug_link.short_description = _('URL')
     slug_link.admin_order_field = 'slug'
-
-    class Media(RichTextAdminMedia):
-        """PageAdmin metadata class."""

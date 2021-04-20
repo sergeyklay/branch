@@ -8,17 +8,17 @@ releases, in reverse chronological order.
 1.2.0 (2021-XX-XX)
 ------------------
 
+Features
+^^^^^^^^
 
-Trivial/Internal Changes
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-* Removed infrastructure configuration samples from the project repo.
+* Create Trumbowyg Editor as a standalone Django application.
 
 
 Trivial/Internal Changes
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 * Bumped ``django-extensions`` from 3.1.2 to 3.2.3.
+* Removed infrastructure configuration samples from the project repo.
 
 
 ----

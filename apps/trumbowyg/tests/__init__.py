@@ -12,13 +12,3 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
-
-"""Common utils for the whole project."""
-
-from django.conf import settings
-
-
-def admin_path():
-    """Get URL part of the admin site."""
-    admin = getattr(settings, 'ADMIN_SITE_URL', 'admin')
-    return f"{admin.strip('/')}"

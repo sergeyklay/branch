@@ -19,15 +19,22 @@ from django import forms
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
 
-from branch.forms import RichTextField
-from branch.utils import RichTextAdminMedia
+from apps.trumbowyg.widgets import AdminTrumbowygWidget, RichTextField
 from .models import Comment, Post
 
 
 class PostForm(forms.ModelForm):
     """Blog post form."""
 
-    body = RichTextField(label=_('Content'))
+    excerpt = RichTextField(
+        label=_('Excerpt'),
+        widget=AdminTrumbowygWidget,
+    )
+
+    body = RichTextField(
+        label=_('Content'),
+        widget=AdminTrumbowygWidget,
+    )
 
     class Meta:
         """Post form metadata class."""
@@ -85,7 +92,7 @@ class PostAdmin(admin.ModelAdmin):
                 'author',
                 'status',
                 'locale',
-                'type',
+                'post_type',
                 'published_at',
             ),
         }),
@@ -97,9 +104,6 @@ class PostAdmin(admin.ModelAdmin):
             )
         }),
     )
-
-    class Media(RichTextAdminMedia):
-        """PostAdmin metadata class."""
 
 
 @admin.register(Comment)

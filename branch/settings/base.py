@@ -88,6 +88,7 @@ THIRD_PARTY_APPS = (
 # Apps specific for this project go here.
 LOCAL_APPS = (
     'apps.website',
+    'apps.trumbowyg',
     'apps.blog',
     'apps.telegraph',
     'apps.pages',
@@ -281,6 +282,7 @@ STATIC_ROOT = BASE_DIR('static')
 STATICFILES_DIRS = (
     BASE_DIR('assets'),
     NODE_MODULES_PATH,
+    BASE_DIR('apps', 'trumbowyg', 'assets'),
     BASE_DIR('apps', 'telegraph', 'assets'),
 )
 

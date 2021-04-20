@@ -13,12 +13,31 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-"""Common utils for the whole project."""
 
 from django.conf import settings
+from django.utils.translation import trans_real
+
+from apps.trumbowyg.widgets import AdminTrumbowygWidget
 
 
-def admin_path():
-    """Get URL part of the admin site."""
-    admin = getattr(settings, 'ADMIN_SITE_URL', 'admin')
-    return f"{admin.strip('/')}"
+def test_admin_trumbowyg_widget_custom_lang(monkeypatch):
+    widget = AdminTrumbowygWidget()
+
+    trans_real.deactivate()
+    monkeypatch.setattr(settings, 'LANGUAGE_CODE', 'ru')
+
+    _, js = widget.assets
+
+    assert 'trumbowyg/dist/langs/ru.js' in js
+    assert 'trumbowyg/dist/langs/en.js' not in js
+
+
+def test_admin_trumbowyg_widget_en_lang(monkeypatch):
+    widget = AdminTrumbowygWidget()
+
+    trans_real.deactivate()
+    monkeypatch.setattr(settings, 'LANGUAGE_CODE', 'en')
+
+    _, js = widget.assets
+
+    assert 'trumbowyg/dist/langs/en.js' not in js
