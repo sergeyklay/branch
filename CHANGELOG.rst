@@ -17,13 +17,8 @@ Features
 Trivial/Internal Changes
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-* Removed infrastructure configuration samples from the project repo.
-
-
-Trivial/Internal Changes
-^^^^^^^^^^^^^^^^^^^^^^^^
-
 * Bumped ``django-extensions`` from 3.1.2 to 3.2.3.
+* Removed infrastructure configuration samples from the project repo.
 
 
 ----
