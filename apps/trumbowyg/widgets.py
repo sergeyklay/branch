@@ -16,8 +16,9 @@
 """Trumbowyg widgets."""
 
 from django import forms
-from django.conf import settings
+from django.conf import settings as django_settings
 from django.contrib.admin import widgets
+from django.utils.translation import get_language
 
 
 def highlight_js():
@@ -33,13 +34,13 @@ def highlight_js():
 
     trumbowyg_plugins = 'trumbowyg/dist/plugins'
     prefix = 'prismjs/components/prism'
-    suffix = f"{'' if settings.DEBUG else '.min'}"
+    suffix = f"{'' if getattr(django_settings, 'DEBUG', False) else '.min'}"
 
     trumbowyg_base = f'{trumbowyg_plugins}/highlight/trumbowyg.highlight'
-    trumbowyg = f"{trumbowyg_base}{'' if settings.DEBUG else '.min'}.js"
+    trumbowyg = f"{trumbowyg_base}{suffix}.js"
 
     result = map(lambda c: f'{prefix}-{c}{suffix}.js', components)
-    return ('prismjs/prism.js',) + tuple(result) + (trumbowyg,)
+    return ['prismjs/prism.js'] + list(result) + [trumbowyg]
 
 
 class TrumbowygWidget(forms.Textarea):
@@ -54,21 +55,17 @@ class TrumbowygWidget(forms.Textarea):
     @property
     def assets(self):
         """Setup static assets to use in WYSIWYG editor."""
+        min_js = '' if getattr(django_settings, 'DEBUG', False) else '.min'
+
         css = (
             'prismjs/themes/prism.css',
-            'trumbowyg/dist/ui/trumbowyg{}.css'.format(
-                '' if settings.DEBUG else '.min',
-            ),
-            'trumbowyg/dist/plugins/highlight/ui/trumbowyg.highlight{}.css'.format(  # noqa
-                '' if settings.DEBUG else '.min',
-            ),
+            f'trumbowyg/dist/ui/trumbowyg{min_js}.css',
+            f'trumbowyg/dist/plugins/highlight/ui/trumbowyg.highlight{min_js}.css',  # noqa
         )
 
         js = (
             'trumbowyg/js/trumbowyg.config.js',
-            'trumbowyg/dist/trumbowyg{}.js'.format(
-                '' if settings.DEBUG else '.min',
-            ),
+            f'trumbowyg/dist/trumbowyg{min_js}.js',
         )
 
         return css, js
@@ -90,19 +87,20 @@ class AdminTrumbowygWidget(TrumbowygWidget, widgets.AdminTextareaWidget):
     @property
     def assets(self):
         """Setup static assets to use in WYSIWYG editor."""
+        min_js = '' if getattr(django_settings, 'DEBUG', False) else '.min'
         css, _ = super().assets
 
-        js = (
+        js = [
             'admin/js/jquery.init.js',
             'trumbowyg/js/trumbowyg.config.js',
-            'trumbowyg/dist/trumbowyg{}.js'.format(
-                '' if settings.DEBUG else '.min'
-            ),
-            'trumbowyg/dist/plugins/upload/trumbowyg.upload{}.js'.format(
-                '' if settings.DEBUG else '.min'
-            ),
+            f'trumbowyg/dist/trumbowyg{min_js}.js',
+            f'trumbowyg/dist/plugins/upload/trumbowyg.upload{min_js}.js',
             'admin/js/trumbowyg.config.js',
-        )
+        ]
+
+        lang = get_language()
+        if lang and len(lang) >= 2 and lang[:2] != 'en':
+            js.append('trumbowyg/dist/langs/{}.js'.format(lang[:2]))
 
         return css, js + highlight_js()
 
