@@ -94,7 +94,7 @@ def content_sanitize(raw_text, allowed_tags=None, allowed_attrs=None,
 
     if prettify:
         # Autoindent html code
-        return soup.prettify()
+        return soup.prettify().rstrip()
 
     # Return just a string, with no fancy formatting
-    return str(soup)
+    return str(soup).rstrip()
