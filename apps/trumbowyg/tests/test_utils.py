@@ -15,7 +15,7 @@
 
 import pytest
 
-from apps.trumbowyg.utils import content_sanitize
+from apps.trumbowyg import utils
 
 
 @pytest.mark.parametrize(
@@ -32,7 +32,7 @@ from apps.trumbowyg.utils import content_sanitize
     ]
 )
 def test_content_sanitize_simple_usage(raw_text, expected):
-    assert content_sanitize(raw_text) == expected
+    assert utils.content_sanitize(raw_text) == expected
 
 
 @pytest.mark.parametrize(
@@ -44,7 +44,7 @@ def test_content_sanitize_simple_usage(raw_text, expected):
     ]
 )
 def test_content_sanitize_allowed_tags(raw_text, allowed_tags, expected):
-    assert content_sanitize(raw_text, allowed_tags) == expected
+    assert utils.content_sanitize(raw_text, allowed_tags) == expected
 
 
 @pytest.mark.parametrize(
@@ -58,7 +58,7 @@ def test_content_sanitize_allowed_tags(raw_text, allowed_tags, expected):
     ]
 )
 def test_content_sanitize_quotes(raw_text, expected):
-    assert content_sanitize(raw_text) == expected
+    assert utils.content_sanitize(raw_text) == expected
 
 
 @pytest.mark.parametrize(
@@ -70,4 +70,22 @@ def test_content_sanitize_quotes(raw_text, expected):
     ]
 )
 def test_content_sanitize_unescape_tags(raw_text, unescape_tags, expected):
-    assert content_sanitize(raw_text, unescape_tags=unescape_tags) == expected
+    assert utils.content_sanitize(raw_text, unescape_tags=unescape_tags) == expected
+
+
+@pytest.mark.parametrize(
+    'lang,expected',
+    [
+        ('', None),
+        (None, None),
+        (True, None),
+        ('ru_RU', 'ru'),
+        ('en', None),
+        ('no_nb', 'no_nb'),
+        ('vi', 'vi'),
+        ('zh_tw', 'zh_tw'),
+        ('fu', None),
+    ]
+)
+def test_accepted_language(lang, expected):
+    assert utils.get_trumbowyg_language(lang) == expected

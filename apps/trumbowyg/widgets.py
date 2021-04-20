@@ -20,6 +20,8 @@ from django.conf import settings as django_settings
 from django.contrib.admin import widgets
 from django.utils.translation import get_language
 
+from .utils import get_trumbowyg_language
+
 
 def highlight_js():
     """Perform manipulation of asset paths to enable code highlight."""
@@ -98,9 +100,9 @@ class AdminTrumbowygWidget(TrumbowygWidget, widgets.AdminTextareaWidget):
             'admin/js/trumbowyg.config.js',
         ]
 
-        lang = get_language()
-        if lang and len(lang) >= 2 and lang[:2] != 'en':
-            js.append('trumbowyg/dist/langs/{}.js'.format(lang[:2]))
+        lang = get_trumbowyg_language(get_language())
+        if lang:
+            js.append('trumbowyg/dist/langs/{}.js'.format(lang))
 
         return css, js + highlight_js()
 

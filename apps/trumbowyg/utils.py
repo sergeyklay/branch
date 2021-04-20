@@ -35,6 +35,31 @@ ALLOWED_ATTRS = (
     'style', 'target', 'rel',
 )
 
+ACCEPTED_LANGS = (
+    'ar', 'bg', 'by', 'ca', 'cs', 'da', 'de', 'el', 'es',
+    'es_ar', 'fa', 'fi', 'fr', 'he', 'hr', 'hu', 'id',  'it',
+    'ja', 'ko', 'it', 'mn', 'my', 'nl', 'no_nb', 'ph', 'pl',
+    'pt', 'pt_br', 'ro', 'rs_latin', 'ru', 'sk', 'sl', 'sq',
+    'sv', 'th', 'tr', 'ua', 'vi', 'zh_cn', 'zh_tw',
+)
+
+
+def get_trumbowyg_language(lang):
+    """Resolve Trumbowyg supported language."""
+    if not lang or not isinstance(lang, str):
+        return None
+
+    if lang in ACCEPTED_LANGS:
+        return lang
+    else:
+        lang = lang.replace('-', '_')
+        if lang in ACCEPTED_LANGS:
+            return lang
+        elif len(lang) >=2 and lang[:2] in ACCEPTED_LANGS:
+            return lang[:2]
+
+    return None
+
 
 def content_sanitize(raw_text, allowed_tags=None, allowed_attrs=None,
                      unescape_tags=True, prettify=True):
