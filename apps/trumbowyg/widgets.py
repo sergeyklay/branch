@@ -20,29 +20,7 @@ from django.conf import settings as django_settings
 from django.contrib.admin import widgets
 from django.utils.translation import get_language
 
-from .utils import get_trumbowyg_language
-
-
-def highlight_js():
-    """Perform manipulation of asset paths to enable code highlight."""
-    components = (
-        'abnf', 'antlr4', 'apacheconf',
-        'bash', 'bison', 'bnf',
-        'c', 'cpp',
-        'diff',
-        'ebnf',
-        'python',
-    )
-
-    trumbowyg_plugins = 'trumbowyg/dist/plugins'
-    prefix = 'prismjs/components/prism'
-    suffix = f"{'' if getattr(django_settings, 'DEBUG', False) else '.min'}"
-
-    trumbowyg_base = f'{trumbowyg_plugins}/highlight/trumbowyg.highlight'
-    trumbowyg = f"{trumbowyg_base}{suffix}.js"
-
-    result = map(lambda c: f'{prefix}-{c}{suffix}.js', components)
-    return ['prismjs/prism.js'] + list(result) + [trumbowyg]
+from .utils import get_trumbowyg_language, highlight_js
 
 
 class TrumbowygWidget(forms.Textarea):
@@ -104,7 +82,7 @@ class AdminTrumbowygWidget(TrumbowygWidget, widgets.AdminTextareaWidget):
         if lang:
             js.append('trumbowyg/dist/langs/{}.js'.format(lang))
 
-        return css, js + highlight_js()
+        return css, js + highlight_js(getattr(django_settings, 'DEBUG', False))
 
 
 class RichTextField(forms.CharField):

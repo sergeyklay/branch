@@ -70,7 +70,8 @@ def test_content_sanitize_quotes(raw_text, expected):
     ]
 )
 def test_content_sanitize_unescape_tags(raw_text, unescape_tags, expected):
-    assert utils.content_sanitize(raw_text, unescape_tags=unescape_tags) == expected
+    actual = utils.content_sanitize(raw_text, unescape_tags=unescape_tags)
+    assert actual == expected
 
 
 @pytest.mark.parametrize(

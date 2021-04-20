@@ -18,7 +18,7 @@
 import unicodedata
 from html import unescape
 
-from bs4 import BeautifulSoup as bs
+from bs4 import BeautifulSoup
 
 REMOVABLE_TAGS = (
     'script', 'style',
@@ -37,11 +37,37 @@ ALLOWED_ATTRS = (
 
 ACCEPTED_LANGS = (
     'ar', 'bg', 'by', 'ca', 'cs', 'da', 'de', 'el', 'es',
-    'es_ar', 'fa', 'fi', 'fr', 'he', 'hr', 'hu', 'id',  'it',
+    'es_ar', 'fa', 'fi', 'fr', 'he', 'hr', 'hu', 'id', 'it',
     'ja', 'ko', 'it', 'mn', 'my', 'nl', 'no_nb', 'ph', 'pl',
     'pt', 'pt_br', 'ro', 'rs_latin', 'ru', 'sk', 'sl', 'sq',
     'sv', 'th', 'tr', 'ua', 'vi', 'zh_cn', 'zh_tw',
 )
+
+
+DEFAULT_HIGHLIGHT = (
+    'abnf', 'antlr4', 'apacheconf',
+    'bash', 'bison', 'bnf',
+    'c', 'cpp',
+    'diff',
+    'ebnf',
+    'python',
+)
+
+
+def highlight_js(debug=False):
+    """
+    Get JavaScript assets required to enable code highlighting.
+    Perform manipulation of asset paths to enable code highlight.
+    """
+    trumbowyg_plugins = 'trumbowyg/dist/plugins'
+    prefix = 'prismjs/components/prism'
+    suffix = f"{'' if debug else '.min'}"
+
+    trumbowyg_base = f'{trumbowyg_plugins}/highlight/trumbowyg.highlight'
+    trumbowyg = f"{trumbowyg_base}{suffix}.js"
+
+    result = map(lambda c: f'{prefix}-{c}{suffix}.js', DEFAULT_HIGHLIGHT)
+    return ['prismjs/prism.js'] + list(result) + [trumbowyg]
 
 
 def get_trumbowyg_language(lang):
@@ -51,12 +77,13 @@ def get_trumbowyg_language(lang):
 
     if lang in ACCEPTED_LANGS:
         return lang
-    else:
-        lang = lang.replace('-', '_')
-        if lang in ACCEPTED_LANGS:
-            return lang
-        elif len(lang) >=2 and lang[:2] in ACCEPTED_LANGS:
-            return lang[:2]
+
+    lang = lang.replace('-', '_')
+    if lang in ACCEPTED_LANGS:
+        return lang
+
+    if len(lang) >= 2 and lang[:2] in ACCEPTED_LANGS:
+        return lang[:2]
 
     return None
 
@@ -99,7 +126,7 @@ def content_sanitize(raw_text, allowed_tags=None, allowed_attrs=None,
 
     normalized = unicodedata.normalize('NFKC', unquoted)
 
-    soup = bs(normalized, features='html.parser')
+    soup = BeautifulSoup(normalized, features='html.parser')
     tags = soup.find_all()
 
     for tag in tags:
