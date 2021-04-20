@@ -69,6 +69,7 @@ def content_sanitize(raw_text, allowed_tags=None, allowed_attrs=None,
         .replace('“', '"') \
         .replace('”', '"') \
         .replace('’', "'") \
+        .replace('‘', "'") \
         .replace('target="_blank"', 'target="_blank" rel="noopener"')
 
     normalized = unicodedata.normalize('NFKC', unquoted)

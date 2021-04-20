@@ -45,3 +45,29 @@ def test_content_sanitize_simple_usage(raw_text, expected):
 )
 def test_content_sanitize_allowed_tags(raw_text, allowed_tags, expected):
     assert content_sanitize(raw_text, allowed_tags) == expected
+
+
+@pytest.mark.parametrize(
+    'raw_text,expected',
+    [
+        ('“hello“', '"hello"'),
+        ('”hello”', '"hello"'),
+        ('’hello’', "'hello'"),
+        ('‘hello‘', "'hello'"),
+        ('“‘”‘', '"\'"\''),
+    ]
+)
+def test_content_sanitize_quotes(raw_text, expected):
+    assert content_sanitize(raw_text) == expected
+
+
+@pytest.mark.parametrize(
+    'raw_text,unescape_tags,expected',
+    [
+        ('&lt;h1&gt;', True, ''),
+        ('&lt;h1&gt;Hello&lt;/h1&gt;', True, '<h1>\n Hello\n</h1>'),
+        ('&lt;h1&gt;Hello&lt;/h1&gt;', False, '&lt;h1&gt;Hello&lt;/h1&gt;'),
+    ]
+)
+def test_content_sanitize_unescape_tags(raw_text, unescape_tags, expected):
+    assert content_sanitize(raw_text, unescape_tags=unescape_tags) == expected
