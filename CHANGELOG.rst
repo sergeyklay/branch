@@ -15,6 +15,12 @@ Trivial/Internal Changes
 * Removed infrastructure configuration samples from the project repo.
 
 
+Trivial/Internal Changes
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Bumped ``django-extensions`` from 3.1.2 to 3.2.3.
+
+
 ----
 
 
@@ -36,7 +42,7 @@ Features
 Improvements
 ^^^^^^^^^^^^
 
-* Optimize page speed by reorganizing static assets.
+* Optimized page speed by reorganizing static assets.
 * Restructured and simplified template structure.
 * Changed font families used on website to provide better reading experience:
 
@@ -53,9 +59,9 @@ Bug Fixes
 Trivial/Internal Changes
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-* Bumps ``django-debug-toolbar`` from 3.2 to 3.2.1.
-* Bumps ``flake8`` from 3.9.0 to 3.9.1.
-* Bumps ``django-compressor`` from 2.4 to 2.4.1.
+* Bumped ``django-debug-toolbar`` from 3.2 to 3.2.1.
+* Bumped ``flake8`` from 3.9.0 to 3.9.1.
+* Bumped ``django-compressor`` from 2.4 to 2.4.1.
 * Removed incorrectly used and no longer needed ``ModelTimestampsMixin``.
 * Rename field ``type`` on Post model to ``post_type`` to not shadow builtin.
 * Added tests dependencies:
