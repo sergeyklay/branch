@@ -9,9 +9,6 @@
         <a href="https://github.com/sergeyklay/branch/actions?workflow=CI">
             <img src="https://github.com/sergeyklay/branch/workflows/CI/badge.svg?branch=master" alt="CI Status" />
         </a>
-        <a href="https://codecov.io/github/sergeyklay/branch">
-            <img src="https://codecov.io/github/sergeyklay/branch/branch/master/graph/badge.svg" alt="Test Coverage" />
-        </a>
     </p>
 
 .. teaser-begin
@@ -68,7 +65,6 @@ Features
 
   * Automated CI using GitHub Actions
   * Unit testing using pytest and pytest-django
-  * Code coverage using `codecov.io <https://codecov.io>`_
   * Code linting using flake8 and pylint
 
 
