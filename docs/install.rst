@@ -80,6 +80,8 @@ necessary changes:
 Run database migrations and create admin
 ----------------------------------------
 
+.. code-block:: shell
+
    $ make migrate
    $ python manage.py createsuperuser
 
