@@ -6,7 +6,7 @@
 #
 asgiref==3.3.4
     # via django
-astroid==2.5.3
+astroid==2.5.6
     # via pylint
 attrs==20.3.0
     # via pytest
@@ -76,7 +76,7 @@ pylint-django==2.4.3
     # via -r requirements/requirements-dev.in
 pylint-plugin-utils==0.6
     # via pylint-django
-pylint==2.7.4
+pylint==2.8.1
     # via
     #   -r requirements/requirements-dev.in
     #   pylint-django
