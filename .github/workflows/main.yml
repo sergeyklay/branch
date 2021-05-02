@@ -137,9 +137,16 @@ jobs:
 
       - name: Setuptools self-test
         run: |
-          .venv/bin/python setup.py --fullname
-          .venv/bin/python setup.py --long-description
-          .venv/bin/python setup.py --classifiers
+          case ${{ runner.os }} in
+            Windows*)
+              source .venv/Scripts/activate ;;
+            *)
+              source .venv/bin/activate ;;
+          esac
+
+          python setup.py --fullname
+          python setup.py --long-description
+          python setup.py --classifiers
 
       - name: Run unit tests with coverage
         run: make test
