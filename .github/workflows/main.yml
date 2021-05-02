@@ -125,7 +125,9 @@ jobs:
         run: make help
 
       - name: Install dependencies
-        run: make install
+        run: |
+          make init
+          make install
 
       - name: Configuration of the application
         run: cp ./settings.env.dist ./settings.env
@@ -152,25 +154,3 @@ jobs:
       - name: Success Reporting
         if: success()
         run: git log --format=fuller -5
-
-  lint:
-    runs-on: ubuntu-20.04
-    name: Code linting
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Python 3.9
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.9'
-
-      - name: Install dependencies
-        run: make install
-
-      - name: Code linting
-        run: make lint
-        env:
-          DJANGO_SETTINGS_MODULE: branch.settings.test
-          SECRET_KEY: Naive and not very secret key used for tests
