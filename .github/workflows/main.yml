@@ -125,7 +125,9 @@ jobs:
         run: make help
 
       - name: Install dependencies
-        run: make install
+        run: |
+          make init
+          make install
 
       - name: Configuration of the application
         run: cp ./settings.env.dist ./settings.env
@@ -135,16 +137,9 @@ jobs:
 
       - name: Setuptools self-test
         run: |
-          case ${{ runner.os }} in
-            Windows*)
-              source .venv/Scripts/activate ;;
-            *)
-              source .venv/bin/activate ;;
-          esac
-
-          python setup.py --fullname
-          python setup.py --long-description
-          python setup.py --classifiers
+          .venv/bin/python setup.py --fullname
+          .venv/bin/python setup.py --long-description
+          .venv/bin/python setup.py --classifiers
 
       - name: Run unit tests with coverage
         run: make test
