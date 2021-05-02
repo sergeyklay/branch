@@ -8,11 +8,13 @@ releases, in reverse chronological order.
 1.2.0 (2021-XX-XX)
 ------------------
 
+
 Features
 ^^^^^^^^
 
-* Create Trumbowyg Editor as a standalone Django application.
+* Created Trumbowyg Editor as a standalone Django application.
 * Provided command to generate project's build ids.
+* Provided caching configuration fro the project.
 
 
 Trivial/Internal Changes
@@ -31,6 +33,7 @@ Trivial/Internal Changes
 
 1.1.0 (2021-04-19)
 ------------------
+
 
 Features
 ^^^^^^^^
