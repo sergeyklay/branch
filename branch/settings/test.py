@@ -28,3 +28,6 @@ DATABASES = {
 }
 
 EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
+
+# Caches
+CACHES['default']['BACKEND'] = 'django.core.cache.backends.dummy.DummyCache'

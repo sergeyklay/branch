@@ -38,8 +38,12 @@ define rm-venv-link
 	fi
 endef
 
-requirements/%.txt: requirements/%.in
+requirements/%.txt: $(VENV_BIN) requirements/%.in
 	 $(VENV_BIN)/pip-compile --output-file=$@ $<
+
+build.py: $(VENV_PYTHON)
+	@echo $(CS)"Generate project's build id"$(CE)
+	$(VENV_PYTHON) manage.py create_build_id
 
 ## Public targets
 
@@ -81,6 +85,7 @@ clean:
 	$(RM) -r ./.cache ./.pytest_cache
 	$(RM) -r ./htmlcov
 	$(RM) ./.coverage ./coverage.xml
+	$(RM) ./build.py
 
 .PHONY: maintainer-clean
 maintainer-clean: clean
@@ -93,8 +98,12 @@ lint: $(VENV_PYTHON)
 	-$(VENV_BIN)/flake8 $(FLAKE8_FLAGS) ./
 	$(VENV_BIN)/pylint $(PYLINT_FLAGS) ./$(PKG_NAME) ./apps
 
-.PHONY: up
-up:
+.PHONY: build
+build: build.py
+	@echo
+
+.PHONY: serve
+serve: build
 	@echo $(CS)Starting web server on $(LOCAL_PORT) port$(CE)
 	$(VENV_PYTHON) manage.py runserver $(LOCAL_PORT)
 
@@ -116,14 +125,13 @@ migrations:
 migrate:
 	$(VENV_PYTHON) manage.py migrate
 
-
 .PHONY: test-ccov
 test-ccov: COV=--cov=./$(PKG_NAME) --cov=./apps --cov-report=xml --cov-report=html
 test-ccov: HEADER_EXTRA=' (with coverage)'
 test-ccov: test
 
 .PHONY: test
-test: $(VENV_PYTHON)
+test: $(VENV_PYTHON) build
 	@echo $(CS)Running tests$(HEADER_EXTRA)$(CE)
 	$(VENV_BIN)/py.test $(PYTEST_FLAGS) $(COV) ./$(PKG_NAME) ./apps
 	@echo
@@ -145,6 +153,7 @@ help:
 	@echo '  css:          Build CSS files from SCSS source'
 	@echo '  migrations:   Create database migrations'
 	@echo '  migrate:      Run all database migrations'
+	@echo '  build:        Prepare project to use'
 	@echo '  test:         Run unit tests'
 	@echo '  test-ccov:    Run unit tests with coverage'
 	@echo '  lint:         Lint the code'
