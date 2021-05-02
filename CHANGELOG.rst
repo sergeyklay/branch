@@ -21,7 +21,7 @@ Trivial/Internal Changes
 * Removed infrastructure configuration samples from the project repo.
 * Bumped ``pylint`` from 2.7.4 to 2.8.2.
 * Bumped ``pylint-django`` from 2.4.3 to 2.4.4.
-* Bumped ``faker`` from 8.1.0 to 8.1.1.
+* Bumped ``faker`` from 8.1.0 to 8.1.2.
 
 
 ----
