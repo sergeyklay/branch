@@ -38,7 +38,7 @@ define rm-venv-link
 	fi
 endef
 
-requirements/%.txt: $(VENV_BIN) requirements/%.in
+requirements/%.txt: requirements/%.in
 	 $(VENV_BIN)/pip-compile --output-file=$@ $<
 
 build.py: $(VENV_PYTHON)
