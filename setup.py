@@ -48,8 +48,8 @@ def load_long_description():
         read_me = path.join(PKG_DIR, 'README.rst')
         authors = path.join(PKG_DIR, 'AUTHORS.rst')
 
-        title = f"{PKG_NAME}: {find_meta('description')}\n"
-        head = '=' * len(title) + '\n'
+        title = f"{PKG_NAME}: {find_meta('description')}"
+        head = '=' * (len(title) - 1)
 
         contents = (
             head,
