@@ -46,8 +46,8 @@ APPS_DIR = BASE_DIR('apps')
 sys.path.append(APPS_DIR)
 
 try:
-    # If it is possible to import and grab BUILD_ID store first four chars
-    # to add later to CACHE_KEY_PREFIX.
+    # If it is possible to import and grab BUILD_ID_SHORT store first four
+    # chars to add later to CACHE_KEY_PREFIX.
     from build import BUILD_ID_SHORT
 except ImportError:
     BUILD_ID_SHORT = '0000'

@@ -12,6 +12,7 @@ Features
 ^^^^^^^^
 
 * Create Trumbowyg Editor as a standalone Django application.
+* Provided command to generate project's build ids.
 
 
 Trivial/Internal Changes
