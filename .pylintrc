@@ -53,4 +53,4 @@ logging-format-style=old
 [BASIC]
 
 # Good variable names which should always be accepted, separated by a comma.
-good-names=i,j,js,k,n,ex,cd,Run,handler404,build_id,_
+good-names=i,j,js,k,n,ex,cd,Run,handler404,_

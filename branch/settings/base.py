@@ -48,11 +48,9 @@ sys.path.append(APPS_DIR)
 try:
     # If it is possible to import and grab BUILD_ID store first four chars
     # to add later to CACHE_KEY_PREFIX.
-    from build import BUILD_ID
-    build_id = f'{BUILD_ID[:4]}'
+    from build import BUILD_ID_SHORT
 except ImportError:
-    BUILD_ID = 'dev'
-    build_id = 'dev'
+    BUILD_ID_SHORT = '0000'
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # Raises django's ImproperlyConfigured exception if SECRET_KEY
@@ -109,7 +107,7 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 # Caches
 
 # Prefix for cache keys (will prevent collisions when running parallel copies)
-CACHE_KEY_PREFIX = f'branch:{build_id}:'
+CACHE_KEY_PREFIX = f'branch:{BUILD_ID_SHORT}:'
 
 CACHES = {'default': env.cache('CACHES_DEFAULT', 'dummycache:')}
 CACHES['default']['TIMEOUT'] = 500

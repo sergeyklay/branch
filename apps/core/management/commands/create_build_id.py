@@ -44,3 +44,4 @@ class Command(BaseCommand):
         build_id_file = settings.BASE_DIR('build.py')
         with open(build_id_file, 'w') as file:
             file.write('BUILD_ID = "%s"\n' % self.build_id)
+            file.write('BUILD_ID_SHORT = "%s"\n' % self.build_id[:4])
