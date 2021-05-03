@@ -45,6 +45,13 @@ if os.path.exists(ENVIRON_SETTINGS_FILE_PATH):
 APPS_DIR = BASE_DIR('apps')
 sys.path.append(APPS_DIR)
 
+try:
+    # If it is possible to import and grab BUILD_ID_SHORT store first four
+    # chars to add later to CACHE_KEY_PREFIX.
+    from build import BUILD_ID_SHORT
+except ImportError:
+    BUILD_ID_SHORT = '0000'
+
 # SECURITY WARNING: keep the secret key used in production secret!
 # Raises django's ImproperlyConfigured exception if SECRET_KEY
 # is not in os.environ
@@ -87,6 +94,7 @@ THIRD_PARTY_APPS = (
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
+    'apps.core',
     'apps.website',
     'apps.trumbowyg',
     'apps.blog',
@@ -96,10 +104,23 @@ LOCAL_APPS = (
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
+# Caches
+
+# Prefix for cache keys (will prevent collisions when running parallel copies)
+CACHE_KEY_PREFIX = f'branch:{BUILD_ID_SHORT}:'
+
+CACHES = {'default': env.cache('CACHES_DEFAULT', 'dummycache:')}
+CACHES['default']['TIMEOUT'] = 500
+CACHES['default']['KEY_PREFIX'] = CACHE_KEY_PREFIX
+
+CACHE_MIDDLEWARE_KEY_PREFIX = CACHE_KEY_PREFIX
+
 MIDDLEWARE = (
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -176,7 +197,7 @@ DATABASES = {
     'default': get_db_config('DATABASE_URL'),
 }
 
-#  Logging
+# Logging
 
 LOGGING = {
     'version': 1,

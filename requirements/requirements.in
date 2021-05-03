@@ -1,6 +1,7 @@
 beautifulsoup4
-Django
-django-environ
+django
+git+https://github.com/joke2k/django-environ@develop
 django_compressor
+django-redis
 gunicorn
 Pillow

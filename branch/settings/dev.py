@@ -33,22 +33,14 @@ INSTALLED_APPS = INSTALLED_APPS + (
 MIDDLEWARE = ('debug_toolbar.middleware.DebugToolbarMiddleware',) + MIDDLEWARE
 
 # SECURITY WARNING: define the correct hosts in production
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[
-    '127.0.0.1',
-    '.blog.local',
-    'localhost',
-    '127.0.0.1',
-    '0.0.0.0',
-    '[::1]',
-    '.ngrok.io',
-])
+ALLOWED_HOSTS = ['.localhost', '127.0.0.1', '[::1]']
 
-INTERNAL_IPS = env.list('INTERNAL_IPS', default=['127.0.0.1'])
+INTERNAL_IPS = ['.localhost', '127.0.0.1', '[::1]']
 
 COMPRESS_OFFLINE = env.bool('COMPRESS_OFFLINE', False)
 
 # Email configuration
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-EMAIL_BACKEND = env.str(
-    'EMAIL_BACKEND',
-    default='django.core.mail.backends.console.EmailBackend')
+# Caches
+CACHES['default']['BACKEND'] = 'django.core.cache.backends.dummy.DummyCache'
