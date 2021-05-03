@@ -145,12 +145,16 @@ CLASSIFIERS = [
 INSTALL_REQUIRES = [
     'beautifulsoup4>=4.9.3',  # Sanitize HTML input
     'django>=3.2',  # Our framework
-    # Configure Django application
-    'git+https://github.com/joke2k/django-environ@develop#egg=django-environ-0.4.5',  # noqa
+    'django-environ>=0.4.5',  # Configure Django application
     'django-compressor>=2.4',  # Compile and minify static assets
     'django-redis>=4.12.1',  # Redis cache backend for Django
     'gunicorn>=20.1.0',  # A Python WSGI HTTP Server
     'pillow>=8.2.0',  # Python Imaging Library
+]
+
+DEPENDENCY_LINKS = [
+    # develop branch of django-environ to be able use secure redis connections.
+    'git+https://github.com/joke2k/django-environ@develop#egg=django-environ-0.4.5',  # noqa
 ]
 
 # List additional groups of dependencies here (e.g. testing dependencies).
@@ -210,5 +214,6 @@ if __name__ == '__main__':
         zip_safe=False,
         python_requires='>=3.7, <4',
         install_requires=INSTALL_REQUIRES,
+        dependency_links=DEPENDENCY_LINKS,
         extras_require=EXTRAS_REQUIRE,
     )
