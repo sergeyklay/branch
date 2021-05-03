@@ -145,8 +145,10 @@ CLASSIFIERS = [
 INSTALL_REQUIRES = [
     'beautifulsoup4>=4.9.3',  # Sanitize HTML input
     'django>=3.2',  # Our framework
-    'django-environ>=0.4.5',  # Configure Django application
+    # Configure Django application
+    'git+https://github.com/joke2k/django-environ@develop#egg=django-environ-0.4.5',  # noqa
     'django-compressor>=2.4',  # Compile and minify static assets
+    'django-redis>=4.12.1',  # Redis cache backend for Django
     'gunicorn>=20.1.0',  # A Python WSGI HTTP Server
     'pillow>=8.2.0',  # Python Imaging Library
 ]

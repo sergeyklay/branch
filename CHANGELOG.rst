@@ -22,6 +22,8 @@ Trivial/Internal Changes
 
 * Removed infrastructure configuration samples from the project repo.
 * Corrected header format for ``setup.py --long-description``.
+* Add ``django-redis`` to project requirements.
+* Bumped ``django-environ`` from 0.4.5 to ``develop`` branch to support secure redis connections.
 * Bumped ``django-extensions`` from 3.1.2 to 3.2.3.
 * Bumped ``pylint`` from 2.7.4 to 2.8.2.
 * Bumped ``pylint-django`` from 2.4.3 to 2.4.4.
