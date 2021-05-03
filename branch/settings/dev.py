@@ -33,9 +33,9 @@ INSTALLED_APPS = INSTALLED_APPS + (
 MIDDLEWARE = ('debug_toolbar.middleware.DebugToolbarMiddleware',) + MIDDLEWARE
 
 # SECURITY WARNING: define the correct hosts in production
-ALLOWED_HOSTS = ['127.0.0.1,localhost,0.0.0.0,[::1]']
+ALLOWED_HOSTS = ['.localhost', '127.0.0.1', '[::1]']
 
-INTERNAL_IPS = env.list('INTERNAL_IPS', default=['127.0.0.1'])
+INTERNAL_IPS = ['.localhost', '127.0.0.1', '[::1]']
 
 COMPRESS_OFFLINE = env.bool('COMPRESS_OFFLINE', False)
 

@@ -19,7 +19,9 @@
 from .base import *  # noqa
 
 # SECURITY WARNING: define the correct hosts in production
-ALLOWED_HOSTS = ['127.0.0.1,localhost,0.0.0.0,[::1]']
+ALLOWED_HOSTS = ['.localhost', '127.0.0.1', '[::1]']
+
+INTERNAL_IPS = ['.localhost', '127.0.0.1', '[::1]']
 
 SECRET_KEY = 'Naive and not very secret key used for tests'
 
