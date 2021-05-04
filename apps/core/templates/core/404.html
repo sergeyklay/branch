@@ -2,7 +2,7 @@
 
 {% load i18n %}
 
-{% block page_title %}404 - {{ block.super }}{% endblock %}
+{% block page_title %}{% trans 'Page Not Found.' %} - {{ block.super }}{% endblock %}
 
 {% block page_description %}
     <meta name="description" content="{% trans 'The page you are looking for does not exist.' %}">
