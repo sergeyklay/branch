@@ -36,14 +36,30 @@
             <p><strong>{% trans 'Page Not Found.' %}</strong></p>
         </div>
 
-        <p>{% trans 'Something went wrong. The page you are requesting does not exist.' %}</p>
         <p>
             {% blocktranslate trimmed %}
-                Perhaps you entered the wrong address or I moved the page.
-                If you think there should be a page here, please contact me
+                The page or file you requested wasn't found on my site. It's possible that
+                you clicked a link that's out of date, or typed in the address incorrectly.
             {% endblocktranslate %}
-            <a href="{% url 'telegraph:contact_form' %}">{% trans 'using contact form' %}</a>.
         </p>
+
+        <ul>
+            <li>{% trans 'If you typed in the address, please double check the spelling.' %}</li>
+            <li>
+                {% url 'telegraph:contact_form' as contact_form_link %}
+                {% with '<a href="'|add:contact_form_link|add:'">'|safe as open_contact_link %}
+                {% with '<a href="https://github.com/sergeyklay/branch/issues/new">'|safe as open_bug_link %}
+                {% blocktranslate trimmed with link_end='</a>'|safe %}
+                    If you followed a link from somewhere, please contact me
+                    {{ open_contact_link }}using contact form{{ link_end }} or
+                    {{ open_bug_link }}file an issue{{ link_end }}. Tell me
+                    where you came from and what you were looking for, and I'll
+                    do our best to fix it.
+                {% endblocktranslate %}
+                {% endwith %}
+                {% endwith %}
+            </li>
+        </ul>
     </section>
     <hr>
 
