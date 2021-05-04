@@ -147,7 +147,9 @@ jobs:
           python setup.py --classifiers
 
       - name: Run unit tests with coverage
-        run: make test
+        run: |
+          make build
+          make test
 
       - name: Success Reporting
         if: success()
