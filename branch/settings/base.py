@@ -26,6 +26,8 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 """
 
 import os
+import re
+import socket
 import sys
 
 import environ
@@ -63,8 +65,26 @@ DEBUG = False
 # SECURITY WARNING: define the correct hosts in production
 ALLOWED_HOSTS = []
 
-# Website base url
-BASE_URL = env.str('BASE_URL', default='http://127.0.0.1')
+# The host currently running the site.
+HOSTNAME = socket.gethostname()  # pylint: disable=E1101
+
+# The front end domain of the site.
+DOMAIN = env.str('DOMAIN', default=HOSTNAME)
+
+# Full base URL for the site including protocol.  No trailing slash.
+#   Example: https://my-site.com
+BASE_URL = 'https://%s' % DOMAIN
+
+# Should robots.txt allow everything to be crawled?
+ALLOW_ROBOTS = True
+
+# List of compiled regular expression objects representing URLs that need not
+# be reported by BrokenLinkEmailsMiddleware.
+IGNORABLE_404_URLS = (
+    re.compile(r'^/apple-touch-icon.*\.png$'),
+    re.compile(r'^/favicon\.ico$'),
+    re.compile(r'^/robots\.txt$'),
+)
 
 # Application definition
 
@@ -146,6 +166,9 @@ TEMPLATES = [
                 'django.template.context_processors.i18n',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'apps.core.context_processors.base_url',
+                'apps.core.context_processors.global_settings',
 
                 'apps.website.context_processors.locale',
                 'apps.website.context_processors.app_settings',

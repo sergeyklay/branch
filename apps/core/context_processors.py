@@ -13,33 +13,26 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-# Comma-separated list
-ALLOWED_HOSTS=127.0.0.1,
+"""Blog-wide context processors."""
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY="secret"
+from django.conf import settings
 
-# See ``help(environ.Env.db_url_config)``
-DATABASE_URL=sqlite:///db.sqlite3
 
-# If compression should be done outside of the request/response loop.
-COMPRESS_OFFLINE=False
+def base_url(request):
+    """Add website base URL and its name to the context."""
+    return {
+        'BASE_URL': settings.BASE_URL,
+    }
 
-# Comma-separated list
-INTERNAL_IPS=127.0.0.1,
 
-# Change admin site URL
-ADMIN_SITE_URL=admin/
+def global_settings(request):
+    """Storing standard blog-wide information used in templates."""
+    context = {}
 
-DOMAIN=serghei.blog
+    context.update(
+        {
+            'settings': settings,
+        }
+    )
 
-# SMTP / POP3 configuration
-EMAIL_HOST=smtp.gmail.com
-EMAIL_HOST_USER=your_account@gmail.com
-EMAIL_HOST_PASSWORD=your_password
-EMAIL_PORT=587
-EMAIL_USE_TLS=True
-EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend
-
-# Caches
-CACHES_DEFAULT=filecache:///tmp
+    return context

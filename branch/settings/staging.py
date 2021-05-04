@@ -20,3 +20,5 @@ from .base import *  # noqa
 
 # SECURITY WARNING: define the correct hosts in production
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
+
+ALLOW_ROBOTS = False

@@ -40,6 +40,7 @@ def sitemaps():
 
 
 urlpatterns = [
+    path('', include('apps.core.urls', namespace='core')),
     path('', include('apps.blog.urls', namespace='blog')),
     path('', include('apps.telegraph.urls', namespace='telegraph')),
     path('', include('apps.pages.urls', namespace='pages')),

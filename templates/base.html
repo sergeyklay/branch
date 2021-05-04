@@ -19,7 +19,12 @@
     {% include 'partials/page-keywords.html' %}
     {% endblock %}
 
-    {% block page_meta %}{% endblock %}
+    {# Disable indexing #}
+    {% block page_meta %}
+        {% if not settings.ALLOW_ROBOTS %}
+            <meta name="robots" content="noindex, nofollow">
+        {% endif %}
+    {% endblock %}
     {% block page_license %}{% endblock %}
 
     {% block canonical_url %}

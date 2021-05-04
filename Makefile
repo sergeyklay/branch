@@ -100,10 +100,11 @@ lint: $(VENV_PYTHON)
 
 .PHONY: build
 build: build.py
-	@echo
+	@echo $(CS)Compress static assets$(CE)
+	$(VENV_PYTHON) manage.py compress
 
 .PHONY: serve
-serve: build
+serve:
 	@echo $(CS)Starting web server on $(LOCAL_PORT) port$(CE)
 	$(VENV_PYTHON) manage.py runserver $(LOCAL_PORT)
 
@@ -131,7 +132,7 @@ test-ccov: HEADER_EXTRA=' (with coverage)'
 test-ccov: test
 
 .PHONY: test
-test: $(VENV_PYTHON) build
+test: $(VENV_PYTHON)
 	@echo $(CS)Running tests$(HEADER_EXTRA)$(CE)
 	$(VENV_BIN)/py.test $(PYTEST_FLAGS) $(COV) ./$(PKG_NAME) ./apps
 	@echo

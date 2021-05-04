@@ -31,13 +31,12 @@ def app_settings(request):  # pylint: disable=unused-argument
     return context_extras
 
 
+# TODO: deprecated
 def base_url(request):
     """Add website base URL and its name to the context."""
     current_site = get_current_site(request)
-    scheme = 'https://' if request.is_secure() else 'http://'
 
     return {
-        'BASE_URL': scheme + current_site.domain,
         'SITE_NAME': gettext_lazy(current_site.name),
     }
 

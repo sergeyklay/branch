@@ -13,33 +13,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-# Comma-separated list
-ALLOWED_HOSTS=127.0.0.1,
+import pytest
+from django.conf import settings
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY="secret"
 
-# See ``help(environ.Env.db_url_config)``
-DATABASE_URL=sqlite:///db.sqlite3
-
-# If compression should be done outside of the request/response loop.
-COMPRESS_OFFLINE=False
-
-# Comma-separated list
-INTERNAL_IPS=127.0.0.1,
-
-# Change admin site URL
-ADMIN_SITE_URL=admin/
-
-DOMAIN=serghei.blog
-
-# SMTP / POP3 configuration
-EMAIL_HOST=smtp.gmail.com
-EMAIL_HOST_USER=your_account@gmail.com
-EMAIL_HOST_PASSWORD=your_password
-EMAIL_PORT=587
-EMAIL_USE_TLS=True
-EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend
-
-# Caches
-CACHES_DEFAULT=filecache:///tmp
+@pytest.mark.parametrize(
+    'key', ('APPS_DIR', 'STATIC_ROOT', 'MEDIA_ROOT')
+)
+def test_base_paths_presents(key):
+    """Make sure all relevant base paths exists."""
+    assert isinstance(getattr(settings, key), str)
+    assert len(getattr(settings, key)) > 0
