@@ -52,7 +52,7 @@ try:
     # If it is possible to import and grab BUILD_ID_SHORT store first four
     # chars to add later to CACHE_KEY_PREFIX. BUILD_DATE_SHORT will be used
     # in robots.txt
-    from build import BUILD_ID_SHORT, BUILD_DATE_SHORT
+    from build import BUILD_ID_SHORT, BUILD_DATE_SHORT  # pylint: disable=W0611
 except ImportError:
     BUILD_ID_SHORT = '0000'
     BUILD_DATE_SHORT = datetime.utcnow().strftime('%Y-%m-%d')
