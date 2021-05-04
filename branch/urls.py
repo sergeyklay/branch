@@ -26,6 +26,7 @@ from django.views.static import serve
 from apps.blog.sitemaps import PostSitemap, PostsListSitemap
 from apps.pages.sitemaps import PageSitemap
 from apps.telegraph.sitemaps import TelegraphSitemap
+from branch.settings.base import env
 from .utils import admin_path
 
 
@@ -57,12 +58,12 @@ urlpatterns = [
     path('sitemap.xml', sitemap, sitemaps(), name='sitemap'),
 ]
 
-if settings.DEBUG:
+if settings.DEBUG or env('DJANGO_SETTINGS_MODULE') == 'branch.settings.dev':
     import debug_toolbar
 
     # Remove leading and trailing slashes so the regex matches.
     media_url = settings.MEDIA_URL.lstrip('/').rstrip('/')
-    static_url = settings.STATIC_ROOT.lstrip('/').rstrip('/')
+    static_url = settings.STATIC_URL.lstrip('/').rstrip('/')
 
     # Static & media files for development environment
     static_routes = [
