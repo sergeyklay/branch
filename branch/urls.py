@@ -40,8 +40,8 @@ def sitemaps():
     }}
 
 
-# TODO: Handle 5xx
 handler404 = 'apps.core.views.handler404'
+handler500 = 'apps.core.views.handler500'
 
 urlpatterns = [
     # Site-wide URLs.

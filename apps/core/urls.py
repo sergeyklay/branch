@@ -17,7 +17,8 @@
 
 from django.urls import re_path
 
-from .views import humans, robots
+from .utils import is_prod_like_environment
+from .views import handler404, handler500, humans, robots
 
 app_name = 'core'  # pylint: disable=invalid-name
 
@@ -25,3 +26,10 @@ urlpatterns = (
     re_path(r'^humans\.txt$', humans, name='humans.txt'),
     re_path(r'^robots\.txt$', robots, name='robots.txt'),
 )
+
+# The URL configuration bellow is needed for testing and local development.
+if not is_prod_like_environment():
+    urlpatterns = (
+        re_path(r'^404/?$', handler404),
+        re_path(r'^500/?$', handler500),
+    ) + urlpatterns

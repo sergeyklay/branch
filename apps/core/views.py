@@ -18,6 +18,7 @@
 from django.conf import settings
 from django.http import HttpResponse
 from django.template import loader
+from django.views.defaults import page_not_found, server_error
 
 
 def robots(request):
@@ -43,10 +44,18 @@ def humans(request):
     return HttpResponse(body, content_type='text/plain; charset=utf-8')
 
 
-def handler404(request, exception=None, **kwargs):
+def handler404(request, exception, **kwargs):
     """Site-wide 404 handler."""
-    template = loader.get_template('core/404.html')
-    context = {}
-    body = template.render(context, request)
+    return page_not_found(
+        request=request,
+        exception=exception,
+        template_name='core/404.html',
+    )
 
-    return HttpResponse(body, status=404)
+
+def handler500(request, **kwargs):
+    """Site-wide 500 handler."""
+    return server_error(
+        request=request,
+        template_name='core/500.html'
+    )

@@ -15,6 +15,7 @@ Features
 * Created a route to handle ``/robots.txt`` requests.
 * Created a route to handle ``/humans.txt`` requests.
 * Created Trumbowyg Editor as a standalone Django application.
+* Implemented 500 error handler.
 * Provided command to generate project's build ids.
 * Provided caching configuration fro the project.
 * Provided a way to configure site URL.

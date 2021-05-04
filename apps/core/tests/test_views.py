@@ -58,3 +58,17 @@ def test_404_app(client):
     response = client.get('/xxxxxxx')
     assert response.status_code == 404
     assert 'core/404.html' in (t.name for t in response.templates)
+
+
+@pytest.mark.django_db
+@pytest.mark.ignore_template_errors
+@override_settings(MIDDLEWARE=())
+def test_500_before_middlewares(client):
+    """Simulate an early 500 causing middlewares breakage."""
+    response = client.get('/500')
+    assert response.status_code == 500
+    assert 'core/500.html' in (t.name for t in response.templates)
+
+    content = response.content.decode('utf-8')
+    assert 'Oops! Website has an error.' in content
+    assert 'Latest publications' in content
