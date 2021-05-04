@@ -17,10 +17,11 @@
 
 from django.urls import re_path
 
-from .views import robots
+from .views import humans, robots
 
 app_name = 'core'  # pylint: disable=invalid-name
 
 urlpatterns = (
+    re_path(r'^humans\.txt$', humans, name='humans.txt'),
     re_path(r'^robots\.txt$', robots, name='robots.txt'),
 )

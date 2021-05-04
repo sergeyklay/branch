@@ -28,7 +28,21 @@ def robots(request):
         content = render_to_string(
             'core/robots.html',
             request=request,
-            context={'site_url': settings.DOMAIN},
+            context={'domain': settings.DOMAIN},
         )
 
     return HttpResponse(content, content_type='text/plain')
+
+
+def humans(request):
+    """Generate a humans.txt"""
+    content = render_to_string(
+        'core/humans.html',
+        request=request,
+        context={
+            'domain': settings.DOMAIN,
+            'build_date': settings.BUILD_DATE_SHORT,
+        },
+    )
+
+    return HttpResponse(content, content_type='text/plain; charset=utf-8')

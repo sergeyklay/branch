@@ -17,6 +17,7 @@
 
 import time
 import uuid
+from datetime import datetime
 
 from django.conf import settings
 from django.core.management.base import BaseCommand
@@ -42,6 +43,9 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         self.update_build_info()
         build_id_file = settings.BASE_DIR('build.py')
+        build_date_short = datetime.utcnow().strftime('%Y-%m-%d')
+
         with open(build_id_file, 'w') as file:
             file.write('BUILD_ID = "%s"\n' % self.build_id)
             file.write('BUILD_ID_SHORT = "%s"\n' % self.build_id[:4])
+            file.write('BUILD_DATE_SHORT = "%s"\n' % build_date_short)

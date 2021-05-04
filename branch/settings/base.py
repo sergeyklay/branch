@@ -29,6 +29,7 @@ import os
 import re
 import socket
 import sys
+from datetime import datetime
 
 import environ
 from django.utils.translation import gettext_lazy as _
@@ -49,10 +50,12 @@ sys.path.append(APPS_DIR)
 
 try:
     # If it is possible to import and grab BUILD_ID_SHORT store first four
-    # chars to add later to CACHE_KEY_PREFIX.
-    from build import BUILD_ID_SHORT
+    # chars to add later to CACHE_KEY_PREFIX. BUILD_DATE_SHORT will be used
+    # in robots.txt
+    from build import BUILD_ID_SHORT, BUILD_DATE_SHORT  # pylint: disable=W0611
 except ImportError:
     BUILD_ID_SHORT = '0000'
+    BUILD_DATE_SHORT = datetime.utcnow().strftime('%Y-%m-%d')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # Raises django's ImproperlyConfigured exception if SECRET_KEY
@@ -194,11 +197,8 @@ def get_db_config(environ_var):
     """Get Database configuration"""
     values = env.db(var=environ_var, default='sqlite:///db.sqlite3')
 
-    def is_sqlite(options):
-        return options['ENGINE'] == 'django.db.backends.sqlite3'
-
-    def is_relative(name):
-        return not os.path.isabs(name)
+    def is_sqlite(options: dict):
+        return options.get('ENGINE') == 'django.db.backends.sqlite3'
 
     values.update(
         {
@@ -210,7 +210,7 @@ def get_db_config(environ_var):
 
     # This will allow use a relative DB path for SQLite
     # like 'sqlite:///db.sqlite3'
-    if is_sqlite(values) and is_relative(values['NAME']):
+    if is_sqlite(values) and not os.path.isabs(values['NAME']):
         values.update({'NAME': BASE_DIR(values['NAME'])})
 
     return values
