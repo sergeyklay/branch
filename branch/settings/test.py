@@ -25,6 +25,8 @@ INTERNAL_IPS = ('.localhost', '127.0.0.1', '[::1]')
 
 SECRET_KEY = 'Naive and not very secret key used for tests'
 
+COMPRESS_OFFLINE = True
+
 DATABASES = {
     'default': {'ENGINE': 'django.db.backends.sqlite3', 'NAME': ':memory:'}
 }
