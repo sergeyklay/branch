@@ -36,3 +36,16 @@ def test_disabled_robots(client):
     response = client.get('/robots.txt')
     assert response.status_code == 200
     assert 'User-agent: *\nDisallow: /' in response.content.decode('utf-8')
+
+
+@pytest.mark.django_db
+def test_humans(client):
+    response = client.get('/humans.txt')
+    assert response.status_code == 200
+
+    content = response.content.decode('utf-8')
+    last_update = f'Last update: {settings.BUILD_DATE_SHORT}'
+
+    assert last_update in content
+    assert 'CONGRATULATIONS, you found my humans.txt file!' in content
+    assert 'Components: Django, jQuery, Ed Theme' in content

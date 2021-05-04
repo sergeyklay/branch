@@ -13,8 +13,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
+import os
+
+import environ
 import pytest
 from django.conf import settings
+
+from branch.settings.base import get_db_config
 
 
 @pytest.mark.parametrize(
@@ -24,3 +29,23 @@ def test_base_paths_presents(key):
     """Make sure all relevant base paths exists."""
     assert isinstance(getattr(settings, key), str)
     assert len(getattr(settings, key)) > 0
+
+
+def test_get_db_config(monkeypatch):
+    """Make sure we resolve relative db path."""
+    env = environ.Env()
+
+    def mock_database_url(env_vars):
+        env_vars['DATABASE_URL'] = 'sqlite:///db.sqlite3'
+        return env_vars
+
+    monkeypatch.setattr(env, 'ENVIRON', mock_database_url(env.ENVIRON))
+
+    option = env.str('DATABASE_URL')
+
+    assert isinstance(option, str)
+    assert not os.path.isabs(option)
+
+    options = get_db_config('DATABASE_URL')
+    assert 'NAME' in options
+    assert os.path.isabs(options['NAME'])

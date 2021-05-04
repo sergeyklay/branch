@@ -19,7 +19,6 @@
     {% include 'partials/page-keywords.html' %}
     {% endblock %}
 
-    {# Disable indexing #}
     {% block page_meta %}
         {% if not settings.ALLOW_ROBOTS %}
             <meta name="robots" content="noindex, nofollow">
@@ -66,7 +65,7 @@
     {% endblock %}
 
     {% block analytics %}
-    <script async src="{% static 'js/branch-analytics.js' %}"></script>
+        <script async src="{% static 'js/branch-analytics.js' %}"></script>
     {% endblock %}
     {% block feed %}{% endblock %}
 </head>
