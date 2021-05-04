@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: branch 1.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-18 19:55+0000\n"
-"PO-Revision-Date: 2021-04-18 22:56+0300\n"
+"POT-Creation-Date: 2021-05-04 15:31+0000\n"
+"PO-Revision-Date: 2021-05-04 18:36+0300\n"
 "Last-Translator: Serghei Iakovlev <egrep@protonmail.ch>\n"
 "Language-Team: Russian <egrep@protonmail.ch>\n"
 "Language: ru\n"
@@ -18,21 +18,25 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 2.4.3\n"
 
-#: apps/blog/admin.py:30 apps/pages/admin.py:31
+#: apps/blog/admin.py:30 apps/blog/models.py:68
+msgid "Excerpt"
+msgstr "Отрывок"
+
+#: apps/blog/admin.py:35 apps/pages/admin.py:31
 msgid "Content"
 msgstr "Содержимое"
 
-#: apps/blog/admin.py:78 apps/pages/admin.py:68
+#: apps/blog/admin.py:85 apps/pages/admin.py:70
 msgid "General content"
 msgstr "Основное содержимое"
 
-#: apps/blog/admin.py:92 apps/pages/admin.py:78
+#: apps/blog/admin.py:99 apps/pages/admin.py:80
 msgid "SEO"
 msgstr "SEO"
 
-#: apps/blog/apps.py:27 apps/blog/templates/blog/posts/list.html:18
+#: apps/blog/apps.py:27 apps/blog/templates/blog/posts/list.html:20
 #: templates/partials/sidebar.html:15
 msgid "Blog"
 msgstr "Блог"
@@ -65,10 +69,6 @@ msgstr "Тип публикации"
 #: apps/blog/models.py:61
 msgid "Featured image"
 msgstr "Иллюстрация"
-
-#: apps/blog/models.py:68
-msgid "Excerpt"
-msgstr "Отрывок"
 
 #: apps/blog/models.py:69
 msgid "A short, concise introduction."
@@ -144,12 +144,12 @@ msgid "on"
 msgstr "к"
 
 #: apps/blog/templates/blog/partials/comment-form.html:14
-#: apps/telegraph/templates/telegraph/contact.html:41
+#: apps/telegraph/templates/telegraph/contact.html:48
 msgid "Your Name"
 msgstr "Ваше имя"
 
 #: apps/blog/templates/blog/partials/comment-form.html:22
-#: apps/telegraph/templates/telegraph/contact.html:49
+#: apps/telegraph/templates/telegraph/contact.html:56
 msgid "Email Address"
 msgstr "Обратный адрес"
 
@@ -180,7 +180,7 @@ msgid "Next"
 msgstr "Следующие публикации"
 
 #: apps/blog/templates/blog/partials/post-teaser.html:16
-#: apps/blog/templates/blog/posts/view.html:65
+#: apps/blog/templates/blog/posts/view.html:70
 #, python-format
 msgid "(Updated on %(updated_at)s)"
 msgstr "(Обновлено: %(updated_at)s)"
@@ -189,19 +189,19 @@ msgstr "(Обновлено: %(updated_at)s)"
 msgid "Read more..."
 msgstr "Читать далее..."
 
-#: apps/blog/templates/blog/posts/list.html:11
+#: apps/blog/templates/blog/posts/list.html:12
 msgid "Posts RSS feed"
 msgstr "RSS-канал публикаций"
 
-#: apps/blog/templates/blog/posts/list.html:12
+#: apps/blog/templates/blog/posts/list.html:13
 msgid "Posts Atom feed"
 msgstr "Atom-канал публикаций"
 
-#: apps/blog/templates/blog/posts/list.html:27
+#: apps/blog/templates/blog/posts/list.html:29
 msgid "There are no posts yet."
 msgstr "Публикаций пока нет."
 
-#: apps/blog/templates/blog/posts/view.html:84
+#: apps/blog/templates/blog/posts/view.html:89
 #, python-format
 msgid "%(total_comments)s comment"
 msgid_plural "%(total_comments)s comments"
@@ -210,7 +210,7 @@ msgstr[1] "%(total_comments)s комментария"
 msgstr[2] "%(total_comments)s комментариев"
 msgstr[3] "%(total_comments)s комментариев"
 
-#: apps/blog/templates/blog/posts/view.html:99
+#: apps/blog/templates/blog/posts/view.html:104
 msgid "There are no comments yet."
 msgstr "Комментариев пока нет."
 
@@ -222,7 +222,46 @@ msgstr ""
 "Ваш комментарий отправлен на модерацию. Это означает, что комментарий будет "
 "«удерживаться» до тех пор, пока я не одобрю и не публикую его."
 
-#: apps/pages/admin.py:92
+#: apps/core/apps.py:27
+msgid "Core"
+msgstr "Ядро"
+
+#: apps/core/templates/core/404.html:8
+msgid "The page you are looking for does not exist."
+msgstr "Страница, которую вы ищете, не существует."
+
+#: apps/core/templates/core/404.html:36
+msgid "Page Not Found."
+msgstr "Страница не найдена."
+
+#: apps/core/templates/core/404.html:40
+msgid ""
+"The page or file you requested wasn't found on my site. It's possible that "
+"you clicked a link that's out of date, or typed in the address incorrectly."
+msgstr ""
+"Страница или файл, который Вы запросили, не найдены на моем сайте. Вполне "
+"возможно, что вы щёлкнули по ссылке, которая устарела, или неправильно "
+"набрали адрес."
+
+#: apps/core/templates/core/404.html:47
+msgid "If you typed in the address, please double check the spelling."
+msgstr ""
+"Если Вы набрали адрес, пожалуйста, проверьте правильность его написания."
+
+#: apps/core/templates/core/404.html:52
+#, python-format
+msgid ""
+"If you followed a link from somewhere, please contact me "
+"%(open_contact_link)susing contact form%(link_end)s or %(open_bug_link)sfile "
+"an issue%(link_end)s. Tell me where you came from and what you were looking "
+"for, and I'll do our best to fix it."
+msgstr ""
+"Если Вы откуда-либо проследовали по ссылке, пожалуйста, свяжитесь со мной "
+"%(open_contact_link)sиспользуя контактную форму%(link_end)s или "
+"%(open_bug_link)sсообщите об ошибке%(link_end)s. Сообщите мне, откуда Вы "
+"пришли и что вы ищете, и я сделаю все возможное, чтобы это исправить."
+
+#: apps/pages/admin.py:94
 msgid "URL"
 msgstr "URL"
 
@@ -250,18 +289,18 @@ msgstr "Куда отправить ответ"
 msgid "Can be blank"
 msgstr "Можно оставить пустым"
 
-#: apps/telegraph/templates/telegraph/contact.html:13
+#: apps/telegraph/templates/telegraph/contact.html:20
 msgid "E-mail successfully sent"
 msgstr "Сообщение успешно отправлено"
 
-#: apps/telegraph/templates/telegraph/contact.html:19
+#: apps/telegraph/templates/telegraph/contact.html:26
 msgid ""
 "Your e-mail was successfully sent. I'll read your e-mail as soon as possible."
 msgstr ""
 "Ваше сообщение успешно отправлено. Я постараюсь прочитать его в ближайшее "
 "время."
 
-#: apps/telegraph/templates/telegraph/contact.html:21
+#: apps/telegraph/templates/telegraph/contact.html:28
 msgid ""
 "Use the form below to send me a private message. Usually e-mails arrive "
 "within a couple of seconds. But this doesn't mean that I'll read your e-mail "
@@ -271,15 +310,15 @@ msgstr ""
 "Обычно письма доходят в течении пары секунд. Но это не означает, что я "
 "доберусь до вашего письма столь же стремительным образом."
 
-#: apps/telegraph/templates/telegraph/contact.html:57
+#: apps/telegraph/templates/telegraph/contact.html:64
 msgid "Subject"
 msgstr "Тема сообщения"
 
-#: apps/telegraph/templates/telegraph/contact.html:65
+#: apps/telegraph/templates/telegraph/contact.html:72
 msgid "Message"
 msgstr "Сообщение"
 
-#: apps/telegraph/templates/telegraph/contact.html:72
+#: apps/telegraph/templates/telegraph/contact.html:79
 msgid "Send e-mail"
 msgstr "Отправить"
 
@@ -317,43 +356,19 @@ msgstr "Настройка"
 msgid "Settings"
 msgstr "Настройки"
 
-#: apps/website/templates/website/errors/404.html:9
-msgid "The page you are looking for does not exist."
-msgstr "Страница, которую вы ищете, не существует."
-
-#: apps/website/templates/website/errors/404.html:37
-msgid "Page Not Found."
-msgstr "Страница не найдена."
-
-#: apps/website/templates/website/errors/404.html:40
-msgid "Something went wrong. The page you are requesting does not exist."
-msgstr "Что-то пошло не так. Страница, которую вы запрашиваете, не существует."
-
-#: apps/website/templates/website/errors/404.html:42
-msgid ""
-"Perhaps you entered the wrong address or I moved the page. If you think "
-"there should be a page here, please contact me"
-msgstr ""
-"Возможно вы ввели неверный адрес или я перенёс страничку. Если вы считаете, "
-"что здесь должна быть страница, свяжитесь со мной"
-
-#: apps/website/templates/website/errors/404.html:46
-msgid "using contact form"
-msgstr "используя контактную форму"
-
 #: branch/models.py:35
 msgid "Draft"
 msgstr "Черновик"
 
-#: branch/models.py:40 branch/settings/base.py:260
+#: branch/models.py:40 branch/settings/base.py:305
 msgid "English"
 msgstr "Английский"
 
-#: branch/models.py:41 branch/settings/base.py:262
+#: branch/models.py:41 branch/settings/base.py:307
 msgid "Russian"
 msgstr "Русский"
 
-#: branch/models.py:42 branch/settings/base.py:261
+#: branch/models.py:42 branch/settings/base.py:306
 msgid "Ukrainian"
 msgstr "Украинский"
 
@@ -413,7 +428,7 @@ msgstr "Мета описание"
 msgid "This will be displayed in meta tags. Keep it under 120 characters."
 msgstr "Это будет отображаться в метатегах. Используйте до 120 символов."
 
-#: templates/base.html:105
+#: templates/base.html:87
 msgid "Go to main page"
 msgstr "На главную"
 
@@ -433,10 +448,24 @@ msgstr "Подписаться на ленту публикаций (Atom)"
 msgid "Subscribe to posts (RSS 2.0)"
 msgstr "Подписаться на ленту публикаций (RSS 2.0)"
 
-#: templates/partials/sidebar.html:38
+#: templates/partials/sidebar.html:39
 msgid "GitHub Profile"
 msgstr "GitHub профиль"
 
-#: templates/partials/sidebar.html:45
+#: templates/partials/sidebar.html:46
 msgid "Unless otherwise stated, all content on the site is available under"
 msgstr "Если не указано иного, всё содержимое сайта доступно под лицензией"
+
+#~ msgid "Something went wrong. The page you are requesting does not exist."
+#~ msgstr ""
+#~ "Что-то пошло не так. Страница, которую вы запрашиваете, не существует."
+
+#~ msgid ""
+#~ "Perhaps you entered the wrong address or I moved the page. If you think "
+#~ "there should be a page here, please contact me"
+#~ msgstr ""
+#~ "Возможно вы ввели неверный адрес или я перенёс страничку. Если вы "
+#~ "считаете, что здесь должна быть страница, свяжитесь со мной"
+
+#~ msgid "using contact form"
+#~ msgstr "используя контактную форму"
