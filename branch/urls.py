@@ -39,29 +39,42 @@ def sitemaps():
     }}
 
 
+# TODO: Handle 5xx
+handler404 = 'apps.core.views.handler404'
+
 urlpatterns = [
+    # Site-wide URLs.
     path('', include('apps.core.urls', namespace='core')),
+    # Blog URLs.
     path('', include('apps.blog.urls', namespace='blog')),
-    path('', include('apps.telegraph.urls', namespace='telegraph')),
+    # Site pages.
     path('', include('apps.pages.urls', namespace='pages')),
+    # Contacts.
+    path('', include('apps.telegraph.urls', namespace='telegraph')),
+    # Blog admin.
     path(f'{admin_path()}/', admin.site.urls),
+    # Sitemaps.
     path('sitemap.xml', sitemap, sitemaps(), name='sitemap'),
 ]
 
 if settings.DEBUG:
     import debug_toolbar
 
+    # Remove leading and trailing slashes so the regex matches.
+    media_url = settings.MEDIA_URL.lstrip('/').rstrip('/')
+    static_url = settings.STATIC_ROOT.lstrip('/').rstrip('/')
+
     # Static & media files for development environment
     static_routes = [
         re_path(
-            r'^%s(?P<path>.*)$' % settings.STATIC_URL.lstrip('/'), serve, {
-                'document_root': settings.STATIC_ROOT
-            }
+            r'^%s/(?P<path>.*)$' % static_url,
+            serve,
+            {'document_root': settings.STATIC_ROOT}
         ),
         re_path(
-            r'^%s(?P<path>.*)$' % settings.MEDIA_URL.lstrip('/'), serve, {
-                'document_root': settings.MEDIA_ROOT
-            }
+            r'^%s/(?P<path>.*)$' % media_url,
+            serve,
+            {'document_root': settings.MEDIA_ROOT}
         )
     ]
 
@@ -69,9 +82,9 @@ if settings.DEBUG:
         # Some browsers requests for icons from the site root, despite meta
         # tags definition.
         re_path(
-            r'^(?P<path>favicon\.ico|apple-touch-icon.*\.png)$', serve, {
-                'document_root': f'{settings.STATIC_ROOT}/icons',
-            },
+            r'^(?P<path>favicon\.ico|apple-touch-icon.*\.png)$',
+            serve,
+            {'document_root': f'{settings.STATIC_ROOT}/icons'},
         ),
 
         # The following action icons are hardcoded in Django source code
@@ -90,9 +103,11 @@ if settings.DEBUG:
         #    - django/contrib/admin/static/admin/css/base.css
         #    - https://discussions.apple.com/thread/1407049
         #
-        re_path(r'^.*/(?P<path>img/icon-.*.svg)$', serve, {
-            'document_root': os.path.join(settings.STATIC_ROOT, 'admin'),
-        }),
+        re_path(
+            r'^.*/(?P<path>img/icon-.*.svg)$',
+            serve,
+            {'document_root': os.path.join(settings.STATIC_ROOT, 'admin')}
+        ),
     ]
 
     debug = [
@@ -100,6 +115,3 @@ if settings.DEBUG:
     ]
 
     urlpatterns = static_routes + icons + debug + urlpatterns
-
-# TODO: Handle 5xx
-handler404 = 'apps.website.views.error_404'

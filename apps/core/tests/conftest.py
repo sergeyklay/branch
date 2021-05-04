@@ -13,15 +13,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-"""Website views definitions."""
+import pytest
+from django.core.management import call_command
 
-from django.views.defaults import page_not_found
+fixtures = ['settings', 'sites']
 
 
-def error_404(request, exception):
-    """Website 404 handler."""
-    return page_not_found(
-        request=request,
-        exception=exception,
-        template_name='website/errors/404.html'
-    )
+@pytest.fixture(autouse=True)
+def django_db_setup(django_db_setup, django_db_blocker):
+    """Populate Django test database with pytest fixtures."""
+    with django_db_blocker.unblock():
+        call_command('loaddata', *[f'{fixture}.json' for fixture in fixtures])

@@ -20,6 +20,12 @@ Features
 * Provided a way to configure site URL.
 
 
+Improvements
+^^^^^^^^^^^^
+
+* Refactor 404 handler and move it to ``core`` app.
+
+
 Trivial/Internal Changes
 ^^^^^^^^^^^^^^^^^^^^^^^^
 

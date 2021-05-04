@@ -40,6 +40,7 @@ def test_disabled_robots(client):
 
 @pytest.mark.django_db
 def test_humans(client):
+    """Make sure humans.txt is rendered properly"""
     response = client.get('/humans.txt')
     assert response.status_code == 200
 
@@ -49,3 +50,11 @@ def test_humans(client):
     assert last_update in content
     assert 'CONGRATULATIONS, you found my humans.txt file!' in content
     assert 'Components: Django, jQuery, Ed Theme' in content
+
+
+@pytest.mark.django_db
+def test_404_app(client):
+    """Make sure 404 handler worked as expected."""
+    response = client.get('/xxxxxxx')
+    assert response.status_code == 404
+    assert 'core/404.html' in (t.name for t in response.templates)

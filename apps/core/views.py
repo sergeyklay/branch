@@ -17,32 +17,36 @@
 
 from django.conf import settings
 from django.http import HttpResponse
-from django.template.loader import render_to_string
+from django.template import loader
 
 
 def robots(request):
     """Generate a robots.txt"""
     if not settings.ALLOW_ROBOTS:
-        content = 'User-agent: *\nDisallow: /'
+        body = 'User-agent: *\nDisallow: /'
     else:
-        content = render_to_string(
-            'core/robots.html',
-            request=request,
-            context={'domain': settings.DOMAIN},
-        )
+        template = loader.get_template('core/robots.html')
+        body = template.render({'domain': settings.DOMAIN}, request)
 
-    return HttpResponse(content, content_type='text/plain')
+    return HttpResponse(body, content_type='text/plain; charset=utf-8')
 
 
 def humans(request):
     """Generate a humans.txt"""
-    content = render_to_string(
-        'core/humans.html',
-        request=request,
-        context={
-            'domain': settings.DOMAIN,
-            'build_date': settings.BUILD_DATE_SHORT,
-        },
-    )
+    template = loader.get_template('core/humans.html')
+    context = {
+        'domain': settings.DOMAIN,
+        'build_date': settings.BUILD_DATE_SHORT,
+    }
+    body = template.render(context, request)
 
-    return HttpResponse(content, content_type='text/plain; charset=utf-8')
+    return HttpResponse(body, content_type='text/plain; charset=utf-8')
+
+
+def handler404(request, exception=None, **kwargs):
+    """Site-wide 404 handler."""
+    template = loader.get_template('core/404.html')
+    context = {}
+    body = template.render(context, request)
+
+    return HttpResponse(body, status=404)
