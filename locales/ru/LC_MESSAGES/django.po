@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: branch 1.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-04 15:31+0000\n"
-"PO-Revision-Date: 2021-05-04 18:36+0300\n"
+"POT-Creation-Date: 2021-05-04 22:14+0000\n"
+"PO-Revision-Date: 2021-05-05 01:22+0300\n"
 "Last-Translator: Serghei Iakovlev <egrep@protonmail.ch>\n"
 "Language-Team: Russian <egrep@protonmail.ch>\n"
 "Language: ru\n"
@@ -226,13 +226,13 @@ msgstr ""
 msgid "Core"
 msgstr "Ядро"
 
+#: apps/core/templates/core/404.html:5 apps/core/templates/core/404.html:36
+msgid "Page Not Found."
+msgstr "Страница не найдена."
+
 #: apps/core/templates/core/404.html:8
 msgid "The page you are looking for does not exist."
 msgstr "Страница, которую вы ищете, не существует."
-
-#: apps/core/templates/core/404.html:36
-msgid "Page Not Found."
-msgstr "Страница не найдена."
 
 #: apps/core/templates/core/404.html:40
 msgid ""
@@ -260,6 +260,31 @@ msgstr ""
 "%(open_contact_link)sиспользуя контактную форму%(link_end)s или "
 "%(open_bug_link)sсообщите об ошибке%(link_end)s. Сообщите мне, откуда Вы "
 "пришли и что вы ищете, и я сделаю все возможное, чтобы это исправить."
+
+#: apps/core/templates/core/500.html:5 apps/core/templates/core/500.html:8
+msgid "Internal server error."
+msgstr "Внутренняя ошибка сервера."
+
+#: apps/core/templates/core/500.html:36
+msgid "Oops! Website has an error."
+msgstr "Ой! На сайте ошибка."
+
+#: apps/core/templates/core/500.html:39
+msgid "I'll get to fixing that soon."
+msgstr "Я скоро это починю."
+
+#: apps/core/templates/core/500.html:45
+#, python-format
+msgid ""
+"You can try refreshing the page, or head back to the "
+"%(open_frontpage_link)sBlog homepage%(link_end)s. You can also help me fix "
+"this by %(open_bug_link)sfiling an issue%(link_end)s with the details of how "
+"you got to this page."
+msgstr ""
+"Попробуйте обновить страницу или вернуться на "
+"%(open_frontpage_link)sдомашнюю страницу блога%(link_end)s. Вы также можете "
+"помочь мне с исправлением, %(open_bug_link)sописав проблему%(link_end)s и "
+"указав при этом, как вы попали на эту страницу."
 
 #: apps/pages/admin.py:94
 msgid "URL"
@@ -455,17 +480,3 @@ msgstr "GitHub профиль"
 #: templates/partials/sidebar.html:46
 msgid "Unless otherwise stated, all content on the site is available under"
 msgstr "Если не указано иного, всё содержимое сайта доступно под лицензией"
-
-#~ msgid "Something went wrong. The page you are requesting does not exist."
-#~ msgstr ""
-#~ "Что-то пошло не так. Страница, которую вы запрашиваете, не существует."
-
-#~ msgid ""
-#~ "Perhaps you entered the wrong address or I moved the page. If you think "
-#~ "there should be a page here, please contact me"
-#~ msgstr ""
-#~ "Возможно вы ввели неверный адрес или я перенёс страничку. Если вы "
-#~ "считаете, что здесь должна быть страница, свяжитесь со мной"
-
-#~ msgid "using contact form"
-#~ msgstr "используя контактную форму"

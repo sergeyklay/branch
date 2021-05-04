@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: branch 1.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-04 15:31+0000\n"
-"PO-Revision-Date: 2021-05-04 18:41+0300\n"
+"POT-Creation-Date: 2021-05-04 22:14+0000\n"
+"PO-Revision-Date: 2021-05-05 01:22+0300\n"
 "Last-Translator: Serghei Iakovlev <egrep@protonmail.ch>\n"
 "Language-Team: Ukrainian <egrep@protonmail.ch>\n"
 "Language: uk\n"
@@ -227,13 +227,13 @@ msgstr ""
 msgid "Core"
 msgstr "Ядро"
 
+#: apps/core/templates/core/404.html:5 apps/core/templates/core/404.html:36
+msgid "Page Not Found."
+msgstr "Сторінка не знайдена."
+
 #: apps/core/templates/core/404.html:8
 msgid "The page you are looking for does not exist."
 msgstr "Сторінка, яку ви шукаєте, не існує."
-
-#: apps/core/templates/core/404.html:36
-msgid "Page Not Found."
-msgstr "Сторінка не знайдена."
 
 #: apps/core/templates/core/404.html:40
 msgid ""
@@ -260,6 +260,31 @@ msgstr ""
 "%(open_contact_link)sвикористовуючи контактну форму%(link_end)s або "
 "%(open_bug_link)sповідомте про помилку%(link_end)s. Розкажіть мені, звідки "
 "ви перейшли та що шукали, і я зроблю все можливе, щоб виправити це."
+
+#: apps/core/templates/core/500.html:5 apps/core/templates/core/500.html:8
+msgid "Internal server error."
+msgstr "Внутрішня помилка сервера."
+
+#: apps/core/templates/core/500.html:36
+msgid "Oops! Website has an error."
+msgstr "Ой! На сайті помилка."
+
+#: apps/core/templates/core/500.html:39
+msgid "I'll get to fixing that soon."
+msgstr "Я скоро це полагоджу."
+
+#: apps/core/templates/core/500.html:45
+#, python-format
+msgid ""
+"You can try refreshing the page, or head back to the "
+"%(open_frontpage_link)sBlog homepage%(link_end)s. You can also help me fix "
+"this by %(open_bug_link)sfiling an issue%(link_end)s with the details of how "
+"you got to this page."
+msgstr ""
+"Ви можете спробувати оновити сторінку або повернутися на "
+"%(open_frontpage_link)sдомашню сторінку блога%(link_end)s. Ви також можете "
+"допомогти мені виправити це, %(open_bug_link)sподанням звіту проблему"
+"%(link_end)s, з детальним описом того, як ви потрапили на цю сторінку."
 
 #: apps/pages/admin.py:94
 msgid "URL"
@@ -455,16 +480,3 @@ msgstr "GitHub профіль"
 #: templates/partials/sidebar.html:46
 msgid "Unless otherwise stated, all content on the site is available under"
 msgstr "Якщо не вказано іншого, весь вміст сайту є під ліцензією"
-
-#~ msgid "Something went wrong. The page you are requesting does not exist."
-#~ msgstr "Щось пішло не так. Сторінка, яку ви запитуєте, не існує."
-
-#~ msgid ""
-#~ "Perhaps you entered the wrong address or I moved the page. If you think "
-#~ "there should be a page here, please contact me"
-#~ msgstr ""
-#~ "Можливо ви ввели неправильну адресу або я переніс сторінку. Якщо ви "
-#~ "вважаєте, що тут повинна бути сторінка, зв'яжіться зі мною"
-
-#~ msgid "using contact form"
-#~ msgstr "використовуючи контактну форму"
