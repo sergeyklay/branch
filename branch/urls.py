@@ -24,10 +24,10 @@ from django.urls import include, path, re_path
 from django.views.static import serve
 
 from apps.blog.sitemaps import PostSitemap, PostsListSitemap
+from apps.core.utils import admin_path
 from apps.pages.sitemaps import PageSitemap
 from apps.telegraph.sitemaps import TelegraphSitemap
 from branch.settings.base import env
-from .utils import admin_path
 
 
 def sitemaps():

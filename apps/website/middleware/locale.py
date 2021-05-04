@@ -19,7 +19,7 @@ from contextlib import suppress
 
 from django.conf import settings
 
-from branch.utils import admin_path
+from apps.core.utils import admin_path
 
 
 def inject_accept_language(get_response):
