@@ -13,26 +13,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-"""Blog-wide context processors."""
-
+import pytest
 from django.conf import settings
 
 
-def base_url(request):
-    """Add website base URL and its name to the context."""
-    return {
-        'BASE_URL': settings.BASE_URL,
-    }
-
-
-def global_settings(request):
-    """Storing standard blog-wide information used in templates."""
-    context = {}
-
-    context.update(
-        {
-            'settings': settings,
-        }
-    )
-
-    return context
+@pytest.mark.parametrize(
+    'key', ('APPS_DIR', 'STATIC_ROOT', 'MEDIA_ROOT')
+)
+def test_base_paths_presents(key):
+    """Make sure all relevant base paths exists."""
+    assert isinstance(getattr(settings, key), str)
+    assert len(getattr(settings, key)) > 0

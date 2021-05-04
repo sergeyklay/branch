@@ -12,27 +12,3 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
-
-"""Blog-wide context processors."""
-
-from django.conf import settings
-
-
-def base_url(request):
-    """Add website base URL and its name to the context."""
-    return {
-        'BASE_URL': settings.BASE_URL,
-    }
-
-
-def global_settings(request):
-    """Storing standard blog-wide information used in templates."""
-    context = {}
-
-    context.update(
-        {
-            'settings': settings,
-        }
-    )
-
-    return context

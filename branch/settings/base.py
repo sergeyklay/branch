@@ -167,7 +167,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
 
+                'apps.core.context_processors.base_url',
                 'apps.core.context_processors.global_settings',
+
                 'apps.website.context_processors.locale',
                 'apps.website.context_processors.app_settings',
                 'apps.website.context_processors.base_url',
