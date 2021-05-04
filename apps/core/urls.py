@@ -13,33 +13,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-# Comma-separated list
-ALLOWED_HOSTS=127.0.0.1,
+"""A configuration for shared URLs."""
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY="secret"
+from django.urls import re_path
 
-# See ``help(environ.Env.db_url_config)``
-DATABASE_URL=sqlite:///db.sqlite3
+from .views import robots
 
-# If compression should be done outside of the request/response loop.
-COMPRESS_OFFLINE=False
+app_name = 'core'  # pylint: disable=invalid-name
 
-# Comma-separated list
-INTERNAL_IPS=127.0.0.1,
-
-# Change admin site URL
-ADMIN_SITE_URL=admin/
-
-DOMAIN=serghei.blog
-
-# SMTP / POP3 configuration
-EMAIL_HOST=smtp.gmail.com
-EMAIL_HOST_USER=your_account@gmail.com
-EMAIL_HOST_PASSWORD=your_password
-EMAIL_PORT=587
-EMAIL_USE_TLS=True
-EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend
-
-# Caches
-CACHES_DEFAULT=filecache:///tmp
+urlpatterns = (
+    re_path(r'^robots\.txt$', robots, name='robots.txt'),
+)

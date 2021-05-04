@@ -12,7 +12,7 @@
 {% endblock %}
 
 {% block page_meta %}
-    {% if post.no_index %}
+    {% if post.no_index or not settings.ALLOW_ROBOTS %}
         <meta name="robots" content="noindex, nofollow">
     {% endif %}
     {# TODO: Add to Post propery #}

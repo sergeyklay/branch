@@ -29,6 +29,12 @@ DATABASES = {
     'default': {'ENGINE': 'django.db.backends.sqlite3', 'NAME': ':memory:'}
 }
 
+ALLOW_ROBOTS = False
+
+# Full base URL for the site including protocol.  No trailing slash.
+#   Example: http://127.0.0.1:8000
+BASE_URL = 'http://%s' % DOMAIN
+
 # Email configuration
 EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
 

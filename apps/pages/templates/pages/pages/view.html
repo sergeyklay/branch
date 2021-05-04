@@ -3,7 +3,7 @@
 {% load date_to_xmlschema %}
 
 {% block page_meta %}
-    {% if page.no_index %}
+    {% if page.no_index or not settings.ALLOW_ROBOTS %}
         <meta name="robots" content="noindex, nofollow">
     {% endif %}
 {% endblock %}
