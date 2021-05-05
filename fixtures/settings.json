@@ -33,14 +33,6 @@
   },
   {
     "model": "website.setting",
-    "pk": 4,
-    "fields": {
-      "name": "google_analytics",
-      "value": "UA-00000000-0"
-    }
-  },
-  {
-    "model": "website.setting",
     "pk": 5,
     "fields": {
       "name": "color_scheme",
@@ -81,7 +73,7 @@
   },
   {
     "model": "website.setting",
-    "pk": 9,
+    "pk": 10,
     "fields": {
       "name": "copyright_holder",
       "value": "John Doe"

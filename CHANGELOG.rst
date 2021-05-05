@@ -5,6 +5,18 @@ This file contains a brief summary of new features and dependency changes or
 releases, in reverse chronological order.
 
 
+1.3.0 (2021-XX-XX)
+------------------
+
+Features
+^^^^^^^^
+
+* Created SEO Tools as a standalone Django application.
+
+
+----
+
+
 1.2.0 (2021-05-04)
 ------------------
 

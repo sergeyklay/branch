@@ -17,7 +17,7 @@
 
 from django.views.generic import DetailView
 
-from branch.mixins import PageDetailsMixin
+from apps.seo.mixins import PageDetailsMixin
 from .models import Page
 
 

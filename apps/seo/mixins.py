@@ -13,7 +13,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-"""Project wide mixins lives here."""
+"""SEO mixins lives here."""
 
 
 class PageDetailsMixin:
@@ -46,21 +46,13 @@ class PageDetailsMixin:
 
     def get_context_data(self, **kwargs):
         """Get object's context data to use in templates."""
-        context = super().get_context_data(**kwargs)
-
-        if self.title:
-            context['page_title'] = self.title
-
-        if self.description:
-            context['page_description'] = self.description
-
-        if self.author:
-            context['page_author'] = self.author
-
-        if self.locale:
-            context['page_locale'] = self.locale
-
-        if self.resource_type:
-            context['page_type'] = self.resource_type
+        context = super().get_context_data(**kwargs)  # type: dict
+        context.update({
+            'seo_title': self.title,
+            'seo_description': self.description,
+            'seo_author': self.author,
+            'seo_locale': self.locale,
+            'seo_type': self.resource_type,
+        })
 
         return context

@@ -117,6 +117,7 @@ THIRD_PARTY_APPS = (
 # Apps specific for this project go here.
 LOCAL_APPS = (
     'apps.core',
+    'apps.seo',
     'apps.website',
     'apps.trumbowyg',
     'apps.blog',
@@ -168,6 +169,8 @@ TEMPLATES = [
                 'apps.core.context_processors.base_url',
                 'apps.core.context_processors.i18n',
                 'apps.core.context_processors.global_settings',
+
+                'apps.seo.context_processors.google_analytics',
 
                 'apps.website.context_processors.app_settings',
                 'apps.website.context_processors.base_url',
@@ -339,6 +342,7 @@ STATIC_ROOT = BASE_DIR('static')
 STATICFILES_DIRS = (
     BASE_DIR('assets'),
     NODE_MODULES_PATH,
+    BASE_DIR('apps', 'seo', 'assets'),
     BASE_DIR('apps', 'trumbowyg', 'assets'),
     BASE_DIR('apps', 'telegraph', 'assets'),
 )
@@ -381,3 +385,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 FEED_MAX_ITEMS = 20
 FEED_WORD_LIMIT = 30
+
+# SEO Tools
+
+GA_TRACKING_ID = env.str('GA_TRACKING_ID', None)

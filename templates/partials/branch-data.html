@@ -1,6 +1,6 @@
 <script type="application/json" id="branch-data">
     {
-        "analytics_code": "{{ site_google_analytics }}",
+        "analytics_code": "{{ GA_TRACKING_ID|default:'' }}",
         "site_name": "{{ SITE_NAME }}",
         "language": "{{ LANG }}",
         "language_short": "{{ LANG_SHORT }}",

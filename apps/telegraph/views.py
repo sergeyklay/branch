@@ -26,8 +26,8 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import FormView
 
+from apps.seo.mixins import PageDetailsMixin
 from apps.website.models import Setting
-from branch.mixins import PageDetailsMixin
 from .forms import ContactMessageForm
 
 

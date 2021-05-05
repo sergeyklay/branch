@@ -2,7 +2,7 @@
 
 {% load l10n i18n static date_to_xmlschema %}
 {% block og_namespace %}article: https://ogp.me/ns/article#{% endblock %}
-{% block page_title %}{{ page_title }} - {{ block.super }}{% endblock %}
+{% block page_title %}{{ seo_title }} - {{ block.super }}{% endblock %}
 
 {% block post_schema %}
     <script type="application/ld+json">
@@ -29,7 +29,7 @@
     {% with resource_url=post.get_absolute_url %}
         {{ block.super }}
     {% endwith %}
-    <meta property="dc:date" content="{{ post.published_at|date_to_xmlschema }}">
+    <meta name="dc:date" content="{{ post.published_at|date_to_xmlschema }}">
 {% endblock %}
 
 {% block og_metadata %}
@@ -56,7 +56,7 @@
 {% endblock %}
 
 {% block content %}
-    <article class="{{ page_type|default:'post' }}" role="document">
+    <article class="{{ seo_type|default:'post' }}" role="document">
         {% block post_content %}
             <header>
                 <h1 class="text-title">{{ post.title }}</h1>
