@@ -90,7 +90,7 @@ pytest-cov==2.11.1
     # via -r requirements/requirements-dev.in
 pytest-django==4.2.0
     # via -r requirements/requirements-dev.in
-pytest==6.2.3
+pytest==6.2.4
     # via
     #   -r requirements/requirements-dev.in
     #   pytest-cov
