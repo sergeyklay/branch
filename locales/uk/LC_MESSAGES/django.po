@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: branch 1.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 01:19+0000\n"
+"POT-Creation-Date: 2021-05-05 12:13+0000\n"
 "PO-Revision-Date: 2021-05-05 01:22+0300\n"
 "Last-Translator: Serghei Iakovlev <egrep@protonmail.ch>\n"
 "Language-Team: Ukrainian <egrep@protonmail.ch>\n"
@@ -271,7 +271,7 @@ msgstr "Ой! На сайті помилка."
 
 #: apps/core/templates/core/500.html:39
 msgid "I'll get to fixing that soon."
-msgstr "Я скоро це полагоджу."
+msgstr "Я виправлю її найближчим часом."
 
 #: apps/core/templates/core/500.html:45
 #, python-format

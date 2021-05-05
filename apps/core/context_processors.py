@@ -28,11 +28,14 @@ def base_url(request):
 
 def i18n(request):
     """Add current locale and language settings to the context."""
-    lang = get_language()
+    requested_lang = get_language()
+    actual_lang = settings.LANGUAGE_MAP.get(requested_lang, requested_lang)
+
     return {
         'LANGUAGES': settings.LANGUAGES,
-        'LANG_CODE': f'{settings.LANGUAGE_CODE}'[:2],
-        'LANG': settings.LANGUAGE_URL_MAP.get(lang, lang),
+        'LANG_SHORT': f'{actual_lang}'[:2],
+        'LANG': actual_lang,
+        'LANG_LOWER': f'{actual_lang}'.lower(),
         'LOCALE': to_locale(get_language()),
         'DIR': 'rtl' if get_language_bidi() else 'ltr',
     }

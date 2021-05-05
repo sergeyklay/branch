@@ -309,13 +309,16 @@ BRANCH_LANGUAGES = {
 ADMIN_LANGUAGE_CODE = 'ru'
 DEFAULT_LANGUAGE_CODE = 'ru'
 
-LANGUAGE_CODE = 'en-US'
+# Language code for this installation. All choices can be found here:
+# http://www.i18nguy.com/unicode/language-identifiers.html
+LANGUAGE_CODE = 'en-us'
+
 LANGUAGE_COOKIE_NAME = 'branch_language'
 LANGUAGES = [
     (locale.lower(), value['native']) for locale, value in BRANCH_LANGUAGES.items()  # noqa
 ]
 
-LANGUAGE_URL_MAP = {locale.lower(): locale for locale in BRANCH_LANGUAGES}
+LANGUAGE_MAP = {locale.lower(): locale for locale in BRANCH_LANGUAGES}
 
 TIME_ZONE = 'UTC'
 USE_I18N = True
