@@ -17,7 +17,6 @@
 
 from django.conf import settings
 from django.utils.translation import (
-    gettext_lazy,
     get_language,
     get_language_bidi,
     to_locale,
@@ -48,14 +47,7 @@ def i18n(request):
 
 def global_settings(request):
     """Storing standard blog-wide information used in templates."""
-    context = {}
-
-    site_name = getattr(settings, 'SITE_NAME', 'Branch')
-    context.update(
-        {
-            'settings': settings,
-            'SITE_NAME': gettext_lazy(site_name),
-        }
-    )
-
-    return context
+    return {
+        'settings': settings,
+        'SITE_NAME': getattr(settings, 'SITE_NAME', 'Branch'),
+    }

@@ -15,9 +15,6 @@
 
 """Website context processors."""
 
-from django.contrib.sites.shortcuts import get_current_site
-from django.utils.translation import gettext_lazy
-
 from .models import Setting
 
 

@@ -32,6 +32,7 @@ import sys
 from datetime import datetime
 
 import environ
+from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR('subdir').
 BASE_DIR = environ.Path(__file__) - 3
@@ -90,7 +91,7 @@ IGNORABLE_404_URLS = (
 
 # Application definition
 
-SITE_NAME = 'Serghei Iakovlev'
+SITE_NAME = _('Serghei Iakovlev')
 
 # The database ID of the django.contrib.sites.models.Site
 # object associated with that particular settings file.
