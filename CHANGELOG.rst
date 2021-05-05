@@ -12,6 +12,7 @@ Features
 ^^^^^^^^
 
 * Created SEO Tools as a standalone Django application.
+* Provided ability to post HTML in the comments.
 
 
 Improvements
@@ -26,6 +27,7 @@ Bug Fixes
 ^^^^^^^^^
 
 * Fixed ``dc:`` meta tag definition.
+* Fixed Email configuration to be able sent mails.
 
 
 ----

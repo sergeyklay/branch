@@ -32,6 +32,7 @@ import sys
 from datetime import datetime
 
 import environ
+from django.utils.text import format_lazy
 from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR('subdir').
@@ -376,12 +377,31 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Email configuration
 
+ADMIN_EMAIL = env.str('ADMIN_EMAIL', default='root@localhost')
+
+# A list of all the people who get code error notifications.
+ADMINS = [('Admin', ADMIN_EMAIL)]
+
+# The email address that error messages come from
+SERVER_EMAIL = env.str('SERVER_EMAIL', default='webmaster@localhost')
+SERVER_EMAIL_FROM = env.str('SITE_EMAIL_FROM', default=None)
+if SERVER_EMAIL_FROM is None:
+    SERVER_EMAIL_FROM = format_lazy('{}', SITE_NAME)
+
+DEFAULT_FROM_EMAIL = format_lazy('{} <{}>', SERVER_EMAIL_FROM, SERVER_EMAIL)
+
 EMAIL_HOST = env.str('EMAIL_HOST', default='localhost')
 EMAIL_HOST_USER = env.str('EMAIL_HOST_USER', default='')
 EMAIL_HOST_PASSWORD = env.str('EMAIL_HOST_PASSWORD', default='')
 EMAIL_PORT = env.int('EMAIL_PORT', default=25)
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 EMAIL_USE_TLS = env.bool('EMAIL_USE_TLS', default=EMAIL_HOST != 'localhost')
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+if not EMAIL_USE_TLS:
+    EMAIL_USE_SSL = env.bool(
+        'EMAIL_USE_SSL',
+        default=EMAIL_HOST != 'localhost'
+    )
 
 # Syndication
 
