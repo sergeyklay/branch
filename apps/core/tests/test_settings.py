@@ -31,6 +31,15 @@ def test_base_paths_presents(key):
     assert len(getattr(settings, key)) > 0
 
 
+@pytest.mark.parametrize(
+    'key', ('SITE_NAME',)
+)
+def test_important_vars_presents(key):
+    """Make sure all important variables are present."""
+    assert isinstance(getattr(settings, key), str)
+    assert len(getattr(settings, key)) > 0
+
+
 def test_get_db_config(monkeypatch):
     """Make sure we resolve relative db path."""
     env = environ.Env()

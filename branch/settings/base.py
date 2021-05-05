@@ -90,6 +90,8 @@ IGNORABLE_404_URLS = (
 
 # Application definition
 
+SITE_NAME = 'Serghei Iakovlev'
+
 # The database ID of the django.contrib.sites.models.Site
 # object associated with that particular settings file.
 SITE_ID = 1
@@ -173,7 +175,6 @@ TEMPLATES = [
                 'apps.seo.context_processors.google_analytics',
 
                 'apps.website.context_processors.app_settings',
-                'apps.website.context_processors.base_url',
 
                 'apps.pages.context_processors.pages',
             ],

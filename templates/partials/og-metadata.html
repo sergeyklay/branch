@@ -4,7 +4,7 @@
     {% block og_type %}{% endblock %}
     <meta property="og:title" content="{{ seo_title|default:SITE_NAME }}">
     <meta property="og:description" content="{% spaceless %}{% include 'partials/description-value.html' %}{% endspaceless %}">
-    <meta property="og:site_name" content="{{ SITE_NAME|default:'Branch' }}">
+    <meta property="og:site_name" content="{{ SITE_NAME }}">
     <meta property="og:locale" content="{{ seo_locale|default:LOCALE }}">
 {% if featured_image %}
     <meta property="og:image" content="{{ BASE_URL }}{{ featured_image.url }}">

@@ -29,13 +29,3 @@ def app_settings(request):  # pylint: disable=unused-argument
         context_extras[f'site_{obj.name}'] = obj.value
 
     return context_extras
-
-
-# TODO: deprecated
-def base_url(request):
-    """Add website base URL and its name to the context."""
-    current_site = get_current_site(request)
-
-    return {
-        'SITE_NAME': gettext_lazy(current_site.name),
-    }
