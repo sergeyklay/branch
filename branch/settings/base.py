@@ -377,28 +377,18 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Email configuration
 
-ADMIN_EMAIL_ADDRESS = env.str(
-    'ADMIN_EMAIL_ADDRESS',
-    default='webmaster@localhost'
-)
+ADMIN_EMAIL = env.str('ADMIN_EMAIL', default='root@localhost')
 
 # A list of all the people who get code error notifications.
-ADMINS = [('Admin', ADMIN_EMAIL_ADDRESS)]
-
-SITE_EMAIL_ADDRESS = env.str(
-    'SITE_EMAIL_ADDRESS',
-    default='webmaster@localhost'
-)
-
-SITE_EMAIL_FROM = env.str('SITE_EMAIL_FROM', default=None)
-if SITE_EMAIL_FROM is None:
-    SITE_EMAIL_FROM = format_lazy('{}', SITE_NAME)
-SITE_EMAIL = format_lazy('{} <{}>', SITE_NAME, SITE_EMAIL_ADDRESS)
-
-DEFAULT_FROM_EMAIL = SITE_EMAIL
+ADMINS = [('Admin', ADMIN_EMAIL)]
 
 # The email address that error messages come from
-SERVER_EMAIL = env('SERVER_EMAIL', cast=str, default=SITE_EMAIL_ADDRESS)
+SERVER_EMAIL = env.str('SERVER_EMAIL', default='webmaster@localhost')
+SERVER_EMAIL_FROM = env.str('SITE_EMAIL_FROM', default=None)
+if SERVER_EMAIL_FROM is None:
+    SERVER_EMAIL_FROM = format_lazy('{}', SITE_NAME)
+
+DEFAULT_FROM_EMAIL = format_lazy('{} <{}>', SERVER_EMAIL_FROM, SERVER_EMAIL)
 
 EMAIL_HOST = env.str('EMAIL_HOST', default='localhost')
 EMAIL_HOST_USER = env.str('EMAIL_HOST_USER', default='')
