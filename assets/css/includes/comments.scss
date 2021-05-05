@@ -47,19 +47,31 @@ ul.feedback-message {
 }
 
 .comment-form {
+  position: relative;
+  float: left;
+  clear: both;
   width: 100%;
+  border-top: 1px solid #eee;
   padding-bottom: 20px;
+  padding-top: 20px;
+  margin-top: 20px;
 
   @include mq(tabletp) {
     padding-bottom: 40px;
+    padding-top: 40px;
+    margin-top: 40px;
   }
 
   @include mq(laptop) {
     padding-bottom: 50px;
+    padding-top: 50px;
+    margin-top: 50px;
   }
 
   @include mq(desktop) {
     padding-bottom: 60px;
+    padding-top: 60px;
+    margin-top: 60px;
   }
 
   &:first-child {
