@@ -12,26 +12,3 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
-
-"""Common utils for the whole project."""
-
-from django.conf import settings
-from django.utils.translation import trans_real
-
-
-def to_language(locale):
-    """Like Django's to_language, but en_US comes out as en-US."""
-    if '_' in locale:
-        return to_language(trans_real.to_language(locale))
-
-    if '-' in locale:
-        idx = locale.find('-')
-        return locale[:idx].lower() + '-' + locale[idx + 1:].upper()
-
-    return trans_real.to_language(locale)
-
-
-def admin_path():
-    """Get URL part of the admin site."""
-    admin = getattr(settings, 'ADMIN_SITE_URL', 'admin')
-    return f"{admin.strip('/')}"
