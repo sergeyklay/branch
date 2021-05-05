@@ -14,6 +14,19 @@ Features
 * Created SEO Tools as a standalone Django application.
 
 
+Improvements
+^^^^^^^^^^^^
+
+* Provided language attribute for the main content of the page.
+* Moved site name to the project's settings.
+
+
+Bug Fixes
+^^^^^^^^^
+
+* Fixed ``dc:`` meta tag definition.
+
+
 ----
 
 
