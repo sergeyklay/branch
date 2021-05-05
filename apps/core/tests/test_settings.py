@@ -36,7 +36,7 @@ def test_base_paths_presents(key):
 )
 def test_important_vars_presents(key):
     """Make sure all important variables are present."""
-    assert isinstance(getattr(settings, key), str)
+    assert getattr(settings, key, None) is not None
     assert len(getattr(settings, key)) > 0
 
 
