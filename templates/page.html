@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 
-{% block page_title %}{{ page_title }} - {{ block.super }}{% endblock %}
+{% load locale_helpers %}
+
+{% block page_title %}{{ seo_title }} - {{ block.super }}{% endblock %}
 
 {% block sidebar %}
     {% include 'partials/sidebar.html' %}
 {% endblock %}
 
 {% block content %}
-    <article class="page">
+    <article class="page" lang="{{ seo_locale|to_language|default:LANG }}">
         {% block page_content %}{% endblock %}
     </article>
 

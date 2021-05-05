@@ -13,14 +13,11 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-import pytest
-from django.core.management import call_command
+"""SEO-related context processors."""
 
-fixtures = ['settings', 'sites']
+from django.conf import settings
 
 
-@pytest.fixture(autouse=True)
-def django_db_setup(django_db_setup, django_db_blocker):
-    """Populate Django test database with pytest fixtures."""
-    with django_db_blocker.unblock():
-        call_command('loaddata', *[f'{fixture}.json' for fixture in fixtures])
+def google_analytics(request):
+    """Add Google Analytics Tracking ID to the context."""
+    return {'GA_TRACKING_ID': getattr(settings, 'GA_TRACKING_ID', None)}

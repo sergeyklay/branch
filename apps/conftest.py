@@ -13,16 +13,17 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-"""Website context processors."""
+"""Global pylint configuration for all apps."""
 
-from .models import Setting
+import pytest
+from django.core.management import call_command
+
+fixtures = ['settings', 'sites']
 
 
-def app_settings(request):  # pylint: disable=unused-argument
-    """Add global website settings to the context."""
-    context_extras = {}
-
-    for obj in Setting.objects.all():
-        context_extras[f'site_{obj.name}'] = obj.value
-
-    return context_extras
+# pylint: disable=W0621
+@pytest.fixture(autouse=True)
+def django_db_setup(django_db_setup, django_db_blocker):
+    """Populate Django test database with pytest fixtures."""
+    with django_db_blocker.unblock():
+        call_command('loaddata', *[f'{fixture}.json' for fixture in fixtures])

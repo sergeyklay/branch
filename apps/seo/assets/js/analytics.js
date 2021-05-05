@@ -33,15 +33,16 @@ if (isDoNotTrackEnabled()) {
     console.info('[TRACKING]: Respecting DNT with respect to analytics...')
 } else {
     // Known DNT values not set, so we will assume it's off.
-    const branchData = JSON.parse(document.getElementById('branch-data').innerHTML)
+    const data = JSON.parse(document.getElementById('branch-data').innerHTML)
 
-    if (typeof branchData !== 'undefined' && branchData.analytics_code) {
+    if (typeof data !== 'undefined' && data.analytics_code) {
         (function () {
             // New Google Site Tag (gtag.js) tagging/analytics framework
             // See: https://developers.google.com/gtagjs
+            const base_url = 'https://www.googletagmanager.com'
             let script = document.createElement("script");
 
-            script.src = "https://www.googletagmanager.com/gtag/js?id=" + branchData.analytics_code;
+            script.src = base_url + "/gtag/js?id=" + data.analytics_code;
             script.type = "text/javascript";
             script.async = true;
 
@@ -57,7 +58,7 @@ if (isDoNotTrackEnabled()) {
         gtag('js', new Date());
 
         // Setup the project analytics code and send a pageview
-        gtag('config', branchData.analytics_code, {
+        gtag('config', data.analytics_code, {
             'anonymize_ip': true,
             'cookie_expires': 30 * 24 * 60 * 60  // 30 days
         })

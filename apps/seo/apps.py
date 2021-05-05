@@ -13,16 +13,15 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-"""Website context processors."""
+"""Simple Django app to manage project SEO like Google Analytics."""
 
-from .models import Setting
+from django.apps import AppConfig
+from django.utils.translation import gettext_lazy as _
 
 
-def app_settings(request):  # pylint: disable=unused-argument
-    """Add global website settings to the context."""
-    context_extras = {}
+class CoreConfig(AppConfig):
+    """Class representing SEO application and its configuration."""
 
-    for obj in Setting.objects.all():
-        context_extras[f'site_{obj.name}'] = obj.value
-
-    return context_extras
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'apps.seo'
+    verbose_name = _('SEO Tools')

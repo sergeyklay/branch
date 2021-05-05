@@ -6,19 +6,19 @@
         "@type": "WebPage",
         "@id": "{{ BASE_URL }}{{ page.get_absolute_url }}"
     },
-    "headline": "{{ page_title }}",
-    "description": "{{ page_description|striptags }}",
+    "headline": "{{ seo_title }}",
+    "description": "{{ seo_description|striptags }}",
     "image": "{{ BASE_URL }}{% if featured_image %}{{ featured_image.url }}{% else%}{% static 'img/blog-logo.jpg' %}{% endif %}",
     "datePublished": "{{ page.published_at|date_to_xmlschema }}",
     "dateModified": "{{ page.updated_at|date_to_xmlschema }}",
     "author": {
         "@type": "Person",
-        "name": "{{ page_author }}",
+        "name": "{{ seo_author }}",
         "url": "{{ BASE_URL }}{{ about_url }}"
     },
     "publisher": {
         "@type": "Organization",
-        "name": "{{ page_author }}",
+        "name": "{{ seo_author }}",
         "logo": {
             "@type": "ImageObject",
             "url": "{{ BASE_URL }}{% static 'img/blog-logo.jpg' %}"

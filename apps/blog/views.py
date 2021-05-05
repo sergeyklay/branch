@@ -20,8 +20,8 @@ from django.utils.translation import gettext_lazy as _
 from django.views.generic import DateDetailView, ListView
 from django.views.generic.edit import FormMixin
 
+from apps.seo.mixins import PageDetailsMixin
 from apps.website.models import Setting
-from branch.mixins import PageDetailsMixin
 from .forms import CommentForm
 from .models import Post
 

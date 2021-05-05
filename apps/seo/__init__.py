@@ -12,17 +12,3 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
-
-"""Website context processors."""
-
-from .models import Setting
-
-
-def app_settings(request):  # pylint: disable=unused-argument
-    """Add global website settings to the context."""
-    context_extras = {}
-
-    for obj in Setting.objects.all():
-        context_extras[f'site_{obj.name}'] = obj.value
-
-    return context_extras

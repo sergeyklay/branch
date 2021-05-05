@@ -5,7 +5,7 @@
 <head prefix="og: http://ogp.me/ns# {%  spaceless %}{% block og_namespace %}{% endblock %}{% endspaceless %} dc: http://purl.org/dc/terms/#">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,shrink-to-fit=no">
-    <title>{% block page_title %}{{ SITE_NAME|default:'Branch' }}{% endblock %}</title>
+    <title>{% block page_title %}{{ SITE_NAME }}{% endblock %}</title>
     {% block post_schema %}{% endblock %}
     {% block made_by %}
     <meta name="generator" content="Branch">
@@ -13,10 +13,11 @@
     {% endblock %}
 
     {% block page_description %}
-    <meta name="description" content="{% spaceless %}{% include 'partials/description-value.html' %}{% endspaceless %}">
+        <meta name="description" content="{% spaceless %}{% include 'partials/description-value.html' %}{% endspaceless %}">
     {% endblock %}
+
     {% block page_keywords %}
-    {% include 'partials/page-keywords.html' %}
+        {% include 'partials/page-keywords.html' %}
     {% endblock %}
 
     {% block page_meta %}
@@ -66,7 +67,7 @@
     {% endblock %}
 
     {% block analytics %}
-        <script async src="{% static 'js/branch-analytics.js' %}"></script>
+        <script async src="{% static 'js/analytics.js' %}"></script>
     {% endblock %}
 
     {% block feed %}{% endblock %}
@@ -85,7 +86,7 @@
             <div class="container">
                 <h3 class="masthead-title">
                     <a href="{{ BASE_URL }}" title="{% trans 'Go to main page' %}">
-                        {{ SITE_NAME|default:'Branch' }}
+                        {{ SITE_NAME }}
                     </a>
                     <br><small>{{ site_tagline }}</small>
                 </h3>

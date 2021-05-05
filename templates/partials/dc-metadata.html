@@ -1,12 +1,12 @@
 {% load locale_helpers %}
 
-<meta property="dc:title" content="{{ page_title|default:SITE_NAME }}">
-    <meta name="dc:description" content="{% spaceless %}{% include 'partials/description-value.html' %}{% endspaceless %}">
-    <meta property="dc:creator" content="{{ page_author|default:SITE_NAME }}">
-    <meta property="dc:contributor" content="{{ page_author|default:SITE_NAME }}">
-    <meta property="dc:type" content="Text">
-{% if page_locale and page_locale.strip %}
-    <meta property="dc:language" content="{{ page_locale|to_language }}">
+<meta property="dc:title" content="{{ seo_title|default:SITE_NAME }}">
+<meta property="dc:description" content="{% spaceless %}{% include 'partials/description-value.html' %}{% endspaceless %}">
+<meta property="dc:creator" content="{{ seo_author|default:SITE_NAME }}">
+<meta property="dc:contributor" content="{{ seo_author|default:SITE_NAME }}">
+<meta property="dc:type" content="Text">
+{% if seo_locale and seo_locale.strip %}
+    <meta property="dc:language" content="{{ seo_locale|to_language }}">
 {% else %}
     <meta property="dc:language" content="{{ LANG }}">
 {% endif %}

@@ -16,7 +16,11 @@
 """Blog-wide context processors."""
 
 from django.conf import settings
-from django.utils.translation import get_language, get_language_bidi, to_locale
+from django.utils.translation import (
+    get_language,
+    get_language_bidi,
+    to_locale,
+)
 
 
 def base_url(request):
@@ -43,12 +47,7 @@ def i18n(request):
 
 def global_settings(request):
     """Storing standard blog-wide information used in templates."""
-    context = {}
-
-    context.update(
-        {
-            'settings': settings,
-        }
-    )
-
-    return context
+    return {
+        'settings': settings,
+        'SITE_NAME': getattr(settings, 'SITE_NAME', 'Branch'),
+    }

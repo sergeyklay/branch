@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: branch 1.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 12:13+0000\n"
-"PO-Revision-Date: 2021-05-05 01:22+0300\n"
+"POT-Creation-Date: 2021-05-05 18:31+0000\n"
+"PO-Revision-Date: 2021-05-05 21:32+0300\n"
 "Last-Translator: Serghei Iakovlev <egrep@protonmail.ch>\n"
 "Language-Team: Russian <egrep@protonmail.ch>\n"
 "Language: ru\n"
@@ -298,6 +298,10 @@ msgstr "Страницы"
 msgid "Page"
 msgstr "Страница"
 
+#: apps/seo/apps.py:27
+msgid "SEO Tools"
+msgstr "SEO инструменты"
+
 #: apps/telegraph/apps.py:27
 msgid "Telegraph"
 msgstr "Телеграф"
@@ -453,7 +457,11 @@ msgstr "Мета описание"
 msgid "This will be displayed in meta tags. Keep it under 120 characters."
 msgstr "Это будет отображаться в метатегах. Используйте до 120 символов."
 
-#: templates/base.html:87
+#: branch/settings/base.py:94
+msgid "Serghei Iakovlev"
+msgstr "Сергей Яковлев"
+
+#: templates/base.html:88
 msgid "Go to main page"
 msgstr "На главную"
 
