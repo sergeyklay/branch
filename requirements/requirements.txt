@@ -16,7 +16,7 @@ git+https://github.com/joke2k/django-environ@develop
     # via -r requirements/requirements.in
 django-redis==4.12.1
     # via -r requirements/requirements.in
-django==3.2
+django==3.2.1
     # via
     #   -r requirements/requirements.in
     #   django-redis
