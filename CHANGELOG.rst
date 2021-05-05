@@ -39,10 +39,12 @@ Trivial/Internal Changes
 * Removed infrastructure configuration samples from the project repo.
 * Corrected header format for ``setup.py --long-description``.
 * Add ``django-redis`` to project requirements.
+* Bumped ``django`` from 3.2.0 to 3.2.1.
 * Bumped ``django-environ`` from 0.4.5 to ``develop`` branch to support secure redis connections.
 * Bumped ``django-extensions`` from 3.1.2 to 3.2.3.
 * Bumped ``pylint`` from 2.7.4 to 2.8.2.
 * Bumped ``pylint-django`` from 2.4.3 to 2.4.4.
+* Bumped ``pytest`` from 6.2.3 to 6.2.4.
 * Bumped ``faker`` from 8.1.0 to 8.1.2.
 
 
