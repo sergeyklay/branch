@@ -13,7 +13,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-"""Core application module."""
+"""Simple Django app to manage project SEO like Google Analytics."""
 
 from django.apps import AppConfig
 from django.utils.translation import gettext_lazy as _
