@@ -15,6 +15,6 @@
     </div>
 
     <div class="comment-body">
-        {{ comment.comment|linebreaks }}
+        {{ comment.comment|safe|linebreaks }}
     </div>
 </article>
