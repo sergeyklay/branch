@@ -26,6 +26,7 @@ Bug Fixes
 ^^^^^^^^^
 
 * Fixed ``dc:`` meta tag definition.
+* Fixed Email configuration to be able sent mails.
 
 
 ----

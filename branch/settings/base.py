@@ -376,12 +376,28 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Email configuration
 
+# A list of all the people who get code error notifications.
+ADMIN_EMAIL_ADDRESS = env.str('ADMIN_EMAIL_ADDRESS', 'root@localhost')
+ADMINS = [('Admin', ADMIN_EMAIL_ADDRESS)]
+
+SITE_EMAIL_ADDRESS = env.str('SITE_EMAIL_ADDRESS', 'root@localhost')
+SITE_EMAIL_FROM = env.str('SITE_EMAIL_FROM', SITE_NAME)
+SITE_EMAIL = f'{SITE_EMAIL_FROM} <{SITE_EMAIL_ADDRESS}>'
+
+DEFAULT_FROM_EMAIL = SITE_EMAIL
+
+# The email address that error messages come from
+SERVER_EMAIL = env('SERVER_EMAIL', cast=str, default=SITE_EMAIL_ADDRESS)
+
 EMAIL_HOST = env.str('EMAIL_HOST', default='localhost')
 EMAIL_HOST_USER = env.str('EMAIL_HOST_USER', default='')
 EMAIL_HOST_PASSWORD = env.str('EMAIL_HOST_PASSWORD', default='')
 EMAIL_PORT = env.int('EMAIL_PORT', default=25)
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
 EMAIL_USE_TLS = env.bool('EMAIL_USE_TLS', default=EMAIL_HOST != 'localhost')
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+if not EMAIL_USE_TLS:
+    EMAIL_USE_SSL = env.bool('EMAIL_USE_SSL', default=EMAIL_HOST != 'localhost')
 
 # Syndication
 

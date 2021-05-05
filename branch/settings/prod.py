@@ -30,8 +30,6 @@ INTERNAL_IPS = env.list('INTERNAL_IPS')
 
 COMPRESS_OFFLINE = True
 
-EMAIL_BACKEND = env.str('EMAIL_BACKEND')
-
 # Redirect all non-HTTPS requests to HTTPS (except for those URLs matching a
 # regular expression listed in SECURE_REDIRECT_EXEMPT).
 SECURE_SSL_REDIRECT = True
