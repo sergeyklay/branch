@@ -32,7 +32,6 @@ import sys
 from datetime import datetime
 
 import environ
-from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR('subdir').
 BASE_DIR = environ.Path(__file__) - 3
@@ -148,10 +147,6 @@ MIDDLEWARE = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
-    # Disabled for now
-    # 'apps.website.middleware.locale.inject_accept_language',
-
     'django.middleware.locale.LocaleMiddleware',
 )
 
@@ -171,9 +166,9 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
 
                 'apps.core.context_processors.base_url',
+                'apps.core.context_processors.i18n',
                 'apps.core.context_processors.global_settings',
 
-                'apps.website.context_processors.locale',
                 'apps.website.context_processors.app_settings',
                 'apps.website.context_processors.base_url',
 
@@ -296,16 +291,34 @@ ADMIN_SITE_URL = env.str('ADMIN_SITE_URL', default='admin/')
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/
 
+BRANCH_LANGUAGES = {
+    'en-US': {
+        'english': 'English (US)',
+        'native': 'English (US)'
+    },
+    'ru': {
+        'english': 'Russian',
+        'native': '\u0420\u0443\u0441\u0441\u043a\u0438\u0439',
+    },
+    'uk': {
+        'english': 'Ukrainian',
+        'native': '\u0423\u043a\u0440\u0430\u0457\u043d\u0441\u044c\u043a\u0430',  # noqa
+    },
+}
+
 ADMIN_LANGUAGE_CODE = 'ru'
 DEFAULT_LANGUAGE_CODE = 'ru'
 
+# Language code for this installation. All choices can be found here:
+# http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-us'
+
 LANGUAGE_COOKIE_NAME = 'branch_language'
-LANGUAGES = (
-    ('en-us', _('English')),
-    ('uk', _('Ukrainian')),
-    ('ru', _('Russian')),
-)
+LANGUAGES = [
+    (locale.lower(), value['native']) for locale, value in BRANCH_LANGUAGES.items()  # noqa
+]
+
+LANGUAGE_MAP = {locale.lower(): locale for locale in BRANCH_LANGUAGES}
 
 TIME_ZONE = 'UTC'
 USE_I18N = True

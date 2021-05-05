@@ -3,7 +3,7 @@
     <meta property="dc:creator" content="{{ page_author|default:SITE_NAME }}">
     <meta property="dc:contributor" content="{{ page_author|default:SITE_NAME }}">
     <meta property="dc:type" content="Text">
-    <meta property="dc:language" content="{{ page_locale|default:LOCALE }}">
+    <meta property="dc:language" content="{{ page_locale|default:LANG }}">
 {% if page_rights and page_rights.strip %}
     {# TODO: Add to Page model property #}
     <meta property="dc:rights" content="{{ page_rights }}">
