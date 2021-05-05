@@ -13,15 +13,12 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-"""A configuration for shared URLs."""
+"""The URL configuration that is needed only for testing purposes."""
 
-from django.urls import re_path
+from apps.core import views
+from branch.urls import *  # noqa
 
-from .views import humans, robots
-
-app_name = 'core'  # pylint: disable=invalid-name
-
-urlpatterns = (
-    re_path(r'^humans\.txt$', humans, name='humans.txt'),
-    re_path(r'^robots\.txt$', robots, name='robots.txt'),
-)
+urlpatterns = [
+    re_path(r'^404/?$', views.handler404),
+    re_path(r'^500/?$', views.handler500),
+] + urlpatterns

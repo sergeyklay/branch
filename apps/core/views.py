@@ -44,7 +44,7 @@ def humans(request):
     return HttpResponse(body, content_type='text/plain; charset=utf-8')
 
 
-def handler404(request, exception, **kwargs):
+def handler404(request, exception=None, **kwargs):
     """Site-wide 404 handler."""
     return page_not_found(
         request=request,
