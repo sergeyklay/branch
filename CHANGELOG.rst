@@ -27,6 +27,12 @@ Improvements
 * Refactor 404 handler and move it to ``core`` app.
 
 
+Bug Fixes
+^^^^^^^^^
+
+* Corrected ``dc:language`` meta tag definition for website pages.
+
+
 Trivial/Internal Changes
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
