@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+{% block page_title %}{% trans 'Internal server error.' %} - {{ block.super }}{% endblock %}
+
+{% block page_description %}
+    <meta name="description" content="{% trans 'Internal server error.' %}">
+{% endblock %}
+
+{# Disable keywords #}
+{% block page_keywords %}{% endblock %}
+
+{# Disable indexing #}
+{% block page_meta %}
+    <meta name="robots" content="noindex, nofollow">
+{% endblock %}
+
+{# There is no canonical URL  #}
+{% block canonical_url %}{% endblock %}
+
+{# Disable microdata #}
+{% block dc_metadata %}{% endblock %}
+{% block og_metadata %}{% endblock %}
+{% block og_page_type %}{% endblock %}
+{% block twitter_metadata %}{% endblock %}
+
+{% block sidebar %}
+    {% include 'partials/sidebar.html' %}
+{% endblock %}
+
+{% block content %}
+    <section class="introduction">
+        <div class="container">
+            <h1 class="accent">500</h1>
+            <p><strong>{% trans 'Oops! Website has an error.' %}</strong></p>
+        </div>
+
+        <p>{% trans "I'll get to fixing that soon." %}</p>
+
+        <p>
+            {% url 'blog:post_list' as frontpage_link %}
+            {% with '<a href="'|add:frontpage_link|add:'">'|safe as open_frontpage_link %}
+            {% with '<a href="https://github.com/sergeyklay/branch/issues/new">'|safe as open_bug_link %}
+            {% blocktranslate trimmed with link_end='</a>'|safe %}
+                You can try refreshing the page, or head back to the
+                {{ open_frontpage_link }}Blog homepage{{ link_end }}. You can
+                also help me fix this by {{ open_bug_link }}filing an issue{{ link_end }}
+                with the details of how you got to this page.
+            {% endblocktranslate %}
+            {% endwith %}
+            {% endwith %}
+        </p>
+    </section>
+    <hr>
+
+    {% include 'partials/mini-toc.html' %}
+{% endblock %}

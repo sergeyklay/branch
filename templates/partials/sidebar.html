@@ -34,6 +34,7 @@
             <a href="{% url 'blog:posts_rss' %}" title="{% trans 'Subscribe to posts (RSS 2.0)' %}">RSS 2.0</a>
         </div>
 
+        {#  TODO: I no longer need site_github_username variable #}
         <a class="sidebar-nav-item" href="https://github.com/{{ site_github_username }}" target="_blank">
             {% trans 'GitHub Profile' %}
         </a>

@@ -17,6 +17,9 @@ import pytest
 from django.conf import settings
 from django.test.utils import override_settings
 
+from apps.core import views
+from branch import urls
+
 
 @pytest.mark.django_db
 @override_settings(ALLOW_ROBOTS=True)
@@ -40,6 +43,7 @@ def test_disabled_robots(client):
 
 @pytest.mark.django_db
 def test_humans(client):
+    """Make sure humans.txt is rendered properly"""
     response = client.get('/humans.txt')
     assert response.status_code == 200
 
@@ -49,3 +53,45 @@ def test_humans(client):
     assert last_update in content
     assert 'CONGRATULATIONS, you found my humans.txt file!' in content
     assert 'Components: Django, jQuery, Ed Theme' in content
+
+
+@pytest.mark.django_db
+def test_404_app(client):
+    """Make sure 404 handler worked as expected."""
+    response = client.get('/xxxxxxx')
+    assert urls.handler404 == 'apps.core.views.handler404'
+    assert response.status_code == 404
+    assert 'core/404.html' in (t.name for t in response.templates)
+
+    content = response.content.decode('utf-8')
+    assert 'Page Not Found.' in content
+    assert 'Latest publications' in content
+
+
+@pytest.mark.django_db
+@pytest.mark.ignore_template_errors
+def test_500_app(rf):
+    """Simulate 500 error."""
+    request = rf.get('/')
+    response = views.handler500(request)
+    assert urls.handler500 == 'apps.core.views.handler500'
+    assert response.status_code == 500
+
+    content = response.content.decode('utf-8')
+    assert 'Oops! Website has an error.' in content
+    assert 'Latest publications' in content
+
+
+@pytest.mark.django_db
+@pytest.mark.ignore_template_errors
+@pytest.mark.urls('apps.core.tests.urls')
+@override_settings(MIDDLEWARE=())
+def test_500_before_middlewares(client):
+    """Simulate an early 500 causing middlewares breakage."""
+    response = client.get('/500')
+    assert response.status_code == 500
+    assert 'core/500.html' in (t.name for t in response.templates)
+
+    content = response.content.decode('utf-8')
+    assert 'Oops! Website has an error.' in content
+    assert 'Latest publications' in content

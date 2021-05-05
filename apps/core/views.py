@@ -17,32 +17,45 @@
 
 from django.conf import settings
 from django.http import HttpResponse
-from django.template.loader import render_to_string
+from django.template import loader
+from django.views.defaults import page_not_found, server_error
 
 
 def robots(request):
     """Generate a robots.txt"""
     if not settings.ALLOW_ROBOTS:
-        content = 'User-agent: *\nDisallow: /'
+        body = 'User-agent: *\nDisallow: /'
     else:
-        content = render_to_string(
-            'core/robots.html',
-            request=request,
-            context={'domain': settings.DOMAIN},
-        )
+        template = loader.get_template('core/robots.html')
+        body = template.render({'domain': settings.DOMAIN}, request)
 
-    return HttpResponse(content, content_type='text/plain')
+    return HttpResponse(body, content_type='text/plain; charset=utf-8')
 
 
 def humans(request):
     """Generate a humans.txt"""
-    content = render_to_string(
-        'core/humans.html',
+    template = loader.get_template('core/humans.html')
+    context = {
+        'domain': settings.DOMAIN,
+        'build_date': settings.BUILD_DATE_SHORT,
+    }
+    body = template.render(context, request)
+
+    return HttpResponse(body, content_type='text/plain; charset=utf-8')
+
+
+def handler404(request, exception=None, **kwargs):
+    """Site-wide 404 handler."""
+    return page_not_found(
         request=request,
-        context={
-            'domain': settings.DOMAIN,
-            'build_date': settings.BUILD_DATE_SHORT,
-        },
+        exception=exception,
+        template_name='core/404.html',
     )
 
-    return HttpResponse(content, content_type='text/plain; charset=utf-8')
+
+def handler500(request, **kwargs):
+    """Site-wide 500 handler."""
+    return server_error(
+        request=request,
+        template_name='core/500.html'
+    )

@@ -13,15 +13,12 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-"""Website views definitions."""
+"""The URL configuration that is needed only for testing purposes."""
 
-from django.views.defaults import page_not_found
+from apps.core import views
+from branch.urls import *  # noqa
 
-
-def error_404(request, exception):
-    """Website 404 handler."""
-    return page_not_found(
-        request=request,
-        exception=exception,
-        template_name='website/errors/404.html'
-    )
+urlpatterns = [
+    re_path(r'^404/?$', views.handler404),
+    re_path(r'^500/?$', views.handler500),
+] + urlpatterns

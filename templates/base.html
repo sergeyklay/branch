@@ -60,13 +60,15 @@
     {% compress css %}<link rel="stylesheet" type="text/x-scss" href="{% static 'css/style.scss' %}">{% endcompress %}
     {% block page_css %}{% endblock %}
     {% block header_js %}{% endblock %}
+
     {% block branch_data %}
-    {% include 'partials/branch-data.html' %}
+        {% include 'partials/branch-data.html' %}
     {% endblock %}
 
     {% block analytics %}
         <script async src="{% static 'js/branch-analytics.js' %}"></script>
     {% endblock %}
+
     {% block feed %}{% endblock %}
 </head>
 

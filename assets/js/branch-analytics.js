@@ -30,8 +30,9 @@ function isDoNotTrackEnabled() {
 
 if (isDoNotTrackEnabled()) {
     // Skip analytics for users with Do Not Track enabled
-    console.log('Respecting DNT with respect to analytics...')
+    console.info('[TRACKING]: Respecting DNT with respect to analytics...')
 } else {
+    // Known DNT values not set, so we will assume it's off.
     const branchData = JSON.parse(document.getElementById('branch-data').innerHTML)
 
     if (typeof branchData !== 'undefined' && branchData.analytics_code) {
