@@ -18,7 +18,7 @@
     {% with resource_url=post.get_absolute_url %}
         {{ block.super }}
     {% endwith %}
-    <meta name="dc:date" content="{{ post.published_at|date_to_xmlschema }}">
+    <meta property="dc:date" content="{{ post.published_at|date_to_xmlschema }}">
 {% endblock %}
 
 {% block og_metadata %}

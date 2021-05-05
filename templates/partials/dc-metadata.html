@@ -1,17 +1,17 @@
 {% load locale_helpers %}
 
-<meta name="dc:title" content="{{ seo_title|default:SITE_NAME }}">
-<meta name="dc:description" content="{% spaceless %}{% include 'partials/description-value.html' %}{% endspaceless %}">
-<meta name="dc:creator" content="{{ seo_author|default:SITE_NAME }}">
-<meta name="dc:contributor" content="{{ seo_author|default:SITE_NAME }}">
-<meta name="dc:type" content="Text">
+<meta property="dc:title" content="{{ seo_title|default:SITE_NAME }}">
+<meta property="dc:description" content="{% spaceless %}{% include 'partials/description-value.html' %}{% endspaceless %}">
+<meta property="dc:creator" content="{{ seo_author|default:SITE_NAME }}">
+<meta property="dc:contributor" content="{{ seo_author|default:SITE_NAME }}">
+<meta property="dc:type" content="Text">
 {% if seo_locale and seo_locale.strip %}
-    <meta name="dc:language" content="{{ seo_locale|to_language }}">
+    <meta property="dc:language" content="{{ seo_locale|to_language }}">
 {% else %}
-    <meta name="dc:language" content="{{ LANG }}">
+    <meta property="dc:language" content="{{ LANG }}">
 {% endif %}
 {% if page_rights and page_rights.strip %}
     {# TODO: Add to Page model property #}
-    <meta name="dc:rights" content="{{ page_rights }}">
+    <meta property="dc:rights" content="{{ page_rights }}">
 {% endif %}
-    <meta name="dc:identifier" content="{{ BASE_URL }}{{ resource_url|default:request.path }}">
+    <meta property="dc:identifier" content="{{ BASE_URL }}{{ resource_url|default:request.path }}">

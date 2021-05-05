@@ -36,11 +36,11 @@ def test_post_standard_meta_tags(author, client):
 
     assert 'Hello, World!' in content
     assert '<title>Hello, World! - ' in content
-    assert '<meta name="dc:title" content="Hello, World!">' in content
+    assert '<meta property="dc:title" content="Hello, World!">' in content
     assert '<meta property="og:title" content="Hello, World!">' in content
 
     assert '<meta name="description" content="Lorem ipsum">' in content
-    assert '<meta name="dc:description" content="Lorem ipsum">' in content
+    assert '<meta property="dc:description" content="Lorem ipsum">' in content
     assert '<meta property="og:description" content="Lorem ipsum">' in content
 
 
@@ -64,9 +64,9 @@ def test_post_seo_meta_tags(author, client):
 
     assert 'Hello, World II!' in content
     assert '<title>Alternative title - ' in content
-    assert '<meta name="dc:title" content="Alternative title">' in content
+    assert '<meta property="dc:title" content="Alternative title">' in content
     assert '<meta property="og:title" content="Alternative title">' in content
 
     assert '<meta name="description" content="description">' in content
-    assert '<meta name="dc:description" content="description">' in content
+    assert '<meta property="dc:description" content="description">' in content
     assert '<meta property="og:description" content="description">' in content
