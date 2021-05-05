@@ -3,14 +3,14 @@
 <article class="comment" id="comment-{{ comment.pk }}">
     <div class="d-flex flex-items-center">
         <div class="comment-meta">
-            <span class="comment-author">
+            <h3 class="comment-author">
                 {{ comment.user_name }}
-            </span>
-            <p class="m-0">
+            </h3>
+            <span class="m-0">
                 <time datetime="{{ comment.created_at|date_to_xmlschema }}">
                     {{ comment.created_at|date:"Y.m.d" }}
                 </time>
-            </p>
+            </span>
         </div>
     </div>
 

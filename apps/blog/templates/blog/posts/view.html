@@ -85,13 +85,13 @@
                 {% with total_comments=comments.count  %}
                     {%  if total_comments > 0 %}
                         <div class="d-flex flex-items-center flex-wrap">
-                            <h4 id="discussion-comment-count">
+                            <h2 id="discussion-comment-count">
                                 {% blocktrans trimmed count total_comments=total_comments %}
                                     {{ total_comments }} comment
                                 {% plural %}
                                     {{ total_comments }} comments
                                 {% endblocktrans %}
-                            </h4>
+                            </h2>
                         </div>
                     {% endif %}
                 {%  endwith %}
@@ -108,9 +108,9 @@
                 {% endfor %}
             </section>
 
-            <section class="comment-form-wrapper" role="dialog">
+            <div class="comment-form-wrapper" role="dialog">
                 {% include 'blog/partials/comment-form.html' with form=form %}
-            </section>
+            </div>
 
         {% endblock %}
     </article>

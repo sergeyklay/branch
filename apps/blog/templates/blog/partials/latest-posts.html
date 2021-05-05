@@ -1,4 +1,4 @@
-{% load l10n date_to_xmlschema %}
+{% load l10n date_to_xmlschema locale_helpers %}
 
 <ul class="texts">
     {% for post in latest_posts %}
@@ -10,7 +10,7 @@
                     </time>
                 </span>
 
-                <a href="{{ post.get_absolute_url }}">
+                <a href="{{ post.get_absolute_url }}" lang="{{ post.locale|to_language }}">
                     {{ post.title|escape }}
                 </a>
             </h3>

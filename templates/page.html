@@ -9,7 +9,11 @@
 {% endblock %}
 
 {% block content %}
-    <article class="page" lang="{{ seo_locale|to_language|default:LANG }}">
+    {% if seo_locale and seo_locale.strip %}
+    <article class="page" lang="{{ seo_locale|to_language }}">
+    {% else %}
+    <article class="page" lang="{{ LANG }}">
+    {% endif %}
         {% block page_content %}{% endblock %}
     </article>
 
