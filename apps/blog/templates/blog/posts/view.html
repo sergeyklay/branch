@@ -1,6 +1,6 @@
 {% extends 'post.html' %}
 
-{% load l10n i18n static date_to_xmlschema %}
+{% load l10n i18n static date_to_xmlschema locale_helpers %}
 {% block og_namespace %}article: https://ogp.me/ns/article#{% endblock %}
 {% block page_title %}{{ seo_title }} - {{ block.super }}{% endblock %}
 
@@ -56,7 +56,7 @@
 {% endblock %}
 
 {% block content %}
-    <article class="{{ seo_type|default:'post' }}" role="document">
+    <article class="{{ seo_type|default:'post' }}" role="document" lang="{{ seo_locale|to_language|default:LANG }}">
         {% block post_content %}
             <header>
                 <h1 class="text-title">{{ post.title }}</h1>
