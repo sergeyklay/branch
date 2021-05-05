@@ -16,7 +16,7 @@
 """Website context processors."""
 
 from django.contrib.sites.shortcuts import get_current_site
-from django.utils.translation import get_language, gettext_lazy, to_locale
+from django.utils.translation import gettext_lazy
 
 from .models import Setting
 
@@ -39,8 +39,3 @@ def base_url(request):
     return {
         'SITE_NAME': gettext_lazy(current_site.name),
     }
-
-
-def locale(_):
-    """Add current locale to the context."""
-    return {'LOCALE': to_locale(get_language())}

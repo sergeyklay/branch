@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: branch 1.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-04 22:14+0000\n"
+"POT-Creation-Date: 2021-05-05 01:19+0000\n"
 "PO-Revision-Date: 2021-05-05 01:22+0300\n"
 "Last-Translator: Serghei Iakovlev <egrep@protonmail.ch>\n"
 "Language-Team: Russian <egrep@protonmail.ch>\n"
@@ -385,15 +385,15 @@ msgstr "Настройки"
 msgid "Draft"
 msgstr "Черновик"
 
-#: branch/models.py:40 branch/settings/base.py:305
+#: branch/models.py:40
 msgid "English"
 msgstr "Английский"
 
-#: branch/models.py:41 branch/settings/base.py:307
+#: branch/models.py:41
 msgid "Russian"
 msgstr "Русский"
 
-#: branch/models.py:42 branch/settings/base.py:306
+#: branch/models.py:42
 msgid "Ukrainian"
 msgstr "Украинский"
 

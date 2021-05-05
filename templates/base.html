@@ -1,6 +1,6 @@
 {% load i18n static compress %}
 <!doctype html>
-<html lang="{{ LANGUAGE_CODE|slice:'0:2'|join:'' }}">
+<html lang="{{ LANG }}" dir="{{ DIR }}">
 
 <head prefix="og: http://ogp.me/ns# {%  spaceless %}{% block og_namespace %}{% endblock %}{% endspaceless %} dc: http://purl.org/dc/terms/#">
     <meta charset="utf-8">

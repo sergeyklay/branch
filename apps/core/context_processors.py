@@ -16,12 +16,25 @@
 """Blog-wide context processors."""
 
 from django.conf import settings
+from django.utils.translation import get_language, get_language_bidi, to_locale
 
 
 def base_url(request):
     """Add website base URL and its name to the context."""
     return {
         'BASE_URL': settings.BASE_URL,
+    }
+
+
+def i18n(request):
+    """Add current locale and language settings to the context."""
+    lang = get_language()
+    return {
+        'LANGUAGES': settings.LANGUAGES,
+        'LANG_CODE': f'{settings.LANGUAGE_CODE}'[:2],
+        'LANG': settings.LANGUAGE_URL_MAP.get(lang, lang),
+        'LOCALE': to_locale(get_language()),
+        'DIR': 'rtl' if get_language_bidi() else 'ltr',
     }
 
 
