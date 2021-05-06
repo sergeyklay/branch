@@ -27,6 +27,8 @@ Breaking Changes
 ^^^^^^^^^^^^^^^^
 
 * Removed Django's sites integration as it no longer needed.
+* Removed ``website`` application.
+* All website settings have been moved to ``settings``.
 
 
 Bug Fixes

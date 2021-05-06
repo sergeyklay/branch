@@ -32,12 +32,14 @@ def test_base_paths_presents(key):
 
 
 @pytest.mark.parametrize(
-    'key', ('SITE_NAME',)
+    'key', ('SITE_NAME', 'SITE_DESCRIPTION', 'SITE_TAGLINE',
+            'CONTACT_EMAIL', 'SERVER_EMAIL',
+            'COPYRIGHT_HOLDER',
+            'GITHUB_USER', 'PAGE_SIZE')
 )
 def test_important_vars_presents(key):
     """Make sure all important variables are present."""
     assert getattr(settings, key, None) is not None
-    assert len(getattr(settings, key)) > 0
 
 
 def test_get_db_config(monkeypatch):

@@ -6,7 +6,7 @@
        id="sidebar"
        style="background-image: url({% static 'img/dark-forest.jpg' %});">
     <div class="sidebar-item">
-        <p>{{ site_description|default:'Site description' }}</p>
+        <p>{{ SITE_DESCRIPTION }}</p>
     </div>
 
     <nav class="sidebar-nav">
@@ -34,15 +34,14 @@
             <a href="{% url 'blog:posts_rss' %}" title="{% trans 'Subscribe to posts (RSS 2.0)' %}">RSS 2.0</a>
         </div>
 
-        {#  TODO: I no longer need site_github_username variable #}
-        <a class="sidebar-nav-item" href="https://github.com/{{ site_github_username }}" target="_blank">
+        <a class="sidebar-nav-item" href="https://github.com/{{ GITHUB_USER }}" target="_blank">
             {% trans 'GitHub Profile' %}
         </a>
     </nav>
 
     <div class="sidebar-item">
         <p>
-            &copy; {{ site_copyright_holder }} 2018-{% now "Y" %}.
+            &copy; {{ COPYRIGHT_HOLDER }} 2018-{% now "Y" %}.
             {% trans 'Unless otherwise stated, all content on the site is available under' %}
             <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="license" target="_blank">
                 CC BY-NC-SA 4.0

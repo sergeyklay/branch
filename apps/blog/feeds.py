@@ -26,7 +26,6 @@ from django.utils import feedgenerator
 from django.utils.html import escape, strip_tags
 from django.utils.translation import gettext_lazy as _
 
-from apps.website.models import Setting
 from .models import Post
 
 
@@ -53,15 +52,15 @@ class LatestPostsFeedRSS(Feed):
 
     def description(self):
         """Return the feed's description as a normal Python string."""
-        return Setting.website.get('description')
+        return settings.SITE_DESCRIPTION
 
     def author_name(self):
         """Return the feed's author's name as a normal Python string."""
-        return Setting.website.get('copyright_holder', 'Branch')
+        return settings.COPYRIGHT_HOLDER
 
     def author_email(self):
         """Return the feed's author's email as a normal Python string."""
-        return Setting.website.get('contact_email')
+        return settings.CONTACT_EMAIL
 
     def feed_copyright(self):
         """Return the feed's copyright notice as a normal Python string."""

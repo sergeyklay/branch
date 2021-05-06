@@ -32,7 +32,6 @@ import sys
 from datetime import datetime
 
 import environ
-from django.utils.text import format_lazy
 from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR('subdir').
@@ -92,8 +91,6 @@ IGNORABLE_404_URLS = (
 
 # Application definition
 
-SITE_NAME = _('Serghei Iakovlev')
-
 DJANGO_APPS = (
     # Django contrib apps
     'django.contrib.auth',
@@ -113,7 +110,6 @@ THIRD_PARTY_APPS = (
 LOCAL_APPS = (
     'apps.core',
     'apps.seo',
-    'apps.website',
     'apps.trumbowyg',
     'apps.blog',
     'apps.telegraph',
@@ -166,8 +162,6 @@ TEMPLATES = [
                 'apps.core.context_processors.global_settings',
 
                 'apps.seo.context_processors.google_analytics',
-
-                'apps.website.context_processors.app_settings',
 
                 'apps.pages.context_processors.pages',
             ],
@@ -365,6 +359,20 @@ MEDIA_ROOT = BASE_DIR('media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Project configuration
+
+SITE_NAME = _('Serghei Iakovlev')
+SITE_DESCRIPTION = _("Serghei's Iakovlev Blog")
+SITE_TAGLINE = _('My notebook, workshop, a place where I share my '
+                 'experiences and thoughts')
+
+COPYRIGHT_HOLDER = SITE_NAME
+GITHUB_USER = 'sergeyklay'
+
+PAGE_SIZE = 5
+
+# red, orange, magenta, cyan, blue, brown
+COLOR_SCHEME = ''
 
 # Email configuration
 
@@ -375,11 +383,11 @@ ADMINS = [('Admin', ADMIN_EMAIL)]
 
 # The email address that error messages come from
 SERVER_EMAIL = env.str('SERVER_EMAIL', default='webmaster@localhost')
-SERVER_EMAIL_FROM = env.str('SITE_EMAIL_FROM', default=None)
-if SERVER_EMAIL_FROM is None:
-    SERVER_EMAIL_FROM = format_lazy('{}', SITE_NAME)
 
-DEFAULT_FROM_EMAIL = format_lazy('{} <{}>', SERVER_EMAIL_FROM, SERVER_EMAIL)
+# The email address that website messages come to
+CONTACT_EMAIL = env.str('CONTACT_EMAIL', default='webmaster@localhost')
+
+DEFAULT_FROM_EMAIL = SERVER_EMAIL
 
 EMAIL_HOST = env.str('EMAIL_HOST', default='localhost')
 EMAIL_HOST_USER = env.str('EMAIL_HOST_USER', default='')
@@ -402,3 +410,6 @@ FEED_WORD_LIMIT = 30
 # SEO Tools
 
 GA_TRACKING_ID = env.str('GA_TRACKING_ID', None)
+# Do not translate this
+SEO_KEYWORDS = ('язык программирования, грамматики, грамматика, компиляторы, '
+                'парсеры, сканеры')
