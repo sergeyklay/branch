@@ -74,7 +74,7 @@
 </head>
 
 {# red, orange, magenta, cyan, blue, brown #}
-<body class="theme-base-{{ site_color_scheme }}">
+<body class="theme-base-{{ COLOR_SCHEME }}">
     {% block sidebar %}{% endblock %}
 
     <!--
@@ -88,7 +88,7 @@
                     <a href="{{ BASE_URL }}" title="{% trans 'Go to main page' %}">
                         {{ SITE_NAME }}
                     </a>
-                    <br><small>{{ site_tagline }}</small>
+                    <br><small>{{ SITE_TAGLINE }}</small>
                 </h3>
             </div>
         </header>

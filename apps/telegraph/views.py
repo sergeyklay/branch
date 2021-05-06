@@ -15,19 +15,20 @@
 
 """Telegraph views definitions."""
 
+import logging
+
+from django.conf import settings
 from django.core.mail import (
     BadHeaderError,
     EmailMultiAlternatives,
     get_connection,
 )
-from django.http import HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import FormView
 
 from apps.seo.mixins import PageDetailsMixin
-from apps.website.models import Setting
 from .forms import ContactMessageForm
 
 
@@ -52,31 +53,32 @@ class ContactFormView(PageDetailsMixin, FormView):
         super().form_valid(form)
         cd = form.cleaned_data
 
-        contact_email = Setting.website.get('contact_email')
-        from_email = Setting.website.get('default_from_email')
-        subject_prefix = Setting.website.get('email_subject_prefix')
         subject = cd.get(
             cd['subject'],
-            _('%s: Contact form submission' % subject_prefix)
+            _('Contact form submission')
         )
 
         try:
             mail = EmailMultiAlternatives(
                 subject=subject,
                 body=cd['message'],
-                from_email=from_email,
-                to=[contact_email],
+                from_email=settings.SERVER_EMAIL,
+                to=[settings.CONTACT_EMAIL],
                 reply_to=[f"{cd['name']} <{cd['email']}>"],
                 connection=get_connection(),
             )
 
             self.sent = mail.send() > 0
 
-        except BadHeaderError:  # TODO: Handle this better
-            return HttpResponse(_('Invalid header found'))
+        except BadHeaderError as exc:
+            # TODO: Handle this better
+            logging.exception(exc)
 
-        return render(self.request, self.template_name,
-                      self.get_context_data(form=form))
+        return render(
+            self.request,
+            self.template_name,
+            self.get_context_data(form=form)
+        )
 
     def get_context_data(self, **kwargs):
         """Get object's context data to use in contact page."""

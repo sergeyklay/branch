@@ -15,6 +15,7 @@
 
 """Pages views definitions."""
 
+from django.conf import settings
 from django.views.generic import DetailView
 
 from apps.seo.mixins import PageDetailsMixin
@@ -44,7 +45,7 @@ class PageDetailView(PageDetailsMixin, DetailView):
         if self.object.meta_description:
             return self.object.meta_description
 
-        return None
+        return settings.SITE_DESCRIPTION
 
     @property
     def locale(self):

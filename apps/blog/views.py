@@ -15,13 +15,13 @@
 
 """Blog views definitions."""
 
+from django.conf import settings
 from django.contrib import messages
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import DateDetailView, ListView
 from django.views.generic.edit import FormMixin
 
 from apps.seo.mixins import PageDetailsMixin
-from apps.website.models import Setting
 from .forms import CommentForm
 from .models import Post
 
@@ -54,7 +54,7 @@ class PostDetailView(PageDetailsMixin, FormMixin, DateDetailView):
         if self.object.excerpt:
             return self.object.excerpt
 
-        return None
+        return settings.SITE_DESCRIPTION
 
     @property
     def author(self):
@@ -120,4 +120,4 @@ class PostListView(ListView):
         """
         Get the number of items to paginate by.
         """
-        return Setting.website.get('pagination_per_page', 5)
+        return settings.PAGE_SIZE

@@ -86,14 +86,6 @@ Run database migrations and create admin
    $ python manage.py createsuperuser
 
 
-Load fixtures
--------------
-
-.. code-block:: shell
-
-   $ python manage.py loaddata settings.json
-
-
 Copy static files
 -----------------
 
@@ -112,13 +104,3 @@ Run development server
 
    # For local development only:
    $ make up
-
-
-Final setup
------------
-
-Go to admin website and make the necessary changes in the following sections:
-
-* ``/admin/website/setting``: SEO, Google Analytics, Pagination, Color Scheme
-
-Use value of the ``ADMIN_SITE_URL`` variable instead ``admin`` (see ``settings.env[.dist]``).

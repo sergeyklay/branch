@@ -49,5 +49,12 @@ def global_settings(request):
     """Storing standard blog-wide information used in templates."""
     return {
         'settings': settings,
-        'SITE_NAME': getattr(settings, 'SITE_NAME', 'Branch'),
+
+        'SITE_NAME': settings.SITE_NAME,
+        'SITE_DESCRIPTION': settings.SITE_DESCRIPTION,
+        'SITE_TAGLINE': settings.SITE_TAGLINE,
+        'COPYRIGHT_HOLDER': settings.COPYRIGHT_HOLDER,
+        'GITHUB_USER': settings.GITHUB_USER,
+        'PAGE_SIZE': settings.PAGE_SIZE,
+        'COLOR_SCHEME': getattr(settings, 'COLOR_SCHEME', ''),
     }
