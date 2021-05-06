@@ -143,6 +143,7 @@ CLASSIFIERS = [
 
 # Dependencies that are downloaded by pip on installation and why.
 INSTALL_REQUIRES = [
+    'celery[redis]>=5.0.5',  # Queues support to execute tasks asynchronously
     'beautifulsoup4>=4.9.3',  # Sanitize HTML input
     'django>=3.2',  # Our framework
     'django-environ>=0.4.5',  # Configure Django application
