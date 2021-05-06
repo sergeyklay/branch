@@ -13,7 +13,7 @@
     {% endblock %}
 
     {% block page_description %}
-        <meta name="description" content="{% spaceless %}{% include 'partials/description-value.html' %}{% endspaceless %}">
+        {% include 'partials/page-description.html' %}
     {% endblock %}
 
     {% block page_keywords %}

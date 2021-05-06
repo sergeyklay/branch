@@ -1,7 +1,11 @@
-{% load locale_helpers %}
+{% load seo_helpers locale_helpers %}
 
 <meta property="dc:title" content="{{ seo_title|default:SITE_NAME }}">
-<meta property="dc:description" content="{% spaceless %}{% include 'partials/description-value.html' %}{% endspaceless %}">
+{% if seo_description and seo_description.strip %}
+    <meta property="dc:description" content="{{ seo_description|sanitize_description }}">
+{% else %}
+    <meta property="dc:description" content="{{ SITE_DESCRIPTION|sanitize_description }}">
+{% endif %}
 <meta property="dc:creator" content="{{ seo_author|default:SITE_NAME }}">
 <meta property="dc:contributor" content="{{ seo_author|default:SITE_NAME }}">
 <meta property="dc:type" content="Text">
