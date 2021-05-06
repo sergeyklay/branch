@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: branch 1.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-06 10:20+0000\n"
-"PO-Revision-Date: 2021-05-06 13:21+0300\n"
+"POT-Creation-Date: 2021-05-06 12:58+0000\n"
+"PO-Revision-Date: 2021-05-06 16:06+0300\n"
 "Last-Translator: Serghei Iakovlev <egrep@protonmail.ch>\n"
 "Language-Team: Russian <egrep@protonmail.ch>\n"
 "Language: ru\n"
@@ -286,6 +286,74 @@ msgstr ""
 "помочь мне с исправлением, %(open_bug_link)sописав проблему%(link_end)s и "
 "указав при этом, как вы попали на эту страницу."
 
+#: apps/core/templates/core/humans.html:8
+msgid "CONGRATULATIONS, you found my humans.txt file!"
+msgstr "ПОЗДРАВЛЯЮ, вы нашли мой humans.txt файл!"
+
+#: apps/core/templates/core/humans.html:12
+msgid "TEAM"
+msgstr "КОМАНДА"
+
+#: apps/core/templates/core/humans.html:14
+msgid "Author:"
+msgstr "Автор:"
+
+#: apps/core/templates/core/humans.html:14
+msgid "Serghei Iakovlev (egrep)"
+msgstr "Сергей Яковлев (egrep)"
+
+#: apps/core/templates/core/humans.html:15
+msgid "Contact:"
+msgstr "Контакты:"
+
+#: apps/core/templates/core/humans.html:16
+msgid "GitHub:"
+msgstr "GitHub:"
+
+#: apps/core/templates/core/humans.html:17
+msgid "From:"
+msgstr "Откуда:"
+
+#: apps/core/templates/core/humans.html:17
+msgid "Kyiv, Ukraine"
+msgstr "Киев, Украина"
+
+#: apps/core/templates/core/humans.html:19
+msgid "SITE"
+msgstr "САЙТ"
+
+#: apps/core/templates/core/humans.html:21
+msgid "Last update:"
+msgstr "Дата обновления:"
+
+#: apps/core/templates/core/humans.html:22
+msgid "Language:"
+msgstr "Язык:"
+
+#: apps/core/templates/core/humans.html:22 branch/models.py:41
+msgid "Russian"
+msgstr "Русский"
+
+#: apps/core/templates/core/humans.html:22 branch/models.py:42
+msgid "Ukrainian"
+msgstr "Украинский"
+
+#: apps/core/templates/core/humans.html:22 branch/models.py:40
+msgid "English"
+msgstr "Английский"
+
+#: apps/core/templates/core/humans.html:23
+msgid "Doctype:"
+msgstr "Тип HTML:"
+
+#: apps/core/templates/core/humans.html:24
+msgid "Standards:"
+msgstr "Стандарты:"
+
+#: apps/core/templates/core/humans.html:26
+msgid "Components:"
+msgstr "Компоненты:"
+
 #: apps/pages/admin.py:94
 msgid "URL"
 msgstr "URL"
@@ -363,18 +431,6 @@ msgstr "Новое сообщение"
 #: branch/models.py:35
 msgid "Draft"
 msgstr "Черновик"
-
-#: branch/models.py:40
-msgid "English"
-msgstr "Английский"
-
-#: branch/models.py:41
-msgid "Russian"
-msgstr "Русский"
-
-#: branch/models.py:42
-msgid "Ukrainian"
-msgstr "Украинский"
 
 #: branch/models.py:47
 msgid "Title"

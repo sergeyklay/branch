@@ -4,24 +4,24 @@
    / /_/ / _, _/ ___ |/ /|  / /___/ __  /
   /_____/_/ |_/_/  |_/_/ |_/\____/_/ /_/
 
-
-CONGRATULATIONS, you found my humans.txt file!
+{% load i18n %}
+{% trans 'CONGRATULATIONS, you found my humans.txt file!' %}
 
 ───────────────────────────────────────────────────────────────────────────────
 
-    /* TEAM */
+    /* {% trans 'TEAM' %} */
 
-    Author: Serghei (egrep) Iakovlev
-    Contact: mail [at] {{ domain }}
-    GitHub: @sergeyklay
-    From: Kyiv, Ukraine
+    {% trans 'Author:' %} {% trans 'Serghei Iakovlev (egrep)' %}
+    {% trans 'Contact:' %} mail [at] {{ domain }}
+    {% trans 'GitHub:' %} @sergeyklay
+    {% trans 'From:' %} {% trans 'Kyiv, Ukraine' %}
 
-    /* SITE */
+    /* {% trans 'SITE' %} */
 
-    Last update: {{ build_date }}
-    Language: Russian, Ukrainian, English
-    Doctype: HTML5
-    Standards: Python 3, HTML5, CSS3, Open Graph protocol,
+    {% trans 'Last update:' %} {{ build_date }}
+    {% trans 'Language:' %} {% trans 'Russian' %}, {% trans 'Ukrainian' %}, {% trans 'English' %}
+    {% trans 'Doctype:' %} HTML5
+    {% trans 'Standards:' %} Python 3, HTML5, CSS3, Open Graph protocol,
                Dublin Core metadata, Schema.org
-    Components: Django, jQuery, Ed Theme
+    {% trans 'Components:' %} Django, jQuery, Ed Theme
 
