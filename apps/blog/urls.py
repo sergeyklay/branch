@@ -20,7 +20,7 @@ from django.urls import path
 from . import views
 from .feeds import LatestPostsFeedAtom, LatestPostsFeedRSS
 
-app_name = 'blog'  # pylint: disable=invalid-name
+app_name = 'blog'
 
 urlpatterns = (
     path('', views.PostListView.as_view(), name='post_list'),

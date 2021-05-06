@@ -19,7 +19,7 @@ from django.urls import path
 
 from .views import ContactFormView
 
-app_name = 'telegraph'  # pylint: disable=invalid-name
+app_name = 'telegraph'
 
 urlpatterns = (
     path('contact.html', ContactFormView.as_view(), name='contact_form'),

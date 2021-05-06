@@ -28,6 +28,7 @@ extension-pkg-whitelist=unicodedata
 # Disable the message, report, category or checker with the given id(s).
 disable=
     fixme,
+    invalid-name,
     too-few-public-methods,
     too-many-ancestors,
     no-self-use,
@@ -53,4 +54,4 @@ logging-format-style=old
 [BASIC]
 
 # Good variable names which should always be accepted, separated by a comma.
-good-names=i,j,js,k,n,ex,cd,Run,handler404,_
+good-names=i,j,js,k,n,ex,cd,Run,_
