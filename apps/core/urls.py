@@ -19,7 +19,7 @@ from django.urls import re_path
 
 from .views import humans, robots
 
-app_name = 'core'  # pylint: disable=invalid-name
+app_name = 'core'
 
 urlpatterns = (
     re_path(r'^humans\.txt$', humans, name='humans.txt'),

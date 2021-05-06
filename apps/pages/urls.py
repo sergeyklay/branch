@@ -19,7 +19,7 @@ from django.urls import path
 
 from .views import PageDetailView
 
-app_name = 'pages'  # pylint: disable=invalid-name
+app_name = 'pages'
 
 urlpatterns = (
     path('page/<slug:slug>.html', PageDetailView.as_view(), name='page_view'),

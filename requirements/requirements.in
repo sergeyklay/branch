@@ -1,3 +1,5 @@
+celery
+celery[redis]
 beautifulsoup4
 django
 git+https://github.com/joke2k/django-environ@develop
