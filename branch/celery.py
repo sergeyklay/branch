@@ -13,7 +13,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-"""Celery config for branch project."""
+"""Celery application for branch project."""
 
 import logging
 import os
@@ -23,12 +23,12 @@ from celery import Celery
 # Set the default Django settings module for the 'celery' program.
 os.environ.setdefault(
     'DJANGO_SETTINGS_MODULE',
-    f"housingcoop.settings.{os.getenv('HOUSINGCOOP_ENV', 'dev').lower()}"
+    f"branch.settings.{os.getenv('BRANCH_ENV', 'dev').lower()}"
 )
 
-app = Celery('housingcoop')
+app = Celery('branch')
 
-app.config_from_object('housingcoop.settings.celeryconfig')
+app.config_from_object('branch.settings.celeryconfig')
 
 # Load task modules from all registered Django app configs.
 app.autodiscover_tasks()
