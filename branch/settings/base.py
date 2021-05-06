@@ -94,23 +94,14 @@ IGNORABLE_404_URLS = (
 
 SITE_NAME = _('Serghei Iakovlev')
 
-# The database ID of the django.contrib.sites.models.Site
-# object associated with that particular settings file.
-SITE_ID = 1
-
 DJANGO_APPS = (
-    # Default Django apps
+    # Django contrib apps
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    # Sitemap requirements
-    'django.contrib.sites',
     'django.contrib.sitemaps',
-
-    # Admin
     'django.contrib.admin',
 )
 
