@@ -13,6 +13,7 @@ Features
 
 * Created SEO Tools as a standalone Django application.
 * Provided ability to post HTML in the comments.
+* Added Celery integration support.
 
 
 Improvements
