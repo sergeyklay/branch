@@ -21,6 +21,7 @@ Improvements
 * Provided language attribute for the main content of the page.
 * Moved site name to the project's settings.
 * Various minor improvements in semantic HTML.
+* Improved meta description sanitizing.
 
 
 Breaking Changes

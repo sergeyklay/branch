@@ -1,1 +1,7 @@
-<meta name="description" content="{% spaceless %}{% include 'partials/description-value.html' %}{% endspaceless %}">
+{% load seo_helpers %}
+
+{% if seo_description and seo_description.strip %}
+    <meta name="description" content="{{ seo_description|sanitize_description }}">
+{% else %}
+    <meta name="description" content="{{ SITE_DESCRIPTION|sanitize_description }}">
+{% endif %}

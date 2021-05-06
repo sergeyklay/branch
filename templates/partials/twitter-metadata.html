@@ -1,11 +1,18 @@
-{% load static %}
+{% load static seo_helpers %}
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ seo_title|default:SITE_NAME }}">
-<meta name="twitter:description" content="{% spaceless %}{% include 'partials/description-value.html' %}{% endspaceless %}">
+
+{% if seo_description and seo_description.strip %}
+    <meta name="twitter:description" content="{{ seo_description|sanitize_description }}">
+{% else %}
+    <meta name="twitter:description" content="{{ SITE_DESCRIPTION|sanitize_description }}">
+{% endif %}
+
 {% if featured_image %}
     <meta name="twitter:image:src" content="{{ BASE_URL }}{{ featured_image.url }}">
 {% else%}
     <meta name="twitter:image:src" content="{{ BASE_URL }}{% static 'img/blog-logo.jpg' %}">
 {% endif %}
+
 <meta name="twitter:image:alt" content="{{ seo_title|default:SITE_NAME }}">
