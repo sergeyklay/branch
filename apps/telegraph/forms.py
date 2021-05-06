@@ -51,6 +51,7 @@ class ContactMessageForm(forms.Form):
     )
 
     gotcha = forms.CharField(
+        required=False,
         widget=forms.HiddenInput(attrs={
             'class': 'contact-form-gotcha',
         })
