@@ -53,6 +53,8 @@ def global_settings(request):
         'SITE_NAME': settings.SITE_NAME,
         'SITE_DESCRIPTION': settings.SITE_DESCRIPTION,
         'SITE_TAGLINE': settings.SITE_TAGLINE,
+        'SERVER_EMAIL': settings.SERVER_EMAIL,
+        'CONTACT_EMAIL': settings.CONTACT_EMAIL,
         'COPYRIGHT_HOLDER': settings.COPYRIGHT_HOLDER,
         'GITHUB_USER': settings.GITHUB_USER,
         'PAGE_SIZE': settings.PAGE_SIZE,

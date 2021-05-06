@@ -35,10 +35,7 @@ def robots(request):
 def humans(request):
     """Generate a humans.txt"""
     template = loader.get_template('core/humans.html')
-    context = {
-        'domain': settings.DOMAIN,
-        'build_date': settings.BUILD_DATE_SHORT,
-    }
+    context = {'build_date': settings.BUILD_DATE_SHORT}
     body = template.render(context, request)
 
     return HttpResponse(body, content_type='text/plain; charset=utf-8')
