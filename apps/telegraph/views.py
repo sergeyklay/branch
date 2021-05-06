@@ -15,6 +15,7 @@
 
 """Telegraph views definitions."""
 
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import FormView
@@ -60,6 +61,12 @@ class ContactFormView(PageDetailsMixin, FormView):
         )
 
         self.sent = True
+
+        return render(
+            self.request,
+            self.template_name,
+            self.get_context_data(form=form)
+        )
 
     def get_context_data(self, **kwargs):
         """Get object's context data to use in contact page."""

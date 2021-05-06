@@ -39,6 +39,7 @@ Bug Fixes
 
 * Fixed ``dc:`` meta tag definition.
 * Fixed Email configuration to be able sent mails.
+* Fixed contact form required fields.
 
 
 Trivial/Internal Changes
