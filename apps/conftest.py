@@ -18,7 +18,7 @@
 import pytest
 from django.core.management import call_command
 
-fixtures = ['settings', 'sites']
+fixtures = ['settings']
 
 
 # pylint: disable=W0621

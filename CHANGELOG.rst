@@ -23,6 +23,12 @@ Improvements
 * Various minor improvements in semantic HTML.
 
 
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+* Removed Django's sites integration as it no longer needed.
+
+
 Bug Fixes
 ^^^^^^^^^
 
