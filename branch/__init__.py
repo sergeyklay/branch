@@ -18,6 +18,10 @@
 This module tracks the version of the package as well as the base
 package info used by various functions within Branch.
 
+Variables:
+
+    celery_app
+
 Misc variables:
 
     __copyright__
@@ -32,6 +36,12 @@ Refer to the `documentation <https://github.com/sergeyklay/branch/>`_
 for details on the use of this package.
 
 """
+
+# This will make sure the app is always imported when
+# Django starts so that shared_task will use this app.
+from .celery import app as celery_app
+
+__all__ = ('celery_app',)
 
 __copyright__ = 'Copyright (C) 2021 Serghei Iakovlev'
 __version__ = '1.3.0'

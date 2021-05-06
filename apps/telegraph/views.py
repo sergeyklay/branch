@@ -15,21 +15,13 @@
 
 """Telegraph views definitions."""
 
-import logging
-
-from django.conf import settings
-from django.core.mail import (
-    BadHeaderError,
-    EmailMultiAlternatives,
-    get_connection,
-)
-from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import FormView
 
 from apps.seo.mixins import PageDetailsMixin
 from .forms import ContactMessageForm
+from .tasks import contact_form_submission
 
 
 class ContactFormView(PageDetailsMixin, FormView):
@@ -58,27 +50,16 @@ class ContactFormView(PageDetailsMixin, FormView):
             _('Contact form submission')
         )
 
-        try:
-            mail = EmailMultiAlternatives(
-                subject=subject,
-                body=cd['message'],
-                from_email=settings.SERVER_EMAIL,
-                to=[settings.CONTACT_EMAIL],
-                reply_to=[f"{cd['name']} <{cd['email']}>"],
-                connection=get_connection(),
-            )
-
-            self.sent = mail.send() > 0
-
-        except BadHeaderError as exc:
-            # TODO: Handle this better
-            logging.exception(exc)
-
-        return render(
-            self.request,
-            self.template_name,
-            self.get_context_data(form=form)
+        contact_form_submission.delay(
+            {
+                'subject': subject,
+                'message': cd['message'],
+                'name': cd['name'],
+                'email': cd['email'],
+            }
         )
+
+        self.sent = True
 
     def get_context_data(self, **kwargs):
         """Get object's context data to use in contact page."""
