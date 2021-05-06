@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: branch 1.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-05 18:31+0000\n"
-"PO-Revision-Date: 2021-05-05 21:32+0300\n"
+"POT-Creation-Date: 2021-05-06 10:20+0000\n"
+"PO-Revision-Date: 2021-05-06 13:22+0300\n"
 "Last-Translator: Serghei Iakovlev <egrep@protonmail.ch>\n"
 "Language-Team: Ukrainian <egrep@protonmail.ch>\n"
 "Language: uk\n"
@@ -42,7 +42,7 @@ msgstr "SEO"
 msgid "Blog"
 msgstr "Блог"
 
-#: apps/blog/feeds.py:52
+#: apps/blog/feeds.py:51
 #, python-format
 msgid "Latest posts - %s"
 msgstr "Останні публікації - %s"
@@ -145,12 +145,12 @@ msgid "on"
 msgstr "до"
 
 #: apps/blog/templates/blog/partials/comment-form.html:14
-#: apps/telegraph/templates/telegraph/contact.html:48
+#: apps/telegraph/templates/telegraph/contact.html:47
 msgid "Your Name"
 msgstr "Ваше ім'я"
 
 #: apps/blog/templates/blog/partials/comment-form.html:22
-#: apps/telegraph/templates/telegraph/contact.html:56
+#: apps/telegraph/templates/telegraph/contact.html:55
 msgid "Email Address"
 msgstr "Зворотня адреса"
 
@@ -322,14 +322,14 @@ msgstr "Можна залишити порожнім"
 msgid "E-mail successfully sent"
 msgstr "Повідомлення успішно відправлено"
 
-#: apps/telegraph/templates/telegraph/contact.html:26
+#: apps/telegraph/templates/telegraph/contact.html:25
 msgid ""
 "Your e-mail was successfully sent. I'll read your e-mail as soon as possible."
 msgstr ""
 "Ваше повідомлення успішно відправлено. Я постараюся прочитати його "
 "найближчим часом."
 
-#: apps/telegraph/templates/telegraph/contact.html:28
+#: apps/telegraph/templates/telegraph/contact.html:27
 msgid ""
 "Use the form below to send me a private message. Usually e-mails arrive "
 "within a couple of seconds. But this doesn't mean that I'll read your e-mail "
@@ -339,51 +339,26 @@ msgstr ""
 "повідомлення. Зазвичай листи доходять протягом пари секунд. Але це не "
 "означає, що я доберуся до вашого листа таким же стрімким чином."
 
-#: apps/telegraph/templates/telegraph/contact.html:64
+#: apps/telegraph/templates/telegraph/contact.html:63
 msgid "Subject"
 msgstr "Тема повідомлення"
 
-#: apps/telegraph/templates/telegraph/contact.html:72
+#: apps/telegraph/templates/telegraph/contact.html:71
 msgid "Message"
 msgstr "Повідомлення"
 
-#: apps/telegraph/templates/telegraph/contact.html:79
+#: apps/telegraph/templates/telegraph/contact.html:78
 msgid "Send e-mail"
 msgstr "Надіслати"
 
-#: apps/telegraph/views.py:44 apps/telegraph/views.py:48
+#: apps/telegraph/views.py:45 apps/telegraph/views.py:49
 #: templates/partials/sidebar.html:18
 msgid "Contact Form"
 msgstr "Контактна форма"
 
-#: apps/telegraph/views.py:60
-#, python-format
-msgid "%s: Contact form submission"
-msgstr "%s: Нове повідомлення"
-
-#: apps/telegraph/views.py:76
-msgid "Invalid header found"
-msgstr "Виявлено некоректний заголовок"
-
-#: apps/website/apps.py:27
-msgid "Website"
-msgstr "Вебсайт"
-
-#: apps/website/models.py:40
-msgid "Setting name"
-msgstr "Назва параметра"
-
-#: apps/website/models.py:47
-msgid "Setting value"
-msgstr "Значення параметра"
-
-#: apps/website/models.py:57
-msgid "Setting"
-msgstr "Налаштування"
-
-#: apps/website/models.py:58
-msgid "Settings"
-msgstr "Налаштування"
+#: apps/telegraph/views.py:58
+msgid "Contact form submission"
+msgstr "Нове повідомлення"
 
 #: branch/models.py:35
 msgid "Draft"
@@ -457,9 +432,18 @@ msgstr "Мета опис"
 msgid "This will be displayed in meta tags. Keep it under 120 characters."
 msgstr "Це буде відображатися в метатегах. Використовуйте до 120 символів."
 
-#: branch/settings/base.py:94
+#: branch/settings/base.py:364
 msgid "Serghei Iakovlev"
 msgstr "Сергій Яковлєв"
+
+#: branch/settings/base.py:365
+msgid "Serghei's Iakovlev Blog"
+msgstr "Персональний блог Сергія Яковлєва"
+
+#: branch/settings/base.py:366
+msgid ""
+"My notebook, workshop, a place where I share my experiences and thoughts"
+msgstr "Мій блокнот, майстерня, місце де я ділюся своїм досвідом і думками"
 
 #: templates/base.html:88
 msgid "Go to main page"
@@ -481,10 +465,10 @@ msgstr "Підписатися на стрічку публікацій (Atom)"
 msgid "Subscribe to posts (RSS 2.0)"
 msgstr "Підписатися на стрічку публікацій (RSS 2.0)"
 
-#: templates/partials/sidebar.html:39
+#: templates/partials/sidebar.html:38
 msgid "GitHub Profile"
 msgstr "GitHub профіль"
 
-#: templates/partials/sidebar.html:46
+#: templates/partials/sidebar.html:45
 msgid "Unless otherwise stated, all content on the site is available under"
 msgstr "Якщо не вказано іншого, весь вміст сайту є під ліцензією"
