@@ -39,6 +39,12 @@ Bug Fixes
 * Fixed Email configuration to be able sent mails.
 
 
+Trivial/Internal Changes
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Bumped ``django`` from 3.2.1 to 3.2.2.
+
+
 ----
 
 

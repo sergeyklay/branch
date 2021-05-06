@@ -16,7 +16,7 @@ git+https://github.com/joke2k/django-environ@develop
     # via -r requirements/requirements.in
 django-redis==4.12.1
     # via -r requirements/requirements.in
-django==3.2.1
+django==3.2.2
     # via
     #   -r requirements/requirements.in
     #   django-redis
@@ -32,7 +32,7 @@ redis==3.5.3
     # via django-redis
 rjsmin==1.1.0
     # via django-compressor
-six==1.15.0
+six==1.16.0
     # via django-compressor
 soupsieve==2.2.1
     # via beautifulsoup4
