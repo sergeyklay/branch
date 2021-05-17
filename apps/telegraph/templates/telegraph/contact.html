@@ -41,6 +41,7 @@
                         {{ hidden_field }}
                         {{ hidden_field.errors }}
                     {% endfor %}
+                    {{ form.captcha }}
 
                     <div class="contact-form-item">
                         <label class="{{ form.label_class }}" for="{{ form.name.id_for_label }}">

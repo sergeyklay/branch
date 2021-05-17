@@ -15,6 +15,8 @@
 
 """Telegraph related forms."""
 
+from captcha.fields import ReCaptchaField
+from captcha.widgets import ReCaptchaV3
 from django import forms
 from django.utils.translation import gettext_lazy as _
 
@@ -55,6 +57,11 @@ class ContactMessageForm(forms.Form):
         widget=forms.HiddenInput(attrs={
             'class': 'contact-form-gotcha',
         })
+    )
+
+    captcha = ReCaptchaField(
+        widget=ReCaptchaV3,
+        label=''
     )
 
     message = forms.CharField(

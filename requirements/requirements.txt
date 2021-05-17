@@ -32,12 +32,15 @@ django-compressor==2.4.1
     # via -r requirements/requirements.in
 git+https://github.com/joke2k/django-environ@develop
     # via -r requirements/requirements.in
+django-recaptcha==2.0.6
+    # via -r requirements/requirements.in
 django-redis==4.12.1
     # via -r requirements/requirements.in
 django==3.2.3
     # via
     #   -r requirements/requirements.in
     #   django-appconf
+    #   django-recaptcha
     #   django-redis
 gunicorn==20.1.0
     # via -r requirements/requirements.in

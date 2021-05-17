@@ -61,6 +61,10 @@ Features
   * Custom title for page
   * Sitemap support
 
+* **Website**
+
+  * reCAPTCHA v3 support
+
 * **CI**
 
   * Automated CI using GitHub Actions

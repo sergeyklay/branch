@@ -15,6 +15,7 @@ Features
 * Provided ability to post HTML in the comments.
 * Added Celery integration support.
 * Contact form submission now uses Celery queues.
+* Added reCAPTCHA v3 support.
 
 
 Improvements
