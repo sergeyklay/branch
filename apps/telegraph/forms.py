@@ -60,7 +60,8 @@ class ContactMessageForm(forms.Form):
     )
 
     captcha = ReCaptchaField(
-        widget=ReCaptchaV3
+        widget=ReCaptchaV3,
+        label=''
     )
 
     message = forms.CharField(

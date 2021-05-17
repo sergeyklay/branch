@@ -63,3 +63,5 @@ jobs:
         env:
           DJANGO_SETTINGS_MODULE: branch.settings.test
           SECRET_KEY: Naive and not very secret key used for tests
+          RECAPTCHA_PUBLIC_KEY: ${{ secrets.RECAPTCHA_PUBLIC_KEY }}
+          RECAPTCHA_PRIVATE_KEY: ${{ secrets.RECAPTCHA_PRIVATE_KEY }}
