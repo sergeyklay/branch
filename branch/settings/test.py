@@ -45,3 +45,6 @@ CACHES['default']['BACKEND'] = 'django.core.cache.backends.dummy.DummyCache'
 
 # reCAPTCHA
 RECAPTCHA_REQUIRED_SCORE = 0.1
+
+# Simple Captcha Settings
+SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']

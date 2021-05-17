@@ -209,6 +209,12 @@ DATABASES = {
 
 # Logging
 
+
+def skip_static_requests(record):
+    """Do not log static request files to the console."""
+    return not str(record.args[0]).startswith('GET /static/')
+
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -238,7 +244,10 @@ LOGGING = {
             'class': 'logging.StreamHandler',
             'level': 'INFO',
             'formatter': 'common',
-            'filters': ['require_debug_true'],
+            'filters': [
+                'require_debug_true',
+                'skip_static_requests',
+            ],
         },
         'console_prod': {
             'class': 'logging.StreamHandler',
@@ -248,6 +257,10 @@ LOGGING = {
         },
     },
     'filters': {
+        'skip_static_requests': {
+            '()': 'django.utils.log.CallbackFilter',
+            'callback': skip_static_requests,
+        },
         'require_debug_false': {
             '()': 'django.utils.log.RequireDebugFalse',
         },
