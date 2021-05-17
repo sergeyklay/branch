@@ -35,7 +35,7 @@
 {% block og_metadata %}
     {% with resource_url=post.get_absolute_url  resource_type='article' featured_image=post.featured_image %}
         {{ block.super }}
-        {% block og_type %}
+        {% block og_article %}
             <meta property="article:published_time" content="{{ post.published_at|date_to_xmlschema }}">
             <meta property="article:modified_time" content="{{ post.updated_at|date_to_xmlschema }}">
             {# TODO: #}

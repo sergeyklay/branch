@@ -2,7 +2,7 @@
 
 <meta property="og:url" content="{{ BASE_URL }}{{ resource_url|default:request.path }}">
 <meta property="og:type" content="{{ resource_type|default:'website' }}">
-{% block og_type %}{% endblock %}
+{% block og_article %}{% endblock %}
 <meta property="og:title" content="{{ seo_title|default:SITE_NAME }}">
 
 {% if seo_description and seo_description.strip %}
