@@ -39,15 +39,9 @@ def load_long_description():
         pat = r"(\d+.\d.\d \(.*?\)\r?\n.*?)\r?\n\r?\n\r?\n----\r?\n\r?\n\r?\n"
         result = re.search(pat, read_file(changelog), re.S)
 
-        if result:
-            return result.group(1)
-        else:
-            return ''
+        return result.group(1) if result else ''
 
     try:
-        read_me = path.join(PKG_DIR, 'README.rst')
-        authors = path.join(PKG_DIR, 'AUTHORS.rst')
-
         title = f"{PKG_NAME}: {find_meta('description')}"
         head = '=' * (len(title) - 1)
 
@@ -55,15 +49,19 @@ def load_long_description():
             head,
             format(title.strip(' .')),
             head,
-            read_file(read_me).split('.. teaser-begin')[1],
+            read_file(path.join(PKG_DIR, 'README.rst')).split(
+                '.. teaser-begin'
+            )[1],
+            '',
+            read_file(path.join(PKG_DIR, 'CONTRIBUTING.rst')),
             '',
             'Release Information',
-            '===================',
+            '===================\n',
             changes(),
             '',
             f"`Full changelog <{find_meta('url')}/blob/master/CHANGELOG.rst>`_.",  # noqa: E501
             '',
-            read_file(authors),
+            read_file(path.join(PKG_DIR, 'AUTHORS.rst')),
         )
 
         return '\n'.join(contents)
