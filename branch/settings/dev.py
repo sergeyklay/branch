@@ -50,3 +50,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Caches
 CACHES['default']['BACKEND'] = 'django.core.cache.backends.dummy.DummyCache'
+
+# reCAPTCHA
+RECAPTCHA_REQUIRED_SCORE = 0.1

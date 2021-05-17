@@ -103,6 +103,7 @@ DJANGO_APPS = (
 )
 
 THIRD_PARTY_APPS = (
+    'captcha',  # reCAPTCHA support for Django.
     'compressor',  # Compress JS and CSS into single cached file.
 )
 
@@ -413,3 +414,9 @@ GA_TRACKING_ID = env.str('GA_TRACKING_ID', None)
 # Do not translate this
 SEO_KEYWORDS = ('язык программирования, грамматики, грамматика, компиляторы, '
                 'парсеры, сканеры')
+
+# reCAPTCHA
+
+RECAPTCHA_PUBLIC_KEY = env.str('RECAPTCHA_PUBLIC_KEY')
+RECAPTCHA_PRIVATE_KEY = env.str('RECAPTCHA_PRIVATE_KEY')
+RECAPTCHA_REQUIRED_SCORE = 0.75

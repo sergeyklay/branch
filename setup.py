@@ -148,6 +148,7 @@ INSTALL_REQUIRES = [
     'django>=3.2',  # Our framework
     'django-environ>=0.4.5',  # Configure Django application
     'django-compressor>=2.4',  # Compile and minify static assets
+    'django-recaptcha>=2.0.6',  # reCAPTCHA support for Django
     'django-redis>=4.12.1',  # Redis cache backend for Django
     'gunicorn>=20.1.0',  # A Python WSGI HTTP Server
     'pillow>=8.2.0',  # Python Imaging Library
