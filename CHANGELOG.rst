@@ -45,7 +45,11 @@ Bug Fixes
 Trivial/Internal Changes
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-* Bumped ``django`` from 3.2.1 to 3.2.2.
+* Bumped ``django`` from 3.2.1 to 3.2.3.
+* Bumped ``faker`` from 8.1.2 to 8.1.4.
+* Bumped ``flake8`` from 3.9.1 to 3.9.2.
+* Bumped ``pytest-cov`` from 2.11.1 to 2.12.0.
+* Bumped ``pytest-django`` from 4.2.0 to 4.3.0.
 
 
 ----
