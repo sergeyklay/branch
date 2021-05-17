@@ -25,7 +25,7 @@ from django.utils import timezone
 from django.utils.text import format_lazy
 from django.utils.translation import gettext_lazy as _
 
-from branch.models import AbstractPage
+from apps.core.models import Content
 
 
 class Author(User):
@@ -37,7 +37,7 @@ class Author(User):
         proxy = True
 
 
-class Post(AbstractPage):
+class Post(Content):
     """Blog posts model class."""
 
     TYPES = (

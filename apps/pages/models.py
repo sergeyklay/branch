@@ -18,10 +18,10 @@
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 
-from branch.models import AbstractPage
+from apps.core.models import Content
 
 
-class Page(AbstractPage):
+class Page(Content):
     """Page model class."""
 
     class Meta:

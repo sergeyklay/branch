@@ -286,20 +286,20 @@ ADMIN_SITE_URL = env.str('ADMIN_SITE_URL', default='admin/')
 BRANCH_LANGUAGES = {
     'en-US': {
         'english': 'English (US)',
-        'native': 'English (US)'
+        'native': 'English (US)',
+        'region': 'en_US',
     },
     'ru': {
         'english': 'Russian',
         'native': '\u0420\u0443\u0441\u0441\u043a\u0438\u0439',
+        'region': 'ru_RU',
     },
     'uk': {
         'english': 'Ukrainian',
         'native': '\u0423\u043a\u0440\u0430\u0457\u043d\u0441\u044c\u043a\u0430',  # noqa
+        'region': 'uk_UA',
     },
 }
-
-ADMIN_LANGUAGE_CODE = 'ru'
-DEFAULT_LANGUAGE_CODE = 'ru'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -311,6 +311,9 @@ LANGUAGES = [
 ]
 
 LANGUAGE_MAP = {locale.lower(): locale for locale in BRANCH_LANGUAGES}
+LOCALE_TERRITORY = [
+    (locale['region'], locale['native']) for locale in BRANCH_LANGUAGES.values() # noqa
+]
 
 TIME_ZONE = 'UTC'
 USE_I18N = True

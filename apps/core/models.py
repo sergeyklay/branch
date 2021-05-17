@@ -15,6 +15,7 @@
 
 """Project wide models lives here."""
 
+from django.conf import settings
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
@@ -28,18 +29,21 @@ class PublishedManager(models.Manager):
         return super().get_queryset().filter(status='published')
 
 
-class AbstractPage(models.Model):
-    """Abstract base model class for all kinds of posts and pages."""
+class Content(models.Model):
+    """
+    Basic page data which can be used by other modules.
+
+    This class is intended to abstract some common features:
+
+    * Adds common page fields like title, slug, body, etc.
+    * Adds automatic timestamps fields to the model.
+    * Adds locale field.
+    * Adds SEO-related fields.
+    """
 
     STATUS_CHOICES = (
         ('draft', _('Draft')),
         ('published', _('Published')),
-    )
-
-    LOCALES = (
-        ('en_US', _('English')),
-        ('ru_RU', _('Russian')),
-        ('uk_UA', _('Ukrainian')),
     )
 
     title = models.CharField(
@@ -93,7 +97,7 @@ class AbstractPage(models.Model):
 
     locale = models.CharField(
         max_length=5,
-        choices=LOCALES,
+        choices=settings.LOCALE_TERRITORY,
         default='en_US',
         verbose_name=_('Locale'),
         help_text=_('Specify the publishing locale used.'),
@@ -122,7 +126,7 @@ class AbstractPage(models.Model):
     published = PublishedManager()  # The status-specific manager.
 
     class Meta:
-        """Abstract base model metadata class."""
+        """Basic page metadata class."""
 
         abstract = True
 

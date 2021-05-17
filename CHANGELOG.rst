@@ -46,6 +46,7 @@ Bug Fixes
 Trivial/Internal Changes
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
+* Moved ``branch.models.AbstractPage`` to ``apps.core.models.Content``.
 * Bumped ``django`` from 3.2.1 to 3.2.3.
 * Bumped ``faker`` from 8.1.2 to 8.1.4.
 * Bumped ``flake8`` from 3.9.1 to 3.9.2.
