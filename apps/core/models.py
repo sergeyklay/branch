@@ -138,6 +138,6 @@ class Content(models.Model):
         raise NotImplementedError()
 
     def save(self, *args, **kwargs):
-        """On save, update updated_at timestamp"""
+        """On save, update updated_at timestamp."""
         self.updated_at = timezone.now()
         return super().save(*args, **kwargs)

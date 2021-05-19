@@ -34,7 +34,7 @@ class TrumbowygWidget(forms.Textarea):
 
     @property
     def assets(self):
-        """Setup static assets to use in WYSIWYG editor."""
+        """Get static assets to use in WYSIWYG editor."""
         min_js = '' if getattr(django_settings, 'DEBUG', False) else '.min'
 
         css = (
@@ -66,7 +66,7 @@ class AdminTrumbowygWidget(TrumbowygWidget, widgets.AdminTextareaWidget):
 
     @property
     def assets(self):
-        """Setup static assets to use in WYSIWYG editor."""
+        """Get static assets to use in WYSIWYG editor."""
         min_js = '' if getattr(django_settings, 'DEBUG', False) else '.min'
         css, _ = super().assets
 
@@ -102,7 +102,6 @@ class RichTextField(forms.CharField):
 
     def widget_attrs(self, widget):
         """Add a custom css class to the widget."""
-
         attrs = super().widget_attrs(widget)
         attrs.update({
             'class': self.css_class,

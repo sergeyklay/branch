@@ -46,7 +46,7 @@ def i18n(request):
 
 
 def global_settings(request):
-    """Storing standard blog-wide information used in templates."""
+    """Store standard blog-wide information used in templates."""
     return {
         'settings': settings,
 

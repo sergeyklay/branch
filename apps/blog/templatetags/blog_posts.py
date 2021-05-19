@@ -24,7 +24,7 @@ register = template.Library()
 
 @register.simple_tag
 def total_posts():
-    """Get number of published posts"""
+    """Get number of published posts."""
     return Post.published.count()
 
 

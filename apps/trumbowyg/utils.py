@@ -102,7 +102,6 @@ def content_sanitize(raw_text, allowed_tags=None, allowed_attrs=None,
     - Removes all html tag attributes
     - Autoindent existing html
     """
-
     allowed_tags = ALLOWED_TAGS + (allowed_tags or ())
     allowed_attrs = ALLOWED_ATTRS + (allowed_attrs or ())
 

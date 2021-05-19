@@ -29,7 +29,6 @@ register = template.Library()
 @stringfilter
 def sanitize_description(raw_text):
     """Sanitize website description."""
-
     unescaped = unescape(raw_text or '')
     normalized = unicodedata.normalize('NFKC', unescaped)
 

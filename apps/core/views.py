@@ -22,7 +22,7 @@ from django.views.defaults import page_not_found, server_error
 
 
 def robots(request):
-    """Generate a robots.txt"""
+    """Generate a robots.txt file."""
     if not settings.ALLOW_ROBOTS:
         body = 'User-agent: *\nDisallow: /'
     else:
@@ -33,7 +33,7 @@ def robots(request):
 
 
 def humans(request):
-    """Generate a humans.txt"""
+    """Generate a humans.txt file."""
     template = loader.get_template('core/humans.html')
     context = {'build_date': settings.BUILD_DATE_SHORT}
     body = template.render(context, request)
