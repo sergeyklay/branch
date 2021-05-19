@@ -181,7 +181,7 @@ WSGI_APPLICATION = 'branch.wsgi.application'
 
 
 def get_db_config(environ_var):
-    """Get Database configuration"""
+    """Get Database configuration."""
     values = env.db(var=environ_var, default='sqlite:///db.sqlite3')
 
     def is_sqlite(options: dict):

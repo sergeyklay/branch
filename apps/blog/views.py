@@ -117,7 +117,5 @@ class PostListView(ListView):
     template_name = 'blog/posts/list.html'
 
     def get_paginate_by(self, queryset):
-        """
-        Get the number of items to paginate by.
-        """
+        """Get the number of items to paginate by."""
         return settings.PAGE_SIZE

@@ -98,7 +98,6 @@ class Post(Content):
 
         This function ignores microseconds when comparing post dates.
         """
-
         # Haha :)
         #
         #   E1123: Unexpected keyword argument 'microsecond' in method call
@@ -186,6 +185,6 @@ class Comment(models.Model):
         return str(str_id)
 
     def save(self, *args, **kwargs):
-        """On save, update updated_at timestamp"""
+        """On save, update updated_at timestamp."""
         self.updated_at = timezone.now()
         return super().save(*args, **kwargs)
