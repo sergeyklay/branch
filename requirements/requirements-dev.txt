@@ -56,7 +56,7 @@ django==3.2.3
     #   django-redis
 factory-boy==3.2.0
     # via -r requirements/requirements-dev.in
-faker==8.1.4
+faker==8.2.0
     # via
     #   -r requirements/requirements-dev.in
     #   factory-boy
