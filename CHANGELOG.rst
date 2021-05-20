@@ -16,6 +16,7 @@ Features
 * Added Celery integration support.
 * Contact form submission now uses Celery queues.
 * Added reCAPTCHA v3 support.
+* Added ``pyquery`` to perform queries for XML/HTML nodes.
 
 
 Improvements
@@ -25,6 +26,8 @@ Improvements
 * Moved site name to the project's settings.
 * Various minor improvements in semantic HTML.
 * Improved meta description sanitizing.
+* Reworked feeds to get rid of no longer used Sites module, improve items
+  description and fix feeds URL.
 
 
 Breaking Changes

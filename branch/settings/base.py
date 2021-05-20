@@ -422,7 +422,7 @@ if not EMAIL_USE_TLS:
 # Syndication
 
 FEED_MAX_ITEMS = 20
-FEED_WORD_LIMIT = 30
+FEED_WORD_LIMIT = 50
 
 # SEO Tools
 
