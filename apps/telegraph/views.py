@@ -35,14 +35,21 @@ class ContactFormView(PageDetailsMixin, FormView):
 
     @property
     def title(self):
+        """Get the title of the contact form page."""
         return _('Contact Form')
 
     @property
     def description(self):
+        """Get the description of the contact form page."""
         return _('Contact Form')
 
     def form_valid(self, form):
-        """If the form is valid, render 'template_name' with a context."""
+        """
+        If the form is valid, render 'template_name' with a context.
+
+        This method is called when valid form data has been POSTed.
+        It will return an HttpResponse.
+        """
         super().form_valid(form)
         cd = form.cleaned_data
 

@@ -24,23 +24,25 @@ from django.core.management.base import BaseCommand
 
 
 class Command(BaseCommand):
-    """Generate project's build ids."""
+    """Generate project's build IDs."""
 
     help = "Generate project's build ids"  # noqa: A003
 
     def __init__(self, stdout=None, stderr=None, no_color=False,
                  force_color=False):
+        """Init Command with empty build_id."""
         super().__init__(stdout, stderr, no_color, force_color)
         self.build_id = None
 
     def update_build_info(self):
-        """Regenerate project's build ids."""
+        """Regenerate project's build IDs."""
         time_hash = hex(int(time.time()))
         build_id = uuid.uuid4().hex
 
         self.build_id = '%s-%s' % (build_id[:8], time_hash[2:])
 
     def handle(self, *args, **kwargs):
+        """Store project's build IDs in the build.py file."""
         self.update_build_info()
         build_id_file = settings.BASE_DIR('build.py')
         build_date_short = datetime.utcnow().strftime('%Y-%m-%d')
