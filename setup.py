@@ -152,6 +152,7 @@ INSTALL_REQUIRES = [
     'django-redis>=4.12.1',  # Redis cache backend for Django
     'gunicorn>=20.1.0',  # A Python WSGI HTTP Server
     'pillow>=8.2.0',  # Python Imaging Library
+    'pyquery>=1.4.3',  # A jQuery-like Library for Python
 ]
 
 DEPENDENCY_LINKS = [

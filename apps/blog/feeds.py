@@ -18,37 +18,29 @@
 import datetime
 
 from django.conf import settings
-from django.contrib.sites.shortcuts import get_current_site
 from django.contrib.syndication.views import Feed
 from django.template.defaultfilters import truncatewords
-from django.urls import reverse_lazy
-from django.utils import feedgenerator
+from django.urls import reverse
+from django.utils.feedgenerator import Atom1Feed, Rss201rev2Feed
 from django.utils.html import escape, strip_tags
 from django.utils.translation import gettext_lazy as _
 
+from apps.core.utils import to_absolute_url
 from .models import Post
 
 
 class LatestPostsFeedRSS(Feed):
     """This represents RSS feed for blog posts."""
 
-    def __init__(self, posts_viewname):
-        self.link = reverse_lazy(posts_viewname)
+    feed_type = Rss201rev2Feed
 
-    def get_object(self, request, *args, **kwargs):
-        """
-        Take the current request and the arguments from the URL, and
-        returns site object represented by this feed. Raises
-        django.core.exceptions.ObjectDoesNotExist on error
-        """
-        return get_current_site(request)
+    def link(self):
+        """Get link for the feed as a whole."""
+        return to_absolute_url(reverse('blog:posts_rss'))
 
-    def title(self, site):
-        """
-        Take the site object returned by get_object() and return the
-        feed's title as a normal Python string.
-        """
-        return _('Latest posts - %s' % site.name)
+    def title(self):
+        """Get title for the feed as a whole."""
+        return _('Latest posts - %s' % settings.SITE_NAME)
 
     def description(self):
         """Return the feed's description as a normal Python string."""
@@ -83,6 +75,14 @@ class LatestPostsFeedRSS(Feed):
         # Titles should be double escaped by default (see #6533)
         return escape(item.title)
 
+    def item_link(self, item):
+        """
+        Get the given item absolute URL.
+
+        Takes an item, as returned by items(), and returns the item's URL.
+        """
+        return to_absolute_url(item.get_absolute_url())
+
     def item_description(self, item):
         """
         Get the given item description.
@@ -90,9 +90,12 @@ class LatestPostsFeedRSS(Feed):
         Take an item, as returned by items(), and return the item's
         description as a normal Python string.
         """
-        excerpt = item.excerpt or item.body
-        words_limit = getattr(settings, 'FEED_WORD_LIMIT', 30)
-        return truncatewords(strip_tags(excerpt), words_limit)
+        paragraph = item.excerpt
+        if not paragraph or len(paragraph) == 0:
+            paragraph = strip_tags(item.body)
+
+        words_limit = getattr(settings, 'FEED_WORD_LIMIT', 50)
+        return truncatewords(strip_tags(paragraph), words_limit)
 
     def item_author_name(self, item):
         """
@@ -125,24 +128,15 @@ class LatestPostsFeedRSS(Feed):
 class LatestPostsFeedAtom(LatestPostsFeedRSS):
     """This represents Atom feed for blog posts."""
 
-    feed_type = feedgenerator.Atom1Feed
+    feed_type = Atom1Feed
+
+    def link(self):
+        """Get link for the feed as a whole."""
+        return to_absolute_url(reverse('blog:posts_atom'))
 
     def subtitle(self):
         """Return the feed's subtitle as a normal Python string."""
         return self.description()
-
-    def item_description(self, item):
-        """
-        Take an item, as returned by items(), and return the item's
-        description as a normal Python string.
-        """
-        # Try excerpt first
-        excerpt = item.excerpt
-        if not excerpt or len(excerpt) == 0:
-            excerpt = strip_tags(item.body)
-
-        words_limit = getattr(settings, 'FEED_WORD_LIMIT', 30)
-        return truncatewords(excerpt, words_limit)
 
     def item_updateddate(self, item):
         """

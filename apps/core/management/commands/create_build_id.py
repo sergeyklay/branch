@@ -26,7 +26,7 @@ from django.core.management.base import BaseCommand
 class Command(BaseCommand):
     """Generate project's build IDs."""
 
-    help = "Generate project's build ids"  # noqa: A003
+    help = "Generate project's build idsgit diff "  # noqa: A003
 
     def __init__(self, stdout=None, stderr=None, no_color=False,
                  force_color=False):

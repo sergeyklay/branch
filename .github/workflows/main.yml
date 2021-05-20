@@ -91,6 +91,19 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
 
+      - name: Setup Prerequisites (Linux)
+        if: startsWith(runner.os, 'Linux')
+        run: |
+          echo 'debconf debconf/frontend select Noninteractive' | sudo debconf-set-selections
+
+          # Make sure the development packages of libxml2 and libxslt are
+          # installed. This is needed for pyquery.
+          if [ "${{ matrix.python }}" = "3.10.0-alpha.7" ]; then
+            sudo apt-get update --quiet --yes 1>/dev/null
+            sudo apt-get install --no-install-recommends -q -y \
+              libxml2-dev libxslt-dev
+          fi
+
       - name: Get pip cache dir
         id: pip-cache
         run: echo "::set-output name=dir::$(pip cache dir)"

@@ -26,6 +26,8 @@ click==7.1.2
     #   click-didyoumean
     #   click-plugins
     #   click-repl
+cssselect==1.1.0
+    # via pyquery
 django-appconf==1.0.4
     # via django-compressor
 django-compressor==2.4.1
@@ -46,10 +48,14 @@ gunicorn==20.1.0
     # via -r requirements/requirements.in
 kombu==5.0.2
     # via celery
+lxml==4.6.3
+    # via pyquery
 pillow==8.2.0
     # via -r requirements/requirements.in
 prompt-toolkit==3.0.18
     # via click-repl
+pyquery==1.4.3
+    # via -r requirements/requirements.in
 pytz==2021.1
     # via
     #   celery

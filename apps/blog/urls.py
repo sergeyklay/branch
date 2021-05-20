@@ -24,16 +24,10 @@ app_name = 'blog'
 
 urlpatterns = (
     path('', views.PostListView.as_view(), name='post_list'),
-    path(
-        'feeds/atom/posts.xml',
-        LatestPostsFeedAtom(f'{app_name}:post_list'),
-        name='posts_atom'
-    ),
-    path(
-        'feeds/rss/posts.xml',
-        LatestPostsFeedRSS(f'{app_name}:post_list'),
-        name='posts_rss'
-    ),
+
+    path('feeds/atom/posts.xml', LatestPostsFeedAtom(), name='posts_atom'),
+    path('feeds/rss/posts.xml', LatestPostsFeedRSS(), name='posts_rss'),
+
     path(
         'post/<int:year>/<int:month>/<int:day>/<slug:slug>.html',
         views.PostDetailView.as_view(),
