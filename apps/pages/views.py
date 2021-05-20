@@ -32,6 +32,7 @@ class PageDetailView(PageDetailsMixin, DetailView):
 
     @property
     def title(self):
+        """Get page title."""
         if self.object.meta_title:
             return self.object.meta_title
 
@@ -42,6 +43,7 @@ class PageDetailView(PageDetailsMixin, DetailView):
 
     @property
     def description(self):
+        """Get page description."""
         if self.object.meta_description:
             return self.object.meta_description
 
@@ -49,4 +51,5 @@ class PageDetailView(PageDetailsMixin, DetailView):
 
     @property
     def locale(self):
+        """Get page locale."""
         return self.object.locale

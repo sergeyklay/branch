@@ -32,6 +32,5 @@ class Page(Content):
         verbose_name_plural = _('Pages')
 
     def get_absolute_url(self):
-        return reverse('pages:page_view', args=[
-            self.slug,
-        ])
+        """Tell Django how to generate the canonical URL for a page."""
+        return reverse('pages:page_view', args=[self.slug])

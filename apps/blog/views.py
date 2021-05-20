@@ -72,15 +72,15 @@ class PostDetailView(PageDetailsMixin, FormMixin, DateDetailView):
         return f'{self.object.get_absolute_url()}#feedback-message'
 
     def get_queryset(self):
-        """
-        Return the `QuerySet` that will be used to look up the blog post.
-        """
+        """Return the `QuerySet` that will be used to look up the blog post."""
         return Post.published.all()
 
     def post(self, request, *args, **kwargs):
         """
-        Handle POST requests: set instance object, instantiate a form instance
-        with the passed POST variables and then check if it's valid.
+        Handle POST requests.
+
+        Set instance object, instantiate a form instance with the passed
+        POST variables and then check if it's valid.
         """
         self.object = self.get_object()
         form = self.get_form()

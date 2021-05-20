@@ -32,7 +32,9 @@ class TelegraphSitemap(Sitemap):
     priority = 0.4
 
     def items(self):
+        """Get a list of pages."""
         return ['contact_form']
 
     def location(self, item):
+        """Get the absolute path for a given object."""
         return reverse(f'{app_name}:{item}')
