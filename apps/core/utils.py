@@ -15,8 +15,18 @@
 
 """Common utils for the whole project."""
 
+from urllib.parse import urljoin
+
 from django.conf import settings
 from django.utils.translation import trans_real
+
+
+def to_absolute_url(url, site=None):
+    """Take an URL and prepend the BASE_URL."""
+    if url and url.startswith(('http://', 'https://', 'mailto:')):
+        return url
+
+    return urljoin(site or settings.BASE_URL, url)
 
 
 def to_language(locale):
