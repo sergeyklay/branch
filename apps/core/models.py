@@ -131,6 +131,7 @@ class Content(models.Model):
         abstract = True
 
     def __str__(self):
+        """Override the default name of the objects of the current class."""
         return f'{self.title}'
 
     def get_absolute_url(self):

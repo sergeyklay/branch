@@ -175,6 +175,7 @@ class Comment(models.Model):
         verbose_name_plural = _('Comments')
 
     def __str__(self):
+        """Override the default name of the objects of Comment class."""
         str_id = format_lazy(
             '{msg} {name} {on} "{post}"',
             msg=_('Comment by'),

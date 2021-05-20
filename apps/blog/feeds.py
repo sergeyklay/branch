@@ -75,6 +75,8 @@ class LatestPostsFeedRSS(Feed):
 
     def item_title(self, item):
         """
+        Get the given item title.
+
         Take an item, as returned by items(), and return the item's
         title as a normal Python string.
         """
@@ -83,6 +85,8 @@ class LatestPostsFeedRSS(Feed):
 
     def item_description(self, item):
         """
+        Get the given item description.
+
         Take an item, as returned by items(), and return the item's
         description as a normal Python string.
         """
@@ -92,6 +96,8 @@ class LatestPostsFeedRSS(Feed):
 
     def item_author_name(self, item):
         """
+        Get the given item author name.
+
         Take an item, as returned by items(), and return the item's
         author's name as a normal Python string.
         """
@@ -99,6 +105,8 @@ class LatestPostsFeedRSS(Feed):
 
     def item_author_email(self, item):
         """
+        Get the given item author email.
+
         Take an item, as returned by items(), and return the item's
         author's email as a normal Python string.
         """
@@ -106,6 +114,8 @@ class LatestPostsFeedRSS(Feed):
 
     def item_pubdate(self, item):
         """
+        Get the given item published date.
+
         Take an item, as returned by items(), and return the item's
         pubdate.
         """
@@ -136,6 +146,8 @@ class LatestPostsFeedAtom(LatestPostsFeedRSS):
 
     def item_updateddate(self, item):
         """
+        Get the given item updated date.
+
         Take an item, as returned by items(), and return the item's
         updateddate.
         """

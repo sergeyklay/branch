@@ -21,27 +21,27 @@ class PageDetailsMixin:
 
     @property
     def title(self):
-        """Get resource title."""
+        """Get the title of the current resource."""
         return None
 
     @property
     def description(self):
-        """Get resource description."""
+        """Get the description of the current resource."""
         return None
 
     @property
     def author(self):
-        """Get resource author."""
+        """Get the author of the current resource."""
         return None
 
     @property
     def locale(self):
-        """Get resource locale."""
+        """Get the locale of the current resource."""
         return None
 
     @property
     def resource_type(self):
-        """Get resource type."""
+        """Get the type of the current resource."""
         return None
 
     def get_context_data(self, **kwargs):

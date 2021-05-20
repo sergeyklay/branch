@@ -95,6 +95,7 @@ class RichTextField(forms.CharField):
     """
 
     def __init__(self, *args, widget=None, **kwargs):
+        """Init RichTextField with widget and CSS class."""
         widget = widget or TrumbowygWidget
         self.css_class = kwargs.pop('css_class', 'textarea-wysiwyg')
 

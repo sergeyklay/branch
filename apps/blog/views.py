@@ -38,6 +38,7 @@ class PostDetailView(PageDetailsMixin, FormMixin, DateDetailView):
 
     @property
     def title(self):
+        """Get the title of the current post."""
         if self.object.meta_title:
             return self.object.meta_title
 
@@ -48,6 +49,7 @@ class PostDetailView(PageDetailsMixin, FormMixin, DateDetailView):
 
     @property
     def description(self):
+        """Get the description of the current post."""
         if self.object.meta_description:
             return self.object.meta_description
 
@@ -58,17 +60,21 @@ class PostDetailView(PageDetailsMixin, FormMixin, DateDetailView):
 
     @property
     def author(self):
+        """Get the author of the current post."""
         return self.object.author.get_full_name()
 
     @property
     def locale(self):
+        """Get the locale of the current post."""
         return self.object.locale
 
     @property
     def resource_type(self):
+        """Get the type of the current post."""
         return self.object.post_type
 
     def get_success_url(self):
+        """Get the URL to redirect to when a form is successfully validated."""
         return f'{self.object.get_absolute_url()}#feedback-message'
 
     def get_queryset(self):
@@ -89,12 +95,19 @@ class PostDetailView(PageDetailsMixin, FormMixin, DateDetailView):
         return self.form_invalid(form)
 
     def get_context_data(self, **kwargs):
+        """Get post's context data to use in template."""
         context = super().get_context_data(**kwargs)
         context['comments'] = self.object.comments.filter(status='published')
         context['form'] = self.get_form()
         return context
 
     def form_valid(self, form):
+        """
+        If the form is valid, redirect to get_success_url().
+
+        This method is called when valid form data has been POSTed.
+        It will return an HttpResponse.
+        """
         # Assign current post to a new comment before save
         form.instance.post = self.object
         form.save()
