@@ -17,6 +17,8 @@ Features
 * Contact form submission now uses Celery queues.
 * Added reCAPTCHA v3 support.
 * Added ``pyquery`` to perform queries for XML/HTML nodes.
+* Added ``flake8-docstrings`` to check the content of Python docstrings for
+  respect of the PEP 257.
 
 
 Improvements
@@ -51,7 +53,7 @@ Trivial/Internal Changes
 
 * Moved ``branch.models.AbstractPage`` to ``apps.core.models.Content``.
 * Bumped ``django`` from 3.2.1 to 3.2.3.
-* Bumped ``faker`` from 8.1.2 to 8.1.4.
+* Bumped ``faker`` from 8.1.2 to 8.2.0.
 * Bumped ``flake8`` from 3.9.1 to 3.9.2.
 * Bumped ``pytest-cov`` from 2.11.1 to 2.12.0.
 * Bumped ``pytest-django`` from 4.2.0 to 4.3.0.

@@ -179,6 +179,7 @@ EXTRAS_REQUIRE = {
         'flake8-import-order>=0.18.0',  # Check the ordering of imports
         'flake8-blind-except>=0.2.0',  # Check for blind except: statements
         'flake8-builtins>=1.5.3',  # Check for shadowing Python builtins
+        'flake8-docstrings>=1.6.0',  # Checks the content of Python docstrings
     ],
     # Dependencies that are required to develop package
     'develop': [
