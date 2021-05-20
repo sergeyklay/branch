@@ -14,8 +14,9 @@
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
 import pytest
+from django.conf import settings
 
-from apps.core.utils import to_language
+from apps.core.utils import to_language, to_absolute_url
 
 
 @pytest.mark.parametrize(
@@ -30,5 +31,25 @@ from apps.core.utils import to_language
     ]
 )
 def test_to_language(locale, expected):
-    """Make sure we correct transform locale to language"""
+    """Make sure we correct transform locale to language."""
     assert to_language(locale) == expected
+
+
+@pytest.mark.parametrize(
+    'url,site,expected',
+    [
+        ('', None, settings.BASE_URL),
+        ('', '', settings.BASE_URL),
+        (None, None, settings.BASE_URL),
+        ('foo', None, f'{settings.BASE_URL}/foo'),
+        ('http://abc', None, 'http://abc'),
+        ('https://cde', None, 'https://cde'),
+        ('https://example.com', 'https://foo.com', 'https://example.com'),
+        ('woo', 'www', 'woo'),
+        ('foobar', 'https://site.com', 'https://site.com/foobar'),
+        ('mailto:a@b.c', 'https://site.com', 'mailto:a@b.c'),
+    ]
+)
+def test_to_absolute_url(url, site, expected):
+    """Make sure we correct join a base URL and a possibly relative URL."""
+    assert to_absolute_url(url, site) == expected

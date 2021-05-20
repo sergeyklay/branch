@@ -22,12 +22,12 @@ from django.utils.translation import (
     to_locale,
 )
 
+from .utils import to_absolute_url
+
 
 def base_url(request):
     """Add website base URL and its name to the context."""
-    return {
-        'BASE_URL': settings.BASE_URL,
-    }
+    return {'BASE_URL': to_absolute_url(url=None)}
 
 
 def i18n(request):
