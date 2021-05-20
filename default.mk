@@ -36,7 +36,7 @@ REQUIREMENTS = requirements/requirements-dev.txt
 
 PYLINT_FLAGS ?= --load-plugins=pylint_django --django-settings-module=$(PKG_NAME).settings.test
 PYTEST_FLAGS ?= --color=yes -v --fail-on-template-vars
-FLAKE8_FLAGS ?= --show-source --statistics
+FLAKE8_FLAGS ?=
 
 VENV_ROOT = .venv
 

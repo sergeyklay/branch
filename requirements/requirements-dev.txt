@@ -58,7 +58,7 @@ django==3.2.3
     #   django-redis
 factory-boy==3.2.0
     # via -r requirements/requirements-dev.in
-faker==8.1.4
+faker==8.2.0
     # via
     #   -r requirements/requirements-dev.in
     #   factory-boy
@@ -66,12 +66,15 @@ flake8-blind-except==0.2.0
     # via -r requirements/requirements-dev.in
 flake8-builtins==1.5.3
     # via -r requirements/requirements-dev.in
+flake8-docstrings==1.6.0
+    # via -r requirements/requirements-dev.in
 flake8-import-order==0.18.1
     # via -r requirements/requirements-dev.in
 flake8==3.9.2
     # via
     #   -r requirements/requirements-dev.in
     #   flake8-builtins
+    #   flake8-docstrings
 gunicorn==20.1.0
     # via -r requirements/requirements.in
 iniconfig==1.1.1
@@ -102,6 +105,8 @@ pycodestyle==2.7.0
     # via
     #   flake8
     #   flake8-import-order
+pydocstyle==6.1.1
+    # via flake8-docstrings
 pyflakes==2.3.1
     # via flake8
 pylint-django==2.4.4
@@ -145,6 +150,8 @@ six==1.16.0
     #   click-repl
     #   django-compressor
     #   python-dateutil
+snowballstemmer==2.1.0
+    # via pydocstyle
 soupsieve==2.2.1
     # via beautifulsoup4
 sqlparse==0.4.1
