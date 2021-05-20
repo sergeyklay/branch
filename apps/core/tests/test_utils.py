@@ -16,7 +16,7 @@
 import pytest
 from django.conf import settings
 
-from apps.core.utils import to_language, to_absolute_url
+from apps.core.utils import to_absolute_url, to_language
 
 
 @pytest.mark.parametrize(
