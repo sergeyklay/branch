@@ -23,7 +23,7 @@ from .urls import app_name
 
 
 class PostSitemap(Sitemap):
-    """Blog sitemap configuration."""
+    """Sitemap configuration for a single post."""
 
     # The change frequency of blog post pages
     changefreq = 'monthly'
@@ -33,6 +33,7 @@ class PostSitemap(Sitemap):
     priority = 0.8
 
     def items(self):
+        """Get a list of posts."""
         return Post.published.all()
 
     def lastmod(self, obj):
@@ -41,7 +42,7 @@ class PostSitemap(Sitemap):
 
 
 class PostsListSitemap(Sitemap):
-    """Provide configuration for blog dynamic pages."""
+    """Sitemap configuration for a posts list."""
 
     # The change frequency of telegraph pages
     changefreq = 'daily'
@@ -51,7 +52,14 @@ class PostsListSitemap(Sitemap):
     priority = 0.9
 
     def items(self):
+        """
+        Get a list of posts.
+
+        This function returns just a list of route names to be used later
+        in location() function.
+        """
         return ['post_list']
 
     def location(self, item):
+        """Get the absolute path for a given object."""
         return reverse(f'{app_name}:{item}')

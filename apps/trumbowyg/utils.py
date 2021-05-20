@@ -57,6 +57,7 @@ DEFAULT_HIGHLIGHT = (
 def highlight_js(debug=False):
     """
     Get JavaScript assets required to enable code highlighting.
+
     Perform manipulation of asset paths to enable code highlight.
     """
     trumbowyg_plugins = 'trumbowyg/dist/plugins'

@@ -84,6 +84,7 @@ class Post(Content):
         verbose_name_plural = _('Posts')
 
     def get_absolute_url(self):
+        """Tell Django how to generate the canonical URL for a post."""
         return reverse('blog:post_view', args=[
             self.published_at.year,  # pylint: disable=no-member
             self.published_at.month,  # pylint: disable=no-member

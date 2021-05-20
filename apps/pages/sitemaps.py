@@ -31,6 +31,7 @@ class PageSitemap(Sitemap):
     priority = 0.5
 
     def items(self):
+        """Get a list of pages."""
         return Page.published.all()
 
     def lastmod(self, obj):
