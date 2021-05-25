@@ -73,10 +73,10 @@ jobs:
           - windows-2019
         experimental: [false]
         include:
-          - python: '3.10.0-alpha.7'
+          - python: '3.10.0-beta.1'
             os: ubuntu-20.04
             experimental: true
-          - python: '3.10.0-alpha.7'
+          - python: '3.10.0-beta.1'
             os: macos-latest
             experimental: true
 
@@ -98,7 +98,7 @@ jobs:
 
           # Make sure the development packages of libxml2 and libxslt are
           # installed. This is needed for pyquery.
-          if [ "${{ matrix.python }}" = "3.10.0-alpha.7" ]; then
+          if [ "${{ matrix.python }}" = "3.10.0-beta.1" ]; then
             sudo apt-get update --quiet --yes 1>/dev/null
             sudo apt-get install --no-install-recommends -q -y \
               libxml2-dev libxslt-dev

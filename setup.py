@@ -146,7 +146,7 @@ INSTALL_REQUIRES = [
     'celery[redis]>=5.0.5',  # Queues support to execute tasks asynchronously
     'beautifulsoup4>=4.9.3',  # Sanitize HTML input
     'django>=3.2',  # Our framework
-    'django-environ>=0.4.5',  # Configure Django application
+    'django-environ-2>=2.0.0',  # Configure Django application
     'django-compressor>=2.4',  # Compile and minify static assets
     'django-recaptcha>=2.0.6',  # reCAPTCHA support for Django
     'django-redis>=4.12.1',  # Redis cache backend for Django
@@ -155,10 +155,7 @@ INSTALL_REQUIRES = [
     'pyquery>=1.4.3',  # A jQuery-like Library for Python
 ]
 
-DEPENDENCY_LINKS = [
-    # develop branch of django-environ to be able use secure redis connections.
-    'git+https://github.com/joke2k/django-environ@develop#egg=django-environ-0.4.5',  # noqa
-]
+DEPENDENCY_LINKS = []
 
 # List additional groups of dependencies here (e.g. testing dependencies).
 # You can install these using the following syntax, for example:

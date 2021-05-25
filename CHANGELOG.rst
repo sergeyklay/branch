@@ -5,6 +5,19 @@ This file contains a brief summary of new features and dependency changes or
 releases, in reverse chronological order.
 
 
+1.4.0 (2021-XX-XX)
+------------------
+
+Trivial/Internal Changes
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Migrated from ``django-environ`` to ``django-environ-2``.
+* Bumped ``faker`` from  8.2.0 to  8.2.1.
+
+
+----
+
+
 1.3.0 (2021-05-21)
 ------------------
 
