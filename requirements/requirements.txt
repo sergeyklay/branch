@@ -46,7 +46,7 @@ django==3.2.3
     #   django-redis
 gunicorn==20.1.0
     # via -r requirements/requirements.in
-kombu==5.1.0
+kombu==5.0.2
     # via celery
 lxml==4.6.3
     # via pyquery
