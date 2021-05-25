@@ -2,7 +2,7 @@ celery
 celery[redis]
 beautifulsoup4
 django
-git+https://github.com/joke2k/django-environ@develop
+django-environ-2
 django_compressor
 django-recaptcha
 django-redis

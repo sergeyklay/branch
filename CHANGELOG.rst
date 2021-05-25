@@ -5,6 +5,19 @@ This file contains a brief summary of new features and dependency changes or
 releases, in reverse chronological order.
 
 
+1.4.0 (2021-XX-XX)
+------------------
+
+Trivial/Internal Changes
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Migrated from ``django-environ`` to ``django-environ-2``.
+* Bumped ``celery[redis]`` from  5.0.5 to  5.1.0.
+
+
+----
+
+
 1.3.0 (2021-05-21)
 ------------------
 
