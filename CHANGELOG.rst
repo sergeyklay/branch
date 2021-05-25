@@ -13,6 +13,7 @@ Trivial/Internal Changes
 
 * Migrated from ``django-environ`` to ``django-environ-2``.
 * Bumped ``celery[redis]`` from  5.0.5 to  5.1.0.
+* Bumped ``faker`` from  8.2.0 to  8.2.1.
 
 
 ----
