@@ -80,7 +80,6 @@ vine==5.0.0
     # via
     #   amqp
     #   celery
-    #   kombu
 wcwidth==0.2.5
     # via prompt-toolkit
 

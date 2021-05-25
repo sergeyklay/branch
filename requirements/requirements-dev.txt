@@ -16,7 +16,7 @@ beautifulsoup4==4.9.3
     # via -r requirements/requirements.in
 billiard==3.6.4.0
     # via celery
-celery[redis]==5.1.0
+celery[redis]==5.0.5
     # via -r requirements/requirements.in
 click-didyoumean==0.0.3
     # via celery
@@ -81,7 +81,7 @@ iniconfig==1.1.1
     # via pytest
 isort==5.8.0
     # via pylint
-kombu==5.1.0
+kombu==5.0.2
     # via celery
 lazy-object-proxy==1.6.0
     # via astroid
@@ -169,7 +169,6 @@ vine==5.0.0
     # via
     #   amqp
     #   celery
-    #   kombu
 wcwidth==0.2.5
     # via prompt-toolkit
 wrapt==1.12.1
