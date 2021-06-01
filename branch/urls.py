@@ -59,7 +59,7 @@ urlpatterns = [
 ]
 
 if settings.DEBUG or env('DJANGO_SETTINGS_MODULE') == 'branch.settings.dev':
-    import debug_toolbar
+    import debug_toolbar  # pylint: disable=E0401
 
     # Remove leading and trailing slashes so the regex matches.
     media_url = settings.MEDIA_URL.lstrip('/').rstrip('/')

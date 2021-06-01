@@ -19,15 +19,16 @@ on:
   push:
     branches:
       - master
-      - 'v[0-9]+.[0-9]+.x'
       - 'feature/**'
+      - 'release/**'
       - 'fix/**'
     tags:
       - 'v[0-9]+.[0-9]+.[0-9]+'
+
   pull_request:
     branches:
       - master
-      - 'v[0-9]+.[0-9]+.x'
+
   schedule:
     - cron: '0 11 * * *'
       #      | | | | |
@@ -73,10 +74,10 @@ jobs:
           - windows-2019
         experimental: [false]
         include:
-          - python: '3.10.0-beta.1'
+          - python: '3.10.0-beta - 3.10'
             os: ubuntu-20.04
             experimental: true
-          - python: '3.10.0-beta.1'
+          - python: '3.10.0-beta - 3.10'
             os: macos-latest
             experimental: true
 
@@ -98,7 +99,7 @@ jobs:
 
           # Make sure the development packages of libxml2 and libxslt are
           # installed. This is needed for pyquery.
-          if [ "${{ matrix.python }}" = "3.10.0-beta.1" ]; then
+          if [ "${{ matrix.python }}" = "3.10.0-beta - 3.10" ]; then
             sudo apt-get update --quiet --yes 1>/dev/null
             sudo apt-get install --no-install-recommends -q -y \
               libxml2-dev libxslt-dev
@@ -109,10 +110,10 @@ jobs:
         run: echo "::set-output name=dir::$(pip cache dir)"
 
       - name: Set up pip cache
-        uses: actions/cache@v2.1.5
+        uses: actions/cache@v2.1.6
         with:
           path: ${{ steps.pip-cache.outputs.dir }}
-          key: ${{ runner.os }}-pip-${{ hashFiles('requirements/requirements.txt') }}-${{ hashFiles('requirements/requirements-dev.txt') }}
+          key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
           restore-keys: |
             ${{ runner.os }}-pip-
 
@@ -126,7 +127,7 @@ jobs:
         run: echo "::set-output name=dir::$(npm config get cache)"
 
       - name: Set up npm cache
-        uses: actions/cache@v2.1.5
+        uses: actions/cache@v2.1.6
         id: npm-cache
         with:
           path: ${{ steps.npm-cache-dir.outputs.dir }}
@@ -137,34 +138,37 @@ jobs:
       - name: Makefile selftest
         run: make help
 
-      - name: Install dependencies
+      - name: Set up virtualenv
         run: |
-          make install
+          pip install --upgrade pip
+          pip --use-feature=in-tree-build install setuptools wheel tox tox-gh-actions
+          npm install
           npm install -g sass
 
       - name: Configuration of the application
         run: cp ./settings.env.dist ./settings.env
 
-      - name: Run migrations
-        run: make migrate
-
       - name: Setuptools self-test
         run: |
-          case ${{ runner.os }} in
-            Windows*)
-              source .venv/Scripts/activate ;;
-            *)
-              source .venv/bin/activate ;;
-          esac
-
           python setup.py --fullname
           python setup.py --long-description
           python setup.py --classifiers
 
       - name: Run unit tests with coverage
-        run: |
-          make build
-          make test
+        run: tox
+        env:
+          RECAPTCHA_PUBLIC_KEY: ${{ secrets.RECAPTCHA_PUBLIC_KEY }}
+          RECAPTCHA_PRIVATE_KEY: ${{ secrets.RECAPTCHA_PRIVATE_KEY }}
+
+      # Use a modern Python version for combining coverage
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v2.2.2
+        if: ${{ matrix.python != '3.10.0-beta - 3.10' }}
+        with:
+          python-version: '3.10.0-beta - 3.10'
+
+      - name: Combine coverage reports
+        run: make ccov
 
       - name: Success Reporting
         if: success()

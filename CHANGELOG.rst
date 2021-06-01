@@ -11,6 +11,7 @@ releases, in reverse chronological order.
 Trivial/Internal Changes
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
+* Migrate to tox.
 * Migrated from ``django-environ`` to ``django-environ-2``.
 * Bumped ``faker`` from  8.2.0 to  8.2.1.
 

@@ -1,15 +1,17 @@
-=======
-Install
-=======
+===============
+Getting Started
+===============
+
+Installation
+============
 
 .. note::
 
-   Please note that this guide is not intended for production environments and
-   is intended solely for local development.
+   This guide is not intended for production usage and meant for local development only.
 
 
 Prerequisites
-=============
+-------------
 
 To play with this blog at your local environment you need the following requirements:
 
@@ -20,11 +22,8 @@ To play with this blog at your local environment you need the following requirem
 
 The project should work the same on the all major systems macOs, Linux or Windows (WSL)
 and in general you don't need Docker, Nginx, RDBMS or VM to play with project at you local
+environment. However, the following guide assumes that you are using Linux/Unix as a local
 environment.
-
-
-Getting started
-===============
 
 
 Set up virtualenv
@@ -32,37 +31,22 @@ Set up virtualenv
 
 .. code-block:: shell
 
+   $ pip install --upgrade pip setuptools wheel tox
    $ make init
    $ source .venv/bin/activate
 
 
-Install dependencies
---------------------
+Installing Dependencies
+-----------------------
 
 .. code-block:: shell
 
    # For production server:
-   $ pip install -r requirements/requirements.txt
+   $ pip install -r requirements.txt
    $ npm install
 
    # For local development:
    $ make install
-
-To refresh dependencies in the future use the following approach:
-
-.. code-block:: shell
-
-   $ python -m pip install --upgrade pip-tools
-
-   # For production server:
-   $ rm requirements/requirements.txt
-   $ make requirements/requirements.txt
-   $ pip-sync requirements/requirements.txt
-
-   # For local development:
-   $ rm requirements/requirements-dev.txt
-   $ make requirements/requirements-dev.txt
-   $ pip-sync requirements/requirements-dev.txt
 
 
 Create environment file
@@ -103,4 +87,4 @@ Run development server
 .. code-block:: shell
 
    # For local development only:
-   $ make up
+   $ make serve

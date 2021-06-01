@@ -38,9 +38,6 @@ define rm-venv-link
 	fi
 endef
 
-requirements/%.txt: requirements/%.in
-	 $(VENV_BIN)/pip-compile --output-file=$@ $<
-
 build.py: $(VENV_PYTHON)
 	@echo $(CS)"Generate project's build ids"$(CE)
 	$(VENV_PYTHON) manage.py create_build_id
@@ -66,37 +63,38 @@ $(VENV_ROOT):
 
 .PHONY: init
 init: $(VENV_PYTHON)
-	@echo $(CS)Installing dev requirements$(CE)
-	$(VENV_PYTHON) -m pip install --upgrade pip pip-tools setuptools wheel
+	@echo
 
-.PHONY: init
-install: init $(REQUIREMENTS)
-	$(VENV_PIP) install --upgrade -r $(REQUIREMENTS)
+.PHONY: install
+install:
+	$(VENV_PIP) install --upgrade pip wheel setuptools
+	$(VENV_PIP) install --upgrade -r requirements.txt
+	$(VENV_PIP) install -e .[develop]
 	$(NPM) install
 
 .PHONY: clean
 clean:
 	@echo $(CS)Remove build and tests artefacts and directories$(CE)
 
-	$(RM) -r $(VENV_ROOT)
 	$(call rm-venv-link)
 	find ./ -name '__pycache__' -delete -o -name '*.pyc' -delete
 	$(RM) -r ./build ./dist ./*.egg-info
-	$(RM) -r ./.cache ./.pytest_cache
-	$(RM) -r ./htmlcov
-	$(RM) ./.coverage ./coverage.xml
-	$(RM) ./build.py
+	$(RM) -r ./node_modules
+	$(RM) -r ./.tox/reports
 
 .PHONY: maintainer-clean
 maintainer-clean: clean
-	@echo $(CS)Remove requirements files$(CE)
-	$(RM) -r .$(REQUIREMENTS)
+	@echo $(CS)Performing full clean$(CE)
+	$(RM) -r $(VENV_ROOT)
+	$(call rm-venv-link)
+	$(RM) -r ./.tox
+	$(RM) ./build.py .python-version
 
 .PHONY: lint
 lint: $(VENV_PYTHON)
 	@echo $(CS)Running linters$(CE)
-	-$(VENV_BIN)/flake8 $(FLAKE8_FLAGS) ./
-	$(VENV_BIN)/pylint $(PYLINT_FLAGS) ./$(PKG_NAME) ./apps
+	tox -e lint
+	@echo
 
 .PHONY: build
 build: build.py
@@ -126,15 +124,16 @@ migrations:
 migrate:
 	$(VENV_PYTHON) manage.py migrate
 
-.PHONY: test-ccov
-test-ccov: COV=--cov=./$(PKG_NAME) --cov=./apps --cov-report=xml --cov-report=html
-test-ccov: HEADER_EXTRA=' (with coverage)'
-test-ccov: test
+.PHONY: ccov
+ccov:
+	@echo $(CS)Combine coverage reports$(HEADER_EXTRA)$(CE)
+	tox -e coverage-report
+	@echo
 
 .PHONY: test
-test: $(VENV_PYTHON)
+test:
 	@echo $(CS)Running tests$(HEADER_EXTRA)$(CE)
-	$(VENV_BIN)/py.test $(PYTEST_FLAGS) $(COV) ./$(PKG_NAME) ./apps
+	tox -e py39-django32
 	@echo
 
 .PHONY: help
@@ -147,16 +146,16 @@ help:
 	@echo 'Available targets:'
 	@echo
 	@echo '  help:         Show this help and exit'
-	@echo '  init:         Installing dev requirements (has to be launched first)'
+	@echo '  init:         Set up virtualenv (has to be launched first)'
 	@echo '  install:      Install all project dependencies'
-	@echo '  up:           Run development server'
+	@echo '  serve:        Run development server'
 	@echo '  static:       Collect static files'
 	@echo '  css:          Build CSS files from SCSS source'
 	@echo '  migrations:   Create database migrations'
 	@echo '  migrate:      Run all database migrations'
 	@echo '  build:        Prepare project to use'
 	@echo '  test:         Run unit tests'
-	@echo '  test-ccov:    Run unit tests with coverage'
+	@echo '  ccov:         Combine coverage reports'
 	@echo '  lint:         Lint the code'
 	@echo '  clean:        Remove build and tests artefacts and directories'
 	@echo '  maintainer-clean:'
@@ -171,12 +170,6 @@ help:
 	@echo
 	@echo '  Python:       $(VENV_PYTHON)'
 	@echo '  pip:          $(VENV_PIP)'
-	@echo
-	@echo 'Flags:'
-	@echo
-	@echo '  FLAKE8_FLAGS: $(FLAKE8_FLAGS)'
-	@echo '  PYTEST_FLAGS: $(PYTEST_FLAGS)'
-	@echo '  PYLINT_FLAGS: $(PYLINT_FLAGS)'
 	@echo
 	@echo 'Environment variables:'
 	@echo
