@@ -13,6 +13,8 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
+"""Setup module for Branch."""
+
 import codecs
 import re
 from os import path
