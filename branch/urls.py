@@ -27,7 +27,6 @@ from apps.blog.sitemaps import PostSitemap, PostsListSitemap
 from apps.core.utils import admin_path
 from apps.pages.sitemaps import PageSitemap
 from apps.telegraph.sitemaps import TelegraphSitemap
-from branch.settings.base import env
 
 
 def sitemaps():

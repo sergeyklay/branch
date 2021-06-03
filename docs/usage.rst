@@ -35,7 +35,3 @@ It will then be necessary to manually start the compression if necessary:
 .. code-block:: shell
 
    $ python manage.py compress
-
-.. note::
-
-   ``COMPRESS_OFFLINE`` is already set to ``True`` in ``branch.settings.prod`` module.

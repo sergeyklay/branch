@@ -49,6 +49,6 @@ jobs:
       - name: Code linting
         run: tox -e lint
         env:
-          DJANGO_SETTINGS_MODULE: branch.settings.test
+          # DJANGO_SETTINGS_MODULE: branch.settings
           RECAPTCHA_PUBLIC_KEY: ${{ secrets.RECAPTCHA_PUBLIC_KEY }}
           RECAPTCHA_PRIVATE_KEY: ${{ secrets.RECAPTCHA_PRIVATE_KEY }}
