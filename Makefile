@@ -69,7 +69,7 @@ init: $(VENV_PYTHON)
 install:
 	$(VENV_PIP) install --upgrade pip wheel setuptools
 	$(VENV_PIP) install --upgrade -r requirements.txt
-	$(VENV_PIP) install -e .[develop]
+	$(VENV_PIP) install -e .[develop,testing]
 	$(NPM) install
 
 .PHONY: clean

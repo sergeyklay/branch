@@ -16,14 +16,14 @@
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
 """Django's command-line utility for administrative tasks."""
+
 import os
 import sys
 
 
 def main():
     """Run administrative tasks."""
-    conf = os.getenv('BRANCH_ENV', 'dev').lower()
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', f'branch.settings.{conf}')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'branch.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

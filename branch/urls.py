@@ -58,7 +58,7 @@ urlpatterns = [
     path('sitemap.xml', sitemap, sitemaps(), name='sitemap'),
 ]
 
-if settings.DEBUG or env('DJANGO_SETTINGS_MODULE') == 'branch.settings.dev':
+if settings.DEBUG:
     import debug_toolbar  # pylint: disable=E0401
 
     # Remove leading and trailing slashes so the regex matches.

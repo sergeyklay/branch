@@ -14,12 +14,13 @@
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
 import os
+from pathlib import Path
 
-import environ
 import pytest
 from django.conf import settings
+from environ import environ  # noqa
 
-from branch.settings.base import get_db_config
+from branch.settings import get_db_config
 
 
 @pytest.mark.parametrize(
@@ -27,8 +28,8 @@ from branch.settings.base import get_db_config
 )
 def test_base_paths_presents(key):
     """Make sure all relevant base paths exists."""
-    assert isinstance(getattr(settings, key), str)
-    assert len(getattr(settings, key)) > 0
+    assert isinstance(getattr(settings, key), Path)
+    assert len(getattr(settings, key))
 
 
 @pytest.mark.parametrize(

@@ -34,5 +34,6 @@ __pycache__
 
 # Project's stuff.
 *.sqlite3
-settings.env
+.env
 build.py
+*.log

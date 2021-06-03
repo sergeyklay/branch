@@ -21,10 +21,7 @@ import os
 from celery import Celery
 
 # Set the default Django settings module for the 'celery' program.
-os.environ.setdefault(
-    'DJANGO_SETTINGS_MODULE',
-    f"branch.settings.{os.getenv('BRANCH_ENV', 'dev').lower()}"
-)
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'branch.settings')
 
 app = Celery('branch')
 

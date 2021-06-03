@@ -21,6 +21,6 @@ from django.conf import settings
 def google_analytics(request):
     """Add GA Tracking ID and search keywords to the context."""
     return {
-        'GA_TRACKING_ID': getattr(settings, 'GA_TRACKING_ID', None),
+        'GA_TRACKING_ID': getattr(settings, 'GA_TRACKING_ID', ''),
         'SEO_KEYWORDS': getattr(settings, 'SEO_KEYWORDS', ''),
     }

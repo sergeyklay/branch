@@ -15,23 +15,19 @@
 
 """Celery configuration module."""
 
-from django.conf import settings
-
-from .base import env
+from branch.settings import DEBUG, env
 
 # Default broker URL.
-broker_url = env.str('BROKER_URL', default=None)
+broker_url = env('BROKER_URL')
 
 # The backend used to store task state and results (tombstones).
-result_backend = env.str('CELERY_RESULT_BACKEND', default=None)
+result_backend = env('CELERY_RESULT_BACKEND')
 
 # If this is True, all tasks will be executed locally by blocking until the
 # task returns.
 #
 # Useful for local development, testing and debugging.
-task_always_eager = settings.DEBUG
-if env.str('DJANGO_SETTINGS_MODULE') == 'branch.settings.test':
-    task_always_eager = True
+task_always_eager = env('CELERY_ALWAYS_EAGER') or DEBUG
 
 # If this is True, eagerly executed tasks (applied by task.apply(), or when the
 # task_always_eager setting is enabled), will propagate exceptions.
@@ -41,17 +37,17 @@ if env.str('DJANGO_SETTINGS_MODULE') == 'branch.settings.test':
 task_eager_propagates = task_always_eager
 
 # Number of CPU cores.
-worker_concurrency = env.int('CELERYD_CONCURRENCY', default=1)
+worker_concurrency = env('CELERYD_CONCURRENCY')
 
 # Name of the pool class used by the worker.
-worker_pool = env.str('CELERYD_POOL', default='prefork')
+worker_pool = env('CELERYD_POOL')
 
 # Configure Celery to use a custom time zone.
-timezone = env.bool('CELERY_TIMEZONE', default=settings.TIME_ZONE)
+timezone = env('CELERY_TIMEZONE')
 
 # The default timeout in seconds before we give up establishing a
 # connection to the AMQP server.
-broker_connection_timeout = env.float('BROKER_CONNECTION_TIMEOUT', default=4.0)
+broker_connection_timeout = env('BROKER_CONNECTION_TIMEOUT')
 
 # Toggles SSL usage on broker connection and SSL settings.
 broker_use_ssl = None
@@ -59,7 +55,7 @@ broker_use_ssl = None
 # The Redis backend supports SSL.
 redis_backend_use_ssl = None
 
-if env.bool('CELERY_USE_SSL', default=False):
+if env('CELERY_USE_SSL'):
     import ssl
 
     _ssl_conf = {

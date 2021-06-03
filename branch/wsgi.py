@@ -26,7 +26,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-conf = os.getenv('BRANCH_ENV', 'dev').lower()
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', f'branch.settings.{conf}')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'branch.settings')
 
 application = get_wsgi_application()

@@ -36,7 +36,7 @@ def load_long_description():
     """Load long description from file README.rst."""
     def changes():
         changelog = path.join(PKG_DIR, 'CHANGELOG.rst')
-        pat = r"(\d+.\d.\d \(.*?\)\r?\n.*?)\r?\n\r?\n\r?\n----\r?\n\r?\n\r?\n"
+        pat = r"(\d+.\d+.\d+ \(.*?\)\r?\n.*?)\r?\n\r?\n\r?\n----\r?\n\r?\n\r?\n"  # noqa: E501
         result = re.search(pat, read_file(changelog), re.S)
 
         return result.group(1) if result else ''
@@ -146,7 +146,7 @@ INSTALL_REQUIRES = [
     'celery[redis]>=5.0.5,!=5.1.0',  # Queues support
     'beautifulsoup4>=4.9.3',  # Sanitize HTML input
     'django>=3.2',  # Our framework
-    'django-environ-2>=2.0.0',  # Configure Django application
+    'django-environ-2>=2.1.0',  # Configure Django application
     'django-compressor>=2.4',  # Compile and minify static assets
     'django-recaptcha>=2.0.6',  # reCAPTCHA support for Django
     'django-redis>=4.12.1',  # Redis cache backend for Django

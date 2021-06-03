@@ -26,7 +26,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-conf = os.getenv('BRANCH_ENV', 'dev').lower()
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', f'branch.settings.{conf}')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'branch.settings')
 
 application = get_asgi_application()
