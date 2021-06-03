@@ -41,7 +41,6 @@ on:
 env:
   NPM: npm
   PYTHON: python
-  BRANCH_ENV: test
   PYTHONUNBUFFERED: '1'
 
 defaults:
@@ -146,7 +145,7 @@ jobs:
           npm install -g sass
 
       - name: Configuration of the application
-        run: cp ./settings.env.dist ./settings.env
+        run: cp ./.env.dist ./.env
 
       - name: Setuptools self-test
         run: |

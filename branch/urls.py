@@ -27,7 +27,6 @@ from apps.blog.sitemaps import PostSitemap, PostsListSitemap
 from apps.core.utils import admin_path
 from apps.pages.sitemaps import PageSitemap
 from apps.telegraph.sitemaps import TelegraphSitemap
-from branch.settings.base import env
 
 
 def sitemaps():
@@ -58,7 +57,7 @@ urlpatterns = [
     path('sitemap.xml', sitemap, sitemaps(), name='sitemap'),
 ]
 
-if settings.DEBUG or env('DJANGO_SETTINGS_MODULE') == 'branch.settings.dev':
+if settings.DEBUG:
     import debug_toolbar  # pylint: disable=E0401
 
     # Remove leading and trailing slashes so the regex matches.

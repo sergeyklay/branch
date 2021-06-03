@@ -52,13 +52,13 @@ Installing Dependencies
 Create environment file
 -----------------------
 
-Copy ``settings.env.dist`` file to ``settings.env`` and make the
+Copy ``.env.dist`` file to ``.env`` and make the
 necessary changes:
 
 .. code-block:: shell
 
    # Create configuration directory
-   $ cp ./settings.env.dist ./settings.env
+   $ cp ./.env.dist ./.env
 
 
 Run database migrations and create admin

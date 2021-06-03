@@ -16,6 +16,34 @@ Trivial/Internal Changes
 * Bumped ``faker`` from  8.2.0 to  8.2.1.
 
 
+Improvements
+^^^^^^^^^^^^
+
+* Changed additional groups of dependencies declared in ``setup.py`` so that
+  ``develop`` is superset now for ``testing`` and ``docs``.
+* Move hardcoded settings to environment variables to follow twelve-factor methodology.
+
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+* Renamed ``settings.env`` to ``.env``.
+* Removed ``BRANCH_ENV`` env var as no longer used.
+* The ``DJANGO_SETTINGS_MODULE`` env now points to ``branch.settings``.
+* Refactor Django settings to follow twelve-factor methodology so that now only
+  one config file is used, and all differences between environments are set by
+  environment variables.
+* Remove no longer used ``branch.settings.ENVIRON_SETTINGS_FILE_PATH`` variable.
+* Rename ``CACHES_DEFAULT`` env var to ``CACHE_URL`` to use sane defaults.
+* The ``BASE_DIR`` env var now is instance of ``pathlib.Path`` instead of ``environ.Path``.
+
+
+Bug Fixes
+^^^^^^^^^
+
+* Fixed Celery timezone configuration.
+
+
 ----
 
 

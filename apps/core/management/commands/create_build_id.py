@@ -26,7 +26,7 @@ from django.core.management.base import BaseCommand
 class Command(BaseCommand):
     """Generate project's build IDs."""
 
-    help = "Generate project's build idsgit diff "  # noqa: A003
+    help = "Generate project's build ids. "  # noqa: A003
 
     def __init__(self, stdout=None, stderr=None, no_color=False,
                  force_color=False):
@@ -44,7 +44,7 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         """Store project's build IDs in the build.py file."""
         self.update_build_info()
-        build_id_file = settings.BASE_DIR('build.py')
+        build_id_file = settings.BASE_DIR / 'build.py'
         build_date_short = datetime.utcnow().strftime('%Y-%m-%d')
 
         with open(build_id_file, 'w') as file:
