@@ -21,19 +21,16 @@
 # https://help.github.com/articles/ignoring-files/#create-a-global-gitignore
 
 # Directories to ignore (do not add trailing '/'s, they skip symlinks).
-/.pytest_cache
+/.tox
 /.venv
-/htmlcov
-/static
+/build
+/*.egg-info
 /node_modules
+/static
 
 # Python cache.
 *.py[cod]
 __pycache__
-
-# Ignore codecoverage stuff.
-.coverage
-coverage.xml
 
 # Project's stuff.
 *.sqlite3
