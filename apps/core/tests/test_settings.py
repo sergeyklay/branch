@@ -29,7 +29,6 @@ from branch.settings import get_db_config
 def test_base_paths_presents(key):
     """Make sure all relevant base paths exists."""
     assert isinstance(getattr(settings, key), Path)
-    assert len(getattr(settings, key))
 
 
 @pytest.mark.parametrize(
