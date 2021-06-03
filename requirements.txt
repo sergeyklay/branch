@@ -18,7 +18,7 @@ click-didyoumean==0.0.3
     # via celery
 click-plugins==1.1.1
     # via celery
-click-repl==0.1.6
+click-repl==0.2.0
     # via celery
 click==7.1.2
     # via
@@ -32,7 +32,7 @@ django-appconf==1.0.4
     # via django-compressor
 django-compressor==2.4.1
     # via -r requirements/requirements.in
-django-environ-2==2.0.0
+django-environ-2==2.1.0
     # via -r requirements/requirements.in
 django-recaptcha==2.0.6
     # via -r requirements/requirements.in
