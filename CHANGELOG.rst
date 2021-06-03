@@ -19,6 +19,8 @@ Trivial/Internal Changes
 Improvements
 ^^^^^^^^^^^^
 
+* Changed additional groups of dependencies declared in ``setup.py`` so that
+  ``develop`` is superset now for ``testing`` and ``docs``.
 * Move hardcoded settings to environment variables to follow twelve-factor methodology.
 
 

@@ -165,30 +165,30 @@ DEPENDENCY_LINKS = []
 EXTRAS_REQUIRE = {
     # Dependencies that are required to run tests
     'testing': [
-        'pylint>=2.6.0,!=2.6.1',  # Python code static checker
-        'pylint-django>=2.4.3',  # A Django plugin for pylint
         'pytest>=6.2.0',  # Our test framework
         'pytest-cov>=2.11.1',  # Pytest plugin for measuring coverage
         'pytest-django>=4.2.0',  # A Django plugin for pytest
         'factory-boy>=3.2.0',  # A versatile test fixtures
         'faker>=8.1.0',  # A generator of fake data for tests
-        'flake8>=3.8.4',  # The modular source code checker
-        'flake8-import-order>=0.18.0',  # Check the ordering of imports
-        'flake8-blind-except>=0.2.0',  # Check for blind except: statements
-        'flake8-builtins>=1.5.3',  # Check for shadowing Python builtins
-        'flake8-docstrings>=1.6.0',  # Checks the content of Python docstrings
     ],
-    # Dependencies that are required to develop package
-    'develop': [
-        'django-debug-toolbar>=3.2',  # Django Debug Toolbar
-        'django-extensions>=3.1.2',  # A collection of Django extensions
-        'setuptools>=53.0.0',  # Build and install packages
-        'wheel>=0.36.2',  # A built-package format for Python
-    ]
+    # Dependencies that are required to build documentation
+    'docs': []
 }
+
+# Dependencies that are required to develop package
+_develop_require = [
+    'django-debug-toolbar>=3.2',  # Django Debug Toolbar
+    'django-extensions>=3.1.2',  # A collection of Django extensions
+    'setuptools>=53.0.0',  # Build and install packages
+    'wheel>=0.36.2',  # A built-package format for Python
+]
+
+EXTRAS_REQUIRE['develop'] = \
+    _develop_require + EXTRAS_REQUIRE['testing'] + EXTRAS_REQUIRE['docs']
 
 # Project's URLs
 PROJECT_URLS = {
+    'Changelog': f"{find_meta('url')}/blob/master/CHANGELOG.rst",
     'Bug Tracker': f"{find_meta('url')}/issues",
     'Source Code': f"{find_meta('url')}",
 }
