@@ -32,7 +32,7 @@ django-appconf==1.0.4
     # via django-compressor
 django-compressor==2.4.1
     # via -r requirements/requirements.in
-django-environ-2==2.0.0
+django-environ-2==2.1.0
     # via -r requirements/requirements.in
 django-recaptcha==2.0.6
     # via -r requirements/requirements.in
@@ -46,7 +46,7 @@ django==3.2.3
     #   django-redis
 gunicorn==20.1.0
     # via -r requirements/requirements.in
-kombu==5.0.2
+kombu==5.1.0
     # via celery
 lxml==4.6.3
     # via pyquery
