@@ -38,6 +38,9 @@ define rm-venv-link
 	fi
 endef
 
+requirements.txt: requirements.in $(VENV_BIN)
+	$(VENV_BIN)/pip-compile --allow-unsafe --generate-hashes --output-file=$@ $<
+
 build.py: $(VENV_PYTHON)
 	@echo $(CS)"Generate project's build ids"$(CE)
 	$(VENV_PYTHON) manage.py create_build_id
@@ -63,11 +66,12 @@ $(VENV_ROOT):
 
 .PHONY: init
 init: $(VENV_PYTHON)
+	$(VENV_PIP) install --upgrade pip
+	$(VENV_PIP) install --upgrade --use-feature=in-tree-build pip-tools wheel setuptools
 	@echo
 
 .PHONY: install
-install:
-	$(VENV_PIP) install --upgrade pip wheel setuptools
+install: requirements.txt
 	$(VENV_PIP) install --upgrade -r requirements.txt
 	$(VENV_PIP) install -e .[develop,testing]
 	$(NPM) install
@@ -89,6 +93,7 @@ maintainer-clean: clean
 	$(call rm-venv-link)
 	$(RM) -r ./.tox
 	$(RM) ./build.py .python-version
+	$(RM) requirements.txt
 
 .PHONY: lint
 lint: $(VENV_PYTHON)
@@ -133,7 +138,7 @@ ccov:
 .PHONY: test
 test:
 	@echo $(CS)Running tests$(HEADER_EXTRA)$(CE)
-	tox -e py39-django32
+	tox -e py39
 	@echo
 
 .PHONY: help

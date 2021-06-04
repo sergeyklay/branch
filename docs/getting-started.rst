@@ -7,7 +7,8 @@ Installation
 
 .. note::
 
-   This guide is not intended for production usage and meant for local development only.
+  Some parts of this guide aren't intended for production usage and meant for
+  local development only.
 
 
 Prerequisites
@@ -31,7 +32,7 @@ Set up virtualenv
 
 .. code-block:: shell
 
-   $ python -m pip install --upgrade pip setuptools wheel tox
+   $ python -m pip install --upgrade pip tox
    $ make init
    $ source .venv/bin/activate
 
@@ -47,6 +48,15 @@ Installing Dependencies
 
    # For local development:
    $ make install
+
+
+To refresh dependencies in the future use the following approach:
+
+.. code-block:: shell
+
+   $ rm requirements.txt
+   $ make requirements.txt
+   $ python -m pip install --upgrade -r requirements.txt
 
 
 Create environment file
