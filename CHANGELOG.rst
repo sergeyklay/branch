@@ -8,22 +8,6 @@ releases, in reverse chronological order.
 1.4.0 (2021-XX-XX)
 ------------------
 
-Trivial/Internal Changes
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-* Migrate to tox.
-* Migrated from ``django-environ`` to ``django-environ-2``.
-* Bumped ``faker`` from  8.2.0 to  8.2.1.
-
-
-Improvements
-^^^^^^^^^^^^
-
-* Changed additional groups of dependencies declared in ``setup.py`` so that
-  ``develop`` is superset now for ``testing`` and ``docs``.
-* Move hardcoded settings to environment variables to follow twelve-factor methodology.
-
-
 Breaking Changes
 ^^^^^^^^^^^^^^^^
 
@@ -44,11 +28,39 @@ Bug Fixes
 * Fixed Celery timezone configuration.
 
 
+Improvements
+^^^^^^^^^^^^
+
+* Changed additional groups of dependencies declared in ``setup.py`` so that
+  ``develop`` is superset now for ``testing`` and ``docs``.
+* Used single ``requirements.txt`` file to declare project dependencies.
+  Additional dependencies from ``develop``, ``testing`` and ``docs`` groups
+  lives now in ``setup.py`` or ``tox.ini``.
+
+
+Trivial/Internal Changes
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Migrate to tox.
+* Migrated from ``django-environ`` to ``django-environ-2``.
+* Bumped ``django`` from 3.2.3 to 3.2.4.
+* Bumped ``django-redis`` from 4.12.1 to 5.0.0.
+* Bumped ``click-repl`` from 0.1.6 to 0.2.0.
+
+
 ----
 
 
 1.3.0 (2021-05-21)
 ------------------
+
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+* Removed Django's sites integration as it no longer needed.
+* Removed ``website`` application.
+* All website settings have been moved to ``settings``.
+
 
 Features
 ^^^^^^^^
@@ -63,6 +75,14 @@ Features
   respect of the PEP 257.
 
 
+Bug Fixes
+^^^^^^^^^
+
+* Fixed ``dc:`` meta tag definition.
+* Fixed Email configuration to be able sent mails.
+* Fixed contact form required fields.
+
+
 Improvements
 ^^^^^^^^^^^^
 
@@ -72,22 +92,6 @@ Improvements
 * Improved meta description sanitizing.
 * Reworked feeds to get rid of no longer used Sites module, improve items
   description and fix feeds URL.
-
-
-Breaking Changes
-^^^^^^^^^^^^^^^^
-
-* Removed Django's sites integration as it no longer needed.
-* Removed ``website`` application.
-* All website settings have been moved to ``settings``.
-
-
-Bug Fixes
-^^^^^^^^^
-
-* Fixed ``dc:`` meta tag definition.
-* Fixed Email configuration to be able sent mails.
-* Fixed contact form required fields.
 
 
 Trivial/Internal Changes
@@ -120,16 +124,16 @@ Features
 * Provided a way to configure site URL.
 
 
-Improvements
-^^^^^^^^^^^^
-
-* Refactor 404 handler and move it to ``core`` app.
-
-
 Bug Fixes
 ^^^^^^^^^
 
 * Corrected ``dc:language`` meta tag definition for website pages.
+
+
+Improvements
+^^^^^^^^^^^^
+
+* Refactor 404 handler and move it to ``core`` app.
 
 
 Trivial/Internal Changes
@@ -165,6 +169,12 @@ Features
   the post has been updated since it was published.
 
 
+Bug Fixes
+^^^^^^^^^
+
+* Correct ``date_to_xmlschema`` template tag to not replace timezone
+
+
 Improvements
 ^^^^^^^^^^^^
 
@@ -174,12 +184,6 @@ Improvements
 
   * Main font: PT Serif
   * Heading font: PT Sans
-
-
-Bug Fixes
-^^^^^^^^^
-
-* Correct ``date_to_xmlschema`` template tag to not replace timezone
 
 
 Trivial/Internal Changes
