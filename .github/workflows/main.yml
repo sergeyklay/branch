@@ -106,7 +106,7 @@ jobs:
 
       - name: Get pip cache dir
         id: pip-cache
-        run: echo "::set-output name=dir::$(pip cache dir)"
+        run: echo "::set-output name=dir::$(python -m pip cache dir)"
 
       - name: Set up pip cache
         uses: actions/cache@v2.1.6
@@ -139,8 +139,8 @@ jobs:
 
       - name: Set up virtualenv
         run: |
-          pip install --upgrade pip
-          pip --use-feature=in-tree-build install setuptools wheel tox tox-gh-actions
+          python -m pip install --upgrade pip
+          python -m pip --use-feature=in-tree-build install setuptools wheel tox tox-gh-actions
           npm install
           npm install -g sass
 

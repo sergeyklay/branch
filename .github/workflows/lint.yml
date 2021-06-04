@@ -44,7 +44,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip --use-feature=in-tree-build install tox tox-gh-actions
+          python -m pip --use-feature=in-tree-build install tox tox-gh-actions
 
       - name: Configuration of the application
         run: cp ./.env.dist ./.env
