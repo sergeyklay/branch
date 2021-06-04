@@ -14,6 +14,8 @@ Trivial/Internal Changes
 * Migrate to tox.
 * Migrated from ``django-environ`` to ``django-environ-2``.
 * Bumped ``faker`` from  8.2.0 to  8.2.1.
+* Bumped ``django`` from 3.2.3 to 3.2.4.
+* Bumped ``django-redis`` from 4.12.1 to 5.0.0.
 
 
 Improvements

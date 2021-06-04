@@ -31,7 +31,7 @@ Set up virtualenv
 
 .. code-block:: shell
 
-   $ pip install --upgrade pip setuptools wheel tox
+   $ python -m pip install --upgrade pip setuptools wheel tox
    $ make init
    $ source .venv/bin/activate
 
@@ -42,7 +42,7 @@ Installing Dependencies
 .. code-block:: shell
 
    # For production server:
-   $ pip install -r requirements.txt
+   $ python -m pip install -r requirements.txt
    $ npm install
 
    # For local development:
