@@ -25,7 +25,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'branch.settings')
 
 app = Celery('branch')
 
-app.config_from_object('branch.settings.celeryconfig')
+app.config_from_object('branch.celeryconfig')
 
 # Load task modules from all registered Django app configs.
 app.autodiscover_tasks()
