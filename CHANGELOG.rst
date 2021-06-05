@@ -46,6 +46,7 @@ Trivial/Internal Changes
 * Bumped ``django`` from 3.2.3 to 3.2.4.
 * Bumped ``django-redis`` from 4.12.1 to 5.0.0.
 * Bumped ``click-repl`` from 0.1.6 to 0.2.0.
+* Replaced ``pytest-cov`` by ``coverage[toml]`` for code coverage measurement.
 
 
 ----
