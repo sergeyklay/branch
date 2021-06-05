@@ -56,7 +56,7 @@ To refresh dependencies in the future use the following approach:
 
    $ rm requirements.txt
    $ make requirements.txt
-   $ python -m pip install --upgrade -r requirements.txt
+   $ pip-sync requirements.txt
 
 
 Create environment file

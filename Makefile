@@ -72,7 +72,7 @@ init: $(VENV_PYTHON)
 
 .PHONY: install
 install: requirements.txt
-	$(VENV_PIP) install --upgrade -r requirements.txt
+	$(VENV_BIN)/pip-sync requirements.txt
 	$(VENV_PIP) install -e .[develop,testing]
 	$(NPM) install
 
