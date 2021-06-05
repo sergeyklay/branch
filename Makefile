@@ -39,7 +39,7 @@ define rm-venv-link
 endef
 
 requirements.txt: requirements.in $(VENV_BIN)
-	$(VENV_BIN)/pip-compile --allow-unsafe --generate-hashes --output-file=$@ $<
+	$(VENV_BIN)/pip-compile --allow-unsafe --output-file=$@ $<
 
 build.py: $(VENV_PYTHON)
 	@echo $(CS)"Generate project's build ids"$(CE)
