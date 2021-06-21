@@ -178,7 +178,7 @@ EXTRAS_REQUIRE = {
 }
 
 # Dependencies that are required to develop package
-_develop_require = [
+DEVELOP_REQUIRE = [
     'django-debug-toolbar>=3.2',  # Django Debug Toolbar
     'django-extensions>=3.1.2',  # A collection of Django extensions
     'setuptools>=53.0.0',  # Build and install packages
@@ -186,7 +186,7 @@ _develop_require = [
 ]
 
 EXTRAS_REQUIRE['develop'] = \
-    _develop_require + EXTRAS_REQUIRE['testing'] + EXTRAS_REQUIRE['docs']
+    DEVELOP_REQUIRE + EXTRAS_REQUIRE['testing'] + EXTRAS_REQUIRE['docs']
 
 # Project's URLs
 PROJECT_URLS = {
