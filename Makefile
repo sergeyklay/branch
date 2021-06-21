@@ -16,7 +16,7 @@
 include default.mk
 
 define mk-venv-link
-	@if [ -n "$(WORKON_HOME)" ]; then \
+	@if [ -n "$(WORKON_HOME)" ] && [ -z "$(PYENV_VIRTUALENV_INIT)" ] ; then \
 		echo $(ROOT_DIR) >  $(VENV_ROOT)/.project; \
 		if [ ! -d $(WORKON_HOME)/$(PKG_NAME) -a ! -L $(WORKON_HOME)/$(PKG_NAME) ]; \
 		then \
@@ -52,6 +52,7 @@ $(VENV_PYTHON): $(VENV_ROOT)
 
 $(VENV_ROOT):
 	@echo $(CS)Creating a Python environment $(VENV_ROOT)$(CE)
+ifndef PYENV_VIRTUALENV_INIT
 	$(PYTHON) -m venv --prompt $(PKG_NAME) $(VENV_ROOT)
 	@echo
 	@echo Done.
@@ -63,6 +64,17 @@ $(VENV_ROOT):
 	@echo See https://docs.python.org/3/library/venv.html for more.
 	@echo
 	$(call mk-venv-link)
+else
+	pyenv virtualenv $(PKG_NAME)
+	@echo
+	@echo Done.
+	@echo
+	@echo To active it manually, run:
+	@echo
+	@echo "    pyenv activate $(PKG_NAME)"
+	@echo
+	@echo See https://github.com/pyenv/pyenv-virtualenv for more.
+endif
 
 .PHONY: init
 init: $(VENV_PYTHON)
@@ -89,8 +101,12 @@ clean:
 .PHONY: maintainer-clean
 maintainer-clean: clean
 	@echo $(CS)Performing full clean$(CE)
+ifndef PYENV_VIRTUALENV_INIT
 	$(RM) -r $(VENV_ROOT)
 	$(call rm-venv-link)
+else
+	pyenv virtualenv-delete -f $(PKG_NAME)
+endif
 	$(RM) -r ./.tox
 	$(RM) ./build.py .python-version
 	$(RM) requirements.txt
@@ -178,9 +194,10 @@ help:
 	@echo
 	@echo 'Environment variables:'
 	@echo
-	@echo '  NPM:          $(NPM)'
-	@echo '  PYTHON:       $(PYTHON)'
-	@echo '  WORKON_HOME:  ${WORKON_HOME}'
-	@echo '  SHELL:        $(shell echo $$SHELL)'
-	@echo '  TERM:         $(shell echo $$TERM)'
+	@echo '  NPM:                    $(NPM)'
+	@echo '  PYTHON:                 $(PYTHON)'
+	@echo '  WORKON_HOME:            ${WORKON_HOME}'
+	@echo '  PYENV_VIRTUALENV_INIT:  ${PYENV_VIRTUALENV_INIT}'
+	@echo '  SHELL:                  $(shell echo $$SHELL)'
+	@echo '  TERM:                   $(shell echo $$TERM)'
 	@echo

@@ -18,7 +18,7 @@ To play with this blog at your local environment you need the following requirem
 
 * Python >= 3.7
 * SQLite3
-* sass
+* `sass <https://sass-lang.com/install>`_
 * npm
 
 The project should work the same on the all major systems macOs, Linux or Windows (WSL)
