@@ -47,6 +47,9 @@ Trivial/Internal Changes
 * Bumped ``django-redis`` from 4.12.1 to 5.0.0.
 * Bumped ``click-repl`` from 0.1.6 to 0.2.0.
 * Replaced ``pytest-cov`` by ``coverage[toml]`` for code coverage measurement.
+* Bumped ``trumbowyg`` from 2.23.0 to 2.24.0.
+* Bumped ``prompt-toolkit`` from 3.0.18 to 3.0.19.
+* Bumped ``celery[redis]`` from 5.0.5 to 5.1.1.
 
 
 ----
