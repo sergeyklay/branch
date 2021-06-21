@@ -147,13 +147,13 @@ migrate:
 
 .PHONY: ccov
 ccov:
-	@echo $(CS)Combine coverage reports$(HEADER_EXTRA)$(CE)
+	@echo $(CS)Combine coverage reports$(CE)
 	tox -e coverage-report
 	@echo
 
 .PHONY: test
 test:
-	@echo $(CS)Running tests$(HEADER_EXTRA)$(CE)
+	@echo $(CS)Running tests$(CE)
 	tox -e py39
 	@echo
 
