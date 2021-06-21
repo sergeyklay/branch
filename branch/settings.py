@@ -99,7 +99,7 @@ DOMAIN = env.str('DOMAIN', default=HOSTNAME)
 # Full base URL for the site including protocol.  No trailing slash.
 #   Example: https://my-site.com
 USE_SSL = env('USE_SSL')
-BASE_URL = f"{'https' if USE_SSL else 'http'}://DOMAIN"
+BASE_URL = f"{'https' if USE_SSL else 'http'}://{DOMAIN}"
 
 # SECURITY WARNING: define the correct hosts and ips in production
 ALLOWED_HOSTS = env('ALLOWED_HOSTS')
