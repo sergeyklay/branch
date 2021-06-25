@@ -86,6 +86,7 @@ init: $(VENV_PYTHON)
 install: requirements.txt
 	$(VENV_BIN)/pip-sync requirements.txt
 	$(VENV_PIP) install -e .[develop,testing]
+	$(VENV_PIP) install --upgrade tox
 	$(NPM) install
 
 .PHONY: clean

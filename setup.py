@@ -181,8 +181,6 @@ EXTRAS_REQUIRE = {
 DEVELOP_REQUIRE = [
     'django-debug-toolbar>=3.2',  # Django Debug Toolbar
     'django-extensions>=3.1.2',  # A collection of Django extensions
-    'setuptools>=53.0.0',  # Build and install packages
-    'wheel>=0.36.2',  # A built-package format for Python
 ]
 
 EXTRAS_REQUIRE['develop'] = \
