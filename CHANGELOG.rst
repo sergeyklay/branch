@@ -5,7 +5,7 @@ This file contains a brief summary of new features and dependency changes or
 releases, in reverse chronological order.
 
 
-1.4.0 (2021-XX-XX)
+1.4.0 (2021-06-25)
 ------------------
 
 Breaking Changes
@@ -22,12 +22,6 @@ Breaking Changes
 * The ``BASE_DIR`` env var now is instance of ``pathlib.Path`` instead of ``environ.Path``.
 
 
-Bug Fixes
-^^^^^^^^^
-
-* Fixed Celery timezone configuration.
-
-
 Improvements
 ^^^^^^^^^^^^
 
@@ -36,6 +30,12 @@ Improvements
 * Used single ``requirements.txt`` file to declare project dependencies.
   Additional dependencies from ``develop``, ``testing`` and ``docs`` groups
   lives now in ``setup.py`` or ``tox.ini``.
+
+
+Bug Fixes
+^^^^^^^^^
+
+* Fixed Celery timezone configuration.
 
 
 Trivial/Internal Changes
@@ -79,14 +79,6 @@ Features
   respect of the PEP 257.
 
 
-Bug Fixes
-^^^^^^^^^
-
-* Fixed ``dc:`` meta tag definition.
-* Fixed Email configuration to be able sent mails.
-* Fixed contact form required fields.
-
-
 Improvements
 ^^^^^^^^^^^^
 
@@ -96,6 +88,14 @@ Improvements
 * Improved meta description sanitizing.
 * Reworked feeds to get rid of no longer used Sites module, improve items
   description and fix feeds URL.
+
+
+Bug Fixes
+^^^^^^^^^
+
+* Fixed ``dc:`` meta tag definition.
+* Fixed Email configuration to be able sent mails.
+* Fixed contact form required fields.
 
 
 Trivial/Internal Changes
@@ -128,16 +128,16 @@ Features
 * Provided a way to configure site URL.
 
 
-Bug Fixes
-^^^^^^^^^
-
-* Corrected ``dc:language`` meta tag definition for website pages.
-
-
 Improvements
 ^^^^^^^^^^^^
 
 * Refactor 404 handler and move it to ``core`` app.
+
+
+Bug Fixes
+^^^^^^^^^
+
+* Corrected ``dc:language`` meta tag definition for website pages.
 
 
 Trivial/Internal Changes
@@ -173,12 +173,6 @@ Features
   the post has been updated since it was published.
 
 
-Bug Fixes
-^^^^^^^^^
-
-* Correct ``date_to_xmlschema`` template tag to not replace timezone
-
-
 Improvements
 ^^^^^^^^^^^^
 
@@ -188,6 +182,12 @@ Improvements
 
   * Main font: PT Serif
   * Heading font: PT Sans
+
+
+Bug Fixes
+^^^^^^^^^
+
+* Correct ``date_to_xmlschema`` template tag to not replace timezone
 
 
 Trivial/Internal Changes
