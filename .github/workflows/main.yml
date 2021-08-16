@@ -42,7 +42,6 @@ env:
   NPM: npm
   PYTHON: python
   PYTHONUNBUFFERED: '1'
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 defaults:
   run:
@@ -177,10 +176,11 @@ jobs:
       - name: Upload coverage report
         if: success()
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
         run: |
           pip --use-feature=in-tree-build install coveralls
-          coveralls
+          coveralls --service=github
 
       - name: Success Reporting
         if: success()
