@@ -42,6 +42,7 @@ env:
   NPM: npm
   PYTHON: python
   PYTHONUNBUFFERED: '1'
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 defaults:
   run:
