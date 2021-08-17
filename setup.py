@@ -128,7 +128,7 @@ CLASSIFIERS = [
     'Framework :: Django :: 3.2',
     'Environment :: Web Environment',
     'Operating System :: OS Independent',
-    'Intended Audience :: Developers',
+    'Intended Audience :: End Users/Desktop',
     'Natural Language :: English',
     'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     'Topic :: Internet :: WWW/HTTP :: Dynamic Content :: Content Management System',  # noqa: E501
