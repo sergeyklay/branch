@@ -40,5 +40,6 @@ build.py
 *.log
 
 # Ignore codecoverage stuff.
+coverage.db.*
 coverage.db
 coverage.xml
