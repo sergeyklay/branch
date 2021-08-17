@@ -142,6 +142,7 @@ jobs:
 
       - name: Install dependencies
         run: |
+          make install
           npm install
           npm install -g sass
 
