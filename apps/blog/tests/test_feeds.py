@@ -56,13 +56,13 @@ def test_posts_rss_items(author, client, execution_number):
     PostFactory(author=author, title=f'Some draft #{execution_number}')
 
     response = client.get(reverse('blog:posts_rss'))
-    pq = PyQuery(response.content)
+    pq = PyQuery(response.content, parser='xml')
 
+    assert response.status_code == 200
     assert response.headers['content-type'] == (
         'application/rss+xml; charset=utf-8'
     )
 
-    assert response.status_code == 200
     assert len(pq('channel item')) == 1
     assert pq('channel item description').text() == 'Lorem ipsum'
 
