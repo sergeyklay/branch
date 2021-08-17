@@ -30,6 +30,7 @@ data_file = coverage.db
 # A list of file name patterns, the files to leave
 # out of measurement or reporting.
 omit =
+    .venv/*
     build.py
     */tests/*
     */migrations/*
