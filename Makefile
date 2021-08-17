@@ -72,6 +72,7 @@ init: $(VENV_PYTHON)
 
 .PHONY: install
 install: $(REQUIREMENTS)
+	@echo $(CS)Installing $(PKG_NAME) and all its dependencies$(CE)
 	$(VENV_BIN)/pip-sync $(REQUIREMENTS)
 	$(VENV_PIP) install -e .
 	$(NPM) install
@@ -92,14 +93,14 @@ clean:
 .PHONY: maintainer-clean
 maintainer-clean: clean
 	@echo $(CS)Performing full clean$(CE)
-	$(RM) -r $(VENV_ROOT)
+	-$(RM) -r $(VENV_ROOT)
 	$(call rm-venv-link)
 	$(RM) ./build.py
 	$(RM) requirements/*.txt
 	@echo
 
 .PHONY: lint
-lint: export LOG_FILE=branch.log
+lint: export LOG_FILE=$(PKG_NAME).log
 lint: $(VENV_PYTHON)
 	@echo $(CS)Running linters$(CE)
 	-$(VENV_BIN)/flake8 $(FLAKE8_FLAGS) ./
@@ -112,12 +113,12 @@ build: build.py
 	$(VENV_PYTHON) manage.py compress
 
 .PHONY: serve
-serve:
+serve: $(VENV_PYTHON)
 	@echo $(CS)Starting web server on $(LOCAL_PORT) port$(CE)
 	$(VENV_PYTHON) manage.py runserver $(LOCAL_PORT)
 
 .PHONY: static
-static:
+static: $(VENV_PYTHON)
 	@echo $(CS)Collect static files$(CE)
 	$(VENV_PYTHON) manage.py collectstatic --noinput --clear --ignore *.scss
 
@@ -127,11 +128,11 @@ css:
 	sass -I $(include) --no-source-map $(infile) $(outfile)
 
 .PHONY: migrations
-migrations:
+migrations: $(VENV_PYTHON)
 	$(VENV_PYTHON) manage.py makemigrations
 
 .PHONY: migrate
-migrate:
+migrate: $(VENV_PYTHON)
 	$(VENV_PYTHON) manage.py migrate
 
 .PHONY: ccov
@@ -150,14 +151,17 @@ manifest:
 	@echo
 
 .PHONY: test
-test: export DJANGO_SETTINGS_MODULE=branch.settings
+test: export EMAIL_BACKEND=django.core.mail.backends.dummy.EmailBackend
+test: export CACHE_BACKEND=django.core.cache.backends.dummy.DummyCache
+test: export DJANGO_SETTINGS_MODULE=$(PKG_NAME).settings
 test: export SECRET_KEY='Naive and not very secret key used for tests'
 test: export RECAPTCHA_PUBLIC_KEY='some key'
 test: export RECAPTCHA_PUBLIC_KEY='some key'
+test: export DATABASE_URL=sqlite://:memory:
 test: export DEBUG=False
-test: export LOG_FILE=branch.log
-test: export CACHE_URL=dummycache:
-test: build.py
+test: export USE_SSL=False
+test: export LOG_FILE=$(PKG_NAME).log
+test: build.py $(VENV_PYTHON)
 	@echo $(CS)Running tests$(CE)
 	$(VENV_BIN)/coverage erase
 	$(VENV_BIN)/coverage run -m pytest $(PYTEST_FLAGS)
@@ -174,7 +178,7 @@ help:
 	@echo
 	@echo '  help:         Show this help and exit'
 	@echo '  init:         Set up virtualenv (has to be launched first)'
-	@echo '  install:      Install all project dependencies'
+	@echo '  install:      Install project and all its dependencies'
 	@echo '  serve:        Run development server'
 	@echo '  static:       Collect static files'
 	@echo '  css:          Build CSS files from SCSS source'
