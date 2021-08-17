@@ -149,12 +149,13 @@ manifest:
 	@echo
 
 .PHONY: test
-test: export DJANGO_SETTINGS_MODULE = branch.settings
-test: export SECRET_KEY = 'Naive and not very secret key used for tests'
-test: export RECAPTCHA_PUBLIC_KEY = 'some key'
-test: export RECAPTCHA_PUBLIC_KEY = 'some key'
-test: export DEBUG = False
-test: export LOG_FILE = branch.log
+test: export DJANGO_SETTINGS_MODULE=branch.settings
+test: export SECRET_KEY='Naive and not very secret key used for tests'
+test: export RECAPTCHA_PUBLIC_KEY='some key'
+test: export RECAPTCHA_PUBLIC_KEY='some key'
+test: export DEBUG=False
+test: export LOG_FILE=branch.log
+test: export CACHE_URL=dummycache:
 test: build.py
 	@echo $(CS)Running tests$(CE)
 	$(VENV_BIN)/coverage erase
