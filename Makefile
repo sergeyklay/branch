@@ -99,6 +99,7 @@ maintainer-clean: clean
 	@echo
 
 .PHONY: lint
+lint: export LOG_FILE=branch.log
 lint: $(VENV_PYTHON)
 	@echo $(CS)Running linters$(CE)
 	-$(VENV_BIN)/flake8 $(FLAKE8_FLAGS) ./
