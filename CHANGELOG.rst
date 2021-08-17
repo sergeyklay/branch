@@ -4,6 +4,17 @@ Changelog
 This file contains a brief summary of new features and dependency changes or
 releases, in reverse chronological order.
 
+1.5.0 (2021-XX-XX)
+------------------
+
+Trivial/Internal Changes
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Returned to virtualenvwrapper.
+
+
+----
+
 
 1.4.0 (2021-06-25)
 ------------------

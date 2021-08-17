@@ -29,6 +29,13 @@ else
 	CE = " ~~~"
 endif
 
+COV          =
+REQUIREMENTS = requirements/requirements-dev.txt
+
+PYTEST_FLAGS ?= --color=yes -v
+PYLINT_FLAGS ?= --load-plugins=pylint_django --django-settings-module=$(PKG_NAME).settings
+FLAKE8_FLAGS ?= --show-source --statistics
+
 VENV_ROOT = .venv
 
 # PYTHON will used to create venv

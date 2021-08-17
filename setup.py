@@ -172,6 +172,13 @@ EXTRAS_REQUIRE = {
         'pytest-django>=4.2.0',  # A Django plugin for pytest
         'factory-boy>=3.2.0',  # A versatile test fixtures
         'faker>=8.1.0',  # A generator of fake data for tests
+        'pylint>=2.6.0,!=2.6.1',  # Python code static checker
+        'pylint-django>=2.4.4',  # A Django plugin for Pylint
+        'flake8>=3.8.4',  # The modular source code checker
+        'flake8-import-order>=0.18.1',  # Checks the ordering of imports
+        'flake8-blind-except>=0.2.0',  # Checks for blind except: statements
+        'flake8-builtins>=1.5.3',  # Check for Python builtins being used
+        'flake8-docstrings>=1.6.0',  # Check docstrings
     ],
     # Dependencies that are required to build documentation
     'docs': []
@@ -181,6 +188,10 @@ EXTRAS_REQUIRE = {
 DEVELOP_REQUIRE = [
     'django-debug-toolbar>=3.2',  # Django Debug Toolbar
     'django-extensions>=3.1.2',  # A collection of Django extensions
+    'twine>=3.3.0',  # Publishing packages on PyPI
+    'setuptools>=53.0.0',  # Build and install packages
+    'wheel>=0.36.2',  # A built-package format for Python
+    'check-wheel-contents>=0.2.0',  # Check wheels have the right contents
 ]
 
 EXTRAS_REQUIRE['develop'] = \
