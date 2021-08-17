@@ -162,12 +162,12 @@ DEPENDENCY_LINKS = []
 # List additional groups of dependencies here (e.g. testing dependencies).
 # You can install these using the following syntax, for example:
 #
-#    $ pip install -e .[develop,testing]
+#    $ pip install -e .[testing,docs,develop]
 #
 EXTRAS_REQUIRE = {
     # Dependencies that are required to run tests
     'testing': [
-        'coverage[toml]>=5.0.2',  # Code coverage measurement for Python
+        'coverage[toml]>=5.4',  # Code coverage measurement for Python
         'pytest>=6.2.0',  # Our test framework
         'pytest-django>=4.2.0',  # A Django plugin for pytest
         'factory-boy>=3.2.0',  # A versatile test fixtures
@@ -181,7 +181,7 @@ EXTRAS_REQUIRE = {
         'flake8-docstrings>=1.6.0',  # Check docstrings
     ],
     # Dependencies that are required to build documentation
-    'docs': []
+    'docs': [],
 }
 
 # Dependencies that are required to develop package
