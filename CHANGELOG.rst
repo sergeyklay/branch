@@ -11,6 +11,8 @@ Trivial/Internal Changes
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 * Returned to virtualenvwrapper.
+* Bumped ``prismjs`` from 1.23.0 to 1.24.1.
+* Bumped ``trumbowyg`` from 2.24.0 to 2.25.1.
 
 
 ----
