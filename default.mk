@@ -49,8 +49,8 @@ else
 	VENV_BIN = $(VENV_ROOT)/bin
 endif
 
-VENV_PIP    = $(VENV_BIN)/python -m pip
 VENV_PYTHON = $(VENV_BIN)/python
+VENV_PIP    = $(VENV_PYTHON) -m pip
 
 export PATH := $(VENV_BIN):$(PATH)
 
