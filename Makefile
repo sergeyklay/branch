@@ -23,7 +23,7 @@ define mk-venv-link
 			ln -s $(ROOT_DIR)/$(VENV_ROOT) $(WORKON_HOME)/$(PKG_NAME); \
 			echo ; \
 			echo Since you use virtualenvwrapper, we created a symlink; \
-			echo "so you can also use "workon $(PKG_NAME)" to activate the venv."; \
+			echo "so you can also use \"workon $(PKG_NAME)\" to activate the venv."; \
 			echo ; \
 		fi; \
 	fi
@@ -38,7 +38,7 @@ define rm-venv-link
 	fi
 endef
 
-requirements.txt: requirements.in $(VENV_BIN)
+requirements/%.txt: requirements/%.in $(VENV_BIN)
 	$(VENV_BIN)/pip-compile --allow-unsafe --output-file=$@ $<
 
 build.py: $(VENV_PYTHON)
@@ -66,40 +66,45 @@ $(VENV_ROOT):
 
 .PHONY: init
 init: $(VENV_PYTHON)
-	$(VENV_PIP) install --upgrade pip
-	$(VENV_PIP) install --upgrade --use-feature=in-tree-build pip-tools wheel setuptools
+	@echo $(CS)Set up virtualenv$(CE)
+	$(VENV_PIP) install --upgrade pip pip-tools setuptools wheel
 	@echo
 
 .PHONY: install
-install: requirements.txt
-	$(VENV_BIN)/pip-sync requirements.txt
-	$(VENV_PIP) install -e .[develop,testing]
-	$(VENV_PIP) install --upgrade tox
+install: $(REQUIREMENTS)
+	@echo $(CS)Installing $(PKG_NAME) and all its dependencies$(CE)
+	$(VENV_BIN)/pip-sync $(REQUIREMENTS)
+	$(VENV_PIP) install -e .
 	$(NPM) install
+	@echo
 
 .PHONY: clean
 clean:
 	@echo $(CS)Remove build and tests artefacts and directories$(CE)
-
 	$(call rm-venv-link)
 	find ./ -name '__pycache__' -delete -o -name '*.pyc' -delete
 	$(RM) -r ./build ./dist ./*.egg-info
 	$(RM) -r ./node_modules
-	$(RM) -r ./.tox/reports
+	$(RM) -r ./.cache ./.pytest_cache
+	$(RM) -r ./htmlcov
+	$(RM) ./coverage.*
+	@echo
 
 .PHONY: maintainer-clean
 maintainer-clean: clean
 	@echo $(CS)Performing full clean$(CE)
-	$(RM) -r $(VENV_ROOT)
+	-$(RM) -r $(VENV_ROOT)
 	$(call rm-venv-link)
-	$(RM) -r ./.tox
-	$(RM) ./build.py .python-version
-	$(RM) requirements.txt
+	$(RM) ./build.py
+	$(RM) requirements/*.txt
+	@echo
 
 .PHONY: lint
+lint: export LOG_FILE=$(PKG_NAME).log
 lint: $(VENV_PYTHON)
 	@echo $(CS)Running linters$(CE)
-	tox -e lint
+	-$(VENV_BIN)/flake8 $(FLAKE8_FLAGS) ./
+	$(VENV_BIN)/pylint $(PYLINT_FLAGS) ./$(PKG_NAME) ./apps
 	@echo
 
 .PHONY: build
@@ -108,12 +113,12 @@ build: build.py
 	$(VENV_PYTHON) manage.py compress
 
 .PHONY: serve
-serve:
+serve: $(VENV_PYTHON)
 	@echo $(CS)Starting web server on $(LOCAL_PORT) port$(CE)
 	$(VENV_PYTHON) manage.py runserver $(LOCAL_PORT)
 
 .PHONY: static
-static:
+static: $(VENV_PYTHON)
 	@echo $(CS)Collect static files$(CE)
 	$(VENV_PYTHON) manage.py collectstatic --noinput --clear --ignore *.scss
 
@@ -123,23 +128,43 @@ css:
 	sass -I $(include) --no-source-map $(infile) $(outfile)
 
 .PHONY: migrations
-migrations:
+migrations: $(VENV_PYTHON)
 	$(VENV_PYTHON) manage.py makemigrations
 
 .PHONY: migrate
-migrate:
+migrate: $(VENV_PYTHON)
 	$(VENV_PYTHON) manage.py migrate
 
 .PHONY: ccov
-ccov:
+ccov: $(VENV_PYTHON)
 	@echo $(CS)Combine coverage reports$(CE)
-	tox -e coverage-report
+	$(VENV_BIN)/coverage combine
+	$(VENV_BIN)/coverage report
+	$(VENV_BIN)/coverage html
+	$(VENV_BIN)/coverage xml
+	@echo
+
+.PHONY: manifest
+manifest:
+	@echo $(CS)Check MANIFEST.in for completeness$(CE)
+	$(VENV_BIN)/check-manifest -v
 	@echo
 
 .PHONY: test
-test:
+test: export EMAIL_BACKEND=django.core.mail.backends.dummy.EmailBackend
+test: export CACHE_BACKEND=django.core.cache.backends.dummy.DummyCache
+test: export DJANGO_SETTINGS_MODULE=$(PKG_NAME).settings
+test: export SECRET_KEY='Naive and not very secret key used for tests'
+test: export RECAPTCHA_PUBLIC_KEY='Naive and not very secret key used for tests'
+test: export RECAPTCHA_PRIVATE_KEY='Naive and not very secret key used for tests'
+test: export DATABASE_URL=sqlite://:memory:
+test: export DEBUG=False
+test: export USE_SSL=False
+test: export LOG_FILE=$(PKG_NAME).log
+test: build.py $(VENV_PYTHON)
 	@echo $(CS)Running tests$(CE)
-	tox -e py39
+	$(VENV_BIN)/coverage erase
+	$(VENV_BIN)/coverage run -m pytest $(PYTEST_FLAGS)
 	@echo
 
 .PHONY: help
@@ -153,7 +178,7 @@ help:
 	@echo
 	@echo '  help:         Show this help and exit'
 	@echo '  init:         Set up virtualenv (has to be launched first)'
-	@echo '  install:      Install all project dependencies'
+	@echo '  install:      Install project and all its dependencies'
 	@echo '  serve:        Run development server'
 	@echo '  static:       Collect static files'
 	@echo '  css:          Build CSS files from SCSS source'
@@ -176,6 +201,12 @@ help:
 	@echo
 	@echo '  Python:       $(VENV_PYTHON)'
 	@echo '  pip:          $(VENV_PIP)'
+	@echo
+	@echo 'Flags:'
+	@echo
+	@echo '  FLAKE8_FLAGS: $(FLAKE8_FLAGS)'
+	@echo '  PYTEST_FLAGS: $(PYTEST_FLAGS)'
+	@echo '  PYLINT_FLAGS: $(PYLINT_FLAGS)'
 	@echo
 	@echo 'Environment variables:'
 	@echo

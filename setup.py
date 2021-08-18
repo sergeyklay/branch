@@ -128,7 +128,7 @@ CLASSIFIERS = [
     'Framework :: Django :: 3.2',
     'Environment :: Web Environment',
     'Operating System :: OS Independent',
-    'Intended Audience :: Developers',
+    'Intended Audience :: End Users/Desktop',
     'Natural Language :: English',
     'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     'Topic :: Internet :: WWW/HTTP :: Dynamic Content :: Content Management System',  # noqa: E501
@@ -145,7 +145,7 @@ CLASSIFIERS = [
 
 # Dependencies that are downloaded by pip on installation and why.
 INSTALL_REQUIRES = [
-    'celery[redis]>=5.0',  # Queues support
+    'celery[redis]>=5.0.5',  # Queues support to execute tasks asynchronously
     'beautifulsoup4>=4.9.3',  # Sanitize HTML input
     'django>=3.2',  # Our framework
     'django-environ-2>=2.1.0',  # Configure Django application
@@ -162,25 +162,36 @@ DEPENDENCY_LINKS = []
 # List additional groups of dependencies here (e.g. testing dependencies).
 # You can install these using the following syntax, for example:
 #
-#    $ pip install -e .[develop,testing]
+#    $ pip install -e .[testing,docs,develop]
 #
 EXTRAS_REQUIRE = {
     # Dependencies that are required to run tests
     'testing': [
-        'coverage[toml]>=5.0.2',  # Code coverage measurement for Python
+        'coverage[toml]>=5.4',  # Code coverage measurement for Python
         'pytest>=6.2.0',  # Our test framework
         'pytest-django>=4.2.0',  # A Django plugin for pytest
         'factory-boy>=3.2.0',  # A versatile test fixtures
         'faker>=8.1.0',  # A generator of fake data for tests
+        'pylint>=2.6.0,!=2.6.1',  # Python code static checker
+        'pylint-django>=2.4.4',  # A Django plugin for Pylint
+        'flake8>=3.8.4',  # The modular source code checker
+        'flake8-import-order>=0.18.1',  # Checks the ordering of imports
+        'flake8-blind-except>=0.2.0',  # Checks for blind except: statements
+        'flake8-builtins>=1.5.3',  # Check for Python builtins being used
+        'flake8-docstrings>=1.6.0',  # Check docstrings
     ],
     # Dependencies that are required to build documentation
-    'docs': []
+    'docs': [],
 }
 
 # Dependencies that are required to develop package
 DEVELOP_REQUIRE = [
     'django-debug-toolbar>=3.2',  # Django Debug Toolbar
     'django-extensions>=3.1.2',  # A collection of Django extensions
+    'twine>=3.3.0',  # Publishing packages on PyPI
+    'setuptools>=53.0.0',  # Build and install packages
+    'wheel>=0.36.2',  # A built-package format for Python
+    'check-wheel-contents>=0.2.0',  # Check wheels have the right contents
 ]
 
 EXTRAS_REQUIRE['develop'] = \

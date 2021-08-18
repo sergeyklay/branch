@@ -18,6 +18,7 @@
 
 # Include all files matching any of the listed patterns.
 include AUTHORS.rst README.rst SECURITY.rst CHANGELOG.rst CONTRIBUTING.rst LICENSE
+graft .github
 
 # The contents of the directory tree tests will first be added to the sdist.
 # Many OS distributions prefers provide an ability run the tests
@@ -27,3 +28,9 @@ recursive-include tests *.py
 # All files in the sdist with a .pyc, .pyo, or .pyd extension will be removed
 # from the sdist.
 global-exclude *.py[cod]
+
+# Exclude stuff for local development
+exclude .coveragerc .pylintrc Makefile default.mk requirements/*.in
+
+# Include requirements.txt for reproducible tests
+include requirements/*.txt

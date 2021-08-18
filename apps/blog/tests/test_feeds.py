@@ -41,29 +41,37 @@ def test_posts_rss_no_items(client):
 
 
 @pytest.mark.django_db
-def test_posts_rss_items(author, client):
+@pytest.mark.parametrize('execution_number', range(5))
+def test_posts_rss_items(author, client, execution_number):
     date = timezone.now()
     PostFactory(
         author=author,
-        title='Hello, World!',
+        title=f'Hello, World #{execution_number}!',
         excerpt='Lorem ipsum',
         status='published',
+        slug=f'test-post-{execution_number}',
         published_at=date,
     )
 
-    PostFactory(author=author, title='Some draft')
+    PostFactory(author=author, title=f'Some draft #{execution_number}')
 
     response = client.get(reverse('blog:posts_rss'))
-    pq = PyQuery(response.content)
+    pq = PyQuery(response.content, parser='xml')
 
     assert response.status_code == 200
     assert response.headers['content-type'] == (
         'application/rss+xml; charset=utf-8'
     )
+
     assert len(pq('channel item')) == 1
-    assert pq('channel item title').text() == 'Hello, World!'
     assert pq('channel item description').text() == 'Lorem ipsum'
+
+    assert pq('channel item title').text() == (
+        f'Hello, World #{execution_number}!'
+    )
+
     assert pq('channel item link').text() == (
         f'{settings.BASE_URL}/post/'
-        f'{date.strftime("%Y/%m/%d").replace("/0", "/")}/test-post-0.html'
+        f'{date.strftime("%Y/%m/%d").replace("/0", "/")}'
+        f'/test-post-{execution_number}.html'
     )
