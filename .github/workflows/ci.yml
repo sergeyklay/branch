@@ -165,14 +165,13 @@ jobs:
         run: make ccov
 
       - name: Upload coverage report
-        if: success() && github.actor != 'dependabot[bot]'
-        # env:
-        #  COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+        if: success()
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COVERALLS_SERVICE_NAME: github
         run: |
-          pip --use-feature=in-tree-build install coveralls
-          coveralls --service=github
+          python -m pip --use-feature=in-tree-build install coveralls
+          coveralls
 
       - name: Success Reporting
         if: success()
