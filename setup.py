@@ -179,6 +179,7 @@ EXTRAS_REQUIRE = {
         'flake8-blind-except>=0.2.0',  # Checks for blind except: statements
         'flake8-builtins>=1.5.3',  # Check for Python builtins being used
         'flake8-docstrings>=1.6.0',  # Check docstrings
+        'check-manifest>=0.45',  # Check MANIFEST.in
     ],
     # Dependencies that are required to build documentation
     'docs': [],
