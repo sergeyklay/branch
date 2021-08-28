@@ -17,6 +17,8 @@
 
 from django import forms
 from django.contrib import admin
+from django.urls import reverse
+from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 
 from apps.trumbowyg.widgets import AdminTrumbowygWidget, RichTextField
@@ -110,12 +112,25 @@ class PostAdmin(admin.ModelAdmin):
 class CommentAdmin(admin.ModelAdmin):
     """Class to manage post comments."""
 
+    class Media:
+        """Provide custom assets for CommentAdmin class."""
+
+        css = {
+            'all': (
+                'admin/css/comment.css',
+            )
+        }
+
     list_display = (
-        'user_name',
-        'user_email',
+        'comment_status',
+        'comment_sender',
         'post',
-        'created_at',
-        'status',
+        'content',
+        'sent_date',
+    )
+
+    list_display_links = (
+        'comment_sender',
     )
 
     list_filter = (
@@ -129,3 +144,36 @@ class CommentAdmin(admin.ModelAdmin):
         'user_email',
         'comment',
     )
+
+    def comment_status(self, obj):
+        """Return custom column for comment status."""
+        return mark_safe(
+            '<span class="comment-icon comment-icon-{}"></span>'.format(
+                obj.status
+            )
+        )
+    comment_status.allow_tags = True
+    comment_status.short_description = _('Status')
+    comment_status.admin_order_field = 'status'
+
+    def comment_sender(self, obj):
+        """Return custom column for comment sender."""
+        return mark_safe('<a href="{}">{}</a>'.format(
+            reverse("admin:blog_comment_change", args=(obj.pk,)),
+            (obj.user_name or obj.user_email)
+        ))
+    comment_sender.allow_tags = True
+    comment_sender.short_description = _('Sender')
+    comment_sender.admin_order_field = 'user_name'
+
+    def content(self, obj):
+        """Return custom column for comment comment."""
+        return obj.comment.replace('\n', '')
+    content.short_description = _('Comment')
+    content.admin_order_field = 'content'
+
+    def sent_date(self, obj):
+        """Return custom column for comment sent date."""
+        return obj.created_at.strftime("%b %d")
+    sent_date.short_description = _('Sent')
+    sent_date.admin_order_field = 'created_at'

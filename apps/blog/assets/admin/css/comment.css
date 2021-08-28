@@ -1,0 +1,83 @@
+/*
+ * Copyright (C) 2021 Serghei Iakovlev <egrep@protonmail.ch>
+ *
+ * This file is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 3
+ * of the License, or (at your option) any later version.
+ *
+ * This file is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this file.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+table#result_list {
+    table-layout: fixed;
+}
+
+.column-comment_status {
+    width: 4%;
+}
+
+.field-status {
+    text-align: center;
+}
+
+.comment-icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin: 0 auto;
+}
+
+.comment-icon-published {
+    background: url(../img/icon-yes.svg) 0 1px no-repeat;
+}
+
+.comment-icon-hidden {
+    background: url(../img/icon-no.svg) 0 1px no-repeat;
+}
+
+.column-comment_sender {
+    width: 10%
+}
+
+.column-post {
+    width: 20%
+}
+
+.field-post {
+    color: #202124;
+}
+
+.column-content {
+    width: 62%;
+}
+
+.field-content {
+    color: #5f6368;
+}
+
+.column-sent_date {
+    width: 5%;
+}
+
+.field-content,
+.field-post,
+.field-comment_sender {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    -webkit-box-flex: 1;
+       -moz-box-flex: 1;
+            box-flex: 1;
+    -webkit-flex-grow: 1;
+            flex-grow: 1;
+    -webkit-flex-shrink: 1;
+            flex-shrink: 1;
+    text-align: left;
+}

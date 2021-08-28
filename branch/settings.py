@@ -392,6 +392,7 @@ STATIC_ROOT = BASE_DIR / 'static'
 STATICFILES_DIRS = (
     BASE_DIR / 'assets',
     NODE_MODULES_PATH,
+    BASE_DIR.joinpath('apps', 'blog', 'assets'),
     BASE_DIR.joinpath('apps', 'seo', 'assets'),
     BASE_DIR.joinpath('apps', 'trumbowyg', 'assets'),
     BASE_DIR.joinpath('apps', 'telegraph', 'assets'),

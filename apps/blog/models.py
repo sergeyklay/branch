@@ -116,9 +116,11 @@ class Post(Content):
 class Comment(models.Model):
     """Post comments model class."""
 
+    STATUS_HIDDEN = 'hidden'
+    STATUS_PUBLISHED = 'hidden'
     STATUS_CHOICES = (
-        ('hidden', _('Hidden')),
-        ('published', _('Published')),
+        (STATUS_HIDDEN, _('Hidden')),
+        (STATUS_PUBLISHED, _('Published')),
     )
 
     post = models.ForeignKey(
