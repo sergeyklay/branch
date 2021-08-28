@@ -13,6 +13,8 @@ Trivial/Internal Changes
 * Returned to virtualenvwrapper.
 * Bumped ``prismjs`` from 1.23.0 to 1.24.1.
 * Bumped ``trumbowyg`` from 2.24.0 to 2.25.1.
+* Bumped ``faker`` from 8.11.0 to 8.12.1.
+* Bumped ``pylint`` from 2.9.6 to 2.10.2.
 
 
 ----

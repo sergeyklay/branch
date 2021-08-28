@@ -39,7 +39,7 @@ define rm-venv-link
 endef
 
 requirements/%.txt: requirements/%.in $(VENV_BIN)
-	$(VENV_BIN)/pip-compile --allow-unsafe --output-file=$@ $<
+	$(VENV_BIN)/pip-compile --output-file=$@ $<
 
 build.py: $(VENV_PYTHON)
 	@echo $(CS)"Generate project's build ids"$(CE)
@@ -75,6 +75,7 @@ install: $(REQUIREMENTS)
 	@echo $(CS)Installing $(PKG_NAME) and all its dependencies$(CE)
 	$(VENV_BIN)/pip-sync $(REQUIREMENTS)
 	$(VENV_PIP) install -e .
+	$(VENV_PIP) install --upgrade twine check-manifest check-wheel-contents
 	$(NPM) install
 	@echo
 
