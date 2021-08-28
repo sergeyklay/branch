@@ -15,6 +15,7 @@
 
 -r requirements.in
 
+
 # testing
 coverage[toml]
 pytest
@@ -28,11 +29,9 @@ flake8-import-order
 flake8-blind-except
 flake8-builtins
 flake8-docstrings
-check-manifest
+
 
 # develop
 django-debug-toolbar
 django-extensions
-twine
-wheel
-check-wheel-contents
+
