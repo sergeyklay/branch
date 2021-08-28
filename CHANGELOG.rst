@@ -7,6 +7,12 @@ releases, in reverse chronological order.
 1.5.0 (2021-XX-XX)
 ------------------
 
+Features
+^^^^^^^^
+
+* Tune up comments page on admin site.
+
+
 Trivial/Internal Changes
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
