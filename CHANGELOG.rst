@@ -15,6 +15,12 @@ Features
 * Provided custom command to make messages.
 
 
+Improvements
+^^^^^^^^^^^^
+
+* Configured Celery to use the same time zone as the app.
+
+
 Trivial/Internal Changes
 ^^^^^^^^^^^^^^^^^^^^^^^^
 

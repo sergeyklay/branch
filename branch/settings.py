@@ -48,7 +48,7 @@ env = environ.Env(
     ALLOWED_HOSTS=(list, []),
     INTERNAL_IPS=(list, []),
     ADMINS=(list, []),
-
+    TIME_ZONE=(str, 'UTC'),
     SECURE_SSL_REDIRECT=(bool, False),
     SECURE_HSTS_SECONDS=(int, 3600),
     SECURE_HSTS_INCLUDE_SUBDOMAINS=(bool, False),
@@ -375,7 +375,7 @@ LOCALE_TERRITORY = [
     (locale['region'], locale['native']) for locale in BRANCH_LANGUAGES.values() # noqa
 ]
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = env('TIME_ZONE')
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
