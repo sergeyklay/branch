@@ -11,6 +11,7 @@ Features
 ^^^^^^^^
 
 * Tune up comments page on admin site.
+* Provided ``storage`` directory to store logs, coverage reports and so on.
 
 
 Trivial/Internal Changes
