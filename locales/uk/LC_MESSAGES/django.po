@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: branch 1.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-05-06 12:58+0000\n"
+"POT-Creation-Date: 2021-08-29 18:21+0300\n"
 "PO-Revision-Date: 2021-05-06 16:06+0300\n"
 "Last-Translator: Serghei Iakovlev <egrep@protonmail.ch>\n"
 "Language-Team: Ukrainian <egrep@protonmail.ch>\n"
@@ -21,28 +21,45 @@ msgstr ""
 "(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
 "X-Generator: Poedit 2.4.3\n"
 
-#: apps/blog/admin.py:30 apps/blog/models.py:68
+#: apps/blog/admin.py:32 apps/blog/models.py:68
 msgid "Excerpt"
 msgstr "Уривок"
 
-#: apps/blog/admin.py:35 apps/pages/admin.py:31
+#: apps/blog/admin.py:37 apps/pages/admin.py:31
 msgid "Content"
 msgstr "Зміст"
 
-#: apps/blog/admin.py:85 apps/pages/admin.py:70
+#: apps/blog/admin.py:87 apps/pages/admin.py:70
 msgid "General content"
 msgstr "Загальний зміст"
 
-#: apps/blog/admin.py:99 apps/pages/admin.py:80
+#: apps/blog/admin.py:101 apps/pages/admin.py:80
 msgid "SEO"
 msgstr "SEO"
+
+#: apps/blog/admin.py:156 apps/blog/models.py:154 apps/core/models.py:95
+msgid "Status"
+msgstr "Статус"
+
+#: apps/blog/admin.py:166
+msgid "Sender"
+msgstr "Відправник"
+
+#: apps/blog/admin.py:172 apps/blog/models.py:146 apps/blog/models.py:176
+#: apps/blog/templates/blog/partials/comment-form.html:31
+msgid "Comment"
+msgstr "Коментар"
+
+#: apps/blog/admin.py:178
+msgid "Sent"
+msgstr "Відправлено"
 
 #: apps/blog/apps.py:27 apps/blog/templates/blog/posts/list.html:20
 #: templates/partials/sidebar.html:15
 msgid "Blog"
 msgstr "Блог"
 
-#: apps/blog/feeds.py:51
+#: apps/blog/feeds.py:43
 #, python-format
 msgid "Latest posts - %s"
 msgstr "Останні публікації - %s"
@@ -59,7 +76,7 @@ msgstr "Повість"
 msgid "Poem"
 msgstr "Вірш"
 
-#: apps/blog/models.py:47 apps/blog/models.py:83 apps/blog/models.py:128
+#: apps/blog/models.py:47 apps/blog/models.py:83 apps/blog/models.py:130
 msgid "Post"
 msgstr "Стаття"
 
@@ -83,74 +100,65 @@ msgstr "Автор"
 msgid "Posts"
 msgstr "Статті"
 
-#: apps/blog/models.py:120
+#: apps/blog/models.py:122
 msgid "Hidden"
 msgstr "Приховано"
 
-#: apps/blog/models.py:121 branch/models.py:36
+#: apps/blog/models.py:123 apps/core/models.py:46
 msgid "Published"
 msgstr "Опубліковано"
 
-#: apps/blog/models.py:133
+#: apps/blog/models.py:135
 msgid "User name"
 msgstr "Ім’я користувача"
 
-#: apps/blog/models.py:134
+#: apps/blog/models.py:136
 msgid "The name of the user who posted the comment."
 msgstr "Ім’я користувача, який залишив коментар."
 
-#: apps/blog/models.py:139
+#: apps/blog/models.py:141
 msgid "E-Mail"
 msgstr "E-Mail"
 
-#: apps/blog/models.py:140
+#: apps/blog/models.py:142
 msgid "The email of the user who posted the comment."
 msgstr "Електронна пошта користувача, який залишив коментар."
 
-#: apps/blog/models.py:144 apps/blog/models.py:174
-#: apps/blog/templates/blog/partials/comment-form.html:31
-msgid "Comment"
-msgstr "Коментар"
-
-#: apps/blog/models.py:145
+#: apps/blog/models.py:147
 msgid "The actual content of the comment itself."
 msgstr "Фактичний зміст самого коментаря."
 
-#: apps/blog/models.py:152 branch/models.py:91
-msgid "Status"
-msgstr "Статус"
-
-#: apps/blog/models.py:153
+#: apps/blog/models.py:155
 msgid "Is the comment will be displayed on the site?"
 msgstr "Чи буде коментар відображатися на сайті?"
 
-#: apps/blog/models.py:160 branch/models.py:72
+#: apps/blog/models.py:162 apps/core/models.py:76
 msgid "Date created"
 msgstr "Дата створення"
 
-#: apps/blog/models.py:167 branch/models.py:79
+#: apps/blog/models.py:169 apps/core/models.py:83
 msgid "Date updated"
 msgstr "Дата оновлення"
 
-#: apps/blog/models.py:175
+#: apps/blog/models.py:177
 msgid "Comments"
 msgstr "Коментарі"
 
-#: apps/blog/models.py:180
+#: apps/blog/models.py:183
 msgid "Comment by"
 msgstr "Коментар від"
 
-#: apps/blog/models.py:182
+#: apps/blog/models.py:185
 msgid "on"
 msgstr "до"
 
 #: apps/blog/templates/blog/partials/comment-form.html:14
-#: apps/telegraph/templates/telegraph/contact.html:47
+#: apps/telegraph/templates/telegraph/contact.html:48
 msgid "Your Name"
 msgstr "Ваше ім'я"
 
 #: apps/blog/templates/blog/partials/comment-form.html:22
-#: apps/telegraph/templates/telegraph/contact.html:55
+#: apps/telegraph/templates/telegraph/contact.html:56
 msgid "Email Address"
 msgstr "Зворотня адреса"
 
@@ -215,7 +223,7 @@ msgstr[3] "%(total_comments)s коментарів"
 msgid "There are no comments yet."
 msgstr "Коментарів поки немає."
 
-#: apps/blog/views.py:104
+#: apps/blog/views.py:117
 msgid ""
 "Your comment has been sent for moderation. This means comment will \"held\" "
 "until I okays it and publish it."
@@ -226,6 +234,66 @@ msgstr ""
 #: apps/core/apps.py:27
 msgid "Core"
 msgstr "Ядро"
+
+#: apps/core/models.py:45
+msgid "Draft"
+msgstr "Чернетка"
+
+#: apps/core/models.py:51
+msgid "Title"
+msgstr "Заголовок"
+
+#: apps/core/models.py:58
+msgid "Slug"
+msgstr "Слаг"
+
+#: apps/core/models.py:59
+msgid "Leave it blank for automatic populating."
+msgstr "Залиште поле порожнім, для автоматичного заповнення."
+
+#: apps/core/models.py:64
+msgid "Block search indexing"
+msgstr "Заборонити індексування"
+
+#: apps/core/models.py:65
+msgid "Prevent this page from appearing in search index."
+msgstr "Заборонити пошуковим павукам індексувати цю сторінку."
+
+#: apps/core/models.py:69
+msgid "Full text of the post"
+msgstr "Повний текст публікації"
+
+#: apps/core/models.py:88
+msgid "First publication date"
+msgstr "Дата публікації"
+
+#: apps/core/models.py:102
+msgid "Locale"
+msgstr "Локаль"
+
+#: apps/core/models.py:103
+msgid "Specify the publishing locale used."
+msgstr "Вкажіть використовувану локаль публікації."
+
+#: apps/core/models.py:110
+msgid "Meta title"
+msgstr "Мета заголовок"
+
+#: apps/core/models.py:111
+msgid ""
+"This will be displayed in meta tags. Keep it under 60 characters. Leave "
+"empty and the post's title will be used."
+msgstr ""
+"Це буде відображатися в метатегах. Використовуйте до 60 символів. Залиште "
+"поле порожнім, і буде використовуватися заголовок повідомлення."
+
+#: apps/core/models.py:120
+msgid "Meta description"
+msgstr "Мета опис"
+
+#: apps/core/models.py:121
+msgid "This will be displayed in meta tags. Keep it under 120 characters."
+msgstr "Це буде відображатися в метатегах. Використовуйте до 120 символів."
 
 #: apps/core/templates/core/404.html:5 apps/core/templates/core/404.html:36
 msgid "Page Not Found."
@@ -330,15 +398,15 @@ msgstr "Дата оновлення:"
 msgid "Language:"
 msgstr "Мова:"
 
-#: apps/core/templates/core/humans.html:22 branch/models.py:41
+#: apps/core/templates/core/humans.html:22
 msgid "Russian"
 msgstr "Російська"
 
-#: apps/core/templates/core/humans.html:22 branch/models.py:42
+#: apps/core/templates/core/humans.html:22
 msgid "Ukrainian"
 msgstr "Українська"
 
-#: apps/core/templates/core/humans.html:22 branch/models.py:40
+#: apps/core/templates/core/humans.html:22
 msgid "English"
 msgstr "Англійська"
 
@@ -374,15 +442,15 @@ msgstr "SEO інструменти"
 msgid "Telegraph"
 msgstr "Телеграф"
 
-#: apps/telegraph/forms.py:32
+#: apps/telegraph/forms.py:34
 msgid "How can I contact you"
 msgstr "Як я можу до вас звертатися"
 
-#: apps/telegraph/forms.py:40
+#: apps/telegraph/forms.py:42
 msgid "Where can I send a response"
 msgstr "Куди відправити відповідь"
 
-#: apps/telegraph/forms.py:49
+#: apps/telegraph/forms.py:51
 msgid "Can be blank"
 msgstr "Можна залишити порожнім"
 
@@ -407,19 +475,19 @@ msgstr ""
 "повідомлення. Зазвичай листи доходять протягом пари секунд. Але це не "
 "означає, що я доберуся до вашого листа таким же стрімким чином."
 
-#: apps/telegraph/templates/telegraph/contact.html:63
+#: apps/telegraph/templates/telegraph/contact.html:64
 msgid "Subject"
 msgstr "Тема повідомлення"
 
-#: apps/telegraph/templates/telegraph/contact.html:71
+#: apps/telegraph/templates/telegraph/contact.html:72
 msgid "Message"
 msgstr "Повідомлення"
 
-#: apps/telegraph/templates/telegraph/contact.html:78
+#: apps/telegraph/templates/telegraph/contact.html:79
 msgid "Send e-mail"
 msgstr "Надіслати"
 
-#: apps/telegraph/views.py:45 apps/telegraph/views.py:49
+#: apps/telegraph/views.py:39 apps/telegraph/views.py:44
 #: templates/partials/sidebar.html:18
 msgid "Contact Form"
 msgstr "Контактна форма"
@@ -428,75 +496,15 @@ msgstr "Контактна форма"
 msgid "Contact form submission"
 msgstr "Нове повідомлення"
 
-#: branch/models.py:35
-msgid "Draft"
-msgstr "Чернетка"
-
-#: branch/models.py:47
-msgid "Title"
-msgstr "Заголовок"
-
-#: branch/models.py:54
-msgid "Slug"
-msgstr "Слаг"
-
-#: branch/models.py:55
-msgid "Leave it blank for automatic populating."
-msgstr "Залиште поле порожнім, для автоматичного заповнення."
-
-#: branch/models.py:60
-msgid "Block search indexing"
-msgstr "Заборонити індексування"
-
-#: branch/models.py:61
-msgid "Prevent this page from appearing in search index."
-msgstr "Заборонити пошуковим павукам індексувати цю сторінку."
-
-#: branch/models.py:65
-msgid "Full text of the post"
-msgstr "Повний текст публікації"
-
-#: branch/models.py:84
-msgid "First publication date"
-msgstr "Дата публікації"
-
-#: branch/models.py:98
-msgid "Locale"
-msgstr "Локаль"
-
-#: branch/models.py:99
-msgid "Specify the publishing locale used."
-msgstr "Вкажіть використовувану локаль публікації."
-
-#: branch/models.py:106
-msgid "Meta title"
-msgstr "Мета заголовок"
-
-#: branch/models.py:107
-msgid ""
-"This will be displayed in meta tags. Keep it under 60 characters. Leave "
-"empty and the post's title will be used."
-msgstr ""
-"Це буде відображатися в метатегах. Використовуйте до 60 символів. Залиште "
-"поле порожнім, і буде використовуватися заголовок повідомлення."
-
-#: branch/models.py:116
-msgid "Meta description"
-msgstr "Мета опис"
-
-#: branch/models.py:117
-msgid "This will be displayed in meta tags. Keep it under 120 characters."
-msgstr "Це буде відображатися в метатегах. Використовуйте до 120 символів."
-
-#: branch/settings/base.py:364
+#: branch/settings.py:442
 msgid "Serghei Iakovlev"
 msgstr "Сергій Яковлєв"
 
-#: branch/settings/base.py:365
+#: branch/settings.py:443
 msgid "Serghei's Iakovlev Blog"
 msgstr "Персональний блог Сергія Яковлєва"
 
-#: branch/settings/base.py:366
+#: branch/settings.py:444
 msgid ""
 "My notebook, workshop, a place where I share my experiences and thoughts"
 msgstr "Мій блокнот, майстерня, місце де я ділюся своїм досвідом і думками"
