@@ -43,20 +43,21 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Set VAR=(casting, default value)
 env = environ.Env(
-    DEBUG=(bool, False),
-    ALLOW_ROBOTS=(bool, False),
-    USE_SSL=(bool, False),
-    COMPRESS_OFFLINE=(bool, False),
-    ALLOWED_HOSTS=(list, []),
-    INTERNAL_IPS=(list, []),
     ADMINS=(list, []),
-    TIME_ZONE=(str, 'UTC'),
-    SECURE_SSL_REDIRECT=(bool, False),
-    SECURE_HSTS_SECONDS=(int, 3600),
+    ADMIN_SITE_URL=(str, 'admin'),
+    ALLOWED_HOSTS=(list, []),
+    ALLOW_ROBOTS=(bool, False),
+    COMPRESS_OFFLINE=(bool, False),
+    CSRF_COOKIE_SECURE=(bool, False),
+    DEBUG=(bool, False),
+    INTERNAL_IPS=(list, []),
     SECURE_HSTS_INCLUDE_SUBDOMAINS=(bool, False),
     SECURE_HSTS_PRELOAD=(bool, False),
+    SECURE_HSTS_SECONDS=(int, 3600),
+    SECURE_SSL_REDIRECT=(bool, False),
     SESSION_COOKIE_SECURE=(bool, False),
-    CSRF_COOKIE_SECURE=(bool, False),
+    TIME_ZONE=(str, 'UTC'),
+    USE_SSL=(bool, False),
 
     # Celery
     CELERY_ALWAYS_EAGER=(bool, True),

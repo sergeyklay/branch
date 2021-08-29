@@ -24,7 +24,6 @@ from django.urls import include, path, re_path
 from django.views.static import serve
 
 from apps.blog.sitemaps import PostSitemap, PostsListSitemap
-from apps.core.utils import admin_path
 from apps.pages.sitemaps import PageSitemap
 from apps.telegraph.sitemaps import TelegraphSitemap
 
@@ -52,7 +51,7 @@ urlpatterns = [
     # Contacts.
     path('', include('apps.telegraph.urls', namespace='telegraph')),
     # Blog admin.
-    path(f'{admin_path()}/', admin.site.urls),
+    path(f'{settings.ADMIN_SITE_URL}/', admin.site.urls),
     # Sitemaps.
     path('sitemap.xml', sitemap, sitemaps(), name='sitemap'),
 ]

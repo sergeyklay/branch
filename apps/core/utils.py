@@ -39,9 +39,3 @@ def to_language(locale):
         return locale[:idx].lower() + '-' + locale[idx + 1:].upper()
 
     return trans_real.to_language(locale)
-
-
-def admin_path():
-    """Get URL part of the admin site."""
-    admin = getattr(settings, 'ADMIN_SITE_URL', 'admin')
-    return f"{admin.strip('/')}"
