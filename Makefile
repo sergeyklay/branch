@@ -103,7 +103,6 @@ maintainer-clean: clean
 	@echo
 
 .PHONY: lint
-lint: export LOG_FILE=storage/logs/app.log
 lint: $(VENV_PYTHON)
 	@echo $(CS)Running linters$(CE)
 	-$(VENV_BIN)/flake8 $(FLAKE8_FLAGS) ./
@@ -163,7 +162,6 @@ test: export RECAPTCHA_PRIVATE_KEY='Naive and not very secret key used for tests
 test: export DATABASE_URL=sqlite://:memory:
 test: export DEBUG=False
 test: export USE_SSL=False
-test: export LOG_FILE=storage/logs/app.log
 test: export WORKER_LOGLEVEL=info
 test: build.py $(VENV_PYTHON)
 	@echo $(CS)Running tests$(CE)
