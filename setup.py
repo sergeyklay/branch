@@ -169,6 +169,7 @@ EXTRAS_REQUIRE = {
     'testing': [
         'coverage[toml]>=5.4',  # Code coverage measurement for Python
         'pytest>=6.2.0',  # Our test framework
+        'pytest-celery>=0.0.0',  # Enable celery.contrib.pytest
         'pytest-django>=4.2.0',  # A Django plugin for pytest
         'factory-boy>=3.2.0',  # A versatile test fixtures
         'faker>=8.1.0',  # A generator of fake data for tests

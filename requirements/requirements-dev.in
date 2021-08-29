@@ -18,20 +18,20 @@
 
 # testing
 coverage[toml]
-pytest
-pytest-django
 factory-boy
 faker
-pylint
-pylint-django
 flake8
-flake8-import-order
 flake8-blind-except
 flake8-builtins
 flake8-docstrings
+flake8-import-order
+pylint
+pylint-django
+pytest
+pytest-celery
+pytest-django
 
 
 # develop
 django-debug-toolbar
 django-extensions
-
