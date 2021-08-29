@@ -12,6 +12,7 @@ Breaking Changes
 
 * Renamed ``branch.settings.BASE_URL`` to ``branch.settings.SITE_URL``.
 * Renamed ``branch.settings.BRANCH_LANGUAGES`` to ``branch.settings.SUPPORTED_LANGUAGES``.
+* Removed ``apps.core.utils.admin_path`` in favor of ``branch.settings.ADMIN_SITE_URL``.
 
 
 Features
@@ -20,19 +21,19 @@ Features
 * Tune up comments page on admin site.
 * Provided ``storage`` directory to store logs, coverage reports and so on.
 * Provided custom command to make messages.
-* Log warnings on debug mode.
+* Enabled log warnings on debug mode.
 
 
 Improvements
 ^^^^^^^^^^^^
 
-* Configured Celery to use the same time zone as the app.
+* Configured ``celery`` to use the same time zone as the app.
 
 
 Trivial/Internal Changes
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-* Returned to virtualenvwrapper.
+* Returned to ``virtualenvwrapper`` for local development.
 * Bumped ``prismjs`` from 1.23.0 to 1.24.1.
 * Bumped ``trumbowyg`` from 2.24.0 to 2.25.1.
 * Bumped ``faker`` from 8.11.0 to 8.12.1.
