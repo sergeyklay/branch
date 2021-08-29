@@ -194,6 +194,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # Locale middlewares
+    'apps.core.middleware.locale.inject_accept_language',
     'django.middleware.locale.LocaleMiddleware',
 ]
 
@@ -347,10 +350,13 @@ FIXTURE_DIRS = (
     BASE_DIR / 'fixtures',
 )
 
-ADMIN_SITE_URL = env.str('ADMIN_SITE_URL', default='admin/')
+ADMIN_SITE_URL = env('ADMIN_SITE_URL')
 
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/
+
+ADMIN_LANGUAGE_CODE = 'ru'  # I prefer Russian here
+SITE_LANGUAGE_CODE = 'ru'  # The blog content in Russian
 
 SUPPORTED_LANGUAGES = {
     'en-US': {

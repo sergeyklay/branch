@@ -22,6 +22,11 @@ Features
 * Provided ``storage`` directory to store logs, coverage reports and so on.
 * Provided custom command to make messages.
 * Enabled log warnings on debug mode.
+* Force the I18N machinery to always choose
+  - ``branch.settings.SITE_LANGUAGE_CODE`` for the main site
+  - ``branch.settings.ADMIN_LANGUAGE_CODE`` for the admin site
+  as the default initial language unless another one is set via
+  sessions or cookies.
 
 
 Improvements

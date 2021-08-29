@@ -36,8 +36,18 @@ def test_posts_rss_no_items(client):
     assert pq('title').text().startswith('Latest posts - ')
     assert pq('link').text() == f'{settings.SITE_URL}/feeds/rss/posts.xml'
     assert pq('description').text() == settings.SITE_DESCRIPTION
-    assert pq('language').text() == 'en-us'
+    assert pq('language').text() == 'ru'
     assert pq('copyright').text().startswith('Copyright (c) 2018-')
+
+
+@pytest.mark.django_db
+def test_posts_rss_no_items_using_cookie(client):
+    client.cookies.load({settings.LANGUAGE_COOKIE_NAME: 'en-us'})
+    response = client.get(reverse('blog:posts_rss'))
+    assert response.status_code == 200
+
+    pq = PyQuery(response.content, parser='xml')
+    assert pq('language').text() == 'en-us'
 
 
 @pytest.mark.django_db
