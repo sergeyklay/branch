@@ -34,7 +34,7 @@ def test_posts_rss_no_items(client):
     pq = PyQuery(response.content, parser='xml')
 
     assert pq('title').text().startswith('Latest posts - ')
-    assert pq('link').text() == f'{settings.BASE_URL}/feeds/rss/posts.xml'
+    assert pq('link').text() == f'{settings.SITE_URL}/feeds/rss/posts.xml'
     assert pq('description').text() == settings.SITE_DESCRIPTION
     assert pq('language').text() == 'en-us'
     assert pq('copyright').text().startswith('Copyright (c) 2018-')
@@ -71,7 +71,7 @@ def test_posts_rss_items(author, client, execution_number):
     )
 
     assert pq('channel item link').text() == (
-        f'{settings.BASE_URL}/post/'
+        f'{settings.SITE_URL}/post/'
         f'{date.strftime("%Y/%m/%d").replace("/0", "/")}'
         f'/test-post-{execution_number}.html'
     )

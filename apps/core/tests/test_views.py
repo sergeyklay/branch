@@ -28,7 +28,7 @@ def test_sitemap_url(client):
     response = client.get('/robots.txt')
     assert response.status_code == 200
 
-    expected = f'Sitemap: {settings.BASE_URL}/sitemap.xml'
+    expected = f'Sitemap: {settings.SITE_URL}/sitemap.xml'
     assert expected in response.content.decode('utf-8')
 
 

@@ -4,24 +4,24 @@
     "@type": "Article",
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "{{ BASE_URL }}{{ page.get_absolute_url }}"
+        "@id": "{{ SITE_URL }}{{ page.get_absolute_url }}"
     },
     "headline": "{{ seo_title }}",
     "description": "{{ seo_description|striptags }}",
-    "image": "{{ BASE_URL }}{% if featured_image %}{{ featured_image.url }}{% else%}{% static 'img/blog-logo.jpg' %}{% endif %}",
+    "image": "{{ SITE_URL }}{% if featured_image %}{{ featured_image.url }}{% else%}{% static 'img/blog-logo.jpg' %}{% endif %}",
     "datePublished": "{{ page.published_at|date_to_xmlschema }}",
     "dateModified": "{{ page.updated_at|date_to_xmlschema }}",
     "author": {
         "@type": "Person",
         "name": "{{ seo_author }}",
-        "url": "{{ BASE_URL }}{{ about_url }}"
+        "url": "{{ SITE_URL }}{{ about_url }}"
     },
     "publisher": {
         "@type": "Organization",
         "name": "{{ seo_author }}",
         "logo": {
             "@type": "ImageObject",
-            "url": "{{ BASE_URL }}{% static 'img/blog-logo.jpg' %}"
+            "url": "{{ SITE_URL }}{% static 'img/blog-logo.jpg' %}"
         }
     }
 }

@@ -60,7 +60,6 @@ env = environ.Env(
     CELERY_ALWAYS_EAGER=(bool, True),
     CELERY_USE_SSL=(bool, False),
     CELERY_RESULT_BACKEND=(str, None),
-    CELERY_TIMEZONE=(str, 'Europe/Kiev'),
     CELERYD_CONCURRENCY=(int, 1),
     CELERYD_POOL=(str, 'prefork'),
     BROKER_URL=(str, None),
@@ -99,7 +98,7 @@ DOMAIN = env.str('DOMAIN', default=HOSTNAME)
 # Full base URL for the site including protocol.  No trailing slash.
 #   Example: https://my-site.com
 USE_SSL = env('USE_SSL')
-BASE_URL = f"{'https' if USE_SSL else 'http'}://{DOMAIN}"
+SITE_URL = f"{'https' if USE_SSL else 'http'}://{DOMAIN}"
 
 # SECURITY WARNING: define the correct hosts and ips in production
 ALLOWED_HOSTS = env('ALLOWED_HOSTS')

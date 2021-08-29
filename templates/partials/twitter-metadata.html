@@ -10,9 +10,9 @@
 {% endif %}
 
 {% if featured_image %}
-    <meta name="twitter:image:src" content="{{ BASE_URL }}{{ featured_image.url }}">
+    <meta name="twitter:image:src" content="{{ SITE_URL }}{{ featured_image.url }}">
 {% else%}
-    <meta name="twitter:image:src" content="{{ BASE_URL }}{% static 'img/blog-logo.jpg' %}">
+    <meta name="twitter:image:src" content="{{ SITE_URL }}{% static 'img/blog-logo.jpg' %}">
 {% endif %}
 
 <meta name="twitter:image:alt" content="{{ seo_title|default:SITE_NAME }}">

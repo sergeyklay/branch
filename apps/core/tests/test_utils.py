@@ -38,10 +38,10 @@ def test_to_language(locale, expected):
 @pytest.mark.parametrize(
     'url,site,expected',
     [
-        ('', None, settings.BASE_URL),
-        ('', '', settings.BASE_URL),
-        (None, None, settings.BASE_URL),
-        ('foo', None, f'{settings.BASE_URL}/foo'),
+        ('', None, settings.SITE_URL),
+        ('', '', settings.SITE_URL),
+        (None, None, settings.SITE_URL),
+        ('foo', None, f'{settings.SITE_URL}/foo'),
         ('http://abc', None, 'http://abc'),
         ('https://cde', None, 'https://cde'),
         ('https://example.com', 'https://foo.com', 'https://example.com'),

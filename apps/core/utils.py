@@ -22,11 +22,11 @@ from django.utils.translation import trans_real
 
 
 def to_absolute_url(url, site=None):
-    """Take an URL and prepend the BASE_URL."""
+    """Take an URL and prepend the SITE_URL."""
     if url and url.startswith(('http://', 'https://', 'mailto:')):
         return url
 
-    return urljoin(site or settings.BASE_URL, url)
+    return urljoin(site or settings.SITE_URL, url)
 
 
 def to_language(locale):
