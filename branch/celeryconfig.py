@@ -15,7 +15,7 @@
 
 """Celery configuration module."""
 
-from branch.settings import DEBUG, env
+from branch.settings import env
 
 # Default broker URL.
 broker_url = env('BROKER_URL')
@@ -27,7 +27,7 @@ result_backend = env('CELERY_RESULT_BACKEND')
 # task returns.
 #
 # Useful for local development, testing and debugging.
-task_always_eager = env('CELERY_ALWAYS_EAGER') or DEBUG
+task_always_eager = env('CELERY_ALWAYS_EAGER')
 
 # If this is True, eagerly executed tasks (applied by task.apply(), or when the
 # task_always_eager setting is enabled), will propagate exceptions.
@@ -43,7 +43,7 @@ worker_concurrency = env('CELERYD_CONCURRENCY')
 worker_pool = env('CELERYD_POOL')
 
 # Configure Celery to use a custom time zone.
-timezone = env('CELERY_TIMEZONE')
+timezone = env('TIME_ZONE')
 
 # The default timeout in seconds before we give up establishing a
 # connection to the AMQP server.
