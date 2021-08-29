@@ -11,6 +11,7 @@ Breaking Changes
 ^^^^^^^^^^^^^^^^
 
 * Renamed ``branch.settings.BASE_URL`` to ``branch.settings.SITE_URL``.
+* Renamed ``branch.settings.BRANCH_LANGUAGES`` to ``branch.settings.SUPPORTED_LANGUAGES``.
 
 
 Features

@@ -351,7 +351,7 @@ ADMIN_SITE_URL = env.str('ADMIN_SITE_URL', default='admin/')
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/
 
-BRANCH_LANGUAGES = {
+SUPPORTED_LANGUAGES = {
     'en-US': {
         'english': 'English (US)',
         'native': 'English (US)',
@@ -373,15 +373,14 @@ BRANCH_LANGUAGES = {
 # http://www.i18nguy.com/unicode/language-identifiers.html
 
 LANGUAGE_CODE = 'en-us'
-
 LANGUAGE_COOKIE_NAME = 'branch_language'
 LANGUAGES = [
-    (locale.lower(), value['native']) for locale, value in BRANCH_LANGUAGES.items()  # noqa
+    (locale.lower(), value['native']) for locale, value in SUPPORTED_LANGUAGES.items()  # noqa
 ]
 
-LANGUAGE_MAP = {locale.lower(): locale for locale in BRANCH_LANGUAGES}
+LANGUAGE_MAP = {locale.lower(): locale for locale in SUPPORTED_LANGUAGES}
 LOCALE_TERRITORY = [
-    (locale['region'], locale['native']) for locale in BRANCH_LANGUAGES.values() # noqa
+    (locale['region'], locale['native']) for locale in SUPPORTED_LANGUAGES.values() # noqa
 ]
 
 TIME_ZONE = env('TIME_ZONE')
