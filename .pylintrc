@@ -35,7 +35,7 @@ disable=
     duplicate-code,
     import-outside-toplevel,
     unused-argument,
-    attribute-defined-outside-init
+    attribute-defined-outside-init,
 
 # Use multiple processes to speed up Pylint. Specifying 0 will auto-detect the
 # number of processors available to use.

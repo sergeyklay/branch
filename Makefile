@@ -87,8 +87,10 @@ clean:
 	$(RM) -r ./build ./dist ./*.egg-info
 	$(RM) -r ./node_modules
 	$(RM) -r ./.cache ./.pytest_cache
-	$(RM) -r ./htmlcov
-	$(RM) ./coverage.*
+	$(RM) -r ./storage/coverage/htmlcov
+	$(RM) ./storage/coverage/coverage.*
+	$(RM) ./storage/logs/*.log
+	$(RM) ./storage/pids/*.pid
 	@echo
 
 .PHONY: maintainer-clean
@@ -101,7 +103,6 @@ maintainer-clean: clean
 	@echo
 
 .PHONY: lint
-lint: export LOG_FILE=$(PKG_NAME).log
 lint: $(VENV_PYTHON)
 	@echo $(CS)Running linters$(CE)
 	-$(VENV_BIN)/flake8 $(FLAKE8_FLAGS) ./
@@ -161,7 +162,7 @@ test: export RECAPTCHA_PRIVATE_KEY='Naive and not very secret key used for tests
 test: export DATABASE_URL=sqlite://:memory:
 test: export DEBUG=False
 test: export USE_SSL=False
-test: export LOG_FILE=$(PKG_NAME).log
+test: export WORKER_LOGLEVEL=info
 test: build.py $(VENV_PYTHON)
 	@echo $(CS)Running tests$(CE)
 	$(VENV_BIN)/coverage erase

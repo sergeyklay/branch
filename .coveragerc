@@ -18,15 +18,15 @@ precision = 2
 show_missing = True
 
 [html]
-directory = htmlcov
+directory = storage/coverage/htmlcov
 
 [xml]
-output = coverage.xml
+output = storage/coverage/coverage.xml
 
 [run]
 branch = True
 parallel = True
-data_file = coverage.db
+data_file = storage/coverage/coverage.db
 # A list of file name patterns, the files to leave
 # out of measurement or reporting.
 omit =
