@@ -25,10 +25,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/dev/ref/settings/
 """
 
+import logging
 import os
 import re
 import socket
 import sys
+import warnings
 from datetime import datetime
 from pathlib import Path
 
@@ -73,6 +75,14 @@ if os.path.exists(BASE_DIR / '.env'):
 APPS_DIR = BASE_DIR / 'apps'
 sys.path.append(APPS_DIR.__str__())
 
+# SECURITY WARNING: don't run with the debug turned on in production!
+DEBUG = env('DEBUG')
+
+if DEBUG:
+    # Always issue warnings messages in debug mode for the following classes:
+    warnings.simplefilter('always', DeprecationWarning)
+    warnings.simplefilter('always', PendingDeprecationWarning)
+
 try:
     # If it is possible to import and grab BUILD_ID_SHORT store first four
     # chars to add later to CACHE_KEY_PREFIX. BUILD_DATE_SHORT will be used
@@ -81,9 +91,6 @@ try:
 except ImportError:
     BUILD_ID_SHORT = '0000'
     BUILD_DATE_SHORT = datetime.utcnow().strftime('%Y-%m-%d')
-
-# SECURITY WARNING: don't run with the debug turned on in production!
-DEBUG = env('DEBUG')
 
 # Minimum message recorded level.
 # https://docs.djangoproject.com/en/dev/ref/contrib/messages/#message-levels
@@ -322,6 +329,8 @@ LOGGING = {
     },
 }
 
+logging.captureWarnings(True)
+
 # Password validation
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-password-validators
 
@@ -362,6 +371,7 @@ BRANCH_LANGUAGES = {
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
+
 LANGUAGE_CODE = 'en-us'
 
 LANGUAGE_COOKIE_NAME = 'branch_language'
@@ -383,10 +393,10 @@ LOCALE_PATHS = [
     BASE_DIR / 'locales',
 ]
 
+NODE_MODULES_PATH = BASE_DIR / 'node_modules'
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
-
-NODE_MODULES_PATH = BASE_DIR / 'node_modules'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'static'
