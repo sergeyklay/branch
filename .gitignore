@@ -35,4 +35,5 @@ __pycache__
 # Project's stuff.
 *.sqlite3
 .env
+celery.env
 build.py
