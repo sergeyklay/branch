@@ -19,6 +19,7 @@ Features
 * Tune up comments page on admin site.
 * Provided ``storage`` directory to store logs, coverage reports and so on.
 * Provided custom command to make messages.
+* Log warnings on debug mode.
 
 
 Improvements
