@@ -17,7 +17,9 @@ beautifulsoup4==4.9.3
 billiard==3.6.4.0
     # via celery
 celery[redis]==5.1.2
-    # via -r requirements/requirements.in
+    # via
+    #   -r requirements/requirements.in
+    #   pytest-celery
 click==7.1.2
     # via
     #   celery
@@ -128,6 +130,8 @@ pytest==6.2.4
     # via
     #   -r requirements/requirements-dev.in
     #   pytest-django
+pytest-celery==0.0.0
+    # via -r requirements/requirements-dev.in
 pytest-django==4.4.0
     # via -r requirements/requirements-dev.in
 python-dateutil==2.8.2
