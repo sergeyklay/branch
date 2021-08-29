@@ -125,13 +125,15 @@ SECRET_KEY = env.str('SECRET_KEY')
 # Application definition
 
 DJANGO_APPS = [
-    # Django contrib apps
+    # Default Django apps
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
+
+    # Admin
     'django.contrib.admin',
 ]
 
@@ -230,7 +232,7 @@ WSGI_APPLICATION = 'branch.wsgi.application'
 
 def get_db_config(environ_var):
     """Get Database configuration."""
-    values = env.db(var=environ_var, default='sqlite:///db.sqlite3')
+    values = env.db(var=environ_var, default='sqlite:///storage/db/db.sqlite3')
 
     def is_sqlite(options: dict):
         return options.get('ENGINE') == 'django.db.backends.sqlite3'
@@ -247,7 +249,7 @@ def get_db_config(environ_var):
         return values
 
     # This will allow use a relative DB path for SQLite
-    # like 'sqlite:///db.sqlite3'
+    # like 'sqlite:///storage/db/db.sqlite3'
     if not values['NAME'] == ':memory:' and not os.path.isabs(values['NAME']):
         values.update({'NAME': BASE_DIR / values['NAME']})
 
@@ -299,7 +301,7 @@ LOGGING = {
         },
         'file': {
             'class': 'logging.FileHandler',
-            'filename': env.str('LOG_FILE', BASE_DIR / 'branch.log'),
+            'filename': env.str('LOG_FILE', BASE_DIR / 'storage/logs/app.log'),
             'level': 'INFO',
             'formatter': 'common',
             'filters': ['require_debug_false'],
