@@ -114,6 +114,12 @@ build: build.py
 	@echo $(CS)Compress static assets$(CE)
 	$(VENV_PYTHON) manage.py compress
 
+.PHONY: messages
+messages: $(VENV_PYTHON)
+	@echo $(CS)Pull out all strings marked for translation$(CE)
+	$(VENV_PYTHON) manage.py makemessages_plus --all
+	@echo
+
 .PHONY: serve
 serve: $(VENV_PYTHON)
 	@echo $(CS)Starting web server on $(LOCAL_PORT) port$(CE)
@@ -185,6 +191,7 @@ help:
 	@echo '  migrations:   Create database migrations'
 	@echo '  migrate:      Run all database migrations'
 	@echo '  build:        Prepare project to use'
+	@echo '  messages:     Pull out all strings marked for translation'
 	@echo '  test:         Run unit tests'
 	@echo '  ccov:         Combine coverage reports'
 	@echo '  lint:         Lint the code'
