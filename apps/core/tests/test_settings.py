@@ -33,8 +33,8 @@ def test_base_paths_presents(key):
 
 @pytest.mark.parametrize(
     'key', ('SITE_NAME', 'SITE_DESCRIPTION', 'SITE_TAGLINE',
-            'CONTACT_EMAIL', 'SERVER_EMAIL',
-            'COPYRIGHT_HOLDER', 'ADMIN_SITE_URL',
+            'CONTACT_EMAIL', 'SERVER_EMAIL', 'COPYRIGHT_HOLDER',
+            'ADMIN_LANGUAGE_CODE', 'SITE_LANGUAGE_CODE', 'ADMIN_SITE_URL',
             'GITHUB_USER', 'PAGE_SIZE')
 )
 def test_important_vars_presents(key):

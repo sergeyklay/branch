@@ -43,7 +43,22 @@ def test_disabled_robots(client):
 
 @pytest.mark.django_db
 def test_humans(client):
-    """Make sure humans.txt is rendered properly"""
+    """Make sure humans.txt is rendered properly."""
+    response = client.get('/humans.txt')
+    assert response.status_code == 200
+
+    content = response.content.decode('utf-8')
+    last_update = f'Дата обновления: {settings.BUILD_DATE_SHORT}'
+
+    assert last_update in content
+    assert 'ПОЗДРАВЛЯЮ, вы нашли мой humans.txt файл!' in content
+    assert 'Компоненты: Django, jQuery, Ed Theme' in content
+
+
+@pytest.mark.django_db
+def test_humans_using_cookie(client):
+    """Make sure humans.txt is rendered properly with 'en-us' language."""
+    client.cookies.load({settings.LANGUAGE_COOKIE_NAME: 'en-us'})
     response = client.get('/humans.txt')
     assert response.status_code == 200
 
@@ -64,6 +79,20 @@ def test_404_app(client):
     assert 'core/404.html' in (t.name for t in response.templates)
 
     content = response.content.decode('utf-8')
+
+    assert 'Страница не найдена.' in content
+    assert 'Последние публикации' in content
+
+
+@pytest.mark.django_db
+def test_404_app_using_cookie(client):
+    """Make sure 404 handler worked as expected when lang is 'en-us'."""
+    client.cookies.load({settings.LANGUAGE_COOKIE_NAME: 'en-us'})
+    response = client.get('/xxxxxxx')
+
+    content = response.content.decode('utf-8')
+
+    assert response.status_code == 404
     assert 'Page Not Found.' in content
     assert 'Latest publications' in content
 
