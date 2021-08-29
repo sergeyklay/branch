@@ -183,7 +183,7 @@ jobs:
         with:
           # To ensure that jobs don't overwrite existing artifacts,
           # use a different name per job.
-          name: storage-python.${{ matrix.python }}-os.${{ matrix.os }}
+          name: storage-python.${{ matrix.python }}-${{ matrix.os }}
           path: storage
           # Artifacts are retained for 90 days by default.
           # In fact, we don't need such long period.
