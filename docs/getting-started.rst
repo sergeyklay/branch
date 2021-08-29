@@ -43,7 +43,7 @@ Installing Dependencies
 .. code-block:: shell
 
    # For production server:
-   $ python -m pip install -r requirements.txt
+   $ python -m pip install -r requirements/requirements.txt
    $ npm install
 
    # For local development:
@@ -54,9 +54,9 @@ To refresh dependencies in the future use the following approach:
 
 .. code-block:: shell
 
-   $ rm requirements.txt
-   $ make requirements.txt
-   $ pip-sync requirements.txt
+   $ rm requirements/requirements.txt
+   $ make requirements/requirements.txt
+   $ pip-sync requirements/requirements.txt
 
 
 Create environment file
