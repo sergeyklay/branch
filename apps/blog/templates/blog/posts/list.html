@@ -9,8 +9,8 @@
 {% block page_meta %}
     {# TODO: Move to feed block #}
     <!-- Feed links -->
-    <link rel="alternate" type="application/rss+xml" title="{{ SITE_NAME }} » {% trans 'Posts RSS feed' %}" href="{{ BASE_URL }}{% url 'blog:posts_rss' %}">
-    <link rel="alternate" type="application/atom+xml" title="{{ SITE_NAME }} » {% trans 'Posts Atom feed' %}" href="{{ BASE_URL }}{% url 'blog:posts_atom' %}">
+    <link rel="alternate" type="application/rss+xml" title="{{ SITE_NAME }} » {% trans 'Posts RSS feed' %}" href="{{ SITE_URL }}{% url 'blog:posts_rss' %}">
+    <link rel="alternate" type="application/atom+xml" title="{{ SITE_NAME }} » {% trans 'Posts Atom feed' %}" href="{{ SITE_URL }}{% url 'blog:posts_atom' %}">
     {{ block.super }}
 {% endblock %}
 

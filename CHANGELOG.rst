@@ -7,6 +7,12 @@ releases, in reverse chronological order.
 1.5.0 (2021-XX-XX)
 ------------------
 
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+* Renamed ``branch.settings.BASE_URL`` to ``branch.settings.SITE_URL``.
+
+
 Features
 ^^^^^^^^
 

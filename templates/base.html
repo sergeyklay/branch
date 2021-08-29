@@ -9,7 +9,7 @@
     {% block post_schema %}{% endblock %}
     {% block made_by %}
     <meta name="generator" content="Branch">
-    <link type="text/plain" rel="author" href="{{ BASE_URL }}/humans.txt">
+    <link type="text/plain" rel="author" href="{{ SITE_URL }}/humans.txt">
     {% endblock %}
 
     {% block page_description %}
@@ -85,7 +85,7 @@
         <header class="masthead">
             <div class="container">
                 <h3 class="masthead-title">
-                    <a href="{{ BASE_URL }}" title="{% trans 'Go to main page' %}">
+                    <a href="{{ SITE_URL }}" title="{% trans 'Go to main page' %}">
                         {{ SITE_NAME }}
                     </a>
                     <br><small>{{ SITE_TAGLINE }}</small>

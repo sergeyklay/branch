@@ -18,4 +18,4 @@
     {# TODO: Add to Page model property #}
     <meta property="dc:rights" content="{{ page_rights }}">
 {% endif %}
-    <meta property="dc:identifier" content="{{ BASE_URL }}{{ resource_url|default:request.path }}">
+    <meta property="dc:identifier" content="{{ SITE_URL }}{{ resource_url|default:request.path }}">
