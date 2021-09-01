@@ -470,8 +470,13 @@ COLOR_SCHEME = ''
 
 # Email configuration
 
-# The email address that error messages come from
-SERVER_EMAIL = env.str('SERVER_EMAIL', default='webmaster@localhost')
+# By default, Django will send system email from root@localhost.
+# However, some mail providers reject all email from this address.
+SERVER_EMAIL = env('SERVER_EMAIL')
+
+# Configure EMAIL_HOST, EMAIL_HOST_USER and EMAIL_HOST_PASSWORD. This will
+# read EMAIL_URL variable from .env file and return a config dictionary. It is
+# possible to override default EMAIL_BACKEND via env vars.
 EMAIL_CONFIG = env.email_url(backend=env.str('EMAIL_BACKEND', default=None))
 vars().update(EMAIL_CONFIG)
 
