@@ -8,7 +8,7 @@ amqp==5.0.6
     # via kombu
 asgiref==3.4.1
     # via django
-astroid==2.7.2
+astroid==2.7.3
     # via pylint
 attrs==21.2.0
     # via pytest
@@ -36,7 +36,7 @@ coverage[toml]==5.5
     # via -r requirements/requirements-dev.in
 cssselect==1.1.0
     # via pyquery
-django==3.2.6
+django==3.2.7
     # via
     #   -r requirements/requirements.in
     #   django-appconf
@@ -50,7 +50,7 @@ django-compressor==2.4.1
     # via -r requirements/requirements.in
 django-debug-toolbar==3.2.2
     # via -r requirements/requirements-dev.in
-django-environ-2==2.1.0
+django-environ-2==2.2.0
     # via -r requirements/requirements.in
 django-extensions==3.1.3
     # via -r requirements/requirements-dev.in
@@ -97,9 +97,9 @@ packaging==21.0
     # via pytest
 pillow==8.3.1
     # via -r requirements/requirements.in
-platformdirs==2.2.0
+platformdirs==2.3.0
     # via pylint
-pluggy==0.13.1
+pluggy==1.0.0
     # via pytest
 prompt-toolkit==3.0.20
     # via click-repl
@@ -126,7 +126,7 @@ pyparsing==2.4.7
     # via packaging
 pyquery==1.4.3
     # via -r requirements/requirements.in
-pytest==6.2.4
+pytest==6.2.5
     # via
     #   -r requirements/requirements-dev.in
     #   pytest-django

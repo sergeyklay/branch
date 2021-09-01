@@ -45,6 +45,9 @@ Trivial/Internal Changes
 * Bumped ``trumbowyg`` from 2.24.0 to 2.25.1.
 * Bumped ``faker`` from 8.11.0 to 8.12.1.
 * Bumped ``pylint`` from 2.9.6 to 2.10.2.
+* Bumped ``django`` from 3.2.6 to 3.2.7.
+* Bumped ``django-environ-2`` from 2.1.0 to 2.2.0.
+* Bumped ``pytest`` from 6.2.4 to 6.2.5.
 
 
 ----

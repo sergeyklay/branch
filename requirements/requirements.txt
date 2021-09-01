@@ -28,7 +28,7 @@ click-repl==0.2.0
     # via celery
 cssselect==1.1.0
     # via pyquery
-django==3.2.6
+django==3.2.7
     # via
     #   -r requirements/requirements.in
     #   django-appconf
@@ -38,7 +38,7 @@ django-appconf==1.0.4
     # via django-compressor
 django-compressor==2.4.1
     # via -r requirements/requirements.in
-django-environ-2==2.1.0
+django-environ-2==2.2.0
     # via -r requirements/requirements.in
 django-recaptcha==2.0.6
     # via -r requirements/requirements.in
