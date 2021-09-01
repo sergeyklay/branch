@@ -27,6 +27,8 @@ Features
   - ``branch.settings.ADMIN_LANGUAGE_CODE`` for the admin site
   as the default initial language unless another one is set via
   sessions or cookies.
+* Setup ``branch.settings.ADMINS`` and ``branch.settings.MANAGERS`` to get
+  system notifications.
 
 
 Improvements

@@ -32,6 +32,7 @@ import socket
 import sys
 import warnings
 from datetime import datetime
+from email.utils import parseaddr
 from pathlib import Path
 
 from django.contrib.messages import constants as message_constants
@@ -51,6 +52,8 @@ env = environ.Env(
     CSRF_COOKIE_SECURE=(bool, False),
     DEBUG=(bool, False),
     INTERNAL_IPS=(list, []),
+    MANAGERS=(list, []),
+    SERVER_EMAIL=(str, 'root@localhost'),
     SECURE_HSTS_INCLUDE_SUBDOMAINS=(bool, False),
     SECURE_HSTS_PRELOAD=(bool, False),
     SECURE_HSTS_SECONDS=(int, 3600),
@@ -185,6 +188,7 @@ CACHES['default']['KEY_PREFIX'] = CACHE_KEY_PREFIX
 CACHE_MIDDLEWARE_KEY_PREFIX = CACHE_KEY_PREFIX
 
 MIDDLEWARE = [
+    'django.middleware.common.BrokenLinkEmailsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.cache.UpdateCacheMiddleware',
@@ -466,11 +470,17 @@ CONTACT_EMAIL = env.str('CONTACT_EMAIL', default='webmaster@localhost')
 
 DEFAULT_FROM_EMAIL = SERVER_EMAIL
 
+
+def get_emails(environment_var):
+    """Prepare a tuple of email tuples from the value of 'environment_var'."""
+    return tuple(parseaddr(email) for email in env(environment_var))
+
+
 # A list of all the people who get code error notifications.
-#
-# Convert ['name1:email1', 'name2:email2'] to
-# [('name1', 'email1'), ('name2', 'email2')]
-ADMINS = [tuple(admin.split(':')) for admin in env.list('ADMINS')]
+ADMINS = get_emails('ADMINS')
+
+# A list of all the people who should get broken link notifications.
+MANAGERS = get_emails('MANAGERS')
 
 # Redirect all non-HTTPS requests to HTTPS (except for those URLs matching a
 # regular expression listed in SECURE_REDIRECT_EXEMPT).
