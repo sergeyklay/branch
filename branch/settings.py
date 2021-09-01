@@ -32,6 +32,7 @@ import socket
 import sys
 import warnings
 from datetime import datetime
+from email.utils import parseaddr
 from pathlib import Path
 
 from django.contrib.messages import constants as message_constants
@@ -51,6 +52,8 @@ env = environ.Env(
     CSRF_COOKIE_SECURE=(bool, False),
     DEBUG=(bool, False),
     INTERNAL_IPS=(list, []),
+    MANAGERS=(list, []),
+    SERVER_EMAIL=(str, 'root@localhost'),
     SECURE_HSTS_INCLUDE_SUBDOMAINS=(bool, False),
     SECURE_HSTS_PRELOAD=(bool, False),
     SECURE_HSTS_SECONDS=(int, 3600),
@@ -185,6 +188,7 @@ CACHES['default']['KEY_PREFIX'] = CACHE_KEY_PREFIX
 CACHE_MIDDLEWARE_KEY_PREFIX = CACHE_KEY_PREFIX
 
 MIDDLEWARE = [
+    'django.middleware.common.BrokenLinkEmailsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.cache.UpdateCacheMiddleware',
@@ -276,7 +280,7 @@ LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'root': {
-        'handlers': ['console_dev', 'console_prod', 'file'],
+        'handlers': ['console_dev', 'console_prod', 'file', 'mail_admins'],
         'level': 'INFO',
     },
     'loggers': {
@@ -294,6 +298,11 @@ LOGGING = {
             'handlers': ['console_dev'],
             'propagate': True,
             'level': 'INFO',
+        },
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': False,
         },
     },
     'handlers': {
@@ -315,6 +324,11 @@ LOGGING = {
             'level': 'INFO',
             'formatter': 'common',
             'filters': ['require_debug_false'],
+        },
+        'mail_admins': {
+            'class': 'django.utils.log.AdminEmailHandler',
+            'level': 'ERROR',
+            'include_html': True,
         },
     },
     'filters': {
@@ -456,8 +470,13 @@ COLOR_SCHEME = ''
 
 # Email configuration
 
-# The email address that error messages come from
-SERVER_EMAIL = env.str('SERVER_EMAIL', default='webmaster@localhost')
+# By default, Django will send system email from root@localhost.
+# However, some mail providers reject all email from this address.
+SERVER_EMAIL = env('SERVER_EMAIL')
+
+# Configure EMAIL_HOST, EMAIL_HOST_USER and EMAIL_HOST_PASSWORD. This will
+# read EMAIL_URL variable from .env file and return a config dictionary. It is
+# possible to override default EMAIL_BACKEND via env vars.
 EMAIL_CONFIG = env.email_url(backend=env.str('EMAIL_BACKEND', default=None))
 vars().update(EMAIL_CONFIG)
 
@@ -466,11 +485,17 @@ CONTACT_EMAIL = env.str('CONTACT_EMAIL', default='webmaster@localhost')
 
 DEFAULT_FROM_EMAIL = SERVER_EMAIL
 
+
+def get_emails(environment_var):
+    """Prepare a tuple of email tuples from the value of 'environment_var'."""
+    return tuple(parseaddr(email) for email in env(environment_var))
+
+
 # A list of all the people who get code error notifications.
-#
-# Convert ['name1:email1', 'name2:email2'] to
-# [('name1', 'email1'), ('name2', 'email2')]
-ADMINS = [tuple(admin.split(':')) for admin in env.list('ADMINS')]
+ADMINS = get_emails('ADMINS')
+
+# A list of all the people who should get broken link notifications.
+MANAGERS = get_emails('MANAGERS')
 
 # Redirect all non-HTTPS requests to HTTPS (except for those URLs matching a
 # regular expression listed in SECURE_REDIRECT_EXEMPT).
