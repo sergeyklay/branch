@@ -307,14 +307,14 @@ msgid ""
 "The page or file you requested wasn't found on my site. It's possible that "
 "you clicked a link that's out of date, or typed in the address incorrectly."
 msgstr ""
-"Страница или файл, который Вы запросили, не найдены на моем сайте. Вполне "
+"Страница или файл, который вы запросили, не найдены на моем сайте. Вполне "
 "возможно, что вы щёлкнули по ссылке, которая устарела, или неправильно "
 "набрали адрес."
 
 #: apps/core/templates/core/404.html:47
 msgid "If you typed in the address, please double check the spelling."
 msgstr ""
-"Если Вы набрали адрес, пожалуйста, проверьте правильность его написания."
+"Если вы набрали адрес, пожалуйста, проверьте правильность его написания."
 
 #: apps/core/templates/core/404.html:52
 #, python-format
@@ -324,10 +324,10 @@ msgid ""
 "an issue%(link_end)s. Tell me where you came from and what you were looking "
 "for, and I'll do our best to fix it."
 msgstr ""
-"Если Вы откуда-либо проследовали по ссылке, пожалуйста, свяжитесь со мной "
+"Если вы откуда-либо проследовали по ссылке, пожалуйста, свяжитесь со мной "
 "%(open_contact_link)sиспользуя контактную форму%(link_end)s или "
-"%(open_bug_link)sсообщите об ошибке%(link_end)s. Сообщите мне, откуда Вы "
-"пришли и что Вы ищете, и я сделаю все возможное, чтобы это исправить."
+"%(open_bug_link)sсообщите об ошибке%(link_end)s. Сообщите мне, откуда вы "
+"пришли и что вы ищете, и я сделаю все возможное, чтобы это исправить."
 
 #: apps/core/templates/core/500.html:5 apps/core/templates/core/500.html:8
 msgid "Internal server error."
