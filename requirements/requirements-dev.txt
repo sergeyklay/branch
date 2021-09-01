@@ -36,7 +36,7 @@ coverage[toml]==5.5
     # via -r requirements/requirements-dev.in
 cssselect==1.1.0
     # via pyquery
-django==3.2.6
+django==3.2.7
     # via
     #   -r requirements/requirements.in
     #   django-appconf
