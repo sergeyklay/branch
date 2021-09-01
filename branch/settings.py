@@ -280,7 +280,7 @@ LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
     'root': {
-        'handlers': ['console_dev', 'console_prod', 'file'],
+        'handlers': ['console_dev', 'console_prod', 'file', 'mail_admins'],
         'level': 'INFO',
     },
     'loggers': {
@@ -298,6 +298,11 @@ LOGGING = {
             'handlers': ['console_dev'],
             'propagate': True,
             'level': 'INFO',
+        },
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': False,
         },
     },
     'handlers': {
@@ -319,6 +324,11 @@ LOGGING = {
             'level': 'INFO',
             'formatter': 'common',
             'filters': ['require_debug_false'],
+        },
+        'mail_admins': {
+            'class': 'django.utils.log.AdminEmailHandler',
+            'level': 'ERROR',
+            'include_html': True,
         },
     },
     'filters': {
