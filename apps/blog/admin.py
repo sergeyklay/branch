@@ -45,8 +45,30 @@ class PostForm(forms.ModelForm):
         fields = '__all__'
 
 
+class BaseAdmin(admin.ModelAdmin):
+    """Base ModelAdmin class."""
+
+    unpublished_statuses = ()
+
+    def object_status(self, obj: Comment):
+        """Return custom column for object status."""
+        style = 'color:#000;font-weight:600'
+        if obj.status in self.unpublished_statuses:
+            style = 'color:#8f8f8f'
+
+        return mark_safe(
+            '<span style="{}">{}</span>'.format(
+                style,
+                obj.get_status_display()
+            )
+        )
+    object_status.allow_tags = True
+    object_status.short_description = _('Status')
+    object_status.admin_order_field = 'status'
+
+
 @admin.register(Post)
-class PostAdmin(admin.ModelAdmin):
+class PostAdmin(BaseAdmin):
     """Class to manage blog posts."""
 
     form = PostForm
@@ -54,16 +76,18 @@ class PostAdmin(admin.ModelAdmin):
     list_display = (
         'title',
         'slug',
-        'author',
+        'object_status',
         'published_at',
-        'status',
+    )
+
+    list_display_links = (
+        'title',
     )
 
     list_filter = (
         'status',
         'created_at',
         'published_at',
-        'author',
     )
 
     search_fields = (
@@ -81,6 +105,10 @@ class PostAdmin(admin.ModelAdmin):
     ordering = (
         'status',
         '-published_at',
+    )
+
+    unpublished_statuses = (
+        'draft',
     )
 
     fieldsets = (
@@ -109,28 +137,19 @@ class PostAdmin(admin.ModelAdmin):
 
 
 @admin.register(Comment)
-class CommentAdmin(admin.ModelAdmin):
+class CommentAdmin(BaseAdmin):
     """Class to manage post comments."""
 
-    class Media:
-        """Provide custom assets for CommentAdmin class."""
-
-        css = {
-            'all': (
-                'admin/css/comment.css',
-            )
-        }
-
     list_display = (
-        'comment_status',
         'comment_sender',
+        'comment_content',
         'post',
-        'content',
-        'sent_date',
+        'object_status',
+        'created_at',
     )
 
     list_display_links = (
-        'comment_sender',
+        'comment_content',
     )
 
     list_filter = (
@@ -145,11 +164,17 @@ class CommentAdmin(admin.ModelAdmin):
         'comment',
     )
 
-    def comment_status(self, obj):
-        """Return custom column for comment status."""
-        return mark_safe(
-            '<span class="comment-icon comment-icon-{}"></span>'.format(
-                obj.status
+    fieldsets = (
+        (_('Commentator'), {
+            'fields': (
+                'user_name',
+                'user_email',
+            ),
+        }),
+        (_('Comment'), {
+            'fields': (
+                'comment',
+                'status',
             )
         )
     comment_status.allow_tags = True
@@ -166,14 +191,9 @@ class CommentAdmin(admin.ModelAdmin):
     comment_sender.short_description = _('Sender')
     comment_sender.admin_order_field = 'user_name'
 
-    def content(self, obj):
+    def comment_content(self, obj):
         """Return custom column for comment comment."""
-        return obj.comment.replace('\n', '')
-    content.short_description = _('Comment')
-    content.admin_order_field = 'content'
-
-    def sent_date(self, obj):
-        """Return custom column for comment sent date."""
-        return obj.created_at.strftime("%b %d")
-    sent_date.short_description = _('Sent')
-    sent_date.admin_order_field = 'created_at'
+        data = obj.comment.replace('\n', '')
+        return (data[:120] + '..') if len(data) > 120 else data
+    comment_content.short_description = _('Comment')
+    comment_content.admin_order_field = 'content'
