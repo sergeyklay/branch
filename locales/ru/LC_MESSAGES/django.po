@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: branch 1.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-08-29 18:21+0300\n"
-"PO-Revision-Date: 2021-05-06 16:06+0300\n"
+"POT-Creation-Date: 2021-09-02 20:08+0000\n"
+"PO-Revision-Date: 2021-09-02 23:11+0300\n"
 "Last-Translator: Serghei Iakovlev <egrep@protonmail.ch>\n"
 "Language-Team: Russian <egrep@protonmail.ch>\n"
 "Language: ru\n"
@@ -18,40 +18,61 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 "%100>=11 && n%100<=14)? 2 : 3);\n"
-"X-Generator: Poedit 2.4.3\n"
+"X-Generator: Poedit 3.0\n"
 
-#: apps/blog/admin.py:32 apps/blog/models.py:68
+#: apps/blog/admin.py:33 apps/blog/models.py:69
 msgid "Excerpt"
 msgstr "Отрывок"
 
-#: apps/blog/admin.py:37 apps/pages/admin.py:31
+#: apps/blog/admin.py:38 apps/pages/admin.py:31
 msgid "Content"
 msgstr "Содержимое"
 
-#: apps/blog/admin.py:87 apps/pages/admin.py:70
-msgid "General content"
-msgstr "Основное содержимое"
-
-#: apps/blog/admin.py:101 apps/pages/admin.py:80
-msgid "SEO"
-msgstr "SEO"
-
-#: apps/blog/admin.py:156 apps/blog/models.py:154 apps/core/models.py:95
+#: apps/blog/admin.py:67 apps/blog/models.py:157 apps/core/models.py:95
 msgid "Status"
 msgstr "Статус"
 
-#: apps/blog/admin.py:166
-msgid "Sender"
-msgstr "Отправитель"
+#: apps/blog/admin.py:116 apps/pages/admin.py:70
+msgid "General content"
+msgstr "Основное содержимое"
 
-#: apps/blog/admin.py:172 apps/blog/models.py:146 apps/blog/models.py:176
+#: apps/blog/admin.py:131 apps/pages/admin.py:80
+msgid "SEO"
+msgstr "SEO"
+
+#: apps/blog/admin.py:170
+msgid "Commentator"
+msgstr "Комментатор"
+
+#: apps/blog/admin.py:176 apps/blog/admin.py:234 apps/blog/models.py:149
+#: apps/blog/models.py:179
 #: apps/blog/templates/blog/partials/comment-form.html:31
 msgid "Comment"
 msgstr "Комментарий"
 
-#: apps/blog/admin.py:178
-msgid "Sent"
-msgstr "Отправлено"
+#: apps/blog/admin.py:193
+msgid "Publish selected comments"
+msgstr "Опубликовать выбранные комментарии"
+
+#: apps/blog/admin.py:199
+msgid "Selected comments published successfully"
+msgstr "Выбранные комментарии успешно опубликованы"
+
+#: apps/blog/admin.py:202 apps/blog/admin.py:213
+msgid "Nothing has been changed"
+msgstr "Ничего не изменилось"
+
+#: apps/blog/admin.py:204
+msgid "Unpublish selected comments"
+msgstr "Снять с публикации выбранные комментарии"
+
+#: apps/blog/admin.py:210
+msgid "Selected comments unpublished successfully"
+msgstr "Выбранные комментарии успешно сняты с публикации"
+
+#: apps/blog/admin.py:227
+msgid "Sender"
+msgstr "Отправитель"
 
 #: apps/blog/apps.py:27 apps/blog/templates/blog/posts/list.html:20
 #: templates/partials/sidebar.html:15
@@ -63,91 +84,91 @@ msgstr "Блог"
 msgid "Latest posts - %s"
 msgstr "Последние публикации - %s"
 
-#: apps/blog/models.py:44
+#: apps/blog/models.py:45
 msgid "Drama"
 msgstr "Драма"
 
-#: apps/blog/models.py:45
+#: apps/blog/models.py:46
 msgid "Narrative"
 msgstr "Повесть"
 
-#: apps/blog/models.py:46
+#: apps/blog/models.py:47
 msgid "Poem"
 msgstr "Стихотворение"
 
-#: apps/blog/models.py:47 apps/blog/models.py:83 apps/blog/models.py:130
+#: apps/blog/models.py:48 apps/blog/models.py:86 apps/blog/models.py:133
 msgid "Post"
 msgstr "Статья"
 
-#: apps/blog/models.py:54
+#: apps/blog/models.py:55
 msgid "Publication type"
 msgstr "Тип публикации"
 
-#: apps/blog/models.py:61
+#: apps/blog/models.py:62
 msgid "Featured image"
 msgstr "Иллюстрация"
 
-#: apps/blog/models.py:69
+#: apps/blog/models.py:70
 msgid "A short, concise introduction."
 msgstr "Краткое, выразительное введение."
 
-#: apps/blog/models.py:76
+#: apps/blog/models.py:77
 msgid "Author"
 msgstr "Автор"
 
-#: apps/blog/models.py:84
+#: apps/blog/models.py:87
 msgid "Posts"
 msgstr "Статьи"
 
-#: apps/blog/models.py:122
+#: apps/blog/models.py:125
 msgid "Hidden"
 msgstr "Скрыто"
 
-#: apps/blog/models.py:123 apps/core/models.py:46
+#: apps/blog/models.py:126 apps/core/models.py:46
 msgid "Published"
 msgstr "Опубликовано"
 
-#: apps/blog/models.py:135
+#: apps/blog/models.py:138
 msgid "User name"
 msgstr "Имя пользователя"
 
-#: apps/blog/models.py:136
+#: apps/blog/models.py:139
 msgid "The name of the user who posted the comment."
 msgstr "Имя пользователя, оставившего комментарий."
 
-#: apps/blog/models.py:141
+#: apps/blog/models.py:144
 msgid "E-Mail"
 msgstr "E-Mail"
 
-#: apps/blog/models.py:142
+#: apps/blog/models.py:145
 msgid "The email of the user who posted the comment."
 msgstr "Электронная почта пользователя, оставившего комментарий."
 
-#: apps/blog/models.py:147
+#: apps/blog/models.py:150
 msgid "The actual content of the comment itself."
 msgstr "Фактическое содержание самого комментария."
 
-#: apps/blog/models.py:155
+#: apps/blog/models.py:158
 msgid "Is the comment will be displayed on the site?"
 msgstr "Будет ли комментарий отображаться на сайте?"
 
-#: apps/blog/models.py:162 apps/core/models.py:76
+#: apps/blog/models.py:165 apps/core/models.py:76
 msgid "Date created"
 msgstr "Дата создания"
 
-#: apps/blog/models.py:169 apps/core/models.py:83
+#: apps/blog/models.py:172 apps/core/models.py:83
 msgid "Date updated"
 msgstr "Дата обновления"
 
-#: apps/blog/models.py:177
+#: apps/blog/models.py:180
 msgid "Comments"
 msgstr "Комментарии"
 
-#: apps/blog/models.py:183
+#: apps/blog/models.py:186
 msgid "Comment by"
 msgstr "Комментарий от"
 
-#: apps/blog/models.py:185
+#: apps/blog/models.py:188
 msgid "on"
 msgstr "к"
 
@@ -496,15 +517,15 @@ msgstr "Контактная форма"
 msgid "Contact form submission"
 msgstr "Новое сообщение"
 
-#: branch/settings.py:442
+#: branch/settings.py:459
 msgid "Serghei Iakovlev"
 msgstr "Сергей Яковлев"
 
-#: branch/settings.py:443
+#: branch/settings.py:460
 msgid "Serghei's Iakovlev Blog"
 msgstr "Персональный блог Сергея Яковлева"
 
-#: branch/settings.py:444
+#: branch/settings.py:461
 msgid ""
 "My notebook, workshop, a place where I share my experiences and thoughts"
 msgstr "Мой блокнот, мастерская, место где я делюсь своим опытом и мыслями"
@@ -536,3 +557,6 @@ msgstr "GitHub профиль"
 #: templates/partials/sidebar.html:45
 msgid "Unless otherwise stated, all content on the site is available under"
 msgstr "Если не указано иного, всё содержимое сайта доступно под лицензией"
+
+#~ msgid "Sent"
+#~ msgstr "Отправлено"

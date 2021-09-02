@@ -29,6 +29,7 @@ Features
   sessions or cookies.
 * Setup ``branch.settings.ADMINS`` and ``branch.settings.MANAGERS`` to get
   system notifications.
+* Provided ability to publish and unpublish selected comments.
 
 
 Improvements

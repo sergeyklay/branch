@@ -16,7 +16,8 @@
 """Representation of blog models in the admin interface."""
 
 from django import forms
-from django.contrib import admin
+from django.contrib import admin, messages
+from django.db.models.query import QuerySet
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
@@ -176,10 +177,41 @@ class CommentAdmin(BaseAdmin):
                 'comment',
                 'status',
             )
+        }),
+    )
+
+    unpublished_statuses = (
+        Comment.STATUS_HIDDEN,
+    )
+
+    actions = (
+        'publish_comments',
+        'unpublish_comments',
+    )
+
+    @admin.action(description=_('Publish selected comments'))
+    def publish_comments(self, request, queryset: QuerySet):
+        """Publish selected comments."""
+        rows = queryset.update(
+            status=Comment.STATUS_PUBLISHED
         )
-    comment_status.allow_tags = True
-    comment_status.short_description = _('Status')
-    comment_status.admin_order_field = 'status'
+        if rows > 0:
+            message = _('Selected comments published successfully')
+            self.message_user(request, message, messages.SUCCESS)
+        else:
+            self.message_user(request, _('Nothing has been changed'))
+
+    @admin.action(description=_('Unpublish selected comments'))
+    def unpublish_comments(self, request, queryset: QuerySet):
+        """Unpublish selected comments."""
+        rows = queryset.update(
+            status=Comment.STATUS_HIDDEN
+        )
+        if rows > 0:
+            message = _('Selected comments unpublished successfully')
+            self.message_user(request, message, messages.SUCCESS)
+        else:
+            self.message_user(request, _('Nothing has been changed'))
 
     def comment_sender(self, obj):
         """Return custom column for comment sender."""
