@@ -117,7 +117,7 @@ class Comment(models.Model):
     """Post comments model class."""
 
     STATUS_HIDDEN = 'hidden'
-    STATUS_PUBLISHED = 'hidden'
+    STATUS_PUBLISHED = 'published'
     STATUS_CHOICES = (
         (STATUS_HIDDEN, _('Hidden')),
         (STATUS_PUBLISHED, _('Published')),
@@ -150,7 +150,7 @@ class Comment(models.Model):
     status = models.CharField(
         max_length=10,
         choices=STATUS_CHOICES,
-        default='hidden',
+        default=STATUS_HIDDEN,
         verbose_name=_('Status'),
         help_text=_('Is the comment will be displayed on the site?')
     )
