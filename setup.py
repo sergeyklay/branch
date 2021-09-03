@@ -152,6 +152,7 @@ INSTALL_REQUIRES = [
     'django-compressor>=2.4',  # Compile and minify static assets
     'django-recaptcha>=2.0.6',  # reCAPTCHA support for Django
     'django-redis>=4.12.1',  # Redis cache backend for Django
+    'django-taggit>=1.5.0',  # Simple tagging application
     'gunicorn>=20.1.0',  # A Python WSGI HTTP Server
     'pillow>=8.2.0',  # Python Imaging Library
     'pyquery>=1.4.3',  # A jQuery-like Library for Python

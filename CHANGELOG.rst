@@ -30,6 +30,7 @@ Features
 * Setup ``branch.settings.ADMINS`` and ``branch.settings.MANAGERS`` to get
   system notifications.
 * Provided ability to publish and unpublish selected comments.
+* Adding the tagging functionality.
 
 
 Improvements

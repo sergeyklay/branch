@@ -24,6 +24,7 @@ from django.urls import reverse
 from django.utils import timezone
 from django.utils.text import format_lazy
 from django.utils.translation import gettext_lazy as _
+from taggit.managers import TaggableManager
 
 from apps.core.models import Content
 
@@ -75,6 +76,8 @@ class Post(Content):
         related_name='posts',
         verbose_name=_('Author'),
     )
+
+    tags = TaggableManager()
 
     class Meta:
         """Post model metadata class."""

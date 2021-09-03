@@ -17,9 +17,11 @@
 
 from django.conf import settings
 from django.contrib import messages
+from django.shortcuts import get_object_or_404
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import DateDetailView, ListView
 from django.views.generic.edit import FormMixin
+from taggit.models import Tag
 
 from apps.seo.mixins import PageDetailsMixin
 from .forms import CommentForm
@@ -132,3 +134,28 @@ class PostListView(ListView):
     def get_paginate_by(self, queryset):
         """Get the number of items to paginate by."""
         return settings.PAGE_SIZE
+
+
+class PostTaggedView(ListView):
+    """Display the list of published blog posts tagged by specific tag."""
+
+    context_object_name = 'posts'
+    template_name = 'blog/posts/list.html'
+
+    def get_queryset(self):
+        """Return the `QuerySet` that will be used to look up the blog post."""
+        # TODO: Duplicate query in get_context_data()
+        tag = get_object_or_404(Tag, slug=self.kwargs['slug'])
+        return Post.published.filter(tags__in=[tag])
+
+    def get_paginate_by(self, queryset):
+        """Get the number of items to paginate by."""
+        return settings.PAGE_SIZE
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        """Get post's context data to use in template."""
+        context = super().get_context_data(**kwargs)
+        # TODO: Duplicate query in get_queryset()
+        tag = get_object_or_404(Tag, slug=self.kwargs['slug'])
+        context['tagged'] = tag.name
+        return context

@@ -117,6 +117,7 @@ class PostAdmin(BaseAdmin):
             'fields': (
                 'title',
                 'slug',
+                'tags',
                 'featured_image',
                 'excerpt',
                 'body',

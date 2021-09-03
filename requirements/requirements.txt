@@ -34,6 +34,7 @@ django==3.2.7
     #   django-appconf
     #   django-recaptcha
     #   django-redis
+    #   django-taggit
 django-appconf==1.0.4
     # via django-compressor
 django-compressor==2.4.1
@@ -43,6 +44,8 @@ django-environ-2==2.2.0
 django-recaptcha==2.0.6
     # via -r requirements/requirements.in
 django-redis==5.0.0
+    # via -r requirements/requirements.in
+django-taggit==1.5.1
     # via -r requirements/requirements.in
 gunicorn==20.1.0
     # via -r requirements/requirements.in
@@ -83,3 +86,6 @@ vine==5.0.0
     #   kombu
 wcwidth==0.2.5
     # via prompt-toolkit
+
+# The following packages are considered to be unsafe in a requirements file:
+# setuptools

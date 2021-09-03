@@ -48,9 +48,10 @@ Features
   * Contact page to send E-Mails
   * Ability to create regular blog posts or just pages like "About", "CV", and so on
 
-* **Comments**
+* **Posts**
 
   * Ability to post and moderate comments
+  * The tagging functionality
 
 * **Feeds**
 

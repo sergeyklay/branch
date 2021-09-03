@@ -1,0 +1,76 @@
+/* Blog posts */
+
+@import "../mixins";
+
+.blog-post-content {
+  position: relative;
+  padding-bottom: .1em;
+}
+
+.blog-post-tags {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  right: 24px;
+  bottom: -12px;
+  list-style: none;
+}
+
+.blog-post-tags li, .blog-post-tags a {
+  font-family: $heading-font;
+  float: left;
+  height: 24px;
+  line-height: 24px;
+  position: relative;
+  font-size: .8em;
+}
+
+.blog-post-tags a {
+  margin-left: 20px;
+  padding: 0 10px 0 12px;
+  //background: $link-color;
+  background: #6a9fb5;
+  color: #fff;
+  text-decoration: none;
+  -webkit-border-bottom-right-radius:4px;
+      -moz-border-radius-bottomright:4px;
+          border-bottom-right-radius:4px;
+  -webkit-border-top-right-radius:4px;
+       -moz-border-radius-topright:4px;
+           border-top-right-radius:4px;
+}
+
+.blog-post-tags a:before {
+  content: "";
+  float: left;
+  position: absolute;
+  top: 0;
+  left: -12px;
+  width: 0;
+  height: 0;
+  //border-color: transparent $link-color transparent transparent;
+  border-color: transparent #6a9fb5 transparent transparent;
+  border-style: solid;
+  border-width: 12px 12px 12px 0;
+}
+
+.blog-post-tags a:after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 0;
+  float: left;
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  @include border-radius (2px);
+  @include box-shadow (-1px -1px 2px #454545);
+}
+
+.blog-post-tags a:hover {
+  background: #676767;
+}
+
+.blog-post-tags a:hover:before {
+  border-color: transparent #676767 transparent transparent;
+}

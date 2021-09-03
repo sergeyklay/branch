@@ -17,7 +17,11 @@
 {% block content %}
     <article class="articles">
         {% block posts_list %}
-            <h1 class="page-title">{% trans 'Blog' %}</h1>
+            <h1 class="page-title">
+                {% if tagged and tagged.strip %}
+                    {% blocktranslate with tagged=tagged %}Posts tagged [{{ tagged }}]{% endblocktranslate %}
+                {% else %}{% trans 'Blog' %}{% endif %}
+            </h1>
 
             <div class="blog-list">
                 {% for post in posts %}
