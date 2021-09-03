@@ -44,7 +44,7 @@ from .celery import app as celery_app
 __all__ = ('celery_app',)
 
 __copyright__ = 'Copyright (C) 2021 Serghei Iakovlev'
-__version__ = '1.4.0'
+__version__ = '1.5.0'
 __license__ = 'GPLv3+'
 __author__ = 'Serghei Iakovlev'
 __author_email__ = 'egrep@protonmail.ch'

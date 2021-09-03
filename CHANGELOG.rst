@@ -4,7 +4,7 @@ Changelog
 This file contains a brief summary of new features and dependency changes or
 releases, in reverse chronological order.
 
-1.5.0 (2021-XX-XX)
+1.5.0 (2021-09-03)
 ------------------
 
 Breaking Changes

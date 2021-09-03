@@ -1,6 +1,6 @@
 {
   "name": "branch",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "A Django blog application with features of a standard blogging platform.",
   "main": "index.js",
   "directories": {
