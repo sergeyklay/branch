@@ -33,4 +33,10 @@ urlpatterns = (
         views.PostDetailView.as_view(),
         name='post_view'
     ),
+
+    path(
+        'posts/tagged/<slug:slug>',
+        views.PostTaggedView.as_view(),
+        name='post_list_by_tag'
+    ),
 )

@@ -36,7 +36,7 @@ class AuthorFactory(factory.django.DjangoModelFactory):
 
 
 class PostFactory(factory.django.DjangoModelFactory):
-    title = factory.Sequence(lambda n: f'{faker.word()} %d' % n)
+    title = factory.Sequence(lambda n: f'{faker.word()} {n}')
     slug = factory.Sequence(lambda n: 'test-post-%s' % n)
     body = faker.text()
     author = factory.SubFactory(AuthorFactory)

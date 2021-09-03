@@ -109,6 +109,16 @@ $break-desktop: 1600px;
 }
 
 
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Border Radius
+//
+// Usage: @include border-radius (10% 30% 50% 70%);
+
+@mixin border-radius ($args...) {
+  -webkit-border-radius: $args;
+     -moz-border-radius: $args;
+          border-radius: $args;
+}
+
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - Flex Wrap
 // Sets whether flex items are forced onto one line or can wrap onto
 // multiple lines.

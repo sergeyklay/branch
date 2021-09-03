@@ -79,6 +79,10 @@
 
             <hr>
 
+            <div style="position: relative">
+                {% include 'blog/partials/post-tags.html' with post=post %}
+            </div>
+
             {% include 'partials/messages.html' %}
 
             <section class="comment-thread" id="comment-thread">

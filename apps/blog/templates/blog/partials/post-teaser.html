@@ -20,13 +20,14 @@
         </div>
     </header>
 
-    <p class="blog-post-content">
+    <div class="blog-post-content">
         {% if post.excerpt and post.excerpt.strip %}
             {{ post.excerpt|safe|truncatewords:40 }}
         {% else %}
             {{ post.body|safe|truncatewords:40 }}
         {% endif %}
-    </p>
+        {% include 'blog/partials/post-tags.html' with post=post %}
+    </div>
 
     <footer>
         <a href="{{ post.get_absolute_url }}">

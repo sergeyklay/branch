@@ -14,6 +14,7 @@
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
 import pytest
+from django.urls import reverse
 
 from .factories import PostFactory
 
@@ -70,3 +71,23 @@ def test_post_seo_meta_tags(author, client):
     assert '<meta name="description" content="description">' in content
     assert '<meta property="dc:description" content="description">' in content
     assert '<meta property="og:description" content="description">' in content
+
+
+@pytest.mark.django_db
+def test_post_tags_notfound(client):
+    """Request to a non-existent tag should lead to 404 error."""
+    response = client.get(reverse('blog:post_list_by_tag', args=('foo',)))
+    assert response.status_code == 404
+
+
+@pytest.mark.django_db
+def test_post_tags_notfound2(client):
+    """Request to a existent tag should return all tagged posts."""
+    post = PostFactory()
+    post.tags.add('red', 'green')
+
+    response = client.get(reverse('blog:post_list_by_tag', args=('red',)))
+    assert response.status_code == 200
+
+    response = client.get(reverse('blog:post_list_by_tag', args=('green',)))
+    assert response.status_code == 200

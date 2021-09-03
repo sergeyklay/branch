@@ -13,14 +13,26 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-beautifulsoup4
-celery[redis]
-django
-django-compressor
-django-environ-2
-django-recaptcha
-django-redis
-django-taggit
-gunicorn
-pillow
-pyquery
+import taggit.managers
+from django.db import migrations
+
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+        ('taggit', '0003_taggeditem_add_unique_index'),
+        ('blog', '0012_alter_post_locale'),
+    ]
+
+    operations = [
+        migrations.AddField(
+            model_name='post',
+            name='tags',
+            field=taggit.managers.TaggableManager(
+                help_text='A comma-separated list of tags.',
+                through='taggit.TaggedItem',
+                to='taggit.Tag',
+                verbose_name='Tags',
+            ),
+        ),
+    ]

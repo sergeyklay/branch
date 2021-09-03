@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: branch 1.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-02 20:08+0000\n"
-"PO-Revision-Date: 2021-09-02 23:11+0300\n"
+"POT-Creation-Date: 2021-09-02 23:50+0000\n"
+"PO-Revision-Date: 2021-09-03 02:51+0300\n"
 "Last-Translator: Serghei Iakovlev <egrep@protonmail.ch>\n"
 "Language-Team: Ukrainian <egrep@protonmail.ch>\n"
 "Language: uk\n"
@@ -45,7 +45,7 @@ msgstr "SEO"
 msgid "Commentator"
 msgstr "Коментатор"
 
-#: apps/blog/admin.py:176 apps/blog/admin.py:234 apps/blog/models.py:149
+#: apps/blog/admin.py:176 apps/blog/admin.py:231 apps/blog/models.py:149
 #: apps/blog/models.py:179
 #: apps/blog/templates/blog/partials/comment-form.html:31
 msgid "Comment"
@@ -55,27 +55,27 @@ msgstr "Коментар"
 msgid "Publish selected comments"
 msgstr "Опублікувати вибрані коментарі"
 
-#: apps/blog/admin.py:199
+#: apps/blog/admin.py:200
 msgid "Selected comments published successfully"
 msgstr "Вибрані коментарі успішно опубліковані"
 
-#: apps/blog/admin.py:202 apps/blog/admin.py:213
+#: apps/blog/admin.py:203 apps/blog/admin.py:215
 msgid "Nothing has been changed"
 msgstr "Нічого не змінилося"
 
-#: apps/blog/admin.py:204
+#: apps/blog/admin.py:205
 msgid "Unpublish selected comments"
 msgstr "Зняти з публікації обрані коментарі"
 
-#: apps/blog/admin.py:210
+#: apps/blog/admin.py:212
 msgid "Selected comments unpublished successfully"
 msgstr "Вибрані коментарі успішно зняті з публікації"
 
-#: apps/blog/admin.py:227
+#: apps/blog/admin.py:224
 msgid "Sender"
 msgstr "Відправник"
 
-#: apps/blog/apps.py:27 apps/blog/templates/blog/posts/list.html:20
+#: apps/blog/apps.py:27 apps/blog/templates/blog/posts/list.html:23
 #: templates/partials/sidebar.html:15
 msgid "Blog"
 msgstr "Блог"
@@ -215,7 +215,7 @@ msgstr "Наступні публікації"
 msgid "(Updated on %(updated_at)s)"
 msgstr "(Оновлено: %(updated_at)s)"
 
-#: apps/blog/templates/blog/partials/post-teaser.html:33
+#: apps/blog/templates/blog/partials/post-teaser.html:34
 msgid "Read more..."
 msgstr "Читати далі..."
 
@@ -227,11 +227,16 @@ msgstr "RSS-канал публікацій"
 msgid "Posts Atom feed"
 msgstr "Atom-канал публікацій"
 
-#: apps/blog/templates/blog/posts/list.html:29
+#: apps/blog/templates/blog/posts/list.html:22
+#, python-format
+msgid "Posts tagged [%(tagged)s]"
+msgstr "Публікації з тегом [%(tagged)s]"
+
+#: apps/blog/templates/blog/posts/list.html:33
 msgid "There are no posts yet."
 msgstr "Ще немає повідомлень."
 
-#: apps/blog/templates/blog/posts/view.html:89
+#: apps/blog/templates/blog/posts/view.html:93
 #, python-format
 msgid "%(total_comments)s comment"
 msgid_plural "%(total_comments)s comments"
@@ -240,11 +245,11 @@ msgstr[1] "%(total_comments)s коментарі"
 msgstr[2] "%(total_comments)s коментарів"
 msgstr[3] "%(total_comments)s коментарів"
 
-#: apps/blog/templates/blog/posts/view.html:104
+#: apps/blog/templates/blog/posts/view.html:108
 msgid "There are no comments yet."
 msgstr "Коментарів поки немає."
 
-#: apps/blog/views.py:117
+#: apps/blog/views.py:119
 msgid ""
 "Your comment has been sent for moderation. This means comment will \"held\" "
 "until I okays it and publish it."

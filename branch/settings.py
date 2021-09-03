@@ -150,6 +150,7 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = [
     'captcha',  # reCAPTCHA support for Django.
     'compressor',  # Compress JS and CSS into single cached file.
+    'taggit',  # Simple tagging for Django.
 ]
 
 if DEBUG:
@@ -539,3 +540,7 @@ SEO_KEYWORDS = ('язык программирования, грамматики
 RECAPTCHA_PUBLIC_KEY = env.str('RECAPTCHA_PUBLIC_KEY', default='')
 RECAPTCHA_PRIVATE_KEY = env.str('RECAPTCHA_PRIVATE_KEY', default='')
 RECAPTCHA_REQUIRED_SCORE = 0.75
+
+# Tagging
+
+TAGGIT_CASE_INSENSITIVE = True
