@@ -18,6 +18,7 @@
 from django.conf import settings
 from django.contrib import messages
 from django.shortcuts import get_object_or_404
+from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.views.generic import DateDetailView, ListView
 from django.views.generic.edit import FormMixin
@@ -157,5 +158,16 @@ class PostTaggedView(ListView):
         context = super().get_context_data(**kwargs)
         # TODO: Duplicate query in get_queryset()
         tag = get_object_or_404(Tag, slug=self.kwargs['slug'])
-        context['tagged'] = tag.name
+
+        context.update({
+            'tagged': tag.name,
+            'resource_type': 'website',
+            'seo_author': settings.SITE_NAME,
+            'seo_title': _('Posts tagged [{ tag }]') % {'tag': tag.name},
+            'resource_url': reverse(
+                'blog:post_list_by_tag',
+                args=(self.kwargs['slug'],)
+            ),
+        })
+
         return context

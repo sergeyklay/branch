@@ -12,7 +12,12 @@
 {% endif %}
 
 <meta property="og:site_name" content="{{ SITE_NAME }}">
-<meta property="og:locale" content="{{ seo_locale|default:LOCALE }}">
+
+{% if seo_locale and seo_locale.strip %}
+    <meta property="og:locale" content="{{ seo_locale }}">
+{% else %}
+    <meta property="og:locale" content="{{ LOCALE }}">
+{% endif %}
 
 {% if featured_image %}
     <meta property="og:image" content="{{ SITE_URL }}{{ featured_image.url }}">
