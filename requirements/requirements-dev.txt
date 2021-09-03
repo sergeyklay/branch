@@ -98,7 +98,7 @@ mccabe==0.6.1
     #   pylint
 packaging==21.0
     # via pytest
-pillow==8.3.1
+pillow==8.3.2
     # via -r requirements/requirements.in
 platformdirs==2.3.0
     # via pylint
