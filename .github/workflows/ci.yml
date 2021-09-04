@@ -51,7 +51,6 @@ jobs:
   test:
     runs-on: ${{ matrix.os }}
     name: Python ${{ matrix.python }} on ${{ matrix.os }}
-    continue-on-error: ${{ matrix.experimental }}
 
     # The maximum number of minutes to let a workflow run
     # before GitHub automatically cancels it. Default: 360
@@ -67,18 +66,11 @@ jobs:
           - '3.7'
           - '3.8'
           - '3.9'
+          - '3.10.0-beta - 3.10'
         os:
           - ubuntu-20.04
           - macos-latest
           - windows-2019
-        experimental: [false]
-        include:
-          - python: '3.10.0-beta - 3.10'
-            os: ubuntu-20.04
-            experimental: true
-          - python: '3.10.0-beta - 3.10'
-            os: macos-latest
-            experimental: true
 
     steps:
       - name: Checkout code
@@ -103,6 +95,9 @@ jobs:
             sudo apt-get install --no-install-recommends -q -y \
               libxml2-dev libxslt-dev
           fi
+
+      - name: Print build system information
+        run: python .github/workflows/system-info.py
 
       - name: Get pip cache dir
         id: pip-cache
@@ -139,6 +134,14 @@ jobs:
 
       - name: Set up virtualenv
         run: make init
+
+      - name: Setup Prerequisites (Windows)
+        if: startsWith(runner.os, 'Windows')
+        run: |
+          if [ "${{ matrix.python }}" = "3.10.0-beta - 3.10" ]; then
+            # Install precompiled lxml WHL with required modules/dependencies.
+            .venv/Scripts/python -m pip install .github/lxml-4.6.3-cp310-cp310-win_amd64.whl
+          fi
 
       - name: Install dependencies
         run: |

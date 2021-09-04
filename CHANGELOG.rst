@@ -10,6 +10,12 @@ Improvements
 * Lowercase models verbose names.
 
 
+Trivial/Internal Changes
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Bumped ``pillow`` from 8.3.1 to 8.3.2.
+
+
 ----
 
 
