@@ -13,24 +13,30 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-"""Pages models."""
-
-from django.urls import reverse
-from django.utils.translation import gettext_lazy as _
-
-from apps.core.models import Content
+from django.db import migrations
 
 
-class Page(Content):
-    """Page model class."""
+class Migration(migrations.Migration):
 
-    class Meta:
-        """Page model metadata class."""
+    dependencies = [
+        ('blog', '0013_auto_20210902_1707'),
+    ]
 
-        ordering = ('title',)
-        verbose_name = _('page')
-        verbose_name_plural = _('pages')
-
-    def get_absolute_url(self):
-        """Tell Django how to generate the canonical URL for a page."""
-        return reverse('pages:page_view', args=[self.slug])
+    operations = [
+        migrations.AlterModelOptions(
+            name='comment',
+            options={
+                'ordering': ('created_at',),
+                'verbose_name': 'comment',
+                'verbose_name_plural': 'comments',
+            },
+        ),
+        migrations.AlterModelOptions(
+            name='post',
+            options={
+                'ordering': ('-published_at',),
+                'verbose_name': 'post',
+                'verbose_name_plural': 'posts',
+            },
+        ),
+    ]
