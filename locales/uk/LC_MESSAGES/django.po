@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: branch 1.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-02 23:50+0000\n"
+"POT-Creation-Date: 2021-09-03 15:59+0300\n"
 "PO-Revision-Date: 2021-09-03 02:51+0300\n"
 "Last-Translator: Serghei Iakovlev <egrep@protonmail.ch>\n"
 "Language-Team: Ukrainian <egrep@protonmail.ch>\n"
@@ -46,7 +46,6 @@ msgid "Commentator"
 msgstr "Коментатор"
 
 #: apps/blog/admin.py:176 apps/blog/admin.py:231 apps/blog/models.py:149
-#: apps/blog/models.py:179
 #: apps/blog/templates/blog/partials/comment-form.html:31
 msgid "Comment"
 msgstr "Коментар"
@@ -97,7 +96,7 @@ msgstr "Повість"
 msgid "Poem"
 msgstr "Вірш"
 
-#: apps/blog/models.py:48 apps/blog/models.py:86 apps/blog/models.py:133
+#: apps/blog/models.py:48 apps/blog/models.py:133
 msgid "Post"
 msgstr "Стаття"
 
@@ -117,9 +116,13 @@ msgstr "Короткий, виразне введення."
 msgid "Author"
 msgstr "Автор"
 
+#: apps/blog/models.py:86
+msgid "post"
+msgstr "стаття"
+
 #: apps/blog/models.py:87
-msgid "Posts"
-msgstr "Статті"
+msgid "posts"
+msgstr "статті"
 
 #: apps/blog/models.py:125
 msgid "Hidden"
@@ -161,9 +164,13 @@ msgstr "Дата створення"
 msgid "Date updated"
 msgstr "Дата оновлення"
 
+#: apps/blog/models.py:179
+msgid "comment"
+msgstr "коментар"
+
 #: apps/blog/models.py:180
-msgid "Comments"
-msgstr "Коментарі"
+msgid "comments"
+msgstr "коментарі"
 
 #: apps/blog/models.py:186
 msgid "Comment by"
@@ -249,13 +256,17 @@ msgstr[3] "%(total_comments)s коментарів"
 msgid "There are no comments yet."
 msgstr "Коментарів поки немає."
 
-#: apps/blog/views.py:119
+#: apps/blog/views.py:120
 msgid ""
 "Your comment has been sent for moderation. This means comment will \"held\" "
 "until I okays it and publish it."
 msgstr ""
 "Ваш коментар відправлений на модерацію. Це означає, що коментар буде "
 "«утримуватися» до тих пір, поки я не схвалю і не публікую його."
+
+#: apps/blog/views.py:166
+msgid "Posts tagged [{ tag }]"
+msgstr "Публікації з тегом [{ tag }]"
 
 #: apps/core/apps.py:27
 msgid "Core"
@@ -452,13 +463,17 @@ msgstr "Компоненти:"
 msgid "URL"
 msgstr "URL"
 
-#: apps/pages/apps.py:27 apps/pages/models.py:32
+#: apps/pages/apps.py:27
 msgid "Pages"
 msgstr "Сторінки"
 
 #: apps/pages/models.py:31
-msgid "Page"
-msgstr "Сторінка"
+msgid "page"
+msgstr "сторінка"
+
+#: apps/pages/models.py:32
+msgid "pages"
+msgstr "сторінки"
 
 #: apps/seo/apps.py:27
 msgid "SEO Tools"
@@ -562,6 +577,3 @@ msgstr "GitHub профіль"
 #: templates/partials/sidebar.html:45
 msgid "Unless otherwise stated, all content on the site is available under"
 msgstr "Якщо не вказано іншого, весь вміст сайту є під ліцензією"
-
-#~ msgid "Sent"
-#~ msgstr "Відправлено"

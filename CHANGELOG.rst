@@ -4,6 +4,15 @@ Changelog
 This file contains a brief summary of new features and dependency changes or
 releases, in reverse chronological order.
 
+Improvements
+^^^^^^^^^^^^
+
+* Lowercase models verbose names.
+
+
+----
+
+
 1.5.0 (2021-09-03)
 ------------------
 

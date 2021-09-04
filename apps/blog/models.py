@@ -83,8 +83,8 @@ class Post(Content):
         """Post model metadata class."""
 
         ordering = ('-published_at',)
-        verbose_name = _('Post')
-        verbose_name_plural = _('Posts')
+        verbose_name = _('post')
+        verbose_name_plural = _('posts')
 
     def get_absolute_url(self):
         """Tell Django how to generate the canonical URL for a post."""
@@ -176,8 +176,8 @@ class Comment(models.Model):
         """Comment model metadata class."""
 
         ordering = ('created_at',)
-        verbose_name = _('Comment')
-        verbose_name_plural = _('Comments')
+        verbose_name = _('comment')
+        verbose_name_plural = _('comments')
 
     def __str__(self):
         """Override the default name of the objects of Comment class."""
