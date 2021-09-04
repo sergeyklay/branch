@@ -98,7 +98,7 @@ mccabe==0.6.1
     #   pylint
 packaging==21.0
     # via pytest
-pillow==8.3.1
+pillow==8.3.2
     # via -r requirements/requirements.in
 platformdirs==2.3.0
     # via pylint
@@ -180,6 +180,3 @@ wcwidth==0.2.5
     # via prompt-toolkit
 wrapt==1.12.1
     # via astroid
-
-# The following packages are considered to be unsafe in a requirements file:
-# setuptools
