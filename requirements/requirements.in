@@ -18,9 +18,11 @@ celery[redis]
 django
 django-compressor
 django-environ-2
-django-recaptcha
 django-redis
 django-taggit
 gunicorn
 pillow
 pyquery
+
+# See https://github.com/praekelt/django-recaptcha/pull/240
+-e git+git://github.com/sergeyklay/django-recaptcha.git@develop#egg=django-recaptcha
