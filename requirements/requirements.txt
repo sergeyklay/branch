@@ -4,6 +4,8 @@
 #
 #    pip-compile --output-file=requirements/requirements.txt requirements/requirements.in
 #
+-e git+git://github.com/sergeyklay/django-recaptcha.git@develop#egg=django-recaptcha
+    # via -r requirements/requirements.in
 amqp==5.0.6
     # via kombu
 asgiref==3.4.1
@@ -40,8 +42,6 @@ django-appconf==1.0.4
 django-compressor==2.4.1
     # via -r requirements/requirements.in
 django-environ-2==2.2.0
-    # via -r requirements/requirements.in
-django-recaptcha==2.0.6
     # via -r requirements/requirements.in
 django-redis==5.0.0
     # via -r requirements/requirements.in
