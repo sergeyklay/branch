@@ -296,12 +296,12 @@ LOGGING = {
             'level': 'INFO',
         },
         'django.template': {
-            'handlers': ['console_dev'],
+            'handlers': ['console_dev', 'file'],
             'propagate': True,
             'level': 'INFO',
         },
         'django.request': {
-            'handlers': ['mail_admins'],
+            'handlers': ['mail_admins', 'file'],
             'level': 'ERROR',
             'propagate': False,
         },
@@ -310,7 +310,7 @@ LOGGING = {
         'console_dev': {
             'class': 'logging.StreamHandler',
             'level': 'INFO',
-            'formatter': 'common',
+            'formatter': 'simple',
             'filters': ['require_debug_true'],
         },
         'console_prod': {
@@ -320,16 +320,17 @@ LOGGING = {
             'filters': ['require_debug_false'],
         },
         'file': {
-            'class': 'logging.FileHandler',
+            'class': 'logging.handlers.RotatingFileHandler',
             'filename': env.str('LOG_FILE', BASE_DIR / 'storage/logs/app.log'),
             'level': 'INFO',
             'formatter': 'common',
             'filters': ['require_debug_false'],
+            'maxBytes': 5242880,
+            'backupCount': 10,
         },
         'mail_admins': {
             'class': 'django.utils.log.AdminEmailHandler',
             'level': 'ERROR',
-            'include_html': True,
         },
     },
     'filters': {
@@ -344,6 +345,9 @@ LOGGING = {
         'common': {
             'format': '[%(asctime)s] [%(levelname)s] %(message)s',
             'datefmt': '%Y-%m-%d %H:%M:%S %z',
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
         },
     },
 }
