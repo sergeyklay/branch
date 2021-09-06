@@ -4,10 +4,21 @@ Changelog
 This file contains a brief summary of new features and dependency changes or
 releases, in reverse chronological order.
 
+
+1.6.0 (2021-XX-XX)
+------------------
+
 Improvements
 ^^^^^^^^^^^^
 
 * Lowercase models verbose names.
+* Use ``logging.handlers.RotatingFileHandler`` as a log file handler.
+
+
+Bug Fixes
+^^^^^^^^^
+
+* Fixed ``mail_admins`` error log handler configuration to send emails.
 
 
 Trivial/Internal Changes
