@@ -149,9 +149,6 @@ jobs:
           npm install
           npm install -g sass
 
-      - name: Configuration of the application
-        run: cp ./.env.dist ./.env
-
       - name: Setuptools self-test
         run: |
           python setup.py --fullname
@@ -161,6 +158,7 @@ jobs:
       - name: Run unit tests with coverage
         run: make test
         env:
+          EMAIL_URL: consolemail://
           RECAPTCHA_PUBLIC_KEY: ${{ secrets.RECAPTCHA_PUBLIC_KEY }}
           RECAPTCHA_PRIVATE_KEY: ${{ secrets.RECAPTCHA_PRIVATE_KEY }}
 

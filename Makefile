@@ -103,6 +103,7 @@ maintainer-clean: clean
 	@echo
 
 .PHONY: lint
+lint: export SECRET_KEY='Naive and not very secret key used for tests'
 lint: $(VENV_PYTHON)
 	@echo $(CS)Running linters$(CE)
 	-$(VENV_BIN)/flake8 $(FLAKE8_FLAGS) ./
@@ -159,13 +160,10 @@ manifest:
 	@echo
 
 .PHONY: test
-test: export EMAIL_BACKEND=django.core.mail.backends.dummy.EmailBackend
-test: export CACHE_BACKEND=django.core.cache.backends.dummy.DummyCache
 test: export DJANGO_SETTINGS_MODULE=$(PKG_NAME).settings
 test: export SECRET_KEY='Naive and not very secret key used for tests'
 test: export DATABASE_URL=sqlite://:memory:
 test: export DEBUG=False
-test: export USE_SSL=False
 test: export WORKER_LOGLEVEL=info
 test: build.py $(VENV_PYTHON)
 	@echo $(CS)Running tests$(CE)
