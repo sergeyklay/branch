@@ -41,9 +41,6 @@ jobs:
         with:
           python-version: '3.9'
 
-      - name: Configuration of the application
-        run: cp ./.env.dist ./.env
-
       - name: Set up virtualenv
         run: make init
 
@@ -52,3 +49,5 @@ jobs:
 
       - name: Code linting
         run: make lint
+        env:
+          EMAIL_URL: consolemail://
