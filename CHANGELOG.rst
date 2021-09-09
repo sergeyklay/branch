@@ -25,6 +25,8 @@ Trivial/Internal Changes
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 * Bumped ``pillow`` from 8.3.1 to 8.3.2.
+* Return to ``django-environ`` and drop ``django-environ-2``.
+* Bumped ``beautifulsoup4`` from 4.9.3 to 4.10.0.
 
 
 ----

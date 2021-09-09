@@ -17,7 +17,7 @@ beautifulsoup4
 celery[redis]
 django
 django-compressor
-django-environ-2
+django-environ
 django-redis
 django-taggit
 gunicorn
