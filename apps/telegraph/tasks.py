@@ -15,6 +15,8 @@
 
 """Telegraph Celery tasks."""
 
+from smtplib import SMTPConnectError
+
 from django.conf import settings
 from django.core.mail import (
     BadHeaderError,
@@ -26,14 +28,16 @@ from branch import celery_app
 from branch.celery import log
 
 
-@celery_app.task
-def contact_form_submission(payload: dict):
-    """Contact form submission task."""
-    subject = payload.get('subject')
-    message = payload.get('message')
-    sender_name = payload.get('name')
-    sender_email = payload.get('email')
 
+@celery_app.task(
+    rate_limit='1/s',
+    retry_kwargs={'max_retries': 5},
+    retry_backoff=True,
+    autoretry_for=(SMTPConnectError,),
+    name='apps.telegraph.tasks.contact_form_submission',
+)
+def contact_form_submission(subject, message, sender_name, sender_email):
+    """Contact form submission task."""
     reply_to = f'{sender_name} <{sender_email}>'
 
     try:

@@ -59,12 +59,10 @@ class ContactFormView(PageDetailsMixin, FormView):
         )
 
         contact_form_submission.delay(
-            {
-                'subject': subject,
-                'message': cd['message'],
-                'name': cd['name'],
-                'email': cd['email'],
-            }
+                subject=subject,
+                message=cd['message'],
+                name=cd['name'],
+                email=cd['email'],
         )
 
         self.sent = True
