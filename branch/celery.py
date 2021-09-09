@@ -35,7 +35,7 @@ app.steps['worker'].add(DjangoStructLogInitStep)
 
 
 @setup_logging.connect
-def config_loggers(loglevel, logfile, format, colorize, **kwargs):  # noqa
+def config_loggers(*args, **kwargs):
     """Configure celery’s logger."""
     dictConfig(settings.LOGGING)
 
