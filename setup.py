@@ -151,6 +151,7 @@ INSTALL_REQUIRES = [
     'django-environ>=0.6.0',  # Configure Django application
     'django-compressor>=2.4',  # Compile and minify static assets
     'django-redis>=4.12.1',  # Redis cache backend for Django
+    'django-structlog>=2.1.1',  # Structured Logging for Django
     'django-taggit>=1.5.0',  # Simple tagging application
     'gunicorn>=20.1.0',  # A Python WSGI HTTP Server
     'pillow>=8.2.0',  # Python Imaging Library

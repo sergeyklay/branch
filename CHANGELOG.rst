@@ -13,7 +13,8 @@ Improvements
 
 * Lowercase models verbose names.
 * Use ``logging.handlers.RotatingFileHandler`` as a log file handler.
-
+* Improved ``contact_form_submission`` task to use retry policy.
+* Setting up logging events using ``django-structlog`` for further introspection.
 
 Bug Fixes
 ^^^^^^^^^
