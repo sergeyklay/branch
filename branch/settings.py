@@ -325,10 +325,14 @@ LOGGING = {
 
         },
 
+        # Log messages related to the handling of requests. 5XX responses are
+        # raised as ERROR messages; 4XX responses are raised as WARNING
+        # messages. Admins from settings.ADMINS and managers from
+        # settings.MANAGERS will be notified about 5xx and 4xx via mail.
         'django.request': {
             'handlers': ['mail_admins'],
-            'level': 'ERROR',
             'propagate': False,
+            'level': 'ERROR',
         },
 
         # The applications logger. Will be used for any module in 'apps.*'.
