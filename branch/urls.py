@@ -59,19 +59,15 @@ urlpatterns = [
 if settings.DEBUG:
     import debug_toolbar  # pylint: disable=E0401
 
-    # Remove leading and trailing slashes so the regex matches.
-    media_url = settings.MEDIA_URL.lstrip('/').rstrip('/')
-    static_url = settings.STATIC_URL.lstrip('/').rstrip('/')
-
     # Static & media files for development environment
     static_routes = [
         re_path(
-            r'^%s/(?P<path>.*)$' % static_url,
+            r'^%s/(?P<path>.*)$' % settings.STATIC_URL.strip('/'),
             serve,
             {'document_root': settings.STATIC_ROOT}
         ),
         re_path(
-            r'^%s/(?P<path>.*)$' % media_url,
+            r'^%s/(?P<path>.*)$' % settings.MEDIA_URL.strip('/'),
             serve,
             {'document_root': settings.MEDIA_ROOT}
         )

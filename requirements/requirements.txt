@@ -36,6 +36,7 @@ django==3.2.7
     #   django-appconf
     #   django-recaptcha
     #   django-redis
+    #   django-structlog
     #   django-taggit
 django-appconf==1.0.4
     # via django-compressor
@@ -43,7 +44,11 @@ django-compressor==2.4.1
     # via -r requirements/requirements.in
 django-environ==0.6.0
     # via -r requirements/requirements.in
+django-ipware==4.0.0
+    # via django-structlog
 django-redis==5.0.0
+    # via -r requirements/requirements.in
+django-structlog==2.1.2
     # via -r requirements/requirements.in
 django-taggit==1.5.1
     # via -r requirements/requirements.in
@@ -79,6 +84,8 @@ soupsieve==2.2.1
     # via beautifulsoup4
 sqlparse==0.4.1
     # via django
+structlog==21.1.0
+    # via django-structlog
 vine==5.0.0
     # via
     #   amqp

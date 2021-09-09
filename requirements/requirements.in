@@ -19,6 +19,7 @@ django
 django-compressor
 django-environ
 django-redis
+django-structlog
 django-taggit
 gunicorn
 pillow

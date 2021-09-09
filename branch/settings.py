@@ -35,6 +35,7 @@ from datetime import datetime
 from email.utils import parseaddr
 from pathlib import Path
 
+import structlog
 from django.contrib.messages import constants as message_constants
 from django.utils.translation import gettext_lazy as _
 from environ import environ  # noqa
@@ -48,16 +49,18 @@ env = environ.Env(
     ADMIN_SITE_URL=(str, 'admin'),
     ALLOWED_HOSTS=(list, []),
     ALLOW_ROBOTS=(bool, False),
+    APP_LOG_LEVEL=(str, 'INFO'),
     COMPRESS_OFFLINE=(bool, False),
     CSRF_COOKIE_SECURE=(bool, False),
     DEBUG=(bool, False),
+    DJANGO_LOG_LEVEL=(str, 'INFO'),
     INTERNAL_IPS=(list, []),
     MANAGERS=(list, []),
-    SERVER_EMAIL=(str, 'root@localhost'),
     SECURE_HSTS_INCLUDE_SUBDOMAINS=(bool, False),
     SECURE_HSTS_PRELOAD=(bool, False),
     SECURE_HSTS_SECONDS=(int, 3600),
     SECURE_SSL_REDIRECT=(bool, False),
+    SERVER_EMAIL=(str, 'root@localhost'),
     SESSION_COOKIE_SECURE=(bool, False),
     TIME_ZONE=(str, 'UTC'),
     USE_SSL=(bool, False),
@@ -124,6 +127,18 @@ IGNORABLE_404_URLS = (
     re.compile(r'^/apple-touch-icon.*\.png$'),
     re.compile(r'^/favicon\.ico$'),
     re.compile(r'^/robots\.txt$'),
+
+    # flooding requests
+    re.compile(r'^/solr/'),
+    re.compile(r'^/_ignition/'),
+    re.compile(r'^/Autodiscover/'),
+    re.compile(r'^/api/'),
+    re.compile(r'^/sites/'),
+    re.compile(r'^/images/'),
+    re.compile(r'^/uploads/'),
+    re.compile(r'^/files/'),
+    re.compile(r'^/login'),
+    re.compile(r'^/Telerik'),
 )
 
 # SECURITY WARNING: keep the secret key used in production secret!
@@ -203,6 +218,10 @@ MIDDLEWARE = [
     # Locale middlewares
     'apps.core.middleware.locale.inject_accept_language',
     'django.middleware.locale.LocaleMiddleware',
+
+    # structlog
+    'django_structlog.middlewares.RequestMiddleware',
+    'django_structlog.middlewares.CeleryMiddleware',
 ]
 
 if DEBUG:
@@ -277,59 +296,94 @@ DATABASES = {
 
 # Logging
 
+#                          handler
+#                          ---------
+#          ----------     | filter |     -------------
+# logs --> | logger | --> | filter | --> | formatter |
+#          ----------     | filter |     -------------
+#                         ----------
+
+APP_LOG_FILE = env.str(
+    'LOG_FILE',
+    default=BASE_DIR / os.path.join('storage', 'logs', 'app.log')
+)
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
-    'root': {
-        'handlers': ['console_dev', 'console_prod', 'file', 'mail_admins'],
-        'level': 'INFO',
-    },
+
+    # The parent logger for messages in the django named logger hierarchy.
+    # Django does not post messages using this name. Instead, it uses one
+    # of the loggers in 'django.*'.
+    #
+    # django-structlog does not replace django loggers. Thence we're not
+    # use here handlers which are defined for structlog.
     'loggers': {
         'django': {
-            'handlers': ['console_dev', 'console_prod', 'file'],
+            'handlers': ['file'],
             'propagate': True,
             'level': 'INFO',
+
         },
-        'django.server': {
-            'handlers': ['console_dev'],
-            'propagate': True,
-            'level': 'INFO',
-        },
-        'django.template': {
-            'handlers': ['console_dev', 'file'],
-            'propagate': True,
-            'level': 'INFO',
-        },
+
         'django.request': {
-            'handlers': ['mail_admins', 'file'],
+            'handlers': ['mail_admins'],
             'level': 'ERROR',
             'propagate': False,
         },
+
+        # The applications logger. Will be used for any module in 'apps.*'.
+        'apps': {
+            'handlers': ['console', 'flat_line_file', 'json_file'],
+            'level': env('APP_LOG_LEVEL'),
+        },
+
+        # The parent logger for django_structlog loggers.
+        'django_structlog': {
+            'handlers': ['json_file', 'flat_line_file', 'console'],
+            'level': env('APP_LOG_LEVEL'),
+        },
     },
     'handlers': {
-        'console_dev': {
-            'class': 'logging.StreamHandler',
+        # A handler to use with django_structlog in production systems.
+        'json_file': {
+            'class': 'logging.handlers.WatchedFileHandler',
+            'filename': os.path.splitext(APP_LOG_FILE)[0] + '.json',
+            'formatter': 'json_formatter',
+            'filters': ['require_debug_false'],
             'level': 'INFO',
-            'formatter': 'simple',
+        },
+
+        # A handler to use mostly in development and testing environments.
+        'flat_line_file': {
+            'class': 'logging.handlers.WatchedFileHandler',
+            'filename': os.path.splitext(APP_LOG_FILE)[0] + '.flat.log',
+            'formatter': 'key_value',
             'filters': ['require_debug_true'],
+            'level': 'DEBUG',
         },
-        'console_prod': {
+
+        # A handler to use in development environments.
+        'console': {
             'class': 'logging.StreamHandler',
-            'level': 'WARNING',
-            'formatter': 'common',
-            'filters': ['require_debug_false'],
+            'formatter': 'plain_console',
+            'filters': ['require_debug_true'],
+            'level': 'DEBUG',
         },
+
+        # A handler to use for django loggers in production systems.
         'file': {
-            'class': 'logging.handlers.RotatingFileHandler',
-            'filename': env.str('LOG_FILE', BASE_DIR / 'storage/logs/app.log'),
-            'level': 'INFO',
+            'class': 'logging.handlers.WatchedFileHandler',
+            'filename': APP_LOG_FILE,
             'formatter': 'common',
             'filters': ['require_debug_false'],
-            'maxBytes': 5242880,
-            'backupCount': 10,
+            'level': 'INFO',
         },
+
+        # An exception log handler that emails log entries to site admins.
+        # Well be used for django loggers only.
         'mail_admins': {
             'class': 'django.utils.log.AdminEmailHandler',
+            'filters': ['require_debug_false'],
             'level': 'ERROR',
         },
     },
@@ -343,14 +397,44 @@ LOGGING = {
     },
     'formatters': {
         'common': {
-            'format': '[%(asctime)s] [%(levelname)s] %(message)s',
+            'format': '[{asctime}] [{levelname}] {message}',
             'datefmt': '%Y-%m-%d %H:%M:%S %z',
+            'style': '{',
         },
-        'simple': {
-            'format': '%(levelname)s %(message)s'
+        'json_formatter': {
+            '()': structlog.stdlib.ProcessorFormatter,
+            'processor': structlog.processors.JSONRenderer(),
+        },
+        'plain_console': {
+            '()': structlog.stdlib.ProcessorFormatter,
+            'processor': structlog.dev.ConsoleRenderer(),
+        },
+        'key_value': {
+            '()': structlog.stdlib.ProcessorFormatter,
+            'processor': structlog.processors.KeyValueRenderer(
+                key_order=['timestamp', 'level', 'event', 'logger']
+            ),
         },
     },
 }
+
+structlog.configure(
+    processors=[
+        structlog.stdlib.filter_by_level,
+        structlog.processors.TimeStamper(fmt='iso'),
+        structlog.stdlib.add_logger_name,
+        structlog.stdlib.add_log_level,
+        structlog.stdlib.PositionalArgumentsFormatter(),
+        structlog.processors.StackInfoRenderer(),
+        structlog.processors.format_exc_info,
+        structlog.processors.UnicodeDecoder(),
+        structlog.stdlib.ProcessorFormatter.wrap_for_formatter,
+    ],
+    context_class=structlog.threadlocal.wrap_dict(dict),
+    logger_factory=structlog.stdlib.LoggerFactory(),
+    wrapper_class=structlog.stdlib.BoundLogger,
+    cache_logger_on_first_use=True,
+)
 
 logging.captureWarnings(True)
 

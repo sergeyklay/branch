@@ -17,16 +17,16 @@
 
 from smtplib import SMTPConnectError
 
+import structlog
 from django.conf import settings
 from django.core.mail import (
-    BadHeaderError,
     EmailMultiAlternatives,
     get_connection,
 )
 
 from branch import celery_app
-from branch.celery import log
 
+logger = structlog.get_logger(__name__)
 
 
 @celery_app.task(
@@ -39,18 +39,21 @@ from branch.celery import log
 def contact_form_submission(subject, message, sender_name, sender_email):
     """Contact form submission task."""
     reply_to = f'{sender_name} <{sender_email}>'
+    logger.bind(subject=subject, reply_to=sender_email)
 
-    try:
-        mail = EmailMultiAlternatives(
-            subject=subject,
-            body=message,
-            from_email=settings.SERVER_EMAIL,
-            to=[settings.CONTACT_EMAIL],
-            reply_to=[reply_to],
-            connection=get_connection(),
-        )
+    mail = EmailMultiAlternatives(
+        subject=subject,
+        body=message,
+        from_email=settings.SERVER_EMAIL,
+        to=[settings.CONTACT_EMAIL],
+        reply_to=[reply_to],
+        connection=get_connection(),
+    )
 
-        if mail.send() == 0:
-            log.error('Unable to sent contact form')
-    except BadHeaderError as exc:
-        log.exception(exc)
+    result = mail.send()
+    if result > 0:
+        logger.info('send_form_finished', status='OK')
+    else:
+        logger.warn('send_receipt_finished', status='KO')
+
+    return result
