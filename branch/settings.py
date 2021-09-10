@@ -124,21 +124,12 @@ ALLOW_ROBOTS = env('ALLOW_ROBOTS')
 # List of compiled regular expression objects representing URLs that need not
 # be reported by BrokenLinkEmailsMiddleware.
 IGNORABLE_404_URLS = (
-    re.compile(r'^/apple-touch-icon.*\.png$'),
-    re.compile(r'^/favicon\.ico$'),
-    re.compile(r'^/robots\.txt$'),
-
     # flooding requests
-    re.compile(r'^/solr/'),
-    re.compile(r'^/_ignition/'),
-    re.compile(r'^/Autodiscover/'),
-    re.compile(r'^/api/'),
-    re.compile(r'^/sites/'),
-    re.compile(r'^/images/'),
-    re.compile(r'^/uploads/'),
-    re.compile(r'^/files/'),
-    re.compile(r'^/login'),
-    re.compile(r'^/Telerik'),
+    re.compile(r'^/asset-manifest\.json$'),
+    re.compile(r'^/(Telerik|login|wordpress|xmlrpc)'),
+    re.compile(r'^/(_ignition|api|Autodiscover)/'),
+    re.compile(r'^/(mifs|vendor|console|uploads|solr|sites|images|files)/'),
+    re.compile(r'^/wp[0-9]*(-(admin|login|content|includes|comments-post))?'),
 )
 
 # SECURITY WARNING: keep the secret key used in production secret!
