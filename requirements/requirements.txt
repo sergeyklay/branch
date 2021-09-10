@@ -82,7 +82,7 @@ six==1.16.0
     #   django-compressor
 soupsieve==2.2.1
     # via beautifulsoup4
-sqlparse==0.4.1
+sqlparse==0.4.2
     # via django
 structlog==21.1.0
     # via django-structlog
