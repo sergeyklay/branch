@@ -9,6 +9,9 @@
         <a href="https://github.com/sergeyklay/branch/actions?workflow=CI">
             <img src="https://github.com/sergeyklay/branch/workflows/CI/badge.svg?branch=master" alt="CI Status" />
         </a>
+        <a href="https://github.com/sergeyklay/branch/actions?workflow=CodeQL">
+            <img src="https://github.com/sergeyklay/branch/workflows/CodeQL/badge.svg?branch=master" alt="CodeQL Status" />
+        </a>
         <a href="https://coveralls.io/github/sergeyklay/branch">
             <img src="https://coveralls.io/repos/github/sergeyklay/branch/badge.svg" alt="Coverage Status" />
         </a>
