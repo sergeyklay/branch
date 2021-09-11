@@ -1,0 +1,63 @@
+# Copyright (C) 2021 Serghei Iakovlev <egrep@protonmail.ch>
+#
+# This file is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 3
+# of the License, or (at your option) any later version.
+#
+# This file is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this file.  If not, see <https://www.gnu.org/licenses/>.
+
+name: CodeQL
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [ master ]
+  schedule:
+    - cron: '42 9 * * 4'
+      #       | | | | |
+      #       | | | | |____ day of the week (0 - 6 or SUN-SAT)
+      #       | | | |____ month (1 - 12 or JAN-DEC)
+      #       | | |____ day of the month (1 - 31)
+      #       | |____ hour (0 - 23)
+      #       |____ minute (0 - 59)
+      
+jobs:
+  analyze:
+    name: Analyze
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language:
+          - javascript
+          - python
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2.3.4
+
+    # Initializes the CodeQL tools for scanning.
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v1
+      with:
+        languages: ${{ matrix.language }}
+
+    - name: Autobuild
+      uses: github/codeql-action/autobuild@v1
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v1
