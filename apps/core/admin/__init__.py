@@ -18,7 +18,11 @@
 from django.contrib import admin
 from django.utils.translation import gettext_lazy
 
-from .model import LogEntryAdmin
+from .models import LogEntryAdmin, PermissionAdmin
 
-admin.site.site_header = gettext_lazy('Branch administration')
+
+# Text to put at the end of each page's <title>.
 admin.site.site_title = gettext_lazy('Branch site admin')
+
+# Text to put in each page's <h1>.
+admin.site.site_header = gettext_lazy('Branch administration')
