@@ -24,7 +24,7 @@ on:
       - 'fix/**'
     tags:
       - 'v[0-9]+.[0-9]+.[0-9]+'
-
+  # The branches below must be a subset of the branches above
   pull_request:
     branches:
       - master

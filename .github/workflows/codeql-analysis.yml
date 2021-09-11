@@ -17,10 +17,12 @@ name: CodeQL
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - master
   pull_request:
     # The branches below must be a subset of the branches above
-    branches: [ master ]
+    branches:
+      - master
   schedule:
     - cron: '42 9 * * 4'
       #       | | | | |
@@ -34,13 +36,24 @@ jobs:
   analyze:
     name: Analyze
     runs-on: ubuntu-latest
+
+    # The default permissions granted to the GITHUB_TOKEN.
+    # All actions and run commands within that job that use the GITHUB_TOKEN
+    # gain the access rights specified bellow.
     permissions:
       actions: read
       contents: read
       security-events: write
 
+    # The maximum number of minutes to let a workflow run
+    # before GitHub automatically cancels it. Default: 360
+    timeout-minutes: 30
+
     strategy:
+      # When set to true, GitHub cancels
+      # all in-progress jobs if any matrix job fails.
       fail-fast: false
+
       matrix:
         language:
           - javascript
