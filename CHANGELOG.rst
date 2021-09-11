@@ -8,6 +8,12 @@ releases, in reverse chronological order.
 1.6.0 (2021-XX-XX)
 ------------------
 
+Features
+^^^^^^^^
+
+* Enable admin view to see history/log events.
+
+
 Improvements
 ^^^^^^^^^^^^
 
