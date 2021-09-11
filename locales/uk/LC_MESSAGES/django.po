@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: branch 1.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-03 15:59+0300\n"
-"PO-Revision-Date: 2021-09-03 02:51+0300\n"
+"POT-Creation-Date: 2021-09-11 13:51+0000\n"
+"PO-Revision-Date: 2021-09-11 16:49+0300\n"
 "Last-Translator: Serghei Iakovlev <egrep@protonmail.ch>\n"
 "Language-Team: Ukrainian <egrep@protonmail.ch>\n"
 "Language: uk\n"
@@ -21,56 +21,57 @@ msgstr ""
 "(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
 "X-Generator: Poedit 3.0\n"
 
-#: apps/blog/admin.py:33 apps/blog/models.py:69
+#: apps/blog/admin.py:34 apps/blog/models.py:69
 msgid "Excerpt"
 msgstr "Уривок"
 
-#: apps/blog/admin.py:38 apps/pages/admin.py:31
+#: apps/blog/admin.py:39 apps/pages/admin.py:31
 msgid "Content"
 msgstr "Зміст"
 
-#: apps/blog/admin.py:67 apps/blog/models.py:157 apps/core/models.py:95
+#: apps/blog/admin.py:55 apps/blog/models.py:157 apps/core/models.py:95
 msgid "Status"
 msgstr "Статус"
 
-#: apps/blog/admin.py:116 apps/pages/admin.py:70
+#: apps/blog/admin.py:112 apps/pages/admin.py:70
 msgid "General content"
 msgstr "Загальний зміст"
 
-#: apps/blog/admin.py:131 apps/pages/admin.py:80
+#: apps/blog/admin.py:127 apps/pages/admin.py:80
 msgid "SEO"
 msgstr "SEO"
 
-#: apps/blog/admin.py:170
+#: apps/blog/admin.py:166
 msgid "Commentator"
 msgstr "Коментатор"
 
-#: apps/blog/admin.py:176 apps/blog/admin.py:231 apps/blog/models.py:149
+#: apps/blog/admin.py:172 apps/blog/admin.py:231 apps/blog/models.py:149
 #: apps/blog/templates/blog/partials/comment-form.html:31
+#: apps/core/admin/model.py:123
 msgid "Comment"
 msgstr "Коментар"
 
-#: apps/blog/admin.py:193
+#: apps/blog/admin.py:189
 msgid "Publish selected comments"
 msgstr "Опублікувати вибрані коментарі"
 
-#: apps/blog/admin.py:200
+#: apps/blog/admin.py:197
 msgid "Selected comments published successfully"
 msgstr "Вибрані коментарі успішно опубліковані"
 
-#: apps/blog/admin.py:203 apps/blog/admin.py:215
+#: apps/blog/admin.py:203 apps/blog/admin.py:220
 msgid "Nothing has been changed"
 msgstr "Нічого не змінилося"
 
-#: apps/blog/admin.py:205
+#: apps/blog/admin.py:206
 msgid "Unpublish selected comments"
 msgstr "Зняти з публікації обрані коментарі"
 
-#: apps/blog/admin.py:212
+#: apps/blog/admin.py:214
 msgid "Selected comments unpublished successfully"
 msgstr "Вибрані коментарі успішно зняті з публікації"
 
-#: apps/blog/admin.py:224
+#: apps/blog/admin.py:223
 msgid "Sender"
 msgstr "Відправник"
 
@@ -268,6 +269,34 @@ msgstr ""
 msgid "Posts tagged [{ tag }]"
 msgstr "Публікації з тегом [{ tag }]"
 
+#: apps/core/admin/__init__.py:23
+msgid "Branch administration"
+msgstr "Branch адміністрування"
+
+#: apps/core/admin/__init__.py:24
+msgid "Branch site admin"
+msgstr "Branch сайт адміністрування"
+
+#: apps/core/admin/filters.py:57 apps/core/admin/model.py:109
+msgid "Action"
+msgstr "Дія"
+
+#: apps/core/admin/filters.py:78
+msgid "User"
+msgstr "Користувач"
+
+#: apps/core/admin/filters.py:102
+msgid "Staff"
+msgstr "Штат"
+
+#: apps/core/admin/filters.py:122 apps/core/admin/model.py:117
+msgid "Content Type"
+msgstr "Тип вмісту"
+
+#: apps/core/admin/model.py:93
+msgid "Object repr"
+msgstr "Представлення об’єкта"
+
 #: apps/core/apps.py:27
 msgid "Core"
 msgstr "Ядро"
@@ -459,7 +488,7 @@ msgstr "Стандарти:"
 msgid "Components:"
 msgstr "Компоненти:"
 
-#: apps/pages/admin.py:94
+#: apps/pages/admin.py:89
 msgid "URL"
 msgstr "URL"
 
@@ -537,15 +566,15 @@ msgstr "Контактна форма"
 msgid "Contact form submission"
 msgstr "Нове повідомлення"
 
-#: branch/settings.py:459
+#: branch/settings.py:542
 msgid "Serghei Iakovlev"
 msgstr "Сергій Яковлєв"
 
-#: branch/settings.py:460
+#: branch/settings.py:543
 msgid "Serghei's Iakovlev Blog"
 msgstr "Персональний блог Сергія Яковлєва"
 
-#: branch/settings.py:461
+#: branch/settings.py:544
 msgid ""
 "My notebook, workshop, a place where I share my experiences and thoughts"
 msgstr "Мій блокнот, майстерня, місце де я ділюся своїм досвідом і думками"
@@ -577,3 +606,8 @@ msgstr "GitHub профіль"
 #: templates/partials/sidebar.html:45
 msgid "Unless otherwise stated, all content on the site is available under"
 msgstr "Якщо не вказано іншого, весь вміст сайту є під ліцензією"
+
+#: apps/core/admin/filters.py:70
+#: apps/core/admin/model.py:113
+msgid "Updating"
+msgstr "Оновлення"
