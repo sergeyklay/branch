@@ -18,7 +18,6 @@
 from django.contrib import admin
 from django.contrib.admin.models import DELETION
 from django.contrib.admin.models import LogEntry
-from django.contrib.auth.models import Permission
 from django.template.defaultfilters import capfirst, truncatewords
 from django.urls import NoReverseMatch, reverse
 from django.utils.html import escape
