@@ -18,9 +18,10 @@
 from django import forms
 from django.contrib import admin, messages
 from django.db.models.query import QuerySet
+from django.template.defaultfilters import truncatechars
 from django.urls import reverse
-from django.utils.safestring import mark_safe
-from django.utils.translation import gettext_lazy as _
+from django.utils.html import format_html
+from django.utils.translation import gettext_lazy
 
 from apps.trumbowyg.widgets import AdminTrumbowygWidget, RichTextField
 from .models import Comment, Post
@@ -30,12 +31,12 @@ class PostForm(forms.ModelForm):
     """Blog post form."""
 
     excerpt = RichTextField(
-        label=_('Excerpt'),
+        label=gettext_lazy('Excerpt'),
         widget=AdminTrumbowygWidget,
     )
 
     body = RichTextField(
-        label=_('Content'),
+        label=gettext_lazy('Content'),
         widget=AdminTrumbowygWidget,
     )
 
@@ -51,21 +52,16 @@ class BaseAdmin(admin.ModelAdmin):
 
     unpublished_statuses = ()
 
+    @admin.display(ordering='status', description=gettext_lazy('Status'))
     def object_status(self, obj: Comment):
         """Return custom column for object status."""
         style = 'color:#000;font-weight:600'
         if obj.status in self.unpublished_statuses:
             style = 'color:#8f8f8f'
 
-        return mark_safe(
-            '<span style="{}">{}</span>'.format(
-                style,
-                obj.get_status_display()
-            )
+        return format_html(
+            f'<span style="{style}">{obj.get_status_display()}</span>'
         )
-    object_status.allow_tags = True
-    object_status.short_description = _('Status')
-    object_status.admin_order_field = 'status'
 
 
 @admin.register(Post)
@@ -113,7 +109,7 @@ class PostAdmin(BaseAdmin):
     )
 
     fieldsets = (
-        (_('General content'), {
+        (gettext_lazy('General content'), {
             'fields': (
                 'title',
                 'slug',
@@ -128,7 +124,7 @@ class PostAdmin(BaseAdmin):
                 'published_at',
             ),
         }),
-        (_('SEO'), {
+        (gettext_lazy('SEO'), {
             'fields': (
                 'meta_title',
                 'meta_description',
@@ -167,13 +163,13 @@ class CommentAdmin(BaseAdmin):
     )
 
     fieldsets = (
-        (_('Commentator'), {
+        (gettext_lazy('Commentator'), {
             'fields': (
                 'user_name',
                 'user_email',
             ),
         }),
-        (_('Comment'), {
+        (gettext_lazy('Comment'), {
             'fields': (
                 'comment',
                 'status',
@@ -190,43 +186,49 @@ class CommentAdmin(BaseAdmin):
         'unpublish_comments',
     )
 
-    @admin.action(description=_('Publish selected comments'))
+    @admin.action(description=gettext_lazy('Publish selected comments'))
     def publish_comments(self, request, queryset: QuerySet):
         """Publish selected comments."""
-        rows = queryset.update(
-            status=Comment.STATUS_PUBLISHED
-        )
-        if rows > 0:
-            message = _('Selected comments published successfully')
-            self.message_user(request, message, messages.SUCCESS)
-        else:
-            self.message_user(request, _('Nothing has been changed'))
+        rows = queryset.update(status=Comment.STATUS_PUBLISHED)
 
-    @admin.action(description=_('Unpublish selected comments'))
+        if rows > 0:
+            self.message_user(
+                request,
+                gettext_lazy('Selected comments published successfully'),
+                messages.SUCCESS
+            )
+        else:
+            self.message_user(
+                request,
+                gettext_lazy('Nothing has been changed')
+            )
+
+    @admin.action(description=gettext_lazy('Unpublish selected comments'))
     def unpublish_comments(self, request, queryset: QuerySet):
         """Unpublish selected comments."""
-        rows = queryset.update(
-            status=Comment.STATUS_HIDDEN
-        )
-        if rows > 0:
-            message = _('Selected comments unpublished successfully')
-            self.message_user(request, message, messages.SUCCESS)
-        else:
-            self.message_user(request, _('Nothing has been changed'))
+        rows = queryset.update(status=Comment.STATUS_HIDDEN)
 
+        if rows > 0:
+            self.message_user(
+                request,
+                gettext_lazy('Selected comments unpublished successfully'),
+                messages.SUCCESS
+            )
+        else:
+            self.message_user(
+                request,
+                gettext_lazy('Nothing has been changed')
+            )
+
+    @admin.display(ordering='user_name', description=gettext_lazy('Sender'))
     def comment_sender(self, obj):
         """Return custom column for comment sender."""
-        return mark_safe('<a href="{}">{}</a>'.format(
+        return format_html('<a href="{}">{}</a>'.format(
             reverse("admin:blog_comment_change", args=(obj.pk,)),
             (obj.user_name or obj.user_email)
         ))
-    comment_sender.allow_tags = True
-    comment_sender.short_description = _('Sender')
-    comment_sender.admin_order_field = 'user_name'
 
+    @admin.display(ordering='content', description=gettext_lazy('Comment'))
     def comment_content(self, obj):
-        """Return custom column for comment comment."""
-        data = obj.comment.replace('\n', '')
-        return (data[:120] + '..') if len(data) > 120 else data
-    comment_content.short_description = _('Comment')
-    comment_content.admin_order_field = 'content'
+        """Return custom column for comment body."""
+        return truncatechars(obj.comment.replace('\n', ''), 120)

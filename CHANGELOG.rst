@@ -15,6 +15,8 @@ Improvements
 * Use ``logging.handlers.RotatingFileHandler`` as a log file handler.
 * Improved ``contact_form_submission`` task to use retry policy.
 * Setting up logging events using ``django-structlog`` for further introspection.
+* Refactor a bit ModelAdmin classes to use the display decorator instead of
+  setting the display-related attributes directly.
 
 Bug Fixes
 ^^^^^^^^^

@@ -17,8 +17,8 @@
 
 from django import forms
 from django.contrib import admin
-from django.utils.safestring import mark_safe
-from django.utils.translation import gettext_lazy as _
+from django.utils.html import format_html
+from django.utils.translation import gettext_lazy
 
 from apps.trumbowyg.widgets import AdminTrumbowygWidget, RichTextField
 from .models import Page
@@ -28,7 +28,7 @@ class PagesForm(forms.ModelForm):
     """Pages post form."""
 
     body = RichTextField(
-        label=_('Content'),
+        label=gettext_lazy('Content'),
         widget=AdminTrumbowygWidget,
     )
 
@@ -41,7 +41,7 @@ class PagesForm(forms.ModelForm):
 
 @admin.register(Page)
 class PageAdmin(admin.ModelAdmin):
-    """Class to manage pages."""
+    """Create an admin view of the pages table."""
 
     form = PagesForm
 
@@ -67,7 +67,7 @@ class PageAdmin(admin.ModelAdmin):
     )
 
     fieldsets = (
-        (_('General content'), {
+        (gettext_lazy('General content'), {
             'fields': (
                 'title',
                 'slug',
@@ -77,7 +77,7 @@ class PageAdmin(admin.ModelAdmin):
                 'published_at',
             ),
         }),
-        (_('SEO'), {
+        (gettext_lazy('SEO'), {
             'fields': (
                 'meta_title',
                 'meta_description',
@@ -86,10 +86,8 @@ class PageAdmin(admin.ModelAdmin):
         }),
     )
 
+    @admin.display(ordering='slug', description=gettext_lazy('URL'))
     def slug_link(self, obj):
-        """Resolve link to website page."""
+        """Return a HTML link to website page."""
         url = obj.get_absolute_url()
-        return mark_safe(f'<a href="{url}" target="_blank">{url}</a>')
-    slug_link.allow_tags = True
-    slug_link.short_description = _('URL')
-    slug_link.admin_order_field = 'slug'
+        return format_html(f'<a href="{url}" target="_blank">{url}</a>')
