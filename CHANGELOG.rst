@@ -11,7 +11,8 @@ releases, in reverse chronological order.
 Features
 ^^^^^^^^
 
-* Enable admin view to see history/log events.
+* Added an admin view to see history/log events.
+* Added an admin view to see user/group permissions.
 
 
 Improvements

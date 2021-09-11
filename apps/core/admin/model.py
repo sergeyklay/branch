@@ -18,6 +18,7 @@
 from django.contrib import admin
 from django.contrib.admin.models import DELETION
 from django.contrib.admin.models import LogEntry
+from django.contrib.auth.models import Permission
 from django.template.defaultfilters import capfirst, truncatewords
 from django.urls import NoReverseMatch, reverse
 from django.utils.html import escape
@@ -142,3 +143,31 @@ class LogEntryAdmin(admin.ModelAdmin):
     def get_change_message(self, obj):
         """Return custom column for change message."""
         return truncatewords(obj.get_change_message(), 10)
+
+
+@admin.register(Permission)
+class PermissionAdmin(admin.ModelAdmin):
+    """Create an admin view of the user/group permissions."""
+
+    fields = (
+        'name',
+        'content_type',
+        'codename',
+    )
+
+    list_display = (
+        'name',
+        'content_type',
+        'codename',
+    )
+
+    search_fields = (
+        'name',
+        'codename',
+    )
+
+    list_filter = (
+        'content_type__app_label',
+    )
+
+    list_per_page = 20
