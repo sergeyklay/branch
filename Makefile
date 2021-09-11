@@ -67,15 +67,15 @@ $(VENV_ROOT):
 .PHONY: init
 init: $(VENV_PYTHON)
 	@echo $(CS)Set up virtualenv$(CE)
-	$(VENV_PIP) install --upgrade pip pip-tools setuptools wheel
+	$(VENV_PIP) install --progress-bar=off --upgrade pip pip-tools setuptools wheel
 	@echo
 
 .PHONY: install
 install: $(REQUIREMENTS)
 	@echo $(CS)Installing $(PKG_NAME) and all its dependencies$(CE)
-	$(VENV_BIN)/pip-sync $(REQUIREMENTS)
-	$(VENV_PIP) install -e .
-	$(VENV_PIP) install --upgrade twine check-manifest check-wheel-contents
+	$(VENV_BIN)/pip-sync $^
+	$(VENV_PIP) install --progress-bar=off -e .
+	$(VENV_PIP) install --progress-bar=off --upgrade twine check-manifest check-wheel-contents
 	$(NPM) install
 	@echo
 
