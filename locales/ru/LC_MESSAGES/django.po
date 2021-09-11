@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: branch 1.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-11 13:51+0000\n"
-"PO-Revision-Date: 2021-09-11 16:48+0300\n"
+"POT-Creation-Date: 2021-09-11 14:54+0000\n"
+"PO-Revision-Date: 2021-09-11 17:56+0300\n"
 "Last-Translator: Serghei Iakovlev <egrep@protonmail.ch>\n"
 "Language-Team: Russian <egrep@protonmail.ch>\n"
 "Language: ru\n"
@@ -46,7 +46,7 @@ msgstr "Комментатор"
 
 #: apps/blog/admin.py:172 apps/blog/admin.py:231 apps/blog/models.py:149
 #: apps/blog/templates/blog/partials/comment-form.html:31
-#: apps/core/admin/model.py:123
+#: apps/core/admin/model.py:142
 msgid "Comment"
 msgstr "Комментарий"
 
@@ -276,7 +276,7 @@ msgstr "Администрирование Branch"
 msgid "Branch site admin"
 msgstr "Административный сайт Branch"
 
-#: apps/core/admin/filters.py:57 apps/core/admin/model.py:109
+#: apps/core/admin/filters.py:57 apps/core/admin/model.py:128
 msgid "Action"
 msgstr "Действие"
 
@@ -288,11 +288,19 @@ msgstr "Пользователь"
 msgid "Staff"
 msgstr "Штат"
 
-#: apps/core/admin/filters.py:122 apps/core/admin/model.py:117
+#: apps/core/admin/filters.py:122 apps/core/admin/model.py:136
 msgid "Content Type"
 msgstr "Тип содержимого"
 
-#: apps/core/admin/model.py:93
+#: apps/core/admin/model.py:65
+msgid "Metadata"
+msgstr "Метаданные"
+
+#: apps/core/admin/model.py:73
+msgid "Details"
+msgstr "Детали"
+
+#: apps/core/admin/model.py:112
 msgid "Object repr"
 msgstr "Представление объекта"
 
@@ -607,7 +615,6 @@ msgstr "GitHub профиль"
 msgid "Unless otherwise stated, all content on the site is available under"
 msgstr "Если не указано иного, всё содержимое сайта доступно под лицензией"
 
-#: apps/core/admin/filters.py:70
-#: apps/core/admin/model.py:113
+#: apps/core/admin/filters.py:70 apps/core/admin/model.py:113
 msgid "Updating"
 msgstr "Обновление"

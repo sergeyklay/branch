@@ -60,6 +60,25 @@ class LogEntryAdmin(admin.ModelAdmin):
         'get_change_message',
     )
 
+    fieldsets = (
+        (gettext_lazy('Metadata'), {
+            'fields': (
+                'action_time',
+                'user',
+                'action_description',
+                'object_link',
+            ),
+        }),
+        (gettext_lazy('Details'), {
+            'fields': (
+                'get_change_message',
+                'get_contenttype',
+                'object_id',
+                'object_repr',
+            )
+        })
+    )
+
     def has_add_permission(self, request):
         """Return True if the given request has permission to add an object."""
         return False
