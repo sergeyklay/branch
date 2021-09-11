@@ -18,7 +18,7 @@
 from django.contrib import admin
 from django.utils.translation import gettext_lazy
 
-from .model import LogEntryAdmin, PermissionAdmin
+from .models import LogEntryAdmin, PermissionAdmin
 
 
 # Text to put at the end of each page's <title>.
