@@ -80,15 +80,15 @@ class LogEntryAdmin(admin.ModelAdmin):
     )
 
     def has_add_permission(self, request):
-        """Return True if the given request has permission to add an object."""
+        """Disallow creating new log entries."""
         return False
 
     def has_change_permission(self, request, obj=None):
-        """Return True if the given request has permission to change an obj."""
+        """Disallow editing log entries."""
         return False
 
     def has_delete_permission(self, request, obj=None):
-        """Return True if the given request has permission to delete an obj."""
+        """Disallow deleting log entries."""
         return False
 
     def has_module_permission(self, request):
