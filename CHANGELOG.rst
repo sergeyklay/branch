@@ -17,6 +17,7 @@ Breaking Changes
 * Removed no longer used ``apps.blog.admin.CommentAdmin``.
 * Provided ability to disallow post comments.
 * Renamed ``branch.settings.get_emails`` to ``branch.settings._parse_emails``.
+* Send email notification of a new comment to site staff.
 
 
 Features

@@ -21,8 +21,10 @@ from django.urls import reverse
 from django.utils import timezone
 from django.utils.text import format_lazy
 from django.utils.translation import gettext_lazy as _
+from django_comments.moderation import moderator
 from taggit.managers import TaggableManager
 
+from apps.comments.moderation import PostCommentModerator
 from apps.core.models import Content
 
 
@@ -198,3 +200,6 @@ class Comment(models.Model):
         """On save, update updated_at timestamp."""
         self.updated_at = timezone.now()
         return super().save(*args, **kwargs)
+
+
+moderator.register(Post, PostCommentModerator)
