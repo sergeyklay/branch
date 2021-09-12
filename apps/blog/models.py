@@ -77,6 +77,12 @@ class Post(Content):
         verbose_name=_('Author'),
     )
 
+    allow_comments = models.BooleanField(
+        default=True,
+        verbose_name=_('Allow comments'),
+        help_text=_('Uncheck to disable comments for this post.'),
+    )
+
     tags = TaggableManager()
 
     class Meta:

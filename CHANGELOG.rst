@@ -12,9 +12,10 @@ Breaking Changes
 ^^^^^^^^^^^^^^^^
 
 * Removed no longer used ``apps.blog.forms.CommentForm``.
-* ``apps/blog/partials/comment-form.html`` template was renamed to
-  ``templates/comments/form.html``.
+* Comments form template ``apps/blog/partials/comment-form.html`` was renamed
+  to ``templates/comments/form.html``.
 * Removed no longer used ``apps.blog.admin.CommentAdmin``.
+* Provided ability to disallow post comments.
 
 
 Features
