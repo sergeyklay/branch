@@ -25,6 +25,7 @@ from django.utils.translation import gettext_lazy as _
 from django_comments import get_model
 from django_comments.models import Comment
 
+from apps.core.utils import override_language
 from branch import celery_app
 
 logger = structlog.get_logger(__name__)
@@ -68,10 +69,11 @@ def notification_send(comment_pk, site_name, site_url, user_id=None):
         'user_email': comment.email,
     }
 
-    subject = _('[%(site)s] New comment posted on "%(object)s"') % {
-        'site': site_name,
-        'object': comment.content_object,
-    }
+    with override_language(settings.ADMIN_LANGUAGE_CODE):
+        subject = _('[%(site)s] New comment posted on "%(object)s"') % {
+            'site': site_name,
+            'object': comment.content_object,
+        }
 
     message = t.render(c)
     mail = EmailMultiAlternatives(

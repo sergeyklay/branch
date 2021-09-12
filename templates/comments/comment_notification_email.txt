@@ -1,7 +1,7 @@
 {% load comments %}
 
 Comment: {{ site_url }}{% get_comment_permalink comment %}
-From: {{ user_name }} ({{ user_email }})
+From: {{ user_name }} <{{ user_email }}>
 Post: {{ site_url }}{{ content_object.get_absolute_url }}
 
 -----
