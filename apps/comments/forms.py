@@ -16,8 +16,8 @@
 """Comments forms module."""
 
 from django import forms
-from django.utils.translation import pgettext_lazy, gettext_lazy
-from django_comments.forms import CommentForm, COMMENT_MAX_LENGTH
+from django.utils.translation import gettext_lazy, pgettext_lazy
+from django_comments.forms import COMMENT_MAX_LENGTH, CommentForm
 
 
 class PostCommentForm(CommentForm):

@@ -27,6 +27,7 @@ class CommentsConfig(AppConfig):
     verbose_name = gettext_lazy('Comments')
 
     def ready(self):
+        """Connect to comments signals when Django starts."""
         from django.contrib import messages
         from django_comments.signals import comment_was_posted
 
