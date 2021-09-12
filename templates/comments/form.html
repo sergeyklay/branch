@@ -5,7 +5,7 @@
         {% csrf_token %}
 
         {% if next %}
-            <div><input type="hidden" name="next" value="{{ next }}"/></div>
+            <input type="hidden" name="next" value="{{ next }}"/>
         {% endif %}
 
         {% for hidden_field in form.hidden_fields %}
@@ -14,8 +14,10 @@
         {% endfor %}
 
         {% if user.is_authenticated %}
-            <input id="id_name" type="hidden" name="name" value="{{ user.get_username }}">
-            <input id="id_email" type="hidden" name="name" value="{{ user.email }}">
+            <input type="hidden" name="{{ form.name.name }}" value="{{ user.get_username }}">
+            <input type="hidden" name="{{ form.email.name }}" value="{{ user.email }}">
+            <input type="hidden" name="{{ form.url.name }}" value="{# TODO: user.get_absolute_url #}">
+            <input type="hidden" name="{{ form.honeypot.name }}" value="" readonly="readonly">
         {% else %}
             <div class="comment-form-item">
                 <label class="{{ form.label_class }}" for="{{ form.name.id_for_label }}">
@@ -33,20 +35,20 @@
                 <small>{% trans 'Your email address will not be published.' %}</small>
                 {% if form.email.errors %}{{ form.email.errors|safe }}{% endif %}
             </div>
+
+            <div class="comment-form-item">
+                <label class="{{ form.label_class }}" for="{{ form.url.id_for_label }}">
+                    {% trans 'URL' %}
+                </label>
+                {{ form.url }}
+                {% if form.url.errors %}{{ form.url.errors|safe }}{% endif %}
+            </div>
+
+            <div class="comment-form-item">
+                {{ form.honeypot }}
+                <small>{% trans 'If you enter anything in this field your comment will be treated as spam' %}</small>
+            </div>
         {% endif %}
-
-        <div class="comment-form-item">
-            <label class="{{ form.label_class }}" for="{{ form.url.id_for_label }}">
-                {% trans 'URL' %}
-            </label>
-            {{ form.url }}
-            {% if form.url.errors %}{{ form.url.errors|safe }}{% endif %}
-        </div>
-
-        <div class="comment-form-item">
-            {{ form.honeypot }}
-            <small>{% trans 'If you enter anything in this field your comment will be treated as spam' %}</small>
-        </div>
 
         <div class="comment-form-item">
             <label class="{{ form.label_class }}" for="{{ form.comment.id_for_label }}">
