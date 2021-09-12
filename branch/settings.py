@@ -575,16 +575,16 @@ CONTACT_EMAIL = env.str('CONTACT_EMAIL', default='webmaster@localhost')
 DEFAULT_FROM_EMAIL = SERVER_EMAIL
 
 
-def get_emails(environment_var):
+def _parse_emails(environment_var):
     """Prepare a tuple of email tuples from the value of 'environment_var'."""
     return tuple(parseaddr(email) for email in env(environment_var))
 
 
 # A list of all the people who get code error notifications.
-ADMINS = get_emails('ADMINS')
+ADMINS = _parse_emails('ADMINS')
 
 # A list of all the people who should get broken link notifications.
-MANAGERS = get_emails('MANAGERS')
+MANAGERS = _parse_emails('MANAGERS')
 
 # Redirect all non-HTTPS requests to HTTPS (except for those URLs matching a
 # regular expression listed in SECURE_REDIRECT_EXEMPT).
