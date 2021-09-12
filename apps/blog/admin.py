@@ -44,25 +44,8 @@ class PostForm(forms.ModelForm):
         fields = '__all__'
 
 
-class BaseAdmin(admin.ModelAdmin):
-    """Base ModelAdmin class."""
-
-    unpublished_statuses = ()
-
-    @admin.display(ordering='status', description=gettext_lazy('Status'))
-    def object_status(self, obj):
-        """Return custom column for object status."""
-        style = 'color:#000;font-weight:600'
-        if obj.status in self.unpublished_statuses:
-            style = 'color:#8f8f8f'
-
-        return format_html(
-            f'<span style="{style}">{obj.get_status_display()}</span>'
-        )
-
-
 @admin.register(Post)
-class PostAdmin(BaseAdmin):
+class PostAdmin(admin.ModelAdmin):
     """Class to manage blog posts."""
 
     form = PostForm
@@ -127,3 +110,14 @@ class PostAdmin(BaseAdmin):
             )
         }),
     )
+
+    @admin.display(ordering='status', description=gettext_lazy('Status'))
+    def object_status(self, obj):
+        """Return custom column for object status."""
+        style = 'color:#000;font-weight:600'
+        if obj.status in self.unpublished_statuses:
+            style = 'color:#8f8f8f'
+
+        return format_html(
+            f'<span style="{style}">{obj.get_status_display()}</span>'
+        )

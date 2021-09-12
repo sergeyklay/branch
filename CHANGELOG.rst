@@ -11,10 +11,14 @@ releases, in reverse chronological order.
 Breaking Changes
 ^^^^^^^^^^^^^^^^
 
-* Removed no longer used ``apps.blog.forms.CommentForm``.
+* Removed the following classes:
+
+  * ``apps.blog.forms.CommentForm``
+  * ``apps.blog.admin.CommentAdmin``
+  * ``apps.blog.admin.BaseAdmin``
+
 * Comments form template ``apps/blog/partials/comment-form.html`` was renamed
   to ``templates/comments/form.html``.
-* Removed no longer used ``apps.blog.admin.CommentAdmin``.
 * Provided ability to disallow post comments.
 * Renamed ``branch.settings.get_emails`` to ``branch.settings._parse_emails``.
 * Send email notification of a new comment to site staff.
