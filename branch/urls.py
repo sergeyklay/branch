@@ -51,7 +51,7 @@ urlpatterns = [
     # Contacts.
     path('', include('apps.telegraph.urls', namespace='telegraph')),
     # Comments.
-    re_path(r'^comments/', include('django_comments.urls')),
+    re_path(r'^comments/', include('apps.comments.urls')),
     # Blog admin.
     path(f'{settings.ADMIN_SITE_URL}/', admin.site.urls),
     # Sitemaps.
