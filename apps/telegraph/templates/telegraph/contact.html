@@ -48,7 +48,7 @@
                             {% trans 'Your Name' %}&nbsp;<strong>*</strong>
                         </label>
                         {{ form.name }}
-                        {{ form.name.errors|safe }}
+                        {% if form.name.errors %}{{ form.name.errors|safe }}{% endif %}
                     </div>
 
                     <div class="contact-form-item">
@@ -56,7 +56,7 @@
                             {% trans 'Email Address' %}&nbsp;<strong>*</strong>
                         </label>
                         {{ form.email }}
-                        {{ form.email.errors|safe }}
+                        {% if form.email.errors %}{{ form.email.errors|safe }}{% endif %}
                     </div>
 
                     <div class="contact-form-item">
@@ -64,7 +64,7 @@
                             {% trans 'Subject' %}
                         </label>
                         {{ form.subject }}
-                        {{ form.subject.errors|safe }}
+                        {% if form.subject.errors %}{{ form.subject.errors|safe }}{% endif %}
                     </div>
 
                     <div class="contact-form-item">
@@ -72,7 +72,7 @@
                             {% trans 'Message' %}&nbsp;<strong>*</strong>
                         </label>
                         {{ form.message }}
-                        {{ form.message.errors|safe }}
+                        {% if form.message.errors %}{{ form.message.errors|safe }}{% endif %}
                     </div>
 
                     <div class="contact-form-item">
