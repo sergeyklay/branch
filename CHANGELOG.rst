@@ -14,6 +14,7 @@ Breaking Changes
 * Removed no longer used ``apps.blog.forms.CommentForm``.
 * ``apps/blog/partials/comment-form.html`` template was renamed to
   ``templates/comments/form.html``.
+* Removed no longer used ``apps.blog.admin.CommentAdmin``.
 
 
 Features
@@ -33,6 +34,7 @@ Improvements
 * Setting up logging events using ``django-structlog`` for further introspection.
 * Refactor a bit ModelAdmin classes to use the display decorator instead of
   setting the display-related attributes directly.
+
 
 Bug Fixes
 ^^^^^^^^^
