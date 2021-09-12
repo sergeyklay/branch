@@ -1,5 +1,7 @@
 {% extends 'post.html' %}
 
+{% load comments %}
+
 {% load l10n i18n static date_to_xmlschema locale_helpers %}
 {% block og_namespace %}article: https://ogp.me/ns/article#{% endblock %}
 {% block page_title %}{{ seo_title }} - {{ block.super }}{% endblock %}
@@ -86,22 +88,22 @@
             {% include 'partials/messages.html' %}
 
             <section class="comment-thread" id="comment-thread">
-                {% with total_comments=comments.count  %}
-                    {%  if total_comments > 0 %}
-                        <div class="d-flex flex-items-center flex-wrap">
-                            <h2 id="discussion-comment-count">
-                                {% blocktrans trimmed count total_comments=total_comments %}
-                                    {{ total_comments }} comment
-                                {% plural %}
-                                    {{ total_comments }} comments
-                                {% endblocktrans %}
-                            </h2>
-                        </div>
-                    {% endif %}
-                {%  endwith %}
-                {% for comment in comments %}
-                    {% include 'blog/partials/comment.html' with comment=comment %}
-                {% empty %}
+                {% get_comment_count for post as comment_count %}
+                {%  if comment_count > 0  %}
+                    <div class="d-flex flex-items-center flex-wrap">
+                        <h2 id="discussion-comment-count">
+                            {% blocktrans trimmed count total_comments=comment_count %}
+                                {{ total_comments }} comment
+                            {% plural %}
+                                {{ total_comments }} comments
+                            {% endblocktrans %}
+                        </h2>
+                    </div>
+                    {% get_comment_list for post as comment_list %}
+                    {% for comment in comment_list %}
+                        {% include 'blog/partials/comment.html' with comment=comment %}
+                    {% endfor %}
+                {% else %}
                     <article class="comment" id="comment-0">
                         <div class="d-flex flex-items-center">
                             <div class="comment-body">
@@ -109,11 +111,11 @@
                             </div>
                         </div>
                     </article>
-                {% endfor %}
+                {% endif %}
             </section>
 
             <div class="comment-form-wrapper" role="dialog">
-                {% include 'blog/partials/comment-form.html' with form=form %}
+                {% render_comment_form for post %}
             </div>
 
         {% endblock %}

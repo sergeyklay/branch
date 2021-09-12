@@ -100,8 +100,8 @@ class PostDetailView(PageDetailsMixin, FormMixin, DateDetailView):
     def get_context_data(self, **kwargs):
         """Get post's context data to use in template."""
         context = super().get_context_data(**kwargs)
-        context['comments'] = self.object.comments.filter(status='published')
         context['form'] = self.get_form()
+        context['next'] = self.get_success_url()
         return context
 
     def form_valid(self, form):

@@ -1,0 +1,76 @@
+{% load comments i18n %}
+
+<div class="comment-form">
+    <form action="{% comment_form_target %}" method="post" id="comment-form">
+        {% csrf_token %}
+
+        {% if next %}
+            <div><input type="hidden" name="next" value="{{ next }}"/></div>
+        {% endif %}
+
+        {% for hidden_field in form.hidden_fields %}
+            {{ hidden_field }}
+            {{ hidden_field.errors }}
+        {% endfor %}
+
+        {% if user.is_authenticated %}
+            <input id="id_name" type="hidden" name="name" value="{{ user.get_username }}">
+            <input id="id_email" type="hidden" name="name" value="{{ user.email }}">
+        {% else %}
+            <div class="comment-form-item">
+                <label class="{{ form.label_class }}" for="{{ form.name.id_for_label }}">
+                    {% trans 'Your Name' %}&nbsp;<strong>*</strong>
+                </label>
+                {{ form.name }}
+                {% if form.name.errors %}{{ form.name.errors|safe }}{% endif %}
+            </div>
+
+            <div class="comment-form-item">
+                <label class="{{ form.label_class }}" for="{{ form.email.id_for_label }}">
+                    {% trans 'Email Address' %}&nbsp;<strong>*</strong>
+                </label>
+                {{ form.email }}
+                <small>{% trans 'Your email address will not be published.' %}</small>
+                {% if form.email.errors %}{{ form.email.errors|safe }}{% endif %}
+            </div>
+        {% endif %}
+
+        <div class="comment-form-item">
+            <label class="{{ form.label_class }}" for="{{ form.url.id_for_label }}">
+                {% trans 'URL' %}
+            </label>
+            {{ form.url }}
+            {% if form.url.errors %}{{ form.url.errors|safe }}{% endif %}
+        </div>
+
+        <div class="comment-form-item">
+            {{ form.honeypot }}
+            <small>{% trans 'If you enter anything in this field your comment will be treated as spam' %}</small>
+        </div>
+
+        <div class="comment-form-item">
+            <label class="{{ form.label_class }}" for="{{ form.comment.id_for_label }}">
+                {% trans 'Comment' %}&nbsp;<strong>*</strong>
+            </label>
+            {{ form.comment }}
+            {% if form.comment.errors %}{{ form.comment.errors|safe }}{% endif %}
+        </div>
+
+        <div class="comment-form-item">
+            <small>
+                {% blocktrans trimmed %}
+                    Comments are subject to approval and moderation.
+                    If you don't see your comment, please be patient.
+                    It may be posted soon. Do not post your comment a second time.
+                    Thank you.
+                {% endblocktrans %}
+            </small>
+        </div>
+
+        <div class="comment-form-item">
+            <input type="submit" name="post" value="{% trans 'Submit' %}" class="button button-large">
+            {# I'm not sure I need this feature right now. #}
+            {# <input type="submit" name="preview" value="{% trans 'Preview' %}" class="button button-large"> #}
+        </div>
+    </form>
+</div>

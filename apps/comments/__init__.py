@@ -13,18 +13,12 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-beautifulsoup4
-celery[redis]
-django
-django-compressor
-django-contrib-comments
-django-environ
-django-redis
-django-structlog
-django-taggit
-gunicorn
-pillow
-pyquery
+def get_form():
+    """
+    Return the form comments class.
 
-# See https://github.com/praekelt/django-recaptcha/pull/240
--e git+git://github.com/sergeyklay/django-recaptcha.git@develop#egg=django-recaptcha
+    Returned form class will be used for creating, validating, and saving
+    blog's comment model.
+    """
+    from apps.comments.forms import PostCommentForm
+    return PostCommentForm

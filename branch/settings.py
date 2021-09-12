@@ -140,16 +140,16 @@ SECRET_KEY = env.str('SECRET_KEY')
 
 # Application definition
 
+SITE_ID = 1
+
 DJANGO_APPS = [
-    # Default Django apps
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'django.contrib.sitemaps',
-
-    # Admin
     'django.contrib.admin',
 ]
 
@@ -157,6 +157,8 @@ THIRD_PARTY_APPS = [
     'captcha',  # reCAPTCHA support for Django.
     'compressor',  # Compress JS and CSS into single cached file.
     'taggit',  # Simple tagging for Django.
+    'apps.comments',  # Branch comments app, should be before django_comments.
+    'django_comments',  # Comments framework.
 ]
 
 if DEBUG:
@@ -176,6 +178,9 @@ LOCAL_APPS = [
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+
+COMMENTS_APP = 'apps.comments'
+COMMENT_MAX_LENGTH = 300
 
 # Caches
 

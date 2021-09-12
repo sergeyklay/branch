@@ -13,6 +13,7 @@ Features
 
 * Added an admin view to see history/log events.
 * Added an admin view to see user/group permissions.
+* Introduced Django Comments Framework.
 
 
 Improvements
