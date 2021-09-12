@@ -12,6 +12,8 @@ Breaking Changes
 ^^^^^^^^^^^^^^^^
 
 * Removed no longer used ``apps.blog.forms.CommentForm``.
+* ``apps/blog/partials/comment-form.html`` template was renamed to
+  ``templates/comments/form.html``.
 
 
 Features

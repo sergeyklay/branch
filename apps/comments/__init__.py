@@ -15,7 +15,7 @@
 
 """The top-level module for comments application.
 
-This is am add-on over the Django Comments Framework to provide the
+This is an add-on over the Django Comments Framework to provide the
 features the blog needs.
 
 """
