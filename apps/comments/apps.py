@@ -32,7 +32,14 @@ class CommentsConfig(AppConfig):
         from django_comments.signals import comment_was_posted
 
         def thank_user(sender, comment=None, request=None, **kwargs):
-            """Say Thanks to the user who left a comment."""
+            """
+            Say Thanks to the user who left a comment.
+
+            Does nothing for authenticated users.
+            """
+            if request and request.user.is_authenticated:
+                return
+
             success_message = gettext_lazy(
                 'Your comment has been sent for moderation. '
                 'This means comment will "held" until I okays it '
