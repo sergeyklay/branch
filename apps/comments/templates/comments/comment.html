@@ -1,13 +1,13 @@
 {% load comments date_to_xmlschema %}
 
-<article class="comment" id="c{{ comment.id }}">
+<article class="comment" id="c{{ comment.pk }}">
     <div class="d-flex flex-items-center">
         <div class="comment-meta">
             <h3 class="comment-author">
                 {{ comment.name }}
             </h3>
             <span class="m-0">
-                <a href="#c{{ comment.id }}" class="link-secondary">
+                <a href="#c{{ comment.pk }}" class="link-secondary">
                     <time datetime="{{ comment.submit_date|date_to_xmlschema }}"
                           title="{{ comment.submit_date|date:"j M Y, H:i e"  }}">
                         {{ comment.submit_date|date:"Y.m.d" }}
