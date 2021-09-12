@@ -49,11 +49,10 @@ class PostCommentForm(CommentForm):
 
     honeypot = forms.CharField(
         required=False,
-        label=gettext_lazy('If you enter anything in this field '
-                           'your comment will be treated as spam'),
-        widget=forms.TextInput(attrs={
-            'class': input_class,
-        })
+        label=gettext_lazy(
+            'If you enter anything in this field '
+            'your comment will be treated as spam'
+        ),
     )
 
     url = forms.URLField(
