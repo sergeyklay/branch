@@ -8,6 +8,12 @@ releases, in reverse chronological order.
 1.6.0 (2021-XX-XX)
 ------------------
 
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+* Removed no longer used ``apps.blog.forms.CommentForm``.
+
+
 Features
 ^^^^^^^^
 
