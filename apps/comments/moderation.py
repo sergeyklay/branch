@@ -65,12 +65,12 @@ class PostCommentModerator(CommentModerator):
 
     def email(self, comment, content_object, request):
         """Send email notification of a new comment to site staff."""
-        # Do not sent notification for site staff
-        if comment.user and comment.user.is_staff:
-            return
-
         # Do not sent notification if email notification is disabled
         if not self.email_notification:
+            return
+
+        # Do not sent notification if commenter is site staff
+        if comment.user and comment.user.is_staff:
             return
 
         user_id = None

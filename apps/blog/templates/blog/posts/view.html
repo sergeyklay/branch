@@ -101,7 +101,7 @@
                     </div>
                     {% get_comment_list for post as comment_list %}
                     {% for comment in comment_list %}
-                        {% include 'blog/partials/comment.html' with comment=comment %}
+                        {% include 'comments/comment.html' with comment=comment %}
                     {% endfor %}
                 {% else %}
                     <article class="comment" id="comment-0">

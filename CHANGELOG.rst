@@ -17,8 +17,13 @@ Breaking Changes
   * ``apps.blog.admin.CommentAdmin``
   * ``apps.blog.admin.BaseAdmin``
 
-* Comments form template ``apps/blog/partials/comment-form.html`` was renamed
-  to ``templates/comments/form.html``.
+* Renamed the following templates:
+
+  * ``apps/blog/templates/blog/partials/comment-form.html`` to
+    ``apps/comments/templates/comments/form.html``.
+  * ``apps/blog/templates/blog/partials/comment.html`` to
+    ``apps/comments/templates/comments/comment.html``
+
 * Provided ability to disallow post comments.
 * Renamed ``branch.settings.get_emails`` to ``branch.settings._parse_emails``.
 * Send email notification of a new comment to site staff.
