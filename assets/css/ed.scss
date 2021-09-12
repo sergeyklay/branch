@@ -95,6 +95,10 @@ a, .text-title a {
   text-decoration: none;
 }
 
+a.link-secondary {
+  color: var(--color-text-secondary) !important;
+}
+
 /* `:focus` is linked to `:hover` for basic accessibility */
 a:hover,
 a:focus {

@@ -1,0 +1,29 @@
+{% load comments i18n date_to_xmlschema %}
+
+<section class="comment-thread" id="comment-thread">
+    {% get_comment_count for post as comment_count %}
+    {%  if comment_count > 0  %}
+        <div class="d-flex flex-items-center flex-wrap">
+            <h2 id="discussion-comment-count">
+                {% blocktrans trimmed count total_comments=comment_count %}
+                    {{ total_comments }} comment
+                {% plural %}
+                    {{ total_comments }} comments
+                {% endblocktrans %}
+            </h2>
+        </div>
+
+        {% for comment in comment_list %}
+            {% include 'comments/comment.html' with comment=comment %}
+        {% endfor %}
+
+    {% else %}
+        <article class="comment" id="c0">
+            <div class="d-flex flex-items-center">
+                <div class="comment-body">
+                    {% trans 'There are no comments yet.' %}
+                </div>
+            </div>
+        </article>
+    {% endif %}
+</section>
