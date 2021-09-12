@@ -34,6 +34,7 @@ django==3.2.7
     # via
     #   -r requirements/requirements.in
     #   django-appconf
+    #   django-contrib-comments
     #   django-recaptcha
     #   django-redis
     #   django-structlog
@@ -41,6 +42,8 @@ django==3.2.7
 django-appconf==1.0.4
     # via django-compressor
 django-compressor==2.4.1
+    # via -r requirements/requirements.in
+django-contrib-comments==2.1.0
     # via -r requirements/requirements.in
 django-environ==0.7.0
     # via -r requirements/requirements.in

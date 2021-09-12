@@ -17,6 +17,7 @@ beautifulsoup4
 celery[redis]
 django
 django-compressor
+django-contrib-comments
 django-environ
 django-redis
 django-structlog

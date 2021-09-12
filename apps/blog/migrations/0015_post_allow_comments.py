@@ -13,4 +13,23 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-"""The top-level module for trumbowyg application."""
+from django.db import migrations, models
+
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+        ('blog', '0014_auto_20210903_1538'),
+    ]
+
+    operations = [
+        migrations.AddField(
+            model_name='post',
+            name='allow_comments',
+            field=models.BooleanField(
+                default=True,
+                help_text='Uncheck to disable comments for this post.',
+                verbose_name='Allow comments',
+            ),
+        ),
+    ]

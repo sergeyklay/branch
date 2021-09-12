@@ -140,16 +140,16 @@ SECRET_KEY = env.str('SECRET_KEY')
 
 # Application definition
 
+SITE_ID = 1
+
 DJANGO_APPS = [
-    # Default Django apps
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'django.contrib.sitemaps',
-
-    # Admin
     'django.contrib.admin',
 ]
 
@@ -157,6 +157,8 @@ THIRD_PARTY_APPS = [
     'captcha',  # reCAPTCHA support for Django.
     'compressor',  # Compress JS and CSS into single cached file.
     'taggit',  # Simple tagging for Django.
+    'apps.comments',  # Branch comments app, should be before django_comments.
+    'django_comments',  # Comments framework.
 ]
 
 if DEBUG:
@@ -176,6 +178,9 @@ LOCAL_APPS = [
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+
+COMMENTS_APP = 'apps.comments'
+COMMENT_MAX_LENGTH = 300
 
 # Caches
 
@@ -570,16 +575,16 @@ CONTACT_EMAIL = env.str('CONTACT_EMAIL', default='webmaster@localhost')
 DEFAULT_FROM_EMAIL = SERVER_EMAIL
 
 
-def get_emails(environment_var):
+def _parse_emails(environment_var):
     """Prepare a tuple of email tuples from the value of 'environment_var'."""
     return tuple(parseaddr(email) for email in env(environment_var))
 
 
 # A list of all the people who get code error notifications.
-ADMINS = get_emails('ADMINS')
+ADMINS = _parse_emails('ADMINS')
 
 # A list of all the people who should get broken link notifications.
-MANAGERS = get_emails('MANAGERS')
+MANAGERS = _parse_emails('MANAGERS')
 
 # Redirect all non-HTTPS requests to HTTPS (except for those URLs matching a
 # regular expression listed in SECURE_REDIRECT_EXEMPT).

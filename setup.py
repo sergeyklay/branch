@@ -150,6 +150,7 @@ INSTALL_REQUIRES = [
     'django>=3.2',  # Our framework
     'django-environ>=0.6.0',  # Configure Django application
     'django-compressor>=2.4',  # Compile and minify static assets
+    'django-contrib-comments>=2.1.0',  # Django Comments Framework
     'django-redis>=4.12.1',  # Redis cache backend for Django
     'django-structlog>=2.1.1',  # Structured Logging for Django
     'django-taggit>=1.5.0',  # Simple tagging application

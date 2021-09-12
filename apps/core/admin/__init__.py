@@ -22,7 +22,7 @@ from .models import LogEntryAdmin, PermissionAdmin
 
 
 # Text to put at the end of each page's <title>.
-admin.site.site_title = gettext_lazy('Branch site admin')
+admin.site.site_title = gettext_lazy('Blog site admin')
 
 # Text to put in each page's <h1>.
-admin.site.site_header = gettext_lazy('Branch administration')
+admin.site.site_header = gettext_lazy('Blog administration')

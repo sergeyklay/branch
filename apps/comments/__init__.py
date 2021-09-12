@@ -13,4 +13,20 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-"""The top-level module for trumbowyg application."""
+"""The top-level module for comments application.
+
+This is an add-on over the Django Comments Framework to provide the
+features the blog needs.
+
+"""
+
+
+def get_form():
+    """
+    Return the form comments class.
+
+    Returned form class will be used for creating, validating, and saving
+    blog's comment model.
+    """
+    from apps.comments.forms import PostCommentForm
+    return PostCommentForm

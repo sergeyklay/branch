@@ -13,4 +13,17 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-"""The top-level module for trumbowyg application."""
+from django.db import migrations
+
+
+class Migration(migrations.Migration):
+
+    dependencies = [
+        ('blog', '0015_post_allow_comments'),
+    ]
+
+    operations = [
+        migrations.DeleteModel(
+            name='Comment',
+        ),
+    ]

@@ -15,10 +15,21 @@
 
 """Common utils for the whole project."""
 
+from contextlib import contextmanager
 from urllib.parse import urljoin
 
 from django.conf import settings
+from django.utils.translation import activate, get_language
 from django.utils.translation import trans_real
+
+
+@contextmanager
+def override_language(language):
+    """Temporarily override language with a context manager."""
+    cur_language = get_language()
+    activate(language)
+    yield
+    activate(cur_language)
 
 
 def to_absolute_url(url, site=None):

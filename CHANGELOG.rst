@@ -8,11 +8,33 @@ releases, in reverse chronological order.
 1.6.0 (2021-XX-XX)
 ------------------
 
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+* Removed the following classes:
+
+  * ``apps.blog.forms.CommentForm``
+  * ``apps.blog.admin.CommentAdmin``
+  * ``apps.blog.admin.BaseAdmin``
+
+* Renamed the following templates:
+
+  * ``apps/blog/templates/blog/partials/comment-form.html`` to
+    ``apps/comments/templates/comments/form.html``.
+  * ``apps/blog/templates/blog/partials/comment.html`` to
+    ``apps/comments/templates/comments/comment.html``
+
+* Provided ability to disallow post comments.
+* Renamed ``branch.settings.get_emails`` to ``branch.settings._parse_emails``.
+* Send email notification of a new comment to site staff.
+
+
 Features
 ^^^^^^^^
 
 * Added an admin view to see history/log events.
 * Added an admin view to see user/group permissions.
+* Introduced Django Comments Framework.
 
 
 Improvements
@@ -24,6 +46,7 @@ Improvements
 * Setting up logging events using ``django-structlog`` for further introspection.
 * Refactor a bit ModelAdmin classes to use the display decorator instead of
   setting the display-related attributes directly.
+
 
 Bug Fixes
 ^^^^^^^^^

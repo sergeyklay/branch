@@ -13,42 +13,62 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
-"""Blog related forms."""
+"""Comments forms module."""
 
 from django import forms
+from django.utils.translation import gettext_lazy, pgettext_lazy
+from django_comments.forms import COMMENT_MAX_LENGTH, CommentForm
 
-from .models import Comment
 
+class PostCommentForm(CommentForm):
+    """
+    Handles the specific details of the comment (name, comment, etc.).
 
-class CommentForm(forms.ModelForm):
-    """Post comment form class."""
+    The main comment form representing the standard way of handling submitted
+    comments.
+    """
 
     label_class = 'comment-form-label'
     input_class = 'comment-form-input form-input'
 
-    user_name = forms.CharField(
-        max_length=40,
+    name = forms.CharField(
+        label=pgettext_lazy('Person name', 'Name'),
+        max_length=50,
         widget=forms.TextInput(attrs={
             'class': input_class,
         })
     )
 
-    user_email = forms.EmailField(
+    email = forms.EmailField(
+        label=gettext_lazy('Email address'),
         max_length=254,
         widget=forms.EmailInput(attrs={
             'class': input_class,
         }),
     )
 
+    honeypot = forms.CharField(
+        required=False,
+        label=gettext_lazy(
+            'If you enter anything in this field '
+            'your comment will be treated as spam'
+        ),
+    )
+
+    url = forms.URLField(
+        label=gettext_lazy('URL'),
+        max_length=254,
+        required=False,
+        widget=forms.URLInput(attrs={
+            'class': input_class,
+        }),
+    )
+
     comment = forms.CharField(
+        label=gettext_lazy('Comment'),
+        max_length=COMMENT_MAX_LENGTH,
         widget=forms.Textarea(attrs={
             'rows': 7,
             'class': 'comment-form-textarea form-input',
         }),
     )
-
-    class Meta:
-        """Comment form metadata class."""
-
-        model = Comment
-        fields = ('user_name', 'user_email', 'comment')

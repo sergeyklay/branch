@@ -4,11 +4,11 @@
     <div class="d-flex flex-items-center">
         <div class="comment-meta">
             <h3 class="comment-author">
-                {{ comment.user_name }}
+                {{ comment.name }}
             </h3>
             <span class="m-0">
-                <time datetime="{{ comment.created_at|date_to_xmlschema }}">
-                    {{ comment.created_at|date:"Y.m.d" }}
+                <time datetime="{{ comment.submit_date|date_to_xmlschema }}">
+                    {{ comment.submit_date|date:"Y.m.d" }}
                 </time>
             </span>
         </div>

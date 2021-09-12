@@ -1,5 +1,5 @@
 {% if messages %}
-    <ul class="feedback-message" id="feedback-message">
+    <ul class="feedback-message" id="feedback-message" style="margin-top: 3em">
         {% for message in messages %}
             <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
                 {{ message }}

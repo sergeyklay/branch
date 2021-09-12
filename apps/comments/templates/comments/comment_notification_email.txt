@@ -1,0 +1,11 @@
+{% load comments %}
+
+Comment: {{ site_url }}{% get_comment_permalink comment %}
+From: {{ user_name }} <{{ user_email }}>
+Post: {{ site_url }}{{ content_object.get_absolute_url }}
+
+-----
+{{ comment.comment }}
+-----
+
+Manage comment: {{ site_url }}/{{ admin_site_url }}/django_comments/comment/{{ comment.id }}/
