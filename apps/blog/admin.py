@@ -21,7 +21,7 @@ from django.utils.html import format_html
 from django.utils.translation import gettext_lazy
 
 from apps.trumbowyg.widgets import AdminTrumbowygWidget, RichTextField
-from .models import Comment, Post
+from .models import Post
 
 
 class PostForm(forms.ModelForm):
@@ -50,7 +50,7 @@ class BaseAdmin(admin.ModelAdmin):
     unpublished_statuses = ()
 
     @admin.display(ordering='status', description=gettext_lazy('Status'))
-    def object_status(self, obj: Comment):
+    def object_status(self, obj):
         """Return custom column for object status."""
         style = 'color:#000;font-weight:600'
         if obj.status in self.unpublished_statuses:
