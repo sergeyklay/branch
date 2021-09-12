@@ -15,10 +15,7 @@
 
 """Blog models."""
 
-# TODO: Fix this:
-#   E5142: User model imported from django.contrib.auth.models
-#   (imported-auth-user)
-from django.contrib.auth.models import User  # pylint: disable=E5142
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
@@ -29,7 +26,7 @@ from taggit.managers import TaggableManager
 from apps.core.models import Content
 
 
-class Author(User):
+class Author(get_user_model()):
     """A proxy class to extend default User model."""
 
     class Meta:
