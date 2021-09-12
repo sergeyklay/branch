@@ -23,7 +23,6 @@ from django.core.mail import EmailMultiAlternatives, get_connection
 from django.template import loader
 from django.utils.translation import gettext_lazy as _
 from django_comments import get_model
-from django_comments.models import Comment
 
 from apps.core.utils import override_language
 from branch import celery_app
@@ -58,7 +57,7 @@ def notification_send(comment_pk, site_name, site_url, user_id=None):
     t = loader.get_template('comments/comment_notification_email.txt')
 
     comment_model = get_model()
-    comment = comment_model.objects.get(pk=comment_pk)  # type: Comment
+    comment = comment_model.objects.get(pk=comment_pk)
 
     c = {
         'admin_site_url': settings.ADMIN_SITE_URL,
