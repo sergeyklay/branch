@@ -61,6 +61,7 @@ Trivial/Internal Changes
 * Return to ``django-environ`` and drop ``django-environ-2``.
 * Bumped ``beautifulsoup4`` from 4.9.3 to 4.10.0.
 * Bumped ``sqlparse`` from 0.4.1 to 0.4.2.
+* Bumped ``prismjs`` from 1.24.1 to 1.25.0.
 
 
 ----
