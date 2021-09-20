@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: branch 1.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-11 14:54+0000\n"
-"PO-Revision-Date: 2021-09-11 17:55+0300\n"
+"POT-Creation-Date: 2021-09-20 19:27+0000\n"
+"PO-Revision-Date: 2021-09-20 22:30+0300\n"
 "Last-Translator: Serghei Iakovlev <egrep@protonmail.ch>\n"
 "Language-Team: Ukrainian <egrep@protonmail.ch>\n"
 "Language: uk\n"
@@ -21,193 +21,83 @@ msgstr ""
 "(n % 100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
 "X-Generator: Poedit 3.0\n"
 
-#: apps/blog/admin.py:34 apps/blog/models.py:69
+#: apps/blog/admin.py:31 apps/blog/models.py:67
 msgid "Excerpt"
 msgstr "Уривок"
 
-#: apps/blog/admin.py:39 apps/pages/admin.py:31
+#: apps/blog/admin.py:36 apps/pages/admin.py:31
 msgid "Content"
 msgstr "Зміст"
 
-#: apps/blog/admin.py:55 apps/blog/models.py:157 apps/core/models.py:95
-msgid "Status"
-msgstr "Статус"
-
-#: apps/blog/admin.py:112 apps/pages/admin.py:70
+#: apps/blog/admin.py:92 apps/pages/admin.py:70
 msgid "General content"
 msgstr "Загальний зміст"
 
-#: apps/blog/admin.py:127 apps/pages/admin.py:80
+#: apps/blog/admin.py:105 apps/pages/admin.py:80
 msgid "SEO"
 msgstr "SEO"
 
-#: apps/blog/admin.py:166
-msgid "Commentator"
-msgstr "Коментатор"
-
-#: apps/blog/admin.py:172 apps/blog/admin.py:231 apps/blog/models.py:149
-#: apps/blog/templates/blog/partials/comment-form.html:31
-#: apps/core/admin/model.py:142
-msgid "Comment"
-msgstr "Коментар"
-
-#: apps/blog/admin.py:189
-msgid "Publish selected comments"
-msgstr "Опублікувати вибрані коментарі"
-
-#: apps/blog/admin.py:197
-msgid "Selected comments published successfully"
-msgstr "Вибрані коментарі успішно опубліковані"
-
-#: apps/blog/admin.py:203 apps/blog/admin.py:220
-msgid "Nothing has been changed"
-msgstr "Нічого не змінилося"
-
-#: apps/blog/admin.py:206
-msgid "Unpublish selected comments"
-msgstr "Зняти з публікації обрані коментарі"
-
-#: apps/blog/admin.py:214
-msgid "Selected comments unpublished successfully"
-msgstr "Вибрані коментарі успішно зняті з публікації"
-
-#: apps/blog/admin.py:223
-msgid "Sender"
-msgstr "Відправник"
+#: apps/blog/admin.py:115 apps/core/models.py:95
+msgid "Status"
+msgstr "Статус"
 
 #: apps/blog/apps.py:27 apps/blog/templates/blog/posts/list.html:23
 #: templates/partials/sidebar.html:15
 msgid "Blog"
 msgstr "Блог"
 
-#: apps/blog/feeds.py:43
-#, python-format
-msgid "Latest posts - %s"
-msgstr "Останні публікації - %s"
+#: apps/blog/feeds.py:44
+msgctxt "feed title"
+msgid "Latest posts"
+msgstr "Останні публікації"
 
-#: apps/blog/models.py:45
+#: apps/blog/models.py:43
 msgid "Drama"
 msgstr "Драма"
 
-#: apps/blog/models.py:46
+#: apps/blog/models.py:44
 msgid "Narrative"
 msgstr "Повість"
 
-#: apps/blog/models.py:47
+#: apps/blog/models.py:45
 msgid "Poem"
 msgstr "Вірш"
 
-#: apps/blog/models.py:48 apps/blog/models.py:133
+#: apps/blog/models.py:46
 msgid "Post"
 msgstr "Стаття"
 
-#: apps/blog/models.py:55
+#: apps/blog/models.py:53
 msgid "Publication type"
 msgstr "Тип публікації"
 
-#: apps/blog/models.py:62
+#: apps/blog/models.py:60
 msgid "Featured image"
 msgstr "Ілюстрація"
 
-#: apps/blog/models.py:70
+#: apps/blog/models.py:68
 msgid "A short, concise introduction."
 msgstr "Короткий, виразне введення."
 
-#: apps/blog/models.py:77
+#: apps/blog/models.py:75
 msgid "Author"
 msgstr "Автор"
 
-#: apps/blog/models.py:86
+#: apps/blog/models.py:80
+msgid "Allow comments"
+msgstr "Дозволити коментарі"
+
+#: apps/blog/models.py:81
+msgid "Uncheck to disable comments for this post."
+msgstr "Зніміть прапорець, щоб вимкнути коментарі до цього повідомлення."
+
+#: apps/blog/models.py:90
 msgid "post"
 msgstr "стаття"
 
-#: apps/blog/models.py:87
+#: apps/blog/models.py:91
 msgid "posts"
 msgstr "статті"
-
-#: apps/blog/models.py:125
-msgid "Hidden"
-msgstr "Приховано"
-
-#: apps/blog/models.py:126 apps/core/models.py:46
-msgid "Published"
-msgstr "Опубліковано"
-
-#: apps/blog/models.py:138
-msgid "User name"
-msgstr "Ім’я користувача"
-
-#: apps/blog/models.py:139
-msgid "The name of the user who posted the comment."
-msgstr "Ім’я користувача, який залишив коментар."
-
-#: apps/blog/models.py:144
-msgid "E-Mail"
-msgstr "E-Mail"
-
-#: apps/blog/models.py:145
-msgid "The email of the user who posted the comment."
-msgstr "Електронна пошта користувача, який залишив коментар."
-
-#: apps/blog/models.py:150
-msgid "The actual content of the comment itself."
-msgstr "Фактичний зміст самого коментаря."
-
-#: apps/blog/models.py:158
-msgid "Is the comment will be displayed on the site?"
-msgstr "Чи буде коментар відображатися на сайті?"
-
-#: apps/blog/models.py:165 apps/core/models.py:76
-msgid "Date created"
-msgstr "Дата створення"
-
-#: apps/blog/models.py:172 apps/core/models.py:83
-msgid "Date updated"
-msgstr "Дата оновлення"
-
-#: apps/blog/models.py:179
-msgid "comment"
-msgstr "коментар"
-
-#: apps/blog/models.py:180
-msgid "comments"
-msgstr "коментарі"
-
-#: apps/blog/models.py:186
-msgid "Comment by"
-msgstr "Коментар від"
-
-#: apps/blog/models.py:188
-msgid "on"
-msgstr "до"
-
-#: apps/blog/templates/blog/partials/comment-form.html:14
-#: apps/telegraph/templates/telegraph/contact.html:48
-msgid "Your Name"
-msgstr "Ваше ім'я"
-
-#: apps/blog/templates/blog/partials/comment-form.html:22
-#: apps/telegraph/templates/telegraph/contact.html:56
-msgid "Email Address"
-msgstr "Зворотня адреса"
-
-#: apps/blog/templates/blog/partials/comment-form.html:25
-msgid "Your email address will not be published."
-msgstr "Ваша електронна адреса не буде опублікований."
-
-#: apps/blog/templates/blog/partials/comment-form.html:39
-msgid ""
-"Comments are subject to approval and moderation. If you don't see your "
-"comment, please be patient. It may be posted soon. Do not post your comment "
-"a second time. Thank you."
-msgstr ""
-"Коментарі проходять премодерацію. Якщо ви не бачите свій коментар, "
-"зачекайте. Можливо, скоро він буде опублікований. Не залишайте свій коментар "
-"вдруге. Дякую."
-
-#: apps/blog/templates/blog/partials/comment-form.html:49
-msgid "Submit"
-msgstr "Відправити"
 
 #: apps/blog/templates/blog/partials/pagination.html:9
 msgid "Previous"
@@ -218,7 +108,7 @@ msgid "Next"
 msgstr "Наступні публікації"
 
 #: apps/blog/templates/blog/partials/post-teaser.html:16
-#: apps/blog/templates/blog/posts/view.html:70
+#: apps/blog/templates/blog/posts/view.html:72
 #, python-format
 msgid "(Updated on %(updated_at)s)"
 msgstr "(Оновлено: %(updated_at)s)"
@@ -244,7 +134,80 @@ msgstr "Публікації з тегом [%(tagged)s]"
 msgid "There are no posts yet."
 msgstr "Ще немає повідомлень."
 
-#: apps/blog/templates/blog/posts/view.html:93
+#: apps/blog/views.py:128
+msgid "Posts tagged [{ tag }]"
+msgstr "Публікації з тегом [{ tag }]"
+
+#: apps/comments/apps.py:27 apps/comments/models.py:38
+msgid "Comments"
+msgstr "Коментарі"
+
+#: apps/comments/apps.py:44
+msgid ""
+"Your comment has been sent for moderation. This means comment will \"held\" "
+"until I okays it and publish it."
+msgstr ""
+"Ваш коментар відправлений на модерацію. Це означає, що коментар буде "
+"«утримуватися» до тих пір, поки я не схвалю і не публікую його."
+
+#: apps/comments/forms.py:35
+msgctxt "Person name"
+msgid "Name"
+msgstr "Ім'я"
+
+#: apps/comments/forms.py:43
+msgid "Email address"
+msgstr "Зворотня адреса"
+
+#: apps/comments/forms.py:53 apps/comments/templates/comments/form.html:49
+msgid ""
+"If you enter anything in this field your comment will be treated as spam"
+msgstr "Якщо ви заповните це поле, ваш коментар буде вважатися спамом"
+
+#: apps/comments/forms.py:59 apps/comments/templates/comments/form.html:40
+#: apps/pages/admin.py:89
+msgid "URL"
+msgstr "URL"
+
+#: apps/comments/forms.py:68 apps/comments/models.py:37
+#: apps/comments/templates/comments/form.html:56 apps/core/admin/models.py:142
+msgid "Comment"
+msgstr "Коментар"
+
+#: apps/comments/tasks.py:72
+#, python-format
+msgid "[%(site)s] New comment posted on \"%(object)s\""
+msgstr "[%(site)s] Новий коментар був розміщений на \"%(object)s\""
+
+#: apps/comments/templates/comments/form.html:23
+#: apps/telegraph/templates/telegraph/contact.html:48
+msgid "Your Name"
+msgstr "Ваше ім'я"
+
+#: apps/comments/templates/comments/form.html:31
+#: apps/telegraph/templates/telegraph/contact.html:56
+msgid "Email Address"
+msgstr "Зворотня адреса"
+
+#: apps/comments/templates/comments/form.html:34
+msgid "Your email address will not be published."
+msgstr "Ваша електронна адреса не буде опублікований."
+
+#: apps/comments/templates/comments/form.html:64
+msgid ""
+"Comments are subject to approval and moderation. If you don't see your "
+"comment, please be patient. It may be posted soon. Do not post your comment "
+"a second time. Thank you."
+msgstr ""
+"Коментарі проходять премодерацію. Якщо ви не бачите свій коментар, "
+"зачекайте. Можливо, скоро він буде опублікований. Не залишайте свій коментар "
+"вдруге. Дякую."
+
+#: apps/comments/templates/comments/form.html:74
+msgid "Submit"
+msgstr "Відправити"
+
+#: apps/comments/templates/comments/list.html:8
 #, python-format
 msgid "%(total_comments)s comment"
 msgid_plural "%(total_comments)s comments"
@@ -253,31 +216,19 @@ msgstr[1] "%(total_comments)s коментарі"
 msgstr[2] "%(total_comments)s коментарів"
 msgstr[3] "%(total_comments)s коментарів"
 
-#: apps/blog/templates/blog/posts/view.html:108
+#: apps/comments/templates/comments/list.html:24
 msgid "There are no comments yet."
 msgstr "Коментарів поки немає."
 
-#: apps/blog/views.py:120
-msgid ""
-"Your comment has been sent for moderation. This means comment will \"held\" "
-"until I okays it and publish it."
-msgstr ""
-"Ваш коментар відправлений на модерацію. Це означає, що коментар буде "
-"«утримуватися» до тих пір, поки я не схвалю і не публікую його."
+#: apps/core/admin/__init__.py:25
+msgid "Blog site admin"
+msgstr "Адміністративний сайт блогу"
 
-#: apps/blog/views.py:166
-msgid "Posts tagged [{ tag }]"
-msgstr "Публікації з тегом [{ tag }]"
+#: apps/core/admin/__init__.py:28
+msgid "Blog administration"
+msgstr "Адміністрування блогу"
 
-#: apps/core/admin/__init__.py:23
-msgid "Branch administration"
-msgstr "Branch адміністрування"
-
-#: apps/core/admin/__init__.py:24
-msgid "Branch site admin"
-msgstr "Branch сайт адміністрування"
-
-#: apps/core/admin/filters.py:57 apps/core/admin/model.py:128
+#: apps/core/admin/filters.py:57 apps/core/admin/models.py:128
 msgid "Action"
 msgstr "Дія"
 
@@ -289,19 +240,19 @@ msgstr "Користувач"
 msgid "Staff"
 msgstr "Штат"
 
-#: apps/core/admin/filters.py:122 apps/core/admin/model.py:136
+#: apps/core/admin/filters.py:122 apps/core/admin/models.py:136
 msgid "Content Type"
 msgstr "Тип вмісту"
 
-#: apps/core/admin/model.py:65
+#: apps/core/admin/models.py:64
 msgid "Metadata"
 msgstr "Метадані"
 
-#: apps/core/admin/model.py:73
+#: apps/core/admin/models.py:72
 msgid "Details"
 msgstr "Деталі"
 
-#: apps/core/admin/model.py:112
+#: apps/core/admin/models.py:111
 msgid "Object repr"
 msgstr "Представлення об’єкта"
 
@@ -312,6 +263,10 @@ msgstr "Ядро"
 #: apps/core/models.py:45
 msgid "Draft"
 msgstr "Чернетка"
+
+#: apps/core/models.py:46
+msgid "Published"
+msgstr "Опубліковано"
 
 #: apps/core/models.py:51
 msgid "Title"
@@ -336,6 +291,14 @@ msgstr "Заборонити пошуковим павукам індексув�
 #: apps/core/models.py:69
 msgid "Full text of the post"
 msgstr "Повний текст публікації"
+
+#: apps/core/models.py:76
+msgid "Date created"
+msgstr "Дата створення"
+
+#: apps/core/models.py:83
+msgid "Date updated"
+msgstr "Дата оновлення"
 
 #: apps/core/models.py:88
 msgid "First publication date"
@@ -496,10 +459,6 @@ msgstr "Стандарти:"
 msgid "Components:"
 msgstr "Компоненти:"
 
-#: apps/pages/admin.py:89
-msgid "URL"
-msgstr "URL"
-
 #: apps/pages/apps.py:27
 msgid "Pages"
 msgstr "Сторінки"
@@ -574,15 +533,15 @@ msgstr "Контактна форма"
 msgid "Contact form submission"
 msgstr "Нове повідомлення"
 
-#: branch/settings.py:542
+#: branch/settings.py:546
 msgid "Serghei Iakovlev"
 msgstr "Сергій Яковлєв"
 
-#: branch/settings.py:543
+#: branch/settings.py:547
 msgid "Serghei's Iakovlev Blog"
 msgstr "Персональний блог Сергія Яковлєва"
 
-#: branch/settings.py:544
+#: branch/settings.py:548
 msgid ""
 "My notebook, workshop, a place where I share my experiences and thoughts"
 msgstr "Мій блокнот, майстерня, місце де я ділюся своїм досвідом і думками"
