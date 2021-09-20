@@ -13,8 +13,11 @@
 # You should have received a copy of the GNU General Public License
 # along with this file.  If not, see <https://www.gnu.org/licenses/>.
 
+from datetime import datetime
+
 import pytest
 from django.conf import settings
+from django.test import override_settings
 from django.urls import reverse
 from django.utils import timezone
 from pyquery import PyQuery
@@ -23,6 +26,7 @@ from .factories import PostFactory
 
 
 @pytest.mark.django_db
+@override_settings(SITE_LANGUAGE_CODE='en')
 def test_posts_rss_no_items(client):
     response = client.get(reverse('blog:posts_rss'))
 
@@ -36,8 +40,11 @@ def test_posts_rss_no_items(client):
     assert pq('title').text().startswith('Latest posts - ')
     assert pq('link').text() == f'{settings.SITE_URL}/feeds/rss/posts.xml'
     assert pq('description').text() == settings.SITE_DESCRIPTION
-    assert pq('language').text() == 'ru'
-    assert pq('copyright').text().startswith('Copyright (c) 2018-')
+    assert pq('language').text() == 'en-us'
+    assert pq('copyright').text() == (
+        f'Copyright (c) 2018-{datetime.now().year} '
+        f'{settings.COPYRIGHT_HOLDER}'
+    )
 
 
 @pytest.mark.django_db
