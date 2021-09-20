@@ -23,7 +23,8 @@ from django.template.defaultfilters import truncatewords
 from django.urls import reverse
 from django.utils.feedgenerator import Atom1Feed, Rss201rev2Feed
 from django.utils.html import escape, strip_tags
-from django.utils.translation import gettext_lazy as _
+from django.utils.text import format_lazy
+from django.utils.translation import pgettext_lazy
 
 from apps.core.utils import to_absolute_url
 from .models import Post
@@ -40,7 +41,12 @@ class LatestPostsFeedRSS(Feed):
 
     def title(self):
         """Get title for the feed as a whole."""
-        return _('Latest posts - %s' % settings.SITE_NAME)
+        feed_title = pgettext_lazy('feed title', 'Latest posts')
+        return format_lazy(
+            '{feed_title} - {site_name}',
+            feed_title=feed_title,
+            site_name=settings.SITE_NAME,
+        )
 
     def description(self):
         """Return the feed's description as a normal Python string."""

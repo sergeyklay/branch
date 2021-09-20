@@ -528,9 +528,7 @@ COMPRESS_OUTPUT_DIR = ''  # Compress to '/static/{css,js}/'
 COMPRESS_PRECOMPILERS = (
     (
         'text/x-scss',
-        'sass -I {} --no-source-map {{infile}} {{outfile}}'.format(
-            NODE_MODULES_PATH,
-        )
+        f'sass -I {NODE_MODULES_PATH} --no-source-map {{infile}} {{outfile}}'
     ),
 )
 

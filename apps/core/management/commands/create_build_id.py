@@ -39,7 +39,7 @@ class Command(BaseCommand):
         time_hash = hex(int(time.time()))
         build_id = uuid.uuid4().hex
 
-        self.build_id = '%s-%s' % (build_id[:8], time_hash[2:])
+        self.build_id = f'{build_id[:8]}-{time_hash[2:]}'
 
     def handle(self, *args, **kwargs):
         """Store project's build IDs in the build.py file."""
@@ -48,6 +48,6 @@ class Command(BaseCommand):
         build_date_short = datetime.utcnow().strftime('%Y-%m-%d')
 
         with open(build_id_file, 'w', encoding='utf-8') as file:
-            file.write('BUILD_ID = "%s"\n' % self.build_id)
-            file.write('BUILD_ID_SHORT = "%s"\n' % self.build_id[:4])
-            file.write('BUILD_DATE_SHORT = "%s"\n' % build_date_short)
+            file.write(f'BUILD_ID = "{self.build_id}"\n')
+            file.write(f'BUILD_ID_SHORT = "{self.build_id[:4]}"\n')
+            file.write(f'BUILD_DATE_SHORT = "{build_date_short}"\n')

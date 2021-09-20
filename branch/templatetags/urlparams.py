@@ -32,6 +32,4 @@ def urlparams(*_, **kwargs):
       {% url 'blog:post_list' %}{% urlparams page=page.previous_page_number %}
     """
     safe_args = {k: v for k, v in kwargs.items() if v is not None}
-    if safe_args:
-        return '?{}'.format(urlencode(safe_args, quote_via=quote))
-    return ''
+    return f'?{urlencode(safe_args, quote_via=quote)}' if safe_args else ''
