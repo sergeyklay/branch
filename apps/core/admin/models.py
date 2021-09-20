@@ -16,13 +16,12 @@
 """ModelAdmin classes for core application administration."""
 
 from django.contrib import admin
-from django.contrib.admin.models import DELETION
-from django.contrib.admin.models import LogEntry
+from django.contrib.admin.models import DELETION, LogEntry
 from django.contrib.auth.models import Permission
 from django.template.defaultfilters import capfirst, truncatewords
 from django.urls import NoReverseMatch, reverse
-from django.utils.html import escape
-from django.utils.html import format_html
+from django.utils.html import escape, format_html
+from django.utils.text import format_lazy
 from django.utils.translation import gettext_lazy
 
 from .filters import (
@@ -117,9 +116,10 @@ class LogEntryAdmin(admin.ModelAdmin):
         ct = obj.content_type
         try:
             url = f'admin:{ct.app_label}_{ct.model}_change'
-            link = '<a href="{}">{}</a>'.format(
-                reverse(url, args=[obj.object_id]),
-                obj_repr
+            link = format_lazy(
+                '<a href="{href}">{title}</a>',
+                href=reverse(url, args=[obj.object_id]),
+                title=obj_repr,
             )
         except NoReverseMatch:
             link = obj_repr

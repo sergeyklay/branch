@@ -80,7 +80,7 @@ class AdminTrumbowygWidget(TrumbowygWidget, widgets.AdminTextareaWidget):
 
         lang = get_trumbowyg_language(get_language())
         if lang:
-            js.append('trumbowyg/dist/langs/{}.js'.format(lang))
+            js.append(f'trumbowyg/dist/langs/{lang}.js')
 
         return css, js + highlight_js(getattr(django_settings, 'DEBUG', False))
 

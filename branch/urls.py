@@ -64,12 +64,12 @@ if settings.DEBUG:
     # Static & media files for development environment
     static_routes = [
         re_path(
-            r'^%s/(?P<path>.*)$' % settings.STATIC_URL.strip('/'),
+            fr"^{settings.STATIC_URL.strip('/')}/(?P<path>.*)$",
             serve,
             {'document_root': settings.STATIC_ROOT}
         ),
         re_path(
-            r'^%s/(?P<path>.*)$' % settings.MEDIA_URL.strip('/'),
+            fr"^{settings.MEDIA_URL.strip('/')}/(?P<path>.*)$",
             serve,
             {'document_root': settings.MEDIA_ROOT}
         )
