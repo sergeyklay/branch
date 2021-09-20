@@ -110,7 +110,7 @@ class StaffFilter(UserFilter):
         name for the option that will appear in the right sidebar.
         """
         user_model = get_user_model()
-        return tuple((u.id, u.username)
+        return tuple((u.id, u.get_full_name() or u.username)
                      for u in user_model.objects.filter(is_staff=True))
 
 
