@@ -62,6 +62,8 @@ Trivial/Internal Changes
 * Bumped ``beautifulsoup4`` from 4.9.3 to 4.10.0.
 * Bumped ``sqlparse`` from 0.4.1 to 0.4.2.
 * Bumped ``prismjs`` from 1.24.1 to 1.25.0.
+* Bumped ``pylint`` from 2.10.2 to 2.11.1.
+* Bumped ``faker`` from 8.12.1 to 8.13.2.
 
 
 ----
