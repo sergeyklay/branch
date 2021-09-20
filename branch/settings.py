@@ -126,9 +126,9 @@ ALLOW_ROBOTS = env('ALLOW_ROBOTS')
 IGNORABLE_404_URLS = (
     # flooding requests
     re.compile(r'^/asset-manifest\.json$'),
-    re.compile(r'^/(Telerik|login|wordpress|xmlrpc)'),
+    re.compile(r'^/(Telerik|login|mifs|wordpress|xmlrpc)'),
     re.compile(r'^/(_ignition|api|Autodiscover)/'),
-    re.compile(r'^/(mifs|vendor|console|uploads|solr|sites|images|files)/'),
+    re.compile(r'^/(console|files|images|owa|sites|solr|uploads|vendor)/'),
     re.compile(r'^/wp[0-9]*(-(admin|login|content|includes|comments-post))?'),
 )
 
