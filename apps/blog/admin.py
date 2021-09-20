@@ -103,6 +103,7 @@ class PostAdmin(admin.ModelAdmin):
             ),
         }),
         (gettext_lazy('SEO'), {
+            'classes': ('collapse',),
             'fields': (
                 'meta_title',
                 'meta_description',
