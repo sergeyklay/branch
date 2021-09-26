@@ -113,7 +113,7 @@ lint: $(VENV_PYTHON)
 .PHONY: build
 build: build.py
 	@echo $(CS)Compress static assets$(CE)
-	$(VENV_PYTHON) manage.py compress
+	$(VENV_PYTHON) manage.py compress --force
 
 .PHONY: messages
 messages: $(VENV_PYTHON)

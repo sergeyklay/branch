@@ -95,19 +95,18 @@ try:
     # chars to add later to CACHE_KEY_PREFIX. BUILD_DATE_SHORT will be used
     # in robots.txt
     from build import BUILD_ID_SHORT, BUILD_DATE_SHORT  # pylint: disable=W0611
+    # The front end domain of the site,
+    from build import DOMAIN
 except ImportError:
     BUILD_ID_SHORT = '0000'
     BUILD_DATE_SHORT = datetime.utcnow().strftime('%Y-%m-%d')
+    # The host currently running the site.
+    HOSTNAME = socket.gethostname()  # pylint: disable=E1101
+    DOMAIN = env.str('DOMAIN', default=HOSTNAME)
 
 # Minimum message recorded level.
 # https://docs.djangoproject.com/en/dev/ref/contrib/messages/#message-levels
 MESSAGE_LEVEL = message_constants.DEBUG if DEBUG else message_constants.INFO
-
-# The host currently running the site.
-HOSTNAME = socket.gethostname()  # pylint: disable=E1101
-
-# The front end domain of the site.
-DOMAIN = env.str('DOMAIN', default=HOSTNAME)
 
 # Full base URL for the site including protocol.  No trailing slash.
 #   Example: https://my-site.com
