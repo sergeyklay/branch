@@ -13,6 +13,7 @@
             {{ hidden_field.errors }}
         {% endfor %}
 
+        {{ form.captcha }}
         {% if user.is_authenticated %}
             <input type="hidden" name="{{ form.name.name }}" value="{{ user.get_username }}">
             <input type="hidden" name="{{ form.email.name }}" value="{{ user.email }}">

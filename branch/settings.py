@@ -128,6 +128,7 @@ IGNORABLE_404_URLS = (
     re.compile(r'^/asset-manifest\.json$'),
     re.compile(r'^/(Telerik|login|mifs|wordpress|xmlrpc)'),
     re.compile(r'^/(_ignition|api|Autodiscover)/'),
+    re.compile(r'^/(phpmyadmin|remote)/'),
     re.compile(r'^/(console|files|images|owa|sites|solr|uploads|vendor)/'),
     re.compile(r'^/wp[0-9]*(-(admin|login|content|includes|comments-post))?'),
 )

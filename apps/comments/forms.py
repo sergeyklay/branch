@@ -15,6 +15,8 @@
 
 """Comments forms module."""
 
+from captcha.fields import ReCaptchaField
+from captcha.widgets import ReCaptchaV3
 from django import forms
 from django.utils.translation import gettext_lazy, pgettext_lazy
 from django_comments.forms import COMMENT_MAX_LENGTH, CommentForm
@@ -71,4 +73,14 @@ class PostCommentForm(CommentForm):
             'rows': 7,
             'class': 'comment-form-textarea form-input',
         }),
+    )
+
+    captcha = ReCaptchaField(
+        widget=ReCaptchaV3(
+            attrs={
+                'data-theme': 'light',
+                'data-size': 'invisible',
+            }
+        ),
+        label='',
     )
