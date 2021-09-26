@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: branch 1.1.0\n"
+"Project-Id-Version: branch 1.6.\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-20 19:27+0000\n"
-"PO-Revision-Date: 2021-09-20 22:30+0300\n"
+"POT-Creation-Date: 2021-09-26 23:02+0000\n"
+"PO-Revision-Date: 2021-09-27 02:24+0300\n"
 "Last-Translator: Serghei Iakovlev <egrep@protonmail.ch>\n"
 "Language-Team: Ukrainian <egrep@protonmail.ch>\n"
 "Language: uk\n"
@@ -138,7 +138,7 @@ msgstr "Ще немає повідомлень."
 msgid "Posts tagged [{ tag }]"
 msgstr "Публікації з тегом [{ tag }]"
 
-#: apps/comments/apps.py:27 apps/comments/models.py:38
+#: apps/comments/apps.py:27
 msgid "Comments"
 msgstr "Коментарі"
 
@@ -150,27 +150,27 @@ msgstr ""
 "Ваш коментар відправлений на модерацію. Це означає, що коментар буде "
 "«утримуватися» до тих пір, поки я не схвалю і не публікую його."
 
-#: apps/comments/forms.py:35
+#: apps/comments/forms.py:37
 msgctxt "Person name"
 msgid "Name"
 msgstr "Ім'я"
 
-#: apps/comments/forms.py:43
+#: apps/comments/forms.py:45
 msgid "Email address"
 msgstr "Зворотня адреса"
 
-#: apps/comments/forms.py:53 apps/comments/templates/comments/form.html:49
+#: apps/comments/forms.py:55 apps/comments/templates/comments/form.html:50
 msgid ""
 "If you enter anything in this field your comment will be treated as spam"
 msgstr "Якщо ви заповните це поле, ваш коментар буде вважатися спамом"
 
-#: apps/comments/forms.py:59 apps/comments/templates/comments/form.html:40
+#: apps/comments/forms.py:61 apps/comments/templates/comments/form.html:41
 #: apps/pages/admin.py:89
 msgid "URL"
 msgstr "URL"
 
-#: apps/comments/forms.py:68 apps/comments/models.py:37
-#: apps/comments/templates/comments/form.html:56 apps/core/admin/models.py:142
+#: apps/comments/forms.py:70 apps/comments/templates/comments/form.html:57
+#: apps/core/admin/models.py:142
 msgid "Comment"
 msgstr "Коментар"
 
@@ -179,21 +179,21 @@ msgstr "Коментар"
 msgid "[%(site)s] New comment posted on \"%(object)s\""
 msgstr "[%(site)s] Новий коментар був розміщений на \"%(object)s\""
 
-#: apps/comments/templates/comments/form.html:23
+#: apps/comments/templates/comments/form.html:24
 #: apps/telegraph/templates/telegraph/contact.html:48
 msgid "Your Name"
 msgstr "Ваше ім'я"
 
-#: apps/comments/templates/comments/form.html:31
+#: apps/comments/templates/comments/form.html:32
 #: apps/telegraph/templates/telegraph/contact.html:56
 msgid "Email Address"
 msgstr "Зворотня адреса"
 
-#: apps/comments/templates/comments/form.html:34
+#: apps/comments/templates/comments/form.html:35
 msgid "Your email address will not be published."
 msgstr "Ваша електронна адреса не буде опублікований."
 
-#: apps/comments/templates/comments/form.html:64
+#: apps/comments/templates/comments/form.html:65
 msgid ""
 "Comments are subject to approval and moderation. If you don't see your "
 "comment, please be patient. It may be posted soon. Do not post your comment "
@@ -203,7 +203,7 @@ msgstr ""
 "зачекайте. Можливо, скоро він буде опублікований. Не залишайте свій коментар "
 "вдруге. Дякую."
 
-#: apps/comments/templates/comments/form.html:74
+#: apps/comments/templates/comments/form.html:75
 msgid "Submit"
 msgstr "Відправити"
 
@@ -533,15 +533,15 @@ msgstr "Контактна форма"
 msgid "Contact form submission"
 msgstr "Нове повідомлення"
 
-#: branch/settings.py:546
+#: branch/settings.py:545
 msgid "Serghei Iakovlev"
 msgstr "Сергій Яковлєв"
 
-#: branch/settings.py:547
+#: branch/settings.py:546
 msgid "Serghei's Iakovlev Blog"
 msgstr "Персональний блог Сергія Яковлєва"
 
-#: branch/settings.py:548
+#: branch/settings.py:547
 msgid ""
 "My notebook, workshop, a place where I share my experiences and thoughts"
 msgstr "Мій блокнот, майстерня, місце де я ділюся своїм досвідом і думками"
