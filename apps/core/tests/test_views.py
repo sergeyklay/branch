@@ -24,7 +24,8 @@ from branch import urls
 @pytest.mark.django_db
 @override_settings(ALLOW_ROBOTS=True)
 def test_sitemap_url(client):
-    """Make sure sitemap.xml is present in robots.txt"""
+    """Make sure sitemap.xml is present in robots.txt."""
+    assert settings.ALLOW_ROBOTS
     response = client.get('/robots.txt')
     assert response.status_code == 200
 
@@ -35,7 +36,8 @@ def test_sitemap_url(client):
 @pytest.mark.django_db
 @override_settings(ALLOW_ROBOTS=False)
 def test_disabled_robots(client):
-    """Make sure we can disallow everything to be crawled"""
+    """Make sure we can disallow everything to be crawled."""
+    assert not settings.ALLOW_ROBOTS
     response = client.get('/robots.txt')
     assert response.status_code == 200
     assert 'User-agent: *\nDisallow: /' in response.content.decode('utf-8')
