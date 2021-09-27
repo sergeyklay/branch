@@ -155,10 +155,17 @@ jobs:
           python setup.py --long-description
           python setup.py --classifiers
 
+      - name: Create project-wide constants
+        run: |
+          # Don't care about these values. They only have to be (any).
+          echo 'BUILD_ID = "e23893d4-6150f777"' > build.py
+          echo 'BUILD_ID_SHORT = "e238"' >> build.py
+          echo 'BUILD_DATE_SHORT = "2021-09-26"' >> build.py
+          echo 'DOMAIN = "example.com"' >> build.py
+
       - name: Run unit tests with coverage
         run: make test
         env:
-          EMAIL_URL: consolemail://
           RECAPTCHA_PUBLIC_KEY: ${{ secrets.RECAPTCHA_PUBLIC_KEY }}
           RECAPTCHA_PRIVATE_KEY: ${{ secrets.RECAPTCHA_PRIVATE_KEY }}
 

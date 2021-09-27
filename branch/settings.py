@@ -47,15 +47,23 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env(
     ADMINS=(list, []),
     ADMIN_SITE_URL=(str, 'admin'),
-    ALLOWED_HOSTS=(list, []),
+    ALLOWED_HOSTS=(list, ['.localhost', '127.0.0.1', '[::1]']),
     ALLOW_ROBOTS=(bool, False),
     APP_LOG_LEVEL=(str, 'INFO'),
+    CACHE_URL=(str, 'dummycache://'),
     COMPRESS_OFFLINE=(bool, False),
+    CONTACT_EMAIL=(str, 'root@localhost'),
     CSRF_COOKIE_SECURE=(bool, False),
+    DATABASE_URL=(str, 'sqlite:///storage/db/db.sqlite3'),
     DEBUG=(bool, False),
     DJANGO_LOG_LEVEL=(str, 'INFO'),
-    INTERNAL_IPS=(list, []),
+    EMAIL_BACKEND=(str, None),
+    EMAIL_URL=(str, 'dummymail://'),
+    GA_TRACKING_ID=(str, None),
+    INTERNAL_IPS=(list, ['.localhost', '127.0.0.1', '[::1]']),
+    LOG_FILE=(str, './storage/logs/app.log'),
     MANAGERS=(list, []),
+    SECRET_KEY=(str, 'secret'),
     SECURE_HSTS_INCLUDE_SUBDOMAINS=(bool, False),
     SECURE_HSTS_PRELOAD=(bool, False),
     SECURE_HSTS_SECONDS=(int, 3600),
@@ -95,19 +103,18 @@ try:
     # chars to add later to CACHE_KEY_PREFIX. BUILD_DATE_SHORT will be used
     # in robots.txt
     from build import BUILD_ID_SHORT, BUILD_DATE_SHORT  # pylint: disable=W0611
+    # The front end domain of the site,
+    from build import DOMAIN
 except ImportError:
     BUILD_ID_SHORT = '0000'
     BUILD_DATE_SHORT = datetime.utcnow().strftime('%Y-%m-%d')
+    # The host currently running the site.
+    HOSTNAME = socket.gethostname()  # pylint: disable=E1101
+    DOMAIN = env.str('DOMAIN', default=HOSTNAME)
 
 # Minimum message recorded level.
 # https://docs.djangoproject.com/en/dev/ref/contrib/messages/#message-levels
 MESSAGE_LEVEL = message_constants.DEBUG if DEBUG else message_constants.INFO
-
-# The host currently running the site.
-HOSTNAME = socket.gethostname()  # pylint: disable=E1101
-
-# The front end domain of the site.
-DOMAIN = env.str('DOMAIN', default=HOSTNAME)
 
 # Full base URL for the site including protocol.  No trailing slash.
 #   Example: https://my-site.com
@@ -565,11 +572,11 @@ SERVER_EMAIL = env('SERVER_EMAIL')
 # Configure EMAIL_HOST, EMAIL_HOST_USER and EMAIL_HOST_PASSWORD. This will
 # read EMAIL_URL variable from .env file and return a config dictionary. It is
 # possible to override default EMAIL_BACKEND via env vars.
-EMAIL_CONFIG = env.email_url(backend=env.str('EMAIL_BACKEND', default=None))
+EMAIL_CONFIG = env.email_url(backend=env('EMAIL_BACKEND'))
 vars().update(EMAIL_CONFIG)
 
 # The email address that website messages come to
-CONTACT_EMAIL = env.str('CONTACT_EMAIL', default='webmaster@localhost')
+CONTACT_EMAIL = env('CONTACT_EMAIL')
 
 DEFAULT_FROM_EMAIL = SERVER_EMAIL
 

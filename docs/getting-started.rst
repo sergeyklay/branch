@@ -91,10 +91,18 @@ Copy static files
    $ python manage.py compress
 
 
+Prepare project to use
+----------------------
+
+.. code-block:: shell
+
+   $ make build
+
+
 Run development server
 ----------------------
 
 .. code-block:: shell
 
-   # For local development only:
+   # For local development only
    $ make serve

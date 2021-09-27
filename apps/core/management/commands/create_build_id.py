@@ -20,29 +20,29 @@ import uuid
 from datetime import datetime
 
 from django.conf import settings
+from django.contrib.sites.shortcuts import get_current_site
 from django.core.management.base import BaseCommand
 
 
 class Command(BaseCommand):
-    """Generate project's build IDs."""
+    """Generate project-wide constants."""
 
-    help = "Generate project's build ids. "  # noqa: A003
+    help = 'Generate project-wide constants.'
 
     def __init__(self, stdout=None, stderr=None, no_color=False,
                  force_color=False):
-        """Init Command with empty build_id."""
+        """Init command with empty build_id."""
         super().__init__(stdout, stderr, no_color, force_color)
         self.build_id = None
 
     def update_build_info(self):
-        """Regenerate project's build IDs."""
+        """Regenerate project build info."""
         time_hash = hex(int(time.time()))
         build_id = uuid.uuid4().hex
-
         self.build_id = f'{build_id[:8]}-{time_hash[2:]}'
 
     def handle(self, *args, **kwargs):
-        """Store project's build IDs in the build.py file."""
+        """Store project-wide constants in build.py file."""
         self.update_build_info()
         build_id_file = settings.BASE_DIR / 'build.py'
         build_date_short = datetime.utcnow().strftime('%Y-%m-%d')
@@ -51,3 +51,6 @@ class Command(BaseCommand):
             file.write(f'BUILD_ID = "{self.build_id}"\n')
             file.write(f'BUILD_ID_SHORT = "{self.build_id[:4]}"\n')
             file.write(f'BUILD_DATE_SHORT = "{build_date_short}"\n')
+
+            site = get_current_site(request=None)
+            file.write(f'DOMAIN = "{site.domain}"\n')
