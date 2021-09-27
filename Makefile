@@ -165,7 +165,7 @@ test: export SECRET_KEY='Naive and not very secret key used for tests'
 test: export DATABASE_URL=sqlite://:memory:
 test: export DEBUG=False
 test: export WORKER_LOGLEVEL=info
-test: build.py $(VENV_PYTHON)
+test: $(VENV_PYTHON)
 	@echo $(CS)Running tests$(CE)
 	$(VENV_BIN)/coverage erase
 	$(VENV_BIN)/coverage run -m pytest $(PYTEST_FLAGS)
