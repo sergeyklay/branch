@@ -63,6 +63,7 @@ env = environ.Env(
     INTERNAL_IPS=(list, ['.localhost', '127.0.0.1', '[::1]']),
     LOG_FILE=(str, './storage/logs/app.log'),
     MANAGERS=(list, []),
+    SECRET_KEY=(str, 'secret'),
     SECURE_HSTS_INCLUDE_SUBDOMAINS=(bool, False),
     SECURE_HSTS_PRELOAD=(bool, False),
     SECURE_HSTS_SECONDS=(int, 3600),

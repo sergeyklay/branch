@@ -49,5 +49,3 @@ jobs:
 
       - name: Code linting
         run: make lint
-        env:
-          EMAIL_URL: consolemail://

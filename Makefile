@@ -103,7 +103,6 @@ maintainer-clean: clean
 	@echo
 
 .PHONY: lint
-lint: export SECRET_KEY='Naive and not very secret key used for tests'
 lint: $(VENV_PYTHON)
 	@echo $(CS)Running linters$(CE)
 	-$(VENV_BIN)/flake8 $(FLAKE8_FLAGS) ./
@@ -160,11 +159,6 @@ manifest:
 	@echo
 
 .PHONY: test
-test: export DJANGO_SETTINGS_MODULE=$(PKG_NAME).settings
-test: export SECRET_KEY='Naive and not very secret key used for tests'
-test: export DATABASE_URL=sqlite://:memory:
-test: export DEBUG=False
-test: export WORKER_LOGLEVEL=info
 test: $(VENV_PYTHON)
 	@echo $(CS)Running tests$(CE)
 	$(VENV_BIN)/coverage erase
