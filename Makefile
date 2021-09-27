@@ -42,7 +42,7 @@ requirements/%.txt: requirements/%.in $(VENV_BIN)
 	$(VENV_BIN)/pip-compile --output-file=$@ $<
 
 build.py: $(VENV_PYTHON)
-	@echo $(CS)"Generate project's build ids"$(CE)
+	@echo $(CS)Generate project-wide constants$(CE)
 	$(VENV_PYTHON) manage.py create_build_id
 
 ## Public targets
