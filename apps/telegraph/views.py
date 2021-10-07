@@ -53,16 +53,11 @@ class ContactFormView(PageDetailsMixin, FormView):
         super().form_valid(form)
         cd = form.cleaned_data
 
-        subject = cd.get(
-            cd['subject'],
-            _('Contact form submission')
-        )
-
         contact_form_submission.delay(
-                subject=subject,
-                message=cd['message'],
-                name=cd['name'],
-                email=cd['email'],
+                subject=cd.get('subject', _('Contact form submission')),
+                message=cd.get('message'),
+                sender_name=cd.get('name'),
+                sender_email=cd.get('email'),
         )
 
         self.sent = True
