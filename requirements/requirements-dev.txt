@@ -44,7 +44,7 @@ faker==8.13.2
     # via
     #   -r requirements/requirements-dev.in
     #   factory-boy
-flake8==3.9.2
+flake8==4.0.0
     # via
     #   -r requirements/requirements-dev.in
     #   flake8-builtins
@@ -79,13 +79,13 @@ prompt-toolkit==3.0.20
     # via click-repl
 py==1.10.0
     # via pytest
-pycodestyle==2.7.0
+pycodestyle==2.8.0
     # via
     #   flake8
     #   flake8-import-order
 pydocstyle==6.1.1
     # via flake8-docstrings
-pyflakes==2.3.1
+pyflakes==2.4.0
     # via flake8
 pylint==2.11.1
     # via
