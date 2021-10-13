@@ -73,7 +73,8 @@ init: $(VENV_PYTHON)
 .PHONY: install
 install: $(REQUIREMENTS)
 	@echo $(CS)Installing $(PKG_NAME) and all its dependencies$(CE)
-	$(VENV_BIN)/pip-sync $^
+	$(VENV_PIP) install -U -r requirements/requirements-dev.txt
+	$(VENV_PIP) install -U -r requirements/requirements.txt
 	$(VENV_PIP) install --progress-bar=off -e .
 	$(VENV_PIP) install --progress-bar=off --upgrade twine check-manifest check-wheel-contents
 	$(NPM) install
