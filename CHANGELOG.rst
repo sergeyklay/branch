@@ -63,7 +63,10 @@ Trivial/Internal Changes
 * Bumped ``sqlparse`` from 0.4.1 to 0.4.2.
 * Bumped ``prismjs`` from 1.24.1 to 1.25.0.
 * Bumped ``pylint`` from 2.10.2 to 2.11.1.
-* Bumped ``faker`` from 8.12.1 to 8.13.2.
+* Bumped ``faker`` from 8.12.1 to 9.3.1.
+* Bumped ``django`` from 3.2.7 to 3.2.8.
+* Bumped ``coverage`` from 5.5 to 6.0.2.
+* Bumped ``flake8`` from 3.9.2 to 4.0.1.
 
 
 ----
