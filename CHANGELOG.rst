@@ -57,16 +57,19 @@ Bug Fixes
 Trivial/Internal Changes
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-* Bumped ``pillow`` from 8.3.1 to 8.3.2.
 * Return to ``django-environ`` and drop ``django-environ-2``.
 * Bumped ``beautifulsoup4`` from 4.9.3 to 4.10.0.
-* Bumped ``sqlparse`` from 0.4.1 to 0.4.2.
+* Bumped ``celery`` from 5.1.2 to 5.2.0.
+* Bumped ``coverage`` from 5.5 to 6.1.2.
+* Bumped ``django-extensions`` from 3.1.3 to 3.1.5.
+* Bumped ``django`` from 3.2.7 to 3.2.9.
+* Bumped ``factory-boy`` from 3.2.0 to 3.2.1.
+* Bumped ``faker`` from 8.12.1 to 9.8.1.
+* Bumped ``flake8`` from 3.9.2 to 4.0.1.
+* Bumped ``pillow`` from 8.3.1 to 8.4.0.
 * Bumped ``prismjs`` from 1.24.1 to 1.25.0.
 * Bumped ``pylint`` from 2.10.2 to 2.11.1.
-* Bumped ``faker`` from 8.12.1 to 9.3.1.
-* Bumped ``django`` from 3.2.7 to 3.2.8.
-* Bumped ``coverage`` from 5.5 to 6.0.2.
-* Bumped ``flake8`` from 3.9.2 to 4.0.1.
+* Bumped ``sqlparse`` from 0.4.1 to 0.4.2.
 
 
 ----

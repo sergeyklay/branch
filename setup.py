@@ -172,12 +172,12 @@ DEPENDENCY_LINKS = []
 EXTRAS_REQUIRE = {
     # Dependencies that are required to run tests
     'testing': [
-        'coverage[toml]>=5.4',  # Code coverage measurement for Python
+        'coverage[toml]>=6.0',  # Code coverage measurement for Python
         'pytest>=6.2.0',  # Our test framework
         'pytest-celery>=0.0.0',  # Enable celery.contrib.pytest
         'pytest-django>=4.2.0',  # A Django plugin for pytest
         'factory-boy>=3.2.0',  # A versatile test fixtures
-        'faker>=8.1.0',  # A generator of fake data for tests
+        'faker>=9.0.0',  # A generator of fake data for tests
         'pylint>=2.6.0,!=2.6.1',  # Python code static checker
         'pylint-django>=2.4.4',  # A Django plugin for Pylint
         'flake8>=3.8.4',  # The modular source code checker
