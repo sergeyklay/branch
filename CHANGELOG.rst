@@ -64,7 +64,7 @@ Trivial/Internal Changes
 * Bumped ``django-extensions`` from 3.1.3 to 3.1.5.
 * Bumped ``django`` from 3.2.7 to 3.2.9.
 * Bumped ``factory-boy`` from 3.2.0 to 3.2.1.
-* Bumped ``faker`` from 8.12.1 to 9.8.1.
+* Bumped ``faker`` from 8.12.1 to 9.8.2.
 * Bumped ``flake8`` from 3.9.2 to 4.0.1.
 * Bumped ``pillow`` from 8.3.1 to 8.4.0.
 * Bumped ``prismjs`` from 1.24.1 to 1.25.0.
