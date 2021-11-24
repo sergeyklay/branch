@@ -104,7 +104,7 @@ jobs:
         run: echo "::set-output name=dir::$(python -m pip cache dir)"
 
       - name: Set up pip cache
-        uses: actions/cache@v2.1.6
+        uses: actions/cache@v2.1.7
         with:
           path: ${{ steps.pip-cache.outputs.dir }}
           key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
@@ -121,7 +121,7 @@ jobs:
         run: echo "::set-output name=dir::$(npm config get cache)"
 
       - name: Set up npm cache
-        uses: actions/cache@v2.1.6
+        uses: actions/cache@v2.1.7
         id: npm-cache
         with:
           path: ${{ steps.npm-cache-dir.outputs.dir }}
