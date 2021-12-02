@@ -104,7 +104,7 @@ pytest==6.2.5
     #   pytest-django
 pytest-celery==0.0.0
     # via -r requirements/requirements-dev.in
-pytest-django==4.4.0
+pytest-django==4.5.1
     # via -r requirements/requirements-dev.in
 python-dateutil==2.8.2
     # via faker
@@ -130,10 +130,6 @@ toml==0.10.2
     #   pytest
 tomli==1.2.2
     # via coverage
-typing-extensions==4.0.0
-    # via
-    #   astroid
-    #   pylint
 vine==5.0.0
     # via
     #   amqp
