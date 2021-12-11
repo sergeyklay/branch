@@ -30,7 +30,7 @@ click-repl==0.2.0
     # via celery
 cssselect==1.1.0
     # via pyquery
-django==3.2.9
+django==2.2.25
     # via
     #   -r requirements/requirements.in
     #   django-appconf
