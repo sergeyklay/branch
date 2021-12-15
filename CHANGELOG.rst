@@ -4,6 +4,17 @@ Changelog
 This file contains a brief summary of new features and dependency changes or
 releases, in reverse chronological order.
 
+1.6.1 (202X-XX-XX)
+------------------
+
+Trivial/Internal Changes
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+* Bumped ``django`` from 3.2.9 to 3.2.10.
+
+
+----
+
 
 1.6.0 (2021-11-13)
 ------------------
