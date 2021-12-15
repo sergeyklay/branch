@@ -59,7 +59,7 @@ gunicorn==20.1.0
     # via -r requirements/requirements.in
 kombu==5.2.1
     # via celery
-lxml==4.6.4
+lxml==4.6.5
     # via pyquery
 pillow==8.4.0
     # via -r requirements/requirements.in
