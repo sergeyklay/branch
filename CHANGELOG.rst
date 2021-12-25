@@ -10,12 +10,17 @@ releases, in reverse chronological order.
 Trivial/Internal Changes
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-* Bumped ``django`` from 3.2.9 to 3.2.10.
 * Bumped ``celery`` from 5.2.0 to 5.2.1.
+* Bumped ``coverage`` from 6.1.2 to 6.2.
 * Bumped ``django-compressor`` from 2.4.1 to 3.1.
+* Bumped ``django-debug-toolbar`` from 3.2.2 to 3.2.4.
 * Bumped ``django-redis`` from 5.0.0 to 5.2.0.
 * Bumped ``django-structlog`` from 2.1.3 to 2.2.0.
 * Bumped ``django-taggit`` from 1.5.1 to 2.0.0.
+* Bumped ``django`` from 3.2.9 to 3.2.10.
+* Bumped ``faker`` from 9.8.2 to 10.0.0.
+* Bumped ``pylint`` from 2.11.1 to 2.12.2.
+* Bumped ``pytest-django`` from 4.4.0 to 4.5.2.
 
 
 ----

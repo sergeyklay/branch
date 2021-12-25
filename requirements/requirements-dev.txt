@@ -4,11 +4,11 @@
 #
 #    pip-compile --output-file=requirements/requirements-dev.txt requirements/requirements-dev.in
 #
-amqp==5.0.6
+amqp==5.0.9
     # via kombu
 asgiref==3.4.1
     # via django
-astroid==2.8.6
+astroid==2.9.0
     # via pylint
 attrs==21.2.0
     # via pytest
@@ -28,19 +28,19 @@ click-plugins==1.1.1
     # via celery
 click-repl==0.2.0
     # via celery
-coverage[toml]==6.1.2
+coverage[toml]==6.2
     # via -r requirements/requirements-dev.in
 django==3.2.10
     # via
     #   django-debug-toolbar
     #   django-extensions
-django-debug-toolbar==3.2.2
+django-debug-toolbar==3.2.4
     # via -r requirements/requirements-dev.in
 django-extensions==3.1.5
     # via -r requirements/requirements-dev.in
 factory-boy==3.2.1
     # via -r requirements/requirements-dev.in
-faker==9.8.2
+faker==10.0.0
     # via
     #   -r requirements/requirements-dev.in
     #   factory-boy
@@ -63,7 +63,7 @@ isort==5.10.1
     # via pylint
 kombu==5.2.2
     # via celery
-lazy-object-proxy==1.6.0
+lazy-object-proxy==1.7.1
     # via astroid
 mccabe==0.6.1
     # via
@@ -75,7 +75,7 @@ platformdirs==2.4.0
     # via pylint
 pluggy==1.0.0
     # via pytest
-prompt-toolkit==3.0.22
+prompt-toolkit==3.0.24
     # via click-repl
 py==1.11.0
     # via pytest
@@ -87,7 +87,7 @@ pydocstyle==6.1.1
     # via flake8-docstrings
 pyflakes==2.4.0
     # via flake8
-pylint==2.11.1
+pylint==2.12.2
     # via
     #   -r requirements/requirements-dev.in
     #   pylint-django
@@ -104,14 +104,12 @@ pytest==6.2.5
     #   pytest-django
 pytest-celery==0.0.0
     # via -r requirements/requirements-dev.in
-pytest-django==4.4.0
+pytest-django==4.5.2
     # via -r requirements/requirements-dev.in
 python-dateutil==2.8.2
     # via faker
 pytz==2021.3
-    # via
-    #   celery
-    #   django
+    # via celery
 six==1.16.0
     # via
     #   click-repl
@@ -128,9 +126,9 @@ toml==0.10.2
     # via
     #   pylint
     #   pytest
-tomli==1.2.2
+tomli==1.2.3
     # via coverage
-typing-extensions==4.0.0
+typing-extensions==4.0.1
     # via
     #   astroid
     #   pylint
