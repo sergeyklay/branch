@@ -11,6 +11,11 @@ Trivial/Internal Changes
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 * Bumped ``django`` from 3.2.9 to 3.2.10.
+* Bumped ``celery`` from 5.2.0 to 5.2.1.
+* Bumped ``django-compressor`` from 2.4.1 to 3.1.
+* Bumped ``django-redis`` from 5.0.0 to 5.2.0.
+* Bumped ``django-structlog`` from 2.1.3 to 2.2.0.
+* Bumped ``django-taggit`` from 1.5.1 to 2.0.0.
 
 
 ----
