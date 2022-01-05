@@ -30,7 +30,7 @@ click-repl==0.2.0
     # via celery
 cssselect==1.1.0
     # via pyquery
-django==3.2.10
+django==2.2.26
     # via
     #   -r requirements/requirements.in
     #   django-appconf
@@ -61,7 +61,7 @@ kombu==5.2.2
     # via celery
 lxml==4.7.1
     # via pyquery
-pillow==8.4.0
+pillow==9.0.0
     # via -r requirements/requirements.in
 prompt-toolkit==3.0.24
     # via click-repl
