@@ -19,6 +19,7 @@ Trivial/Internal Changes
 * Bumped ``django-taggit`` from 1.5.1 to 2.0.0.
 * Bumped ``django`` from 3.2.9 to 3.2.10.
 * Bumped ``faker`` from 9.8.2 to 10.0.0.
+* Bumped ``pillow`` from 8.4.0 to 9.0.0
 * Bumped ``pylint`` from 2.11.1 to 2.12.2.
 * Bumped ``pytest-django`` from 4.4.0 to 4.5.2.
 
