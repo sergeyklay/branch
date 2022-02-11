@@ -61,7 +61,7 @@ kombu==5.2.2
     # via celery
 lxml==4.7.1
     # via pyquery
-pillow==9.0.0
+pillow==9.0.1
     # via -r requirements/requirements.in
 prompt-toolkit==3.0.24
     # via click-repl
