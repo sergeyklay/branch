@@ -144,7 +144,7 @@ CLASSIFIERS = [
 
 # Dependencies that are downloaded by pip on installation and why.
 INSTALL_REQUIRES = [
-    'celery[redis]>=5.0.5',  # Queues support to execute tasks asynchronously
+    'celery[redis]>=5.2.0',  # Queues support to execute tasks asynchronously
     'beautifulsoup4>=4.9.3',  # Sanitize HTML input
     'django>=4.0',  # Our framework
     'django-environ>=0.6.0',  # Configure Django application
@@ -153,9 +153,9 @@ INSTALL_REQUIRES = [
     'django-redis>=4.12.1',  # Redis cache backend for Django
     'django-recaptcha>=3.0.0',  # reCAPTCHA forms support for Django
     'django-structlog>=2.1.1',  # Structured Logging for Django
-    'django-taggit>=1.5.0',  # Simple tagging application
+    'django-taggit>=2.1.0',  # Simple tagging application
     'gunicorn>=20.1.0',  # A Python WSGI HTTP Server
-    'pillow>=8.2.0',  # Python Imaging Library
+    'pillow>=9.2.1',  # Python Imaging Library
     'pyquery>=1.4.3',  # A jQuery-like Library for Python
 ]
 
@@ -170,13 +170,13 @@ EXTRAS_REQUIRE = {
     # Dependencies that are required to run tests
     'testing': [
         'coverage[toml]>=6.0',  # Code coverage measurement for Python
-        'pytest>=6.2.0',  # Our test framework
+        'pytest>=7.1.1',  # Our test framework
         'pytest-celery>=0.0.0',  # Enable celery.contrib.pytest
         'pytest-django>=4.2.0',  # A Django plugin for pytest
         'factory-boy>=3.2.0',  # A versatile test fixtures
-        'faker>=9.0.0',  # A generator of fake data for tests
-        'pylint>=2.6.0,!=2.6.1',  # Python code static checker
-        'pylint-django>=2.4.4',  # A Django plugin for Pylint
+        'faker>=13.3.4',  # A generator of fake data for tests
+        'pylint>=2.13.5',  # Python code static checker
+        'pylint-django>=2.5.3',  # A Django plugin for Pylint
         'flake8>=3.8.4',  # The modular source code checker
         'flake8-import-order>=0.18.1',  # Checks the ordering of imports
         'flake8-blind-except>=0.2.0',  # Checks for blind except: statements
