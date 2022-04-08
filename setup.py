@@ -155,7 +155,7 @@ INSTALL_REQUIRES = [
     'django-structlog>=2.1.1',  # Structured Logging for Django
     'django-taggit>=2.1.0',  # Simple tagging application
     'gunicorn>=20.1.0',  # A Python WSGI HTTP Server
-    'pillow>=9.2.1',  # Python Imaging Library
+    'pillow>=9.1.0',  # Python Imaging Library
     'pyquery>=1.4.3',  # A jQuery-like Library for Python
 ]
 
