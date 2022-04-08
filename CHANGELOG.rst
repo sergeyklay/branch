@@ -4,7 +4,7 @@ Changelog
 This file contains a brief summary of new features and dependency changes or
 releases, in reverse chronological order.
 
-1.6.1 (202X-XX-XX)
+1.7.0 (202X-XX-XX)
 ------------------
 
 Breaking Changes
@@ -27,12 +27,12 @@ Trivial/Internal Changes
 * Bumped ``faker`` from 9.8.2 to 13.3.4.
 * Bumped ``flake8-blind-except`` from 0.2.0 to 0.2.1.
 * Bumped ``pillow`` from 8.4.0 to 9.1.0.
-* Bumped ``pytest`` from 6.2.5 to 7.1.1.
-* Bumped ``pylint`` from 2.11.1 to 2.13.5.
-* Bumped ``pylint-django`` from 2.4.4 to 2.5.3.
-* Bumped ``pytest-django`` from 4.4.0 to 4.5.2.
-* Bumped ``redis`` from 3.5.3 to 4.2.2.
 * Bumped ``prismjs`` from 1.26.0 to 1.27.0.
+* Bumped ``pylint-django`` from 2.4.4 to 2.5.3.
+* Bumped ``pylint`` from 2.11.1 to 2.13.5.
+* Bumped ``pytest-django`` from 4.4.0 to 4.5.2.
+* Bumped ``pytest`` from 6.2.5 to 7.1.1.
+* Bumped ``redis`` from 3.5.3 to 4.2.2.
 
 
 ----

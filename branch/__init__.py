@@ -1,4 +1,4 @@
-# Copyright (C) 2021 Serghei Iakovlev <egrep@protonmail.ch>
+# Copyright (C) 2021, 2022 Serghei Iakovlev <egrep@protonmail.ch>
 #
 # This file is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -43,8 +43,8 @@ from .celery import app as celery_app
 
 __all__ = ('celery_app',)
 
-__copyright__ = 'Copyright (C) 2021 Serghei Iakovlev'
-__version__ = '1.6.0'
+__copyright__ = 'Copyright (C) 2021, 2022 Serghei Iakovlev'
+__version__ = '1.7.0'
 __license__ = 'GPLv3+'
 __author__ = 'Serghei Iakovlev'
 __author_email__ = 'egrep@protonmail.ch'
