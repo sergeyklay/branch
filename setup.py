@@ -152,14 +152,12 @@ INSTALL_REQUIRES = [
     'django-compressor>=2.4',  # Compile and minify static assets
     'django-contrib-comments>=2.1.0',  # Django Comments Framework
     'django-redis>=4.12.1',  # Redis cache backend for Django
+    'django-recaptcha>=3.0.0',  # reCAPTCHA forms support for Django
     'django-structlog>=2.1.1',  # Structured Logging for Django
     'django-taggit>=1.5.0',  # Simple tagging application
     'gunicorn>=20.1.0',  # A Python WSGI HTTP Server
     'pillow>=8.2.0',  # Python Imaging Library
     'pyquery>=1.4.3',  # A jQuery-like Library for Python
-
-    # See https://github.com/praekelt/django-recaptcha/pull/240
-    'django-recaptcha @ git+git://github.com/sergeyklay/django-recaptcha.git@develop#egg=django-recaptcha',  # noqa: E501
 ]
 
 DEPENDENCY_LINKS = []

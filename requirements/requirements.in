@@ -1,4 +1,4 @@
-# Copyright (C) 2021 Serghei Iakovlev <egrep@protonmail.ch>
+# Copyright (C) 2021, 2022 Serghei Iakovlev <egrep@protonmail.ch>
 #
 # This file is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -19,12 +19,10 @@ django
 django-compressor
 django-contrib-comments
 django-environ
+django-recaptcha
 django-redis
 django-structlog
 django-taggit
 gunicorn
 pillow
 pyquery
-
-# See https://github.com/praekelt/django-recaptcha/pull/240
--e git+git://github.com/sergeyklay/django-recaptcha.git@develop#egg=django-recaptcha
