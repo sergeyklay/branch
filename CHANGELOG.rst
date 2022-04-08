@@ -7,6 +7,12 @@ releases, in reverse chronological order.
 1.6.1 (202X-XX-XX)
 ------------------
 
+Breaking Changes
+^^^^^^^^^^^^^^^^
+
+* Removed Python 3.7 support.
+
+
 Trivial/Internal Changes
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -17,7 +23,7 @@ Trivial/Internal Changes
 * Bumped ``django-redis`` from 5.0.0 to 5.2.0.
 * Bumped ``django-structlog`` from 2.1.3 to 2.2.0.
 * Bumped ``django-taggit`` from 1.5.1 to 2.0.0.
-* Bumped ``django`` from 3.2.9 to 3.2.10.
+* Bumped ``django`` from 3.2.9 to 4.0.3.
 * Bumped ``faker`` from 9.8.2 to 10.0.0.
 * Bumped ``pillow`` from 8.4.0 to 9.0.0
 * Bumped ``pylint`` from 2.11.1 to 2.12.2.

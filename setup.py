@@ -1,4 +1,4 @@
-# Copyright (C) 2021 Serghei Iakovlev <egrep@protonmail.ch>
+# Copyright (C) 2021, 2022 Serghei Iakovlev <egrep@protonmail.ch>
 #
 # This file is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -136,7 +136,6 @@ CLASSIFIERS = [
     'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',  # noqa: E501
     'Programming Language :: Python',
     'Programming Language :: Python :: 3',
-    'Programming Language :: Python :: 3.7',
     'Programming Language :: Python :: 3.8',
     'Programming Language :: Python :: 3.9',
     'Programming Language :: Python :: 3.10',
@@ -147,7 +146,7 @@ CLASSIFIERS = [
 INSTALL_REQUIRES = [
     'celery[redis]>=5.0.5',  # Queues support to execute tasks asynchronously
     'beautifulsoup4>=4.9.3',  # Sanitize HTML input
-    'django>=3.2',  # Our framework
+    'django>=4.0',  # Our framework
     'django-environ>=0.6.0',  # Configure Django application
     'django-compressor>=2.4',  # Compile and minify static assets
     'django-contrib-comments>=2.1.0',  # Django Comments Framework
