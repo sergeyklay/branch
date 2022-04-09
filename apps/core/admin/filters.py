@@ -1,4 +1,4 @@
-# Copyright (C) 2021 Serghei Iakovlev <egrep@protonmail.ch>
+# Copyright (C) 2021, 2022 Serghei Iakovlev <egrep@protonmail.ch>
 #
 # This file is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -22,7 +22,7 @@ from django.contrib.admin.models import ADDITION, CHANGE, DELETION, LogEntry
 from django.contrib.auth import get_user_model
 from django.contrib.contenttypes.models import ContentType as CTModel
 from django.template.defaultfilters import capfirst, dictsort
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 from django.utils.translation import gettext_lazy
 
 action_names = {
@@ -142,9 +142,9 @@ class ContentTypeFilter(admin.SimpleListFilter):
             if not model:
                 continue
 
-            val = capfirst(force_text(model._meta.verbose_name_plural))
+            val = capfirst(force_str(model._meta.verbose_name_plural))
             val_list.append({
-                'name': capfirst(force_text(model._meta.verbose_name_plural)),
+                'name': capfirst(force_str(model._meta.verbose_name_plural)),
                 'value': ((entry.pk, val),)
             })
 

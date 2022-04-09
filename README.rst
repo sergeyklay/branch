@@ -91,7 +91,7 @@ the `MIT License <https://github.com/minicomp/ed/blob/bedbc4c6870174451368fc51ec
 
 Project documentation currently lives at `project docs folder <https://github.com/sergeyklay/branch/tree/master/docs>`_,
 and the code on `GitHub <https://github.com/sergeyklay/branch>`_.
-It’s rigorously tested on Python 3.7+.
+It’s rigorously tested on Python 3.8+.
 
 If you'd like to contribute to Branch you're most welcome!
 
