@@ -16,7 +16,7 @@ Prerequisites
 
 To play with this blog at your local environment you need the following requirements:
 
-* Python >= 3.7
+* Python >= 3.8
 * SQLite3
 * `sass <https://sass-lang.com/install>`_
 * npm
