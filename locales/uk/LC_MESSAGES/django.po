@@ -1,11 +1,11 @@
 # Ukrainian translation of branch.
-# Copyright © 2021 Serghei Iakovlev
+# Copyright © 2021, 2022 Serghei Iakovlev
 # This file is distributed under the same license as the branch package.
-# Serghei Iakovlev <egrep@protonmail.ch>, 2021.
+# Serghei Iakovlev <egrep@protonmail.ch>, 2022.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: branch 1.6.\n"
+"Project-Id-Version: branch 1.7.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2021-09-26 23:02+0000\n"
 "PO-Revision-Date: 2021-09-27 02:24+0300\n"
