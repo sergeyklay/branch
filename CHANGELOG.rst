@@ -16,6 +16,7 @@ Breaking Changes
 Trivial/Internal Changes
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
+* Bumped ``beautifulsoup4`` from 4.10.0 to 4.11.1.
 * Bumped ``celery`` from 5.2.0 to 5.2.6.
 * Bumped ``coverage`` from 6.1.2 to 6.3.2.
 * Bumped ``django-compressor`` from 2.4.1 to 3.1.

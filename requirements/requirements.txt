@@ -10,7 +10,7 @@ asgiref==3.5.0
     # via django
 async-timeout==4.0.2
     # via redis
-beautifulsoup4==4.11.0
+beautifulsoup4==4.11.1
     # via -r requirements/requirements.in
 billiard==3.6.4.0
     # via celery
