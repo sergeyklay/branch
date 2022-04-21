@@ -8,7 +8,7 @@ amqp==5.1.0
     # via kombu
 asgiref==3.5.0
     # via django
-astroid==2.11.2
+astroid==2.11.3
     # via pylint
 attrs==21.4.0
     # via pytest
@@ -89,7 +89,7 @@ pydocstyle==6.1.1
     # via flake8-docstrings
 pyflakes==2.4.0
     # via flake8
-pylint==2.13.5
+pylint==2.13.7
     # via
     #   -r requirements/requirements-dev.in
     #   pylint-django
@@ -127,10 +127,6 @@ tomli==2.0.1
     #   coverage
     #   pylint
     #   pytest
-typing-extensions==4.1.1
-    # via
-    #   astroid
-    #   pylint
 vine==5.0.0
     # via
     #   amqp
