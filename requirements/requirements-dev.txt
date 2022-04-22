@@ -29,36 +29,36 @@ click-plugins==1.1.1
 click-repl==0.2.0
     # via celery
 coverage[toml]==6.3.2
-    # via -r requirements/requirements-dev.in
+    # via -r requirements-dev.in
 dill==0.3.4
     # via pylint
-django==4.0.3
+django==4.0.4
     # via
     #   django-debug-toolbar
     #   django-extensions
 django-debug-toolbar==3.2.4
-    # via -r requirements/requirements-dev.in
+    # via -r requirements-dev.in
 django-extensions==3.1.5
-    # via -r requirements/requirements-dev.in
+    # via -r requirements-dev.in
 factory-boy==3.2.1
-    # via -r requirements/requirements-dev.in
+    # via -r requirements-dev.in
 faker==13.3.4
     # via
-    #   -r requirements/requirements-dev.in
+    #   -r requirements-dev.in
     #   factory-boy
 flake8==4.0.1
     # via
-    #   -r requirements/requirements-dev.in
+    #   -r requirements-dev.in
     #   flake8-builtins
     #   flake8-docstrings
 flake8-blind-except==0.2.1
-    # via -r requirements/requirements-dev.in
+    # via -r requirements-dev.in
 flake8-builtins==1.5.3
-    # via -r requirements/requirements-dev.in
+    # via -r requirements-dev.in
 flake8-docstrings==1.6.0
-    # via -r requirements/requirements-dev.in
+    # via -r requirements-dev.in
 flake8-import-order==0.18.1
-    # via -r requirements/requirements-dev.in
+    # via -r requirements-dev.in
 iniconfig==1.1.1
     # via pytest
 isort==5.10.1
@@ -91,23 +91,23 @@ pyflakes==2.4.0
     # via flake8
 pylint==2.13.5
     # via
-    #   -r requirements/requirements-dev.in
+    #   -r requirements-dev.in
     #   pylint-django
     #   pylint-plugin-utils
 pylint-django==2.5.3
-    # via -r requirements/requirements-dev.in
+    # via -r requirements-dev.in
 pylint-plugin-utils==0.7
     # via pylint-django
 pyparsing==3.0.7
     # via packaging
 pytest==7.1.1
     # via
-    #   -r requirements/requirements-dev.in
+    #   -r requirements-dev.in
     #   pytest-django
 pytest-celery==0.0.0
-    # via -r requirements/requirements-dev.in
+    # via -r requirements-dev.in
 pytest-django==4.5.2
-    # via -r requirements/requirements-dev.in
+    # via -r requirements-dev.in
 python-dateutil==2.8.2
     # via faker
 pytz==2022.1
@@ -127,10 +127,6 @@ tomli==2.0.1
     #   coverage
     #   pylint
     #   pytest
-typing-extensions==4.1.1
-    # via
-    #   astroid
-    #   pylint
 vine==5.0.0
     # via
     #   amqp
