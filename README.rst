@@ -19,10 +19,15 @@
 
 .. teaser-begin
 
-You're looking at the source code of `my brand-spanking new blog <https://serghei.blog/?utm_source=github.com&utm_campaign=banch_readme&utm_medium=smm>`_.
+You're looking at the source code of my old blog.
+
 One day I decided that instead of using a ready-made blogging solution, I could
 create my own that meets my personal needs. I named it **Branch**. Its main goal
 is to help me take notes and keep thoughts in one place.
+
+Note: I no longer maintain this project and keep it public for educational
+purposes and for historical reasons. The new blog lives at https://github.com/sergeyklay/blog
+
 
 .. teaser-end
 
